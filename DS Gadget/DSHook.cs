@@ -278,7 +278,7 @@ namespace DS_Gadget
 
         public void BonfireWarp()
         {
-            string asm = string.Format(GetTxtResourceClass.GetTxtResource("Resources/Bonfires.txt"),
+            string asm = string.Format(Properties.Resources.BonfireWarp,
                 (int)FuncBonfireWarpUnknown1.Resolve(), (int)FuncBonfireWarp.Resolve());
             AsmExecute(asm);
         }
