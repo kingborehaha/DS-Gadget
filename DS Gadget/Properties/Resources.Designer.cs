@@ -78,7 +78,7 @@ namespace DS_Gadget.Properties {
         ///  52000   1 2 Brigand Gauntlets
         ///  53000   1 2 Brigand Trousers
         ///  60000   1 1 Shadow Mask
-        ///  610 [rest of string was truncated]&quot;;.
+        ///  61000   1 1 Shadow G [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Armor {
             get {
@@ -101,7 +101,7 @@ namespace DS_Gadget.Properties {
         ///1022960 Firelink Shrine (Bonfire)
         ///1102511 Painted World of Ariamis (Rope Bridge)
         ///1102960 Painted World of Ariamis (Bonfire)
-        ///1102961 P [rest of string was truncated]&quot;;.
+        ///1102961 Painted World o [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Bonfires {
             get {
@@ -157,7 +157,7 @@ namespace DS_Gadget.Properties {
         ///    292  99 0 Firebomb
         ///    293  99 0 Dung Pie
         ///    294  99 0 Alluring Skull
-        ///    296  99 [rest of string was truncated]&quot;;.
+        ///    296  99 0 Lloyd&apos;s Talis [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Consumables {
             get {
@@ -241,7 +241,7 @@ namespace DS_Gadget.Properties {
         ///   2012   1 0 Undead Asylum F2 East Key
         ///   2013   1 0 Key to the Seal
         ///   2014   1 0 Key to Depths
-        ///   2016   1 0 [rest of string was truncated]&quot;;.
+        ///   2016   1 0 Undead Asylum  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string KeyItems {
             get {
@@ -277,7 +277,8 @@ namespace DS_Gadget.Properties {
         /// 207000   1 3 Barbed Straight Sword
         /// 208000   1 1 Silver Knight Straight Sword
         /// 209000   1 1 Astora&apos;s Straight Sword
-        /// 210000   1 3 Darksword        /// [rest of string was truncated]&quot;;.
+        /// 210000   1 3 Darksword
+        /// 211000   1 1 D [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string MeleeWeapons {
             get {
@@ -308,7 +309,7 @@ namespace DS_Gadget.Properties {
         ///   2800   1 0 Male 19
         ///   2900   1 0 Male 20
         ///   3000   1 0 Shaved
-        ///  [rest of string was truncated]&quot;;.
+        ///   3100   1 0 Very Shor [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string MysteryArmor {
             get {
@@ -332,7 +333,7 @@ namespace DS_Gadget.Properties {
         ///    211  20 0 Estus Flask+5
         ///    212   1 0 Estus Flask+6 (Empty)
         ///    213  20 0 Estus Flask+6
-        ///    214   1 0 Est [rest of string was truncated]&quot;;.
+        ///    214   1 0 Estus Flask+7 (Emp [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string MysteryGoods {
             get {
@@ -356,7 +357,8 @@ namespace DS_Gadget.Properties {
         /// 900000   1 0 Fists
         /// 999000   1 0 Phantom Fists
         ///1099000   1 0 Phantom Spear
-        ///1199000   1 0 Phantom [rest of string was truncated]&quot;;.
+        ///1199000   1 0 Phantom Halberd
+        ///129800 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string MysteryWeapons {
             get {
@@ -399,7 +401,8 @@ namespace DS_Gadget.Properties {
         ///2004000 999 0 Poison Arrow
         ///2005000 999 0 Moonlight Arrow
         ///2006000 999 0 Wooden Arrow
-        ///2007000 999 0 Dragonsla [rest of string was truncated]&quot;;.
+        ///2007000 999 0 Dragonslayer Arrow
+        ///2008000 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string RangedWeapons {
             get {
@@ -422,7 +425,8 @@ namespace DS_Gadget.Properties {
         ///    111   1 0 Tiny Being&apos;s Ring
         ///    113   1 0 Cursebite Ring
         ///    114   1 0 White Seance Ring
-        ///    115   1 0 Bellowing Dragoncre [rest of string was truncated]&quot;;.
+        ///    115   1 0 Bellowing Dragoncrest Ring
+        ///    11 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Rings {
             get {
@@ -456,7 +460,8 @@ namespace DS_Gadget.Properties {
         ///1451000   1 4 Knight Shield
         ///1452000   1 4 Tower Kite Shield
         ///1453000   1 4 Grass Crest Shield
-        ///1454000   1 4 Hollow Soldier Shield        /// [rest of string was truncated]&quot;;.
+        ///1454000   1 4 Hollow Soldier Shield
+        ///1455000   1 4 B [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Shields {
             get {
@@ -477,7 +482,7 @@ namespace DS_Gadget.Properties {
         ///   3110  99 0 Sorcery: Great Magic Weapon
         ///   3120  99 0 Sorcery: Crystal Magic Weapon
         ///   3300  99 0 Sorcery: Magic Shield
-        ///   3310  99 0 Sorcer [rest of string was truncated]&quot;;.
+        ///   3310  99 0 Sorcery: Strong Ma [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Spells {
             get {
@@ -500,7 +505,8 @@ namespace DS_Gadget.Properties {
         ///1360000   1 0 Talisman
         ///1361000   1 0 Canvas Talisman
         ///1362000   1 0 Thorolund Talisman
-        ///1363000   1 0 Ivory Talis [rest of string was truncated]&quot;;.
+        ///1363000   1 0 Ivory Talisman
+        ///1365000    [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SpellTools {
             get {
@@ -525,7 +531,7 @@ namespace DS_Gadget.Properties {
         ///   1030  99 0 Titanite Chunk
         ///   1040  99 0 Blue Titanite Chunk
         ///   1050  99 0 White Titanite Chunk
-        ///    [rest of string was truncated]&quot;;.
+        ///   1060  99 0 Red T [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string UpgradeMaterials {
             get {
@@ -550,7 +556,7 @@ namespace DS_Gadget.Properties {
         ///    371   1 0 Binoculars
         ///    377  99 0 Dragon Head Stone
         ///    378  99 0 Dragon Torso Stone
-        ///  [rest of string was truncated]&quot;;.
+        ///    385   1 0 Dri [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string UsableItems {
             get {
