@@ -38,7 +38,7 @@ namespace DS_Gadget
 
         static DSBonfire()
         {
-            foreach (string line in Regex.Split(Properties.Resources.Bonfires, "[\r\n]+"))
+            foreach (string line in Regex.Split(GetTxtResourceClass.GetTxtResource("Resources/Bonfires.txt"), "[\r\n]+"))
                 All.Add(new DSBonfire(line));
             All.Sort();
         }

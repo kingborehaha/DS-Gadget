@@ -45,7 +45,7 @@ namespace DS_Gadget
 
         static DSClass()
         {
-            foreach (string line in Regex.Split(Properties.Resources.Classes, "[\r\n]+"))
+            foreach (string line in Regex.Split(GetTxtResourceClass.GetTxtResource("Resources/Classes.txt"), "[\r\n]+"))
                 All.Add(new DSClass(line));
         }
     }

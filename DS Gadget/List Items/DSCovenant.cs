@@ -26,7 +26,7 @@ namespace DS_Gadget
         static DSCovenant()
         {
             var all = new List<DSCovenant>();
-            foreach (string line in Regex.Split(Properties.Resources.Covenants, "[\r\n]+"))
+            foreach (string line in Regex.Split(GetTxtResourceClass.GetTxtResource("Resources/Misc/Covenants.txt"), "[\r\n]+"))
             {
                 Match match = CovenantEntryRx.Match(line);
                 byte id = byte.Parse(match.Groups["id"].Value);

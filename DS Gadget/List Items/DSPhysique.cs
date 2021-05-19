@@ -26,7 +26,7 @@ namespace DS_Gadget
         static DSPhysique()
         {
             var all = new List<DSPhysique>();
-            foreach (string line in Regex.Split(Properties.Resources.Physiques, "[\r\n]+"))
+            foreach (string line in Regex.Split(GetTxtResourceClass.GetTxtResource("Resources/Misc/Physiques.txt"), "[\r\n]+"))
             {
                 Match match = PhysiqueEntryRx.Match(line);
                 byte id = byte.Parse(match.Groups["id"].Value);
