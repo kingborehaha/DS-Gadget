@@ -5,8 +5,6 @@ namespace DS_Gadget
 {
     class GetTxtResourceClass
     {
-
-        //new
         public static string GetTxtResource(string filePath)
         {
 
@@ -19,6 +17,5 @@ namespace DS_Gadget
             return fileString;
 
         }
-
     }
 }
