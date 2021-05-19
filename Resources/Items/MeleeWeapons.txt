@@ -78,7 +78,7 @@
  901000   1 3 Caestus
  902000   1 3 Claw
  903000   1 1 Dragon Bone Fist
- 904000   1 1 Dark Hand
+ 904000   1 0 Dark Hand
 1000000   1 3 Spear
 1001000   1 3 Winged Spear
 1002000   1 3 Partizan
@@ -102,9 +102,7 @@
 9010000   1 1 Gold Tracer
 9011000   1 1 Dark Silver Tracer
 9012000   1 1 Abyss Greatsword
-9015000   1 3 Stone Greataxe
+9015000   1 1 Stone Greataxe
 9016000   1 3 Four-pronged Plow
 9019000   1 3 Guardian Tail
 9020000   1 1 Obsidian Greatsword
- 356000   1 1 Four Kings Greatsword
- 905000   1 1 Bug Eater

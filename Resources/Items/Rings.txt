@@ -1,6 +1,7 @@
     100   1 0 Havel's Ring
     101   1 0 Red Tearstone Ring
     102   1 0 Darkmoon Blade Covenant Ring
+    103   1 0 Cat Covenant Ring
     104   1 0 Cloranthy Ring
     105   1 0 Flame Stoneplate Ring
     106   1 0 Thunder Stoneplate Ring
@@ -28,6 +29,7 @@
     137   1 0 Old Witch's Ring
     138   1 0 Covenant of Artorias
     139   1 0 Orange Charred Ring
+    141   1 0 Lingering Dragoncrest Ring
     142   1 0 Ring of the Evil Eye
     143   1 0 Ring of Favor and Protection
     144   1 0 Leo Ring
@@ -37,6 +39,3 @@
     148   1 0 Ring of the Sun's Firstborn
     149   1 0 Darkmoon Seance Ring
     150   1 0 Calamity Ring
-    141   1 0 Ring of Sustainment
-    103   1 0 Lesser Ring of Greed
-    151   1 0 Greater Ring of Greed

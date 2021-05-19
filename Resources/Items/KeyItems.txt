@@ -32,4 +32,3 @@
    2602   1 0 Repairbox
    2607   1 0 Rite of Kindling
    2608   1 0 Bottomless Box
-   1049   1 0 Bond of Avarice

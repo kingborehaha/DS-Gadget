@@ -22,6 +22,3 @@
    1110  99 0 Dragon Scale
    1120  99 0 Demon Titanite
    1130  99 0 Twinkling Titanite
-    109  99 0 Remnant of Death
-    550  99 0 Everlasting Scale
-    571  99 0 Old Medal of Sunlight

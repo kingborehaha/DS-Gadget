@@ -19,9 +19,12 @@
    3530  99 0 Sorcery: Repair
    3540  99 0 Sorcery: Fall Control
    3550  99 0 Sorcery: Chameleon
+   3600  99 0 Sorcery: Resist Curse
+   3610  99 0 Sorcery: Remedy
    3700  99 0 Sorcery: White Dragon Breath
    3710  99 0 Sorcery: Dark Orb
    3720  99 0 Sorcery: Dark Bead
+   3730  99 0 Sorcery: Dark Fog
    3740  99 0 Sorcery: Pursuers
    4000  99 0 Pyromancy: Fireball
    4010  99 0 Pyromancy: Fire Orb
@@ -34,6 +37,7 @@
    4110  99 0 Pyromancy: Great Combustion
    4200  99 0 Pyromancy: Poison Mist
    4210  99 0 Pyromancy: Toxic Mist
+   4220  99 0 Pyromancy: Acid Surge
    4300  99 0 Pyromancy: Iron Flesh
    4310  99 0 Pyromancy: Flash Sweat
    4360  99 0 Pyromancy: Undead Rapport
@@ -45,33 +49,23 @@
    5000  99 0 Miracle: Heal
    5010  99 0 Miracle: Great Heal
    5020  99 0 Miracle: Great Heal Excerpt
+   5030  99 0 Miracle: Soothing Sunlight
    5040  99 0 Miracle: Replenishment
+   5050  99 0 Miracle: Bountiful Sunlight
+   5100  99 0 Miracle: Gravelord Sword Dance
+   5110  99 0 Miracle: Gravelord Greatsword Dance
    5210  99 0 Miracle: Homeward
    5300  99 0 Miracle: Force
    5310  99 0 Miracle: Wrath of the Gods
    5320  99 0 Miracle: Emit Force
-   5500  99 0 Miracle: Lightning Discharge
-   5510  99 0 Miracle: Great Lightning Discharge
+   5400  99 0 Miracle: Seek Guidance
+   5500  99 0 Miracle: Lightning Spear
+   5510  99 0 Miracle: Great Lightning Spear
    5520  99 0 Miracle: Sunlight Spear
    5600  99 0 Miracle: Magic Barrier
+   5610  99 0 Miracle: Great Magic Barrier
    5700  99 0 Miracle: Karmic Justice
    5800  99 0 Miracle: Tranquil Walk of Peace
    5810  99 0 Miracle: Vow of Silence
-   5910  99 0 Miracle: Darkmoon Blade
-   5110  99 0 Miracle: xx Gravelord Greatsword Dance
-   5610  99 0 Miracle: xx Great Magic Barrier
-   5100  99 0 Miracle: Gravelord Sword Dance
-   5120  99 0 Miracle: Gravelord Sword Summon
-   5130  99 0 Miracle: Gravelord Guardian Sword
    5900  99 0 Miracle: Sunlight Blade
-   3600  99 0 Sorcery: Resist Curse
-   4220  99 0 Pyromancy: Burning Mist
-   5400  99 0 Miracle: Blessing of Stamina
-   3610  99 0 Miracle: Blight Guard
-   3730  99 0 Miracle: Miasmic Fog
-   5050  99 0 Miracle: Bountiful Sunlight
-   5030  99 0 Miracle: Veil of Sunlight
-   5908  99 0 Miracle: Fleetness
-   5909  99 0 Miracle: Grand Fleetness
-   3005  99 0 Sorcery: Soul Shot
-   4540  99 0 Pyromancy: Condensed Chaos
+   5910  99 0 Miracle: Darkmoon Blade

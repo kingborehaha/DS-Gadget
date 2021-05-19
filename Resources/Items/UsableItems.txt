@@ -12,24 +12,11 @@
     118   1 0 Purple Coward's Crystal
     220  99 0 Silver Pendant
     371   1 0 Binoculars
+    377  99 0 Dragon Head Stone
+    378  99 0 Dragon Torso Stone
     385   1 0 Dried Finger
     510   1 0 Hello Carving
     511   1 0 Thank you Carving
     512   1 0 Very good! Carving
     513   1 0 I'm sorry Carving
     514   1 0 Help me! Carving
-    610   1 0 Tears of the Goddess (empty)
-    611   1 0 Tears of the Goddess
-    616   1 0 Lifedrain Vessel
-    618   1 0 Lifedrain Vessel+1
-    620   1 0 Lifedrain Vessel+2
-    622   1 0 Lifedrain Vessel+3
-    530   1 0 Dragon Head Stone
-    531   1 0 Dragon Head Stone+1
-    532   1 0 Dragon Head Stone+2
-    533   1 0 Dragon Head Stone+3
-    340   1 0 Dragon Torso Stone
-    341   1 0 Dragon Torso Stone+1
-    342   1 0 Dragon Torso Stone+2
-    343   1 0 Dragon Torso Stone+3
-    570   1 0 Golden Eye Orb
