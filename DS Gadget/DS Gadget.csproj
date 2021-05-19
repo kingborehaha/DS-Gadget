@@ -202,29 +202,67 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
-    <None Include="Resources\Classes.txt" />
-    <None Include="Resources\Bonfires.txt" />
+    <None Include="Resources\Misc\Classes.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Bonfires.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="Resources\Assembly\BonfireWarp.txt" />
     <Content Include="Resources\Assembly\ItemDrop.txt" />
     <Content Include="Resources\Assembly\ItemGet.txt" />
     <Content Include="Resources\Assembly\LevelUp.txt" />
-    <None Include="Resources\Covenants.txt" />
-    <None Include="Resources\Physiques.txt" />
-    <None Include="Resources\Sexes.txt" />
-    <Content Include="Resources\Items\MysteryWeapons.txt" />
-    <Content Include="Resources\Items\RangedWeapons.txt" />
-    <Content Include="Resources\Items\Shields.txt" />
-    <Content Include="Resources\Items\SpellTools.txt" />
-    <None Include="Resources\Items\KeyItems.txt" />
-    <None Include="Resources\Items\Armor.txt" />
-    <None Include="Resources\Items\MysteryArmor.txt" />
-    <None Include="Resources\Items\MysteryGoods.txt" />
-    <None Include="Resources\Items\Spells.txt" />
-    <None Include="Resources\Items\UpgradeMaterials.txt" />
-    <None Include="Resources\Items\UsableItems.txt" />
-    <None Include="Resources\Items\Consumables.txt" />
-    <None Include="Resources\Items\Rings.txt" />
-    <None Include="Resources\Items\MeleeWeapons.txt" />
+    <None Include="Resources\Misc\Covenants.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Misc\Physiques.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Misc\Sexes.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Resources\Items\MysteryWeapons.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Items\RangedWeapons.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Items\Shields.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Items\SpellTools.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\Items\KeyItems.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Items\Armor.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Items\MysteryArmor.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Items\MysteryGoods.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Items\Spells.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Items\UpgradeMaterials.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Items\UsableItems.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Items\Consumables.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Items\Rings.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Items\MeleeWeapons.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.2">
