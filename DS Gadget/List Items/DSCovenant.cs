@@ -28,10 +28,13 @@ namespace DS_Gadget
             var all = new List<DSCovenant>();
             foreach (string line in Regex.Split(GetTxtResourceClass.GetTxtResource("Resources/Misc/Covenants.txt"), "[\r\n]+"))
             {
-                Match match = CovenantEntryRx.Match(line);
-                byte id = byte.Parse(match.Groups["id"].Value);
-                string name = match.Groups["name"].Value;
-                all.Add(new DSCovenant(id, name));
+                if (GetTxtResourceClass.IsValidTxtResource(line)) //determine if line is a valid resource or not
+                {
+                    Match match = CovenantEntryRx.Match(line);
+                    byte id = byte.Parse(match.Groups["id"].Value);
+                    string name = match.Groups["name"].Value;
+                    all.Add(new DSCovenant(id, name));
+                }
             }
             all.Sort();
             All = all;

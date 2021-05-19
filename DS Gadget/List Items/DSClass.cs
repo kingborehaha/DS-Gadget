@@ -46,7 +46,10 @@ namespace DS_Gadget
         static DSClass()
         {
             foreach (string line in Regex.Split(GetTxtResourceClass.GetTxtResource("Resources/Misc/Classes.txt"), "[\r\n]+"))
-                All.Add(new DSClass(line));
+            {
+                if (GetTxtResourceClass.IsValidTxtResource(line)) //determine if line is a valid resource or not
+                    All.Add(new DSClass(line));
+            }
         }
     }
 }

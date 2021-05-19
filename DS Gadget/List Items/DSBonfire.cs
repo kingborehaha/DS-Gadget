@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-
 namespace DS_Gadget
 {
     class DSBonfire : IComparable<DSBonfire>
@@ -39,7 +38,10 @@ namespace DS_Gadget
         static DSBonfire()
         {
             foreach (string line in Regex.Split(GetTxtResourceClass.GetTxtResource("Resources/Bonfires.txt"), "[\r\n]+"))
-                All.Add(new DSBonfire(line));
+            {
+                if (GetTxtResourceClass.IsValidTxtResource(line)) //determine if line is a valid resource or not
+                    All.Add(new DSBonfire(line));
+            };
             All.Sort();
         }
     }

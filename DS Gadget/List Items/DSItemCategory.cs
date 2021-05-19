@@ -15,7 +15,10 @@ namespace DS_Gadget
             ID = id;
             Items = new List<DSItem>();
             foreach (string line in Regex.Split(itemList, "[\r\n]+"))
-                Items.Add(new DSItem(line, showIDs));
+            {
+                if (GetTxtResourceClass.IsValidTxtResource(line)) //determine if line is a valid resource or not
+                    Items.Add(new DSItem(line, showIDs));
+            };
             Items.Sort();
         }
 
