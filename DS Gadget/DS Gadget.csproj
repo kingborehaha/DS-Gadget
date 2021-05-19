@@ -81,6 +81,7 @@
   <ItemGroup>
     <Compile Include="DSHook.cs" />
     <Compile Include="GadgetHotkey.cs" />
+    <Compile Include="GetTxtResourceClass.cs" />
     <Compile Include="List Items\DSSex.cs" />
     <Compile Include="List Items\DSPhysique.cs" />
     <Compile Include="List Items\DSCovenant.cs" />
