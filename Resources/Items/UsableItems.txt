@@ -1,0 +1,35 @@
+    100   1 0 White Sign Soapstone
+    101   1 0 Red Sign Soapstone
+    102   1 0 Red Eye Orb
+    103   1 0 Black Separation Crystal
+    106   1 0 Orange Guidance Soapstone
+    108   1 0 Book of the Guilty
+    112   1 0 Servant Roster
+    113   1 0 Blue Eye Orb
+    114   1 0 Dragon Eye
+    115   1 0 Black Eye Orb
+    117   1 0 Darksign
+    118   1 0 Purple Coward's Crystal
+    220  99 0 Silver Pendant
+    371   1 0 Binoculars
+    385   1 0 Dried Finger
+    510   1 0 Hello Carving
+    511   1 0 Thank you Carving
+    512   1 0 Very good! Carving
+    513   1 0 I'm sorry Carving
+    514   1 0 Help me! Carving
+    610   1 0 Tears of the Goddess (empty)
+    611   1 0 Tears of the Goddess
+    616   1 0 Lifedrain Vessel
+    618   1 0 Lifedrain Vessel+1
+    620   1 0 Lifedrain Vessel+2
+    622   1 0 Lifedrain Vessel+3
+    530   1 0 Dragon Head Stone
+    531   1 0 Dragon Head Stone+1
+    532   1 0 Dragon Head Stone+2
+    533   1 0 Dragon Head Stone+3
+    340   1 0 Dragon Torso Stone
+    341   1 0 Dragon Torso Stone+1
+    342   1 0 Dragon Torso Stone+2
+    343   1 0 Dragon Torso Stone+3
+    570   1 0 Golden Eye Orb
