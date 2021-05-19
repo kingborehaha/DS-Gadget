@@ -14,8 +14,7 @@ namespace DS_Gadget
 
             string fileString = File.ReadAllText(filePath);
 
-            //fileString.Replace("\n\n", ""); //remove any empty new lines
-            //need a better way of just removing superfluous lines to prevent a dumbly easy error to run into
+            //todo: a way of just removing superfluous lines to prevent that easy error to run into
 
             return fileString;
 
