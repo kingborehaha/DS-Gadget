@@ -27,12 +27,12 @@ namespace DS_Gadget
 
             };
             if (string.IsNullOrWhiteSpace(txtLine) == true) //empty line check
-                return false;
-            //else if(txtLine.Contains("//")) //ignore comments
-                //return false;
+            {
+                return false; //resource line invalid
+            };
 
-            //line is valid
-            return true;
+            return true; //resource line valid
+
         }
     }
 }
