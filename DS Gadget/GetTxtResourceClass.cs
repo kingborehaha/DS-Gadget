@@ -24,7 +24,6 @@ namespace DS_Gadget
             if (txtLine.Contains("//"))
             {
                 txtLine = txtLine.Substring(0, txtLine.IndexOf("//")); // remove everything after "//" comments
-
             };
             if (string.IsNullOrWhiteSpace(txtLine) == true) //empty line check
             {
@@ -32,7 +31,6 @@ namespace DS_Gadget
             };
 
             return true; //resource line valid
-
         }
     }
 }
