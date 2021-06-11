@@ -214,7 +214,7 @@
             // 
             this.searchBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchBox.Location = new System.Drawing.Point(4, 102);
+            this.searchBox.Location = new System.Drawing.Point(4, 100);
             this.searchBox.Margin = new System.Windows.Forms.Padding(4);
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(284, 26);
