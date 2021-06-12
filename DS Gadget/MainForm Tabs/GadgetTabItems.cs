@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DS_Gadget
@@ -20,11 +22,30 @@ namespace DS_Gadget
 
         private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
+            searchBox.Text = "Search...";
             lbxItems.Items.Clear();
             DSItemCategory category = cmbCategory.SelectedItem as DSItemCategory;
             foreach (DSItem item in category.Items)
                 lbxItems.Items.Add(item);
             lbxItems.SelectedIndex = 0;
+        }
+
+        private void searchBox_TextChanged(object sender, EventArgs e)
+        {
+            lbxItems.Items.Clear();
+            DSItemCategory category = cmbCategory.SelectedItem as DSItemCategory;
+            foreach (DSItem item in category.Items)
+            {
+                if (item.ToString().ToLower().Contains(searchBox.Text.ToLower()))
+                {
+                    lbxItems.Items.Add(item);
+                }
+
+            }
+
+            if (lbxItems.Items.Count > 0)
+                lbxItems.SelectedIndex = 0;
+
         }
 
         private void cbxQuantityRestrict_CheckedChanged(object sender, EventArgs e)
@@ -114,6 +135,7 @@ namespace DS_Gadget
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
+            ChangeColor(Color.DarkGray);
             CreateItem();
         }
 
@@ -137,6 +159,86 @@ namespace DS_Gadget
                 id += infusion.Value;
             }
             Hook.GetItem(category.ID, id, (int)nudQuantity.Value);
+        }
+
+        private void searchBox_Click(object sender, EventArgs e)
+        {
+            searchBox.SelectAll();
+            searchBox.Focus();
+        }
+
+        private void KeyDownListbox(KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                e.Handled = true;
+
+                if (lbxItems.SelectedIndex < lbxItems.Items.Count - 1)
+                {
+                    lbxItems.SelectedIndex += 1;
+                    return;
+                }
+
+                if (lbxItems.SelectedIndex >= lbxItems.Items.Count - 1)
+                {
+                    lbxItems.SelectedIndex = 0;
+                    return;
+                }
+            }
+
+            if (e.KeyCode == Keys.Up)
+            {
+                e.Handled = true;
+
+                if (lbxItems.SelectedIndex == 0)
+                {
+                    lbxItems.SelectedIndex = lbxItems.Items.Count - 1;
+                    return;
+                }
+
+                if (lbxItems.SelectedIndex != 0)
+                {
+                    lbxItems.SelectedIndex -= 1;
+                    return;
+                }
+            }
+
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;
+                ChangeColor(Color.DarkGray);
+                CreateItem();
+                return;
+            }
+        }
+
+        private async Task ChangeColor(Color new_color)
+        {
+            btnCreate.BackColor = new_color;
+
+            await Task.Delay(TimeSpan.FromSeconds(.25));
+
+            btnCreate.BackColor = default(Color);
+        }
+
+        private void KeyPressed(object sender, KeyEventArgs e)
+        {
+            if (lbxItems.Items.Count > 0)
+                KeyDownListbox(e);
+
+            if (lbxItems.Items.Count == 0)
+            {
+                if (e.KeyCode == Keys.Up)
+                    e.Handled = true;
+                if (e.KeyCode == Keys.Down)
+                    e.Handled = true;
+            }
+        }
+
+        private void nudUpgrade_Click(object sender, EventArgs e)
+        {
+            nudUpgrade.Select(0, nudUpgrade.Text.Length);
+            nudUpgrade.Focus();
         }
     }
 }
