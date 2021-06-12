@@ -3,6 +3,16 @@
 Branch of DS Gadget that loads locally accessible .txt files to populate various lists (bonfire, items, etc)
 Resource .txt files will be found in DS-Gadget\Resources
 
+Now includes a search function, courtesy of Nordgaren.
+
+## DS Gadget (Local Loader) Changelog
+
+### 3.0.0.70
+Added Search function
+
+### 3.0.0.69
+Release. Added local file load
+
 # DS Gadget
 A multi-purpose testing tool for Dark Souls: Prepare to Die Edition. Compatible with the current Steam and debug versions as well as, in theory, everything else.  
 Requires [.NET 4.6.2](https://www.microsoft.com/net/download/thank-you/net462) and [VC Redist 2012 x86](https://www.microsoft.com/en-us/download/details.aspx?id=30679)  
