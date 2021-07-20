@@ -3,7 +3,7 @@
 Branch of DS Gadget that loads locally accessible .txt files to populate various lists (bonfire, items, etc)
 Resource .txt files will be found in DS-Gadget\Resources
 
-Now includes a search function, courtesy of Nordgaren.
+Now includes a search function, and 3.0.0.71 features courtesy of Nordgaren.
 
 ## DS Gadget (Local Loader) Changelog
 
