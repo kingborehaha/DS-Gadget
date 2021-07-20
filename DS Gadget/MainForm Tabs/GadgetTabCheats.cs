@@ -100,6 +100,11 @@ namespace DS_Gadget
                 Hook.SetAllNoUpdateAI(true);
         }
 
+        internal void ToggleAI()
+        {
+            cbxAllNoUpdateAI.Checked = !cbxAllNoUpdateAI.Checked;
+        }
+
         public override void UpdateTab()
         {
             // The game sometimes sets and unsets this, for instance when dropping into Manus' or BoC's arena

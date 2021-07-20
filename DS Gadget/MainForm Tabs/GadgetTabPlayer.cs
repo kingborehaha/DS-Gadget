@@ -1,24 +1,29 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
+using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace DS_Gadget
 {
     internal partial class GadgetTabPlayer : GadgetTab
     {
-        private struct PlayerState
-        {
-            public bool Set;
-            public int HP, Stamina;
-            public bool DeathCam;
-            public byte[] FollowCam;
-        }
-        private PlayerState playerState;
+        
+        private State.PlayerState playerState;
 
         public GadgetTabPlayer()
         {
             InitializeComponent();
         }
+
+        private List<SavedPos> Positions = new List<SavedPos>();
+
+        private XmlSerializer XML = new XmlSerializer(typeof(List<SavedPos>));
+
+        private string SavedPositions = "Resources/SavedPositions.xml";
 
         public override void InitTab(MainForm parent)
         {
@@ -28,6 +33,52 @@ namespace DS_Gadget
             foreach (DSBonfire bonfire in DSBonfire.All)
                 cbxBonfire.Items.Add(bonfire);
             nudSpeed.Value = Settings.Speed;
+            if (File.Exists(SavedPositions))
+            {
+                using (var stream = new FileStream(SavedPositions, FileMode.Open))
+                {
+                    Positions = (List<SavedPos>)XML.Deserialize(stream);
+                }
+                UpdatePositions();
+            }
+        }
+
+        public void EnableStats(bool enable)
+        {
+            nudHealth.Enabled = enable;
+            nudStamina.Enabled = enable;
+            nudChrType.Enabled = enable;
+            nudTeamType.Enabled = enable;
+            nudPlayRegion.Enabled = enable;
+        }
+
+        private void UpdatePositions()
+        {
+            if (storedPositions.SelectedItem != new SavedPos())
+            {
+                storedPositions.Items.Clear();
+                storedPositions.Items.Add(new SavedPos());
+                foreach (var item in Positions)
+                {
+                    storedPositions.Items.Add(item);
+                }
+            }
+
+        }
+
+        public void Save()
+        {
+            Positions.Sort();
+            using (FileStream stream = new FileStream(SavedPositions, FileMode.Create))
+            {
+                XML.Serialize(stream, Positions);
+            }
+            XmlDocument doc = new XmlDocument();
+            doc.Load(SavedPositions);
+            XmlComment info = doc.CreateComment("Comments denote following value types. FollowCam is a byte array for camera data.");
+            XmlElement root = doc.DocumentElement;
+            doc.InsertBefore(info, root);
+            doc.Save(SavedPositions);
         }
 
         public override void ResetTab()
@@ -114,15 +165,55 @@ namespace DS_Gadget
 
         public void StorePosition()
         {
-            nudPosStoredX.Value = nudPosX.Value;
-            nudPosStoredY.Value = nudPosY.Value;
-            nudPosStoredZ.Value = nudPosZ.Value;
-            nudPosStoredAngle.Value = nudPosAngle.Value;
+            var pos = new SavedPos();
+            pos.Name = storedPositions.Text;
+            pos.X = nudPosStoredX.Value = nudPosX.Value;
+            pos.Y = nudPosStoredY.Value = nudPosY.Value;
+            pos.Z = nudPosStoredZ.Value = nudPosZ.Value;
+            pos.Angle = nudPosStoredAngle.Value = nudPosAngle.Value;
             playerState.HP = (int)nudHealth.Value;
             playerState.Stamina = (int)nudStamina.Value;
             playerState.FollowCam = Hook.DumpFollowCam();
             playerState.DeathCam = Hook.DeathCam;
             playerState.Set = true;
+            pos.PlayerState = playerState;
+            ProcessSavedPos(pos);
+            UpdatePositions();
+            Save();
+        }
+
+        public void ProcessSavedPos(SavedPos pos)
+        {
+            if (!string.IsNullOrWhiteSpace(storedPositions.Text))
+            {
+                if (Positions.Any(n => n.Name == storedPositions.Text))
+                {
+                    var old = Positions.Single(n => n.Name == storedPositions.Text);
+                    Positions.Remove(old);
+                    Positions.Add(pos);
+                    return;
+                }
+
+                Positions.Add(pos);
+            }
+
+        }
+
+        public void RemoveSavedPos()
+        {
+            if (Positions.Any(n => n.Name == storedPositions.Text))
+            {
+                if (MessageBox.Show("Are you sure you want to delete this positon?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                {
+                    var old = Positions.Single(n => n.Name == storedPositions.Text);
+                    Positions.Remove(old);
+                    storedPositions.SelectedIndex = 0;
+                    UpdatePositions();
+                    Save();
+                }
+                    
+            }
+
         }
 
         public void RestorePosition()
@@ -257,6 +348,34 @@ namespace DS_Gadget
         private void nudSpeed_ValueChanged(object sender, EventArgs e)
         {
             Hook.SetSpeed((float)nudSpeed.Value);
+        }
+
+        private void savedPos_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                StorePosition();
+            }
+
+            if (e.KeyCode == Keys.Delete && e.Shift == true)
+            {
+                deleteButton_Click(sender, e);
+            }
+        }
+
+        private void storedPositions_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var savedPos = storedPositions.SelectedItem as SavedPos;
+            nudPosStoredX.Value = savedPos.X;
+            nudPosStoredY.Value = savedPos.Y;
+            nudPosStoredZ.Value = savedPos.Z;
+            nudPosStoredAngle.Value = savedPos.Angle;
+            playerState = savedPos.PlayerState;
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            RemoveSavedPos();
         }
     }
 }

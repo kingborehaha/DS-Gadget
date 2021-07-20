@@ -92,6 +92,32 @@ namespace DS_Gadget
             Hook.LevelUp(vitality, attunement, endurance, strength, dexterity, resistance, intelligence, faith, sl);
         }
 
+        //Useless for now.
+        //internal void EnableStats(bool enable)
+        //{
+        //    txtName.Enabled = enable;
+        //    cmbClass.Enabled = enable;
+        //    cmbSex.Enabled = enable;
+        //    cmbPhysique.Enabled = enable;
+        //    nudHumanity.Enabled = enable;
+        //    nudSouls.Enabled = enable;
+        //    nudVit.Enabled = enable;
+        //    nudAtt.Enabled = enable;
+        //    nudEnd.Enabled = enable;
+        //    nudStr.Enabled = enable;
+        //    nudDex.Enabled = enable;
+        //    nudRes.Enabled = enable;
+        //    nudInt.Enabled = enable;
+        //    nudFth.Enabled = enable;
+        //    nudCovChaos.Enabled = enable;
+        //    nudCovDarkmoon.Enabled = enable;
+        //    nudCovDarkwraith.Enabled = enable;
+        //    nudCovForest.Enabled = enable;
+        //    nudCovGravelord.Enabled = enable;
+        //    nudCovDragon.Enabled = enable;
+        //    nudCovSunlight.Enabled = enable;
+        //}
+
         private void txtName_TextChanged(object sender, EventArgs e)
         {
             if (!Reading)
