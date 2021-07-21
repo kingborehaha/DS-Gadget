@@ -50,6 +50,9 @@ namespace DS_Gadget
             nudChrType.Enabled = enable;
             nudTeamType.Enabled = enable;
             nudPlayRegion.Enabled = enable;
+            btnBonfireWarp.Enabled = enable;
+            btnPosRestore.Enabled = enable;
+            btnPosStore.Enabled = enable;
         }
 
         private void UpdatePositions()
@@ -165,21 +168,25 @@ namespace DS_Gadget
 
         public void StorePosition()
         {
-            var pos = new SavedPos();
-            pos.Name = storedPositions.Text;
-            pos.X = nudPosStoredX.Value = nudPosX.Value;
-            pos.Y = nudPosStoredY.Value = nudPosY.Value;
-            pos.Z = nudPosStoredZ.Value = nudPosZ.Value;
-            pos.Angle = nudPosStoredAngle.Value = nudPosAngle.Value;
-            playerState.HP = (int)nudHealth.Value;
-            playerState.Stamina = (int)nudStamina.Value;
-            playerState.FollowCam = Hook.DumpFollowCam();
-            playerState.DeathCam = Hook.DeathCam;
-            playerState.Set = true;
-            pos.PlayerState = playerState;
-            ProcessSavedPos(pos);
-            UpdatePositions();
-            Save();
+            if (btnPosStore.Enabled)
+            {
+                var pos = new SavedPos();
+                pos.Name = storedPositions.Text;
+                pos.X = nudPosStoredX.Value = nudPosX.Value;
+                pos.Y = nudPosStoredY.Value = nudPosY.Value;
+                pos.Z = nudPosStoredZ.Value = nudPosZ.Value;
+                pos.Angle = nudPosStoredAngle.Value = nudPosAngle.Value;
+                playerState.HP = (int)nudHealth.Value;
+                playerState.Stamina = (int)nudStamina.Value;
+                playerState.FollowCam = Hook.DumpFollowCam();
+                playerState.DeathCam = Hook.DeathCam;
+                playerState.Set = true;
+                pos.PlayerState = playerState;
+                ProcessSavedPos(pos);
+                UpdatePositions();
+                Save();
+            }
+            
         }
 
         public void ProcessSavedPos(SavedPos pos)
@@ -218,25 +225,29 @@ namespace DS_Gadget
 
         public void RestorePosition()
         {
-            float x = (float)nudPosStoredX.Value;
-            float y = (float)nudPosStoredY.Value;
-            float z = (float)nudPosStoredZ.Value;
-            float angle = (float)((double)nudPosStoredAngle.Value / 360 * (Math.PI * 2) - Math.PI);
-
-            Hook.PosWarp(x, y, z, angle);
-            if (playerState.Set)
+            if (btnPosRestore.Enabled)
             {
-                // Two frames for safety, wait until after warp
-                System.Threading.Thread.Sleep(1000 / 15);
-                Hook.UndumpFollowCam(playerState.FollowCam);
+                float x = (float)nudPosStoredX.Value;
+                float y = (float)nudPosStoredY.Value;
+                float z = (float)nudPosStoredZ.Value;
+                float angle = (float)((double)nudPosStoredAngle.Value / 360 * (Math.PI * 2) - Math.PI);
 
-                if (cbxStoreState.Checked)
+                Hook.PosWarp(x, y, z, angle);
+                if (playerState.Set)
                 {
-                    nudHealth.Value = playerState.HP;
-                    nudStamina.Value = playerState.Stamina;
-                    cbxDeathCam.Checked = playerState.DeathCam;
+                    // Two frames for safety, wait until after warp
+                    System.Threading.Thread.Sleep(1000 / 15);
+                    Hook.UndumpFollowCam(playerState.FollowCam);
+
+                    if (cbxStoreState.Checked)
+                    {
+                        nudHealth.Value = playerState.HP;
+                        nudStamina.Value = playerState.Stamina;
+                        cbxDeathCam.Checked = playerState.DeathCam;
+                    }
                 }
             }
+               
         }
 
         public void FlipGravity()
@@ -306,6 +317,7 @@ namespace DS_Gadget
         private void btnPosStore_Click(object sender, EventArgs e)
         {
             StorePosition();
+
         }
 
         private void btnPosRestore_Click(object sender, EventArgs e)
