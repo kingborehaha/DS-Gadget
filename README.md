@@ -1,9 +1,13 @@
 
 # DS Gadget (Local Loader)
-Branch of DS Gadget that loads locally accessible .txt files to populate various lists (bonfire, items, etc)
-Resource .txt files will be found in DS-Gadget\Resources
+Branch of TKGP's DS Gadget that loads locally accessible .txt files to populate various lists (bonfire, items, etc)
+Resource .txt files are found in DS-Gadget\Resources
 
-Now includes a search function, and 3.0.0.71 features courtesy of Nordgaren.
+## Features courtesy of Nordgaren
+* Item search
+* Character position saving and loading
+* Custom resource files
+* Fashion menu
 
 ## DS Gadget (Local Loader) Changelog
 
@@ -26,12 +30,18 @@ Added Toggle AI Hotkey.
 Gadget now allows you to change any setting that isn't loaded upon loading a character.  
 
 ### 3.0.0.70
-Added Search function
+Added Search function.
 
 ### 3.0.0.69
-Release. Added local file load
+Release. Added local file loading.
 
-# DS Gadget
+### Local Loader Credits
+* TKGP - made DS Gadget
+* Nordagen - Implemented most of the new features
+
+-------------------
+
+# Original DS Gadget Readme
 A multi-purpose testing tool for Dark Souls: Prepare to Die Edition. Compatible with the current Steam and debug versions as well as, in theory, everything else.  
 Requires [.NET 4.6.2](https://www.microsoft.com/net/download/thank-you/net462) and [VC Redist 2012 x86](https://www.microsoft.com/en-us/download/details.aspx?id=30679)  
 You probably already have both.
