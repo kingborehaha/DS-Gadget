@@ -12,7 +12,7 @@ If you are having problems getting it to launch and you tried installing the pac
 You can also try adding DS Gadget as an exception to your antivirus
 
 #### Based on [DS-Gadget 3.0](https://github.com/JKAnderson/DS-Gadget) by JKAnderson.
-#### Based on [DS-Gadget 3.0](https://github.com/kingborehaha/DS-Gadget) by King Borehaha.
+#### Fork of [DS-Gadget 3.0 Local Loader](https://github.com/kingborehaha/DS-Gadget) by King Borehaha.
 #### Updated by [Stagmattica](https://github.com/Stagmattica) until Prerelease 0.5.
 #### Updated by [Nordgaren](https://github.com/Nordgaren) from Prerelease 0.6 onward.
 
@@ -21,18 +21,18 @@ You can also try adding DS Gadget as an exception to your antivirus
 ###  Prerelease 0.12): 
 * Added saving stored positions to XML file which are loaded on DS Gadget Startup
 
-    -Press the store position key or enter after typing a location name in the combo box for the stored position to save or update that positon.
-    -Press Shift + Del or click the "Delete" button to delete the stored location.
-    -XML file can be edited, but you must re-launch the gadget.
+    * Press the store position key or enter after typing a location name in the combo box for the stored position to save or update that positon.
+    * Press Shift + Del or click the "Delete" button to delete the stored location.
+    * XML file can be edited, but you must re-launch the gadget.
 
-* Added fashion feature to Misc tab (Apply any armor or hair to hair slot)
+* Merged with [DS-Gadget 3.0 Local Loader](https://github.com/kingborehaha/DS-Gadget). Item lists and categories now editable via a text file in Resources folder.  
 
 * Added local category loading for Item and Fashion categories and split Ammo into it's own category.
 
-    -Resources/DSItemCategory.txt is for the dropdown categories in Items tab, Resources/DSFashionCategory.txt is for the dropdown in the Misc tab for fashion.
-    -Categories must consist of items of the same Category ID. For instance, Ranged Melee and Ammo all share the weapon category ID, so you could make a "Favorite Weapons" category that has a combination of those items. Current Item lists are all sorted into their respective category IDs as a guide.
-    -Make sure to setup a new item list at Resources/Equipment/Category/YourNewCategory.txt for your category and copy-paste items from other lists to that new text file. Make sure your new category references the correctly named text file!
-    -The order in the file is the order in the dropdown menu
+    * Resources/DSItemCategory.txt is for the dropdown categories in Items tab, Resources/DSFashionCategory.txt is for the dropdown in the Misc tab for fashion.
+    * Categories must consist of items of the same Category ID. For instance, Ranged Melee and Ammo all share the weapon category ID, so you could make a "Favorite Weapons" category that has a combination of those items. Current Item lists are all sorted into their respective category IDs as a guide.
+    * Make sure to setup a new item list at Resources/Equipment/Category/YourNewCategory.txt for your category and copy-paste items from other lists to that new text file. Make sure your new category references the correctly named text file!
+    * The order in the file is the order in the dropdown menu
 
 * Added Toggle AI Hotkey.
 
