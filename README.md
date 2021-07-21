@@ -18,7 +18,7 @@ You can also try adding DS Gadget as an exception to your antivirus
 
 # Change Log
 
-###  Prerelease 0.12): 
+###  Prerelease 0.13): 
 * Added saving stored positions to XML file which are loaded on DS Gadget Startup
 
     * Press the store position key or enter after typing a location name in the combo box for the stored position to save or update that positon.
