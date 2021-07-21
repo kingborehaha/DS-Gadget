@@ -1,4 +1,3 @@
-//Format: Item ID; Stack Limit; Reinforce Type; Name [arbitrary]
   10000   1 1 Catarina Helm
   11000   1 1 Catarina Armor
   12000   1 1 Catarina Gauntlets
@@ -132,6 +131,10 @@
  361000   1 2 Wanderer Coat
  362000   1 2 Wanderer Manchette
  363000   1 2 Wanderer Boots
+ 370000   1 2 Mage Smith Hat
+ 371000   1 2 Mage Smith Coat
+ 372000   1 2 Mage Smith Gauntlets
+ 373000   1 2 Mage Smith Boots
  380000   1 1 Big Hat
  381000   1 1 Sage Robe
  382000   1 2 Traveling Gloves (Sage)
@@ -209,6 +212,10 @@
  641000   1 2 Black Sorcerer Cloak
  642000   1 2 Black Sorcerer Gauntlets
  643000   1 2 Black Sorcerer Boots
+ 650000   1 2 Elite Cleric Helm
+ 651000   1 2 Elite Cleric Armor
+ 652000   1 2 Elite Cleric Gauntlets
+ 653000   1 2 Elite Cleric Leggings
  660000   1 1 Helm of Artorias
  661000   1 1 Armor of Artorias
  662000   1 1 Gauntlets of Artorias
@@ -231,3 +238,7 @@
  703000   1 1 Chester's Trousers
  710000   1 0 Bloated Head
  720000   1 0 Bloated Sorcerer Head
+ 730000   1 2 Bear Helm
+ 731000   1 2 Bear Armor
+ 732000   1 2 Bear Gauntlets
+ 733000   1 2 Bear Leggings

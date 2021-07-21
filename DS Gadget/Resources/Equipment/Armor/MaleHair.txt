@@ -1,4 +1,3 @@
-//Format: Item ID; Stack Limit; Reinforce Type; Name [arbitrary]
   1000  1 0 Shaved
   1100  1 0 Receding
   1200  1 0 Short
