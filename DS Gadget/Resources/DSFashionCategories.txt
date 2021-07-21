@@ -1,4 +1,5 @@
 //Format: Name, Category ID, /Relative/File/Path/Category.txt, Show ID boolean
-Armor, 0x10000000, Resources/Items/Armor.txt, false
-Male Hair, 0x10000000, Resources/Items/MaleHair.txt, false
-Female Hair, 0x10000000, Resources/Items/FemaleHair.txt, false
+Male Hair, 0x10000000, Resources/Equipment/Armor/MaleHair.txt, false
+Female Hair, 0x10000000, Resources/Equipment/Armor/FemaleHair.txt, false
+//Armor, 0x10000000, Resources/Equipment/Armor/Armor.txt, false
+//Mystery Armor, 0x10000000, Resources/Equipment/Armor/MysteryArmor.txt, true

@@ -205,23 +205,23 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
-    <None Include="Resources\Misc\Classes.txt">
+    <None Include="Resources\Systems\Classes.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Misc\Bonfires.txt">
+    <None Include="Resources\Systems\Bonfires.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <Content Include="Resources\Assembly\BonfireWarp.txt" />
     <Content Include="Resources\Assembly\ItemDrop.txt" />
     <Content Include="Resources\Assembly\ItemGet.txt" />
     <Content Include="Resources\Assembly\LevelUp.txt" />
-    <None Include="Resources\Misc\Covenants.txt">
+    <None Include="Resources\Systems\Other\Covenants.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Misc\Physiques.txt">
+    <None Include="Resources\Systems\Other\Physiques.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Misc\Sexes.txt">
+    <None Include="Resources\Systems\Other\Sexes.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <Content Include="Resources\DSFashionCategories.txt">
@@ -230,40 +230,40 @@
     <Content Include="Resources\DSItemCategories.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Items\Ammo.txt">
+    <Content Include="Resources\Equipment\Ammo.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Items\FemaleHair.txt">
+    <Content Include="Resources\Equipment\Armor\FemaleHair.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Items\MaleHair.txt">
+    <Content Include="Resources\Equipment\Armor\MaleHair.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Items\MysteryWeapons.txt">
+    <Content Include="Resources\Equipment\MysteryWeapons.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Items\RangedWeapons.txt">
+    <Content Include="Resources\Equipment\RangedWeapons.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Items\Shields.txt">
+    <Content Include="Resources\Equipment\Shields.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Items\SpellTools.txt">
+    <Content Include="Resources\Equipment\SpellTools.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\Items\KeyItems.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Items\Armor.txt">
+    <None Include="Resources\Equipment\Armor\Armor.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Items\MysteryArmor.txt">
+    <None Include="Resources\Equipment\Armor\MysteryArmor.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Items\MysteryGoods.txt">
+    <None Include="Resources\Equipment\MysteryGoods.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Items\Spells.txt">
+    <None Include="Resources\Equipment\Spells.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Resources\Items\UpgradeMaterials.txt">
@@ -275,10 +275,10 @@
     <None Include="Resources\Items\Consumables.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Items\Rings.txt">
+    <None Include="Resources\Equipment\Rings.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Items\MeleeWeapons.txt">
+    <None Include="Resources\Equipment\MeleeWeapons.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

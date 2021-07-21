@@ -1,16 +1,16 @@
 ﻿//Format: Name, Category ID, /Relative/File/Path/Category.txt, Show ID boolean
-Armor, 0x10000000, Resources/Items/Armor.txt, false
+Armor, 0x10000000, Resources/Equipment/Armor/Armor.txt, false
 Consumables, 0x40000000, Resources/Items/Consumables.txt, false
 Key Items, 0x40000000, Resources/Items/KeyItems.txt, false
-Melee Weapons, 0x00000000, Resources/Items/MeleeWeapons.txt, false
-Ranged Weapons, 0x00000000, Resources/Items/RangedWeapons.txt, false
-Ammo, 0x00000000, Resources/Items/Ammo.txt, false
-Rings, 0x20000000, Resources/Items/Rings.txt, false
-Shields, 0x00000000, Resources/Items/Shields.txt, false
-Spells, 0x40000000, Resources/Items/Spells.txt, false
-Spell Tools, 0x00000000, Resources/Items/SpellTools.txt, false
+Melee Weapons, 0x00000000, Resources/Equipment/MeleeWeapons.txt, false
+Ranged Weapons, 0x00000000, Resources/Equipment/RangedWeapons.txt, false
+Ammo, 0x00000000, Resources/Equipment/Ammo.txt, false
+Rings, 0x20000000, Resources/Equipment/Rings.txt, false
+Shields, 0x00000000, Resources/Equipment/Shields.txt, false
+Spells, 0x40000000, Resources/Equipment/Spells.txt, false
+Spell Tools, 0x00000000, Resources/Equipment/SpellTools.txt, false
 Upgrade Materials, 0x40000000, Resources/Items/UpgradeMaterials.txt, false
 Usable Items, 0x40000000, Resources/Items/UsableItems.txt, false
-Mystery Weapons, 0x00000000, Resources/Items/MysteryWeapons.txt, true
-Mystery Armor, 0x10000000, Resources/Items/MysteryArmor.txt, true
-Mystery Goods, 0x40000000, Resources/Items/MysteryGoods.txt, true
+Mystery Weapons, 0x00000000, Resources/Equipment/MysteryWeapons.txt, true
+Mystery Armor, 0x10000000, Resources/Equipment/Armor/MysteryArmor.txt, true
+Mystery Goods, 0x40000000, Resources/Equipment/MysteryGoods.txt, true
