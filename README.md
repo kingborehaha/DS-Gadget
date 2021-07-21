@@ -14,11 +14,13 @@ Added saving stored positions to XML file which are loaded on DS Gadget Startup
 * XML file can be edited, but you must re-launch the gadget.  
 
 Added fashion feature to Misc tab (Apply any armor or hair to hair slot)  
+
 Added local category loading for Item and Fashion categories and split Ammo into it's own category.  
 * Categories must consist of items of the same Category ID. For instance, Ranged Melee and Ammo all share the weapon category ID, so you could make a "Favorite Weapons" category that has a combination of those items.
 * Make sure to setup a new item list at Resources/Items/YourNewCategory.txt for your category and copy-paste items from other lists to that new text file. Make sure your new category references the correctly named text file!  
 
 Added Toggle AI Hotkey.  
+
 Gadget now allows you to change any setting that isn't loaded upon loading a character.  
 
 ### 3.0.0.70
