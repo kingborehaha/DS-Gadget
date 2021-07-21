@@ -37,7 +37,7 @@
             this.txtEventFlagID = new System.Windows.Forms.TextBox();
             this.btnUnlockGestures = new System.Windows.Forms.Button();
             this.cmbCategory = new System.Windows.Forms.ComboBox();
-            this.btnCreate = new System.Windows.Forms.Button();
+            this.btnApplyHair = new System.Windows.Forms.Button();
             this.lbxItems = new System.Windows.Forms.ListBox();
             this.groupBoxHair = new System.Windows.Forms.GroupBox();
             this.searchBox = new System.Windows.Forms.TextBox();
@@ -160,16 +160,16 @@
             // 
             // btnCreate
             // 
-            this.btnCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCreate.Location = new System.Drawing.Point(362, 48);
-            this.btnCreate.Margin = new System.Windows.Forms.Padding(4);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(100, 28);
-            this.btnCreate.TabIndex = 35;
-            this.btnCreate.Text = "Apply";
-            this.btnCreate.UseVisualStyleBackColor = true;
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
-            this.btnCreate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyPressed);
+            this.btnApplyHair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnApplyHair.Location = new System.Drawing.Point(362, 48);
+            this.btnApplyHair.Margin = new System.Windows.Forms.Padding(4);
+            this.btnApplyHair.Name = "btnCreate";
+            this.btnApplyHair.Size = new System.Drawing.Size(100, 28);
+            this.btnApplyHair.TabIndex = 35;
+            this.btnApplyHair.Text = "Apply";
+            this.btnApplyHair.UseVisualStyleBackColor = true;
+            this.btnApplyHair.Click += new System.EventHandler(this.btnCreate_Click);
+            this.btnApplyHair.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyPressed);
             // 
             // lbxItems
             // 
@@ -193,7 +193,7 @@
             // 
             this.groupBoxHair.Controls.Add(this.searchBox);
             this.groupBoxHair.Controls.Add(this.lbxItems);
-            this.groupBoxHair.Controls.Add(this.btnCreate);
+            this.groupBoxHair.Controls.Add(this.btnApplyHair);
             this.groupBoxHair.Controls.Add(this.cmbCategory);
             this.groupBoxHair.Controls.Add(label1);
             this.groupBoxHair.Location = new System.Drawing.Point(4, 167);
@@ -242,7 +242,7 @@
         private System.Windows.Forms.CheckBox cbxEventFlagValue;
         private System.Windows.Forms.TextBox txtEventFlagID;
         private System.Windows.Forms.ListBox lbxItems;
-        private System.Windows.Forms.Button btnCreate;
+        private System.Windows.Forms.Button btnApplyHair;
         private System.Windows.Forms.ComboBox cmbCategory;
         private System.Windows.Forms.GroupBox groupBoxHair;
         private System.Windows.Forms.TextBox searchBox;

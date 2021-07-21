@@ -230,7 +230,7 @@
     <Content Include="Resources\DSItemCategories.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Equipment\Ammo.txt">
+    <Content Include="Resources\Equipment\Weapons\Ammo.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Equipment\Armor\FemaleHair.txt">
@@ -239,19 +239,19 @@
     <Content Include="Resources\Equipment\Armor\MaleHair.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Equipment\MysteryWeapons.txt">
+    <Content Include="Resources\Equipment\Weapons\MysteryWeapons.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Equipment\RangedWeapons.txt">
+    <Content Include="Resources\Equipment\Weapons\RangedWeapons.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Equipment\Shields.txt">
+    <Content Include="Resources\Equipment\Weapons\Shields.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Equipment\SpellTools.txt">
+    <Content Include="Resources\Equipment\Weapons\SpellTools.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Resources\Items\KeyItems.txt">
+    <None Include="Resources\Equipment\Items\KeyItems.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Resources\Equipment\Armor\Armor.txt">
@@ -260,25 +260,25 @@
     <None Include="Resources\Equipment\Armor\MysteryArmor.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Equipment\MysteryGoods.txt">
+    <None Include="Resources\Equipment\Items\MysteryGoods.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Equipment\Spells.txt">
+    <None Include="Resources\Equipment\Items\Spells.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Items\UpgradeMaterials.txt">
+    <None Include="Resources\Equipment\Items\UpgradeMaterials.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Items\UsableItems.txt">
+    <None Include="Resources\Equipment\Items\UsableItems.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Items\Consumables.txt">
+    <None Include="Resources\Equipment\Items\Consumables.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Equipment\Rings.txt">
+    <None Include="Resources\Equipment\Rings\Rings.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Equipment\MeleeWeapons.txt">
+    <None Include="Resources\Equipment\Weapons\MeleeWeapons.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -300,6 +300,7 @@
       <Name>PropertyHook</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="PostBuildMacros">
     <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">

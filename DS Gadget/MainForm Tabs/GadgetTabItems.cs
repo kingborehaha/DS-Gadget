@@ -134,6 +134,11 @@ namespace DS_Gadget
             }
         }
 
+        internal void EnableStats(bool enable)
+        {
+            btnCreate.Enabled = enable;
+        }
+
         private void btnCreate_Click(object sender, EventArgs e)
         {
             ChangeColor(Color.DarkGray);
@@ -147,19 +152,22 @@ namespace DS_Gadget
 
         public void CreateItem()
         {
-            DSItemCategory category = cmbCategory.SelectedItem as DSItemCategory;
-            DSItem item = lbxItems.SelectedItem as DSItem;
-            int id = item.ID;
-            if (item.UpgradeType == DSItem.Upgrade.PyroFlame || item.UpgradeType == DSItem.Upgrade.PyroFlameAscended)
-                id += (int)nudUpgrade.Value * 100;
-            else
-                id += (int)nudUpgrade.Value;
-            if (item.UpgradeType == DSItem.Upgrade.Infusable || item.UpgradeType == DSItem.Upgrade.InfusableRestricted)
+            if (btnCreate.Enabled)
             {
-                DSInfusion infusion = cmbInfusion.SelectedItem as DSInfusion;
-                id += infusion.Value;
+                DSItemCategory category = cmbCategory.SelectedItem as DSItemCategory;
+                DSItem item = lbxItems.SelectedItem as DSItem;
+                int id = item.ID;
+                if (item.UpgradeType == DSItem.Upgrade.PyroFlame || item.UpgradeType == DSItem.Upgrade.PyroFlameAscended)
+                    id += (int)nudUpgrade.Value * 100;
+                else
+                    id += (int)nudUpgrade.Value;
+                if (item.UpgradeType == DSItem.Upgrade.Infusable || item.UpgradeType == DSItem.Upgrade.InfusableRestricted)
+                {
+                    DSInfusion infusion = cmbInfusion.SelectedItem as DSInfusion;
+                    id += infusion.Value;
+                }
+                Hook.GetItem(category.ID, id, (int)nudQuantity.Value);
             }
-            Hook.GetItem(category.ID, id, (int)nudQuantity.Value);
         }
 
         private void searchBox_Click(object sender, EventArgs e)

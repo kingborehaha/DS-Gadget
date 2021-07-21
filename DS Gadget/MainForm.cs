@@ -100,7 +100,9 @@ namespace DS_Gadget
         private void EnableTabs(bool enable)
         {
             gadgetTabPlayer.EnableStats(enable);
+            gadgetTabItems.EnableStats(enable);
             gadgetTabStats.Enabled = enable;
+            gadgetTabMisc.EnableStats(enable);
             //foreach (TabPage tab in tabControlMain.TabPages)
             //    tab.Enabled = enable;
         }

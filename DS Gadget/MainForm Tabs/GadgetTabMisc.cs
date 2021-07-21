@@ -135,13 +135,20 @@ namespace DS_Gadget
             }
         }
 
+        internal void EnableStats(bool enable)
+        {
+            btnApplyHair.Enabled = enable;
+            btnEventFlagRead.Enabled = enable;
+            btnEventFlagWrite.Enabled = enable;
+        }
+
         private async Task ChangeColor(Color new_color)
         {
-            btnCreate.BackColor = new_color;
+            btnApplyHair.BackColor = new_color;
 
             await Task.Delay(TimeSpan.FromSeconds(.25));
 
-            btnCreate.BackColor = default(Color);
+            btnApplyHair.BackColor = default(Color);
         }
 
         private void KeyPressed(object sender, KeyEventArgs e)
