@@ -7,6 +7,17 @@ Now includes a search function, and 3.0.0.71 features courtesy of Nordgaren.
 
 ## DS Gadget (Local Loader) Changelog
 
+### 3.0.0.71
+Added saving stored positions to XML file which are loaded on DS Gadget Startup
+* Press the store position key or enter after typing a location name in the combo box for the stored position to save or update that positon.
+* Press Shift + Del or click the X button to delete the stored location
+* XML file can be edited, but you must re-launch the gadget. 
+Added fashion feature to Misc tab (Apply any armor or hair to hair slot)
+Added local category loading for Item and Fashion categories and split Ammo into it's own category.
+* categories must consist of items of the same Category ID. For instance, Ranged Melee and Ammo all share the weapon category ID, so you could make a "Favorite Weapons" category that has a combination of those items
+Added Toggle AI Hotkey
+Gadget now allows you to change any setting that isn't loaded upon loading a character.
+
 ### 3.0.0.70
 Added Search function
 
