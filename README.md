@@ -14,7 +14,7 @@ Resource .txt files are found in DS-Gadget\Resources
 ### 3.0.0.71
 Added saving stored positions to XML file which are loaded on DS Gadget Startup  
 * Press the store position key or enter after typing a location name in the combo box for the stored position to save or update that positon.  
-* Press Shift + Del or click the X button to delete the stored location.  
+* Press Shift + Del or click the "Delete" button to delete the stored location.  
 * XML file can be edited, but you must re-launch the gadget.  
 
 Added fashion feature to Misc tab (Apply any armor or hair to hair slot)  
