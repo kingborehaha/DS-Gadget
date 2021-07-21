@@ -15,6 +15,7 @@ namespace DS_Gadget
         public override void InitTab(MainForm parent)
         {
             base.InitTab(parent);
+            DSItemCategory.GetItemCategories();
             foreach (DSItemCategory category in DSItemCategory.All)
                 cmbCategory.Items.Add(category);
             cmbCategory.SelectedIndex = 0;

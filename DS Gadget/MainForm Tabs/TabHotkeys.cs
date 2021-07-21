@@ -87,6 +87,11 @@ namespace DS_Gadget
                 gadgetTabItems.CreateItem();
             }));
 
+            hotkeys.Add(new GadgetHotkey("HotkeyAI", txtHotkeyAI, tabPageHotkeys, () =>
+            {
+                gadgetTabCheats.ToggleAI();
+            }));
+
             /* Template :^
             hotkeys.Add(new GadgetHotkey("Hotkey", textBoxHotkey, tabPageHotkeys, () =>
             {

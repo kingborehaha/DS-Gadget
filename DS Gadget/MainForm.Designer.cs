@@ -55,6 +55,8 @@
             this.tabPageHotkeys = new System.Windows.Forms.TabPage();
             this.lblHotkeyItem = new System.Windows.Forms.Label();
             this.txtHotkeyItem = new System.Windows.Forms.TextBox();
+            this.lblHotkeyAI = new System.Windows.Forms.Label();
+            this.txtHotkeyAI = new System.Windows.Forms.TextBox();
             this.labelHotkeyDeath = new System.Windows.Forms.Label();
             this.textBoxHotkeyDeath = new System.Windows.Forms.TextBox();
             this.labelHotkeyDown = new System.Windows.Forms.Label();
@@ -328,6 +330,8 @@
             // 
             this.tabPageHotkeys.Controls.Add(this.lblHotkeyItem);
             this.tabPageHotkeys.Controls.Add(this.txtHotkeyItem);
+            this.tabPageHotkeys.Controls.Add(this.lblHotkeyAI);
+            this.tabPageHotkeys.Controls.Add(this.txtHotkeyAI);
             this.tabPageHotkeys.Controls.Add(this.labelHotkeyDeath);
             this.tabPageHotkeys.Controls.Add(this.textBoxHotkeyDeath);
             this.tabPageHotkeys.Controls.Add(this.labelHotkeyDown);
@@ -387,6 +391,27 @@
             this.txtHotkeyItem.Size = new System.Drawing.Size(132, 22);
             this.txtHotkeyItem.TabIndex = 31;
             this.txtHotkeyItem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblHotkeyAI
+            // 
+            this.lblHotkeyAI.AutoSize = true;
+            this.lblHotkeyAI.Location = new System.Drawing.Point(145, 499);
+            this.lblHotkeyAI.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblHotkeyAI.Name = "lblHotkeyAI";
+            this.lblHotkeyAI.Size = new System.Drawing.Size(139, 17);
+            this.lblHotkeyAI.TabIndex = 32;
+            this.lblHotkeyAI.Text = "Toggle AI";
+            this.toolTip1.SetToolTip(this.lblHotkeyAI, "Escape sitting bonfire animation without leaving bonfire");
+            // 
+            // txtHotkeyAI
+            // 
+            this.txtHotkeyAI.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtHotkeyAI.Location = new System.Drawing.Point(8, 496);
+            this.txtHotkeyAI.Margin = new System.Windows.Forms.Padding(4);
+            this.txtHotkeyAI.Name = "txtHotkeyAI";
+            this.txtHotkeyAI.Size = new System.Drawing.Size(132, 22);
+            this.txtHotkeyAI.TabIndex = 31;
+            this.txtHotkeyAI.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // labelHotkeyDeath
             // 
@@ -839,6 +864,8 @@
         private System.Windows.Forms.TabPage tabPageInternals;
         private System.Windows.Forms.Label lblHotkeyItem;
         private System.Windows.Forms.TextBox txtHotkeyItem;
+        private System.Windows.Forms.Label lblHotkeyAI;
+        private System.Windows.Forms.TextBox txtHotkeyAI;
         private GadgetTabItems gadgetTabItems;
         private GadgetTabPlayer gadgetTabPlayer;
         private GadgetTabInternals gadgetTabInternals;

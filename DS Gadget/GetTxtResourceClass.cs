@@ -9,7 +9,7 @@ namespace DS_Gadget
         {
            //Get local directory + file path, read file, return string contents of file
 
-            Path.Combine(Environment.CurrentDirectory, filePath);
+            //Path.Combine(Environment.CurrentDirectory, filePath);
 
             string fileString = File.ReadAllText(filePath);
 

@@ -1,5 +1,5 @@
 //Format: Item ID; Stack Limit; Reinforce Type; Name [arbitrary]
-    384   1 0 Peculiar Doll
+	384   1 0 Peculiar Doll
    2001   1 0 Basement Key
    2002   1 0 Crest of Artorias
    2003   1 0 Cage Key
@@ -21,7 +21,6 @@
    2020   1 0 Archive Prison Extra Key
    2021   1 0 Residence Key
    2022   1 0 Crest Key
-   2100   1 0 Master Key
    2500   1 0 Lord Soul (Nito)
    2501   1 0 Lord Soul (Bed of Chaos)
    2502   1 0 Bequeathed Lord Soul Shard (Four Kings)
@@ -33,3 +32,4 @@
    2602   1 0 Repairbox
    2607   1 0 Rite of Kindling
    2608   1 0 Bottomless Box
+   2100   1 0 Master Key

@@ -58,7 +58,7 @@ namespace DS_Gadget
             GitHubClient gitHubClient = new GitHubClient(new ProductHeaderValue("DS-Gadget"));
             try
             {
-                Release release = await gitHubClient.Repository.Release.GetLatest("JKAnderson", "DS-Gadget");
+                Release release = await gitHubClient.Repository.Release.GetLatest("kingborehaha", "DS-Gadget");
                 if (SemVersion.Parse(release.TagName) > System.Windows.Forms.Application.ProductVersion)
                 {
                     labelCheckVersion.Visible = false;
@@ -99,8 +99,10 @@ namespace DS_Gadget
 
         private void EnableTabs(bool enable)
         {
-            foreach (TabPage tab in tabControlMain.TabPages)
-                tab.Enabled = enable;
+            gadgetTabPlayer.EnableStats(enable);
+            gadgetTabStats.Enabled = enable;
+            //foreach (TabPage tab in tabControlMain.TabPages)
+            //    tab.Enabled = enable;
         }
 
         private void timerUpdateProcess_Tick(object sender, EventArgs e)
