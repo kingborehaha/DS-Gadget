@@ -16,7 +16,8 @@ Added saving stored positions to XML file which are loaded on DS Gadget Startup
 Added fashion feature to Misc tab (Apply any armor or hair to hair slot)  
 
 Added local category loading for Item and Fashion categories and split Ammo into it's own category.  
-* Categories must consist of items of the same Category ID. For instance, Ranged Melee and Ammo all share the weapon category ID, so you could make a "Favorite Weapons" category that has a combination of those items.
+* Resources/DSItemCategory.txt is for the dropdown categories in Items tab, Resources/DSFashionCategory.txt is for the dropdown in the Misc tab for fashion.  
+* Categories must consist of items of the same Category ID. For instance, Ranged Melee and Ammo all share the weapon category ID, so you could make a "Favorite Weapons" category that has a combination of those items.  
 * Make sure to setup a new item list at Resources/Items/YourNewCategory.txt for your category and copy-paste items from other lists to that new text file. Make sure your new category references the correctly named text file!  
 
 Added Toggle AI Hotkey.  
