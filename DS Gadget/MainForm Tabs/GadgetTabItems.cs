@@ -132,6 +132,11 @@ namespace DS_Gadget
                     nudUpgrade.Enabled = true;
                     break;
             }
+
+            if (maxUpgrade.Checked)
+            {
+                nudUpgrade.Value = nudUpgrade.Maximum;
+            }
         }
 
         internal void EnableStats(bool enable)
@@ -154,6 +159,7 @@ namespace DS_Gadget
         {
             if (btnCreate.Enabled)
             {
+                ChangeColor(Color.DarkGray);
                 DSItemCategory category = cmbCategory.SelectedItem as DSItemCategory;
                 DSItem item = lbxItems.SelectedItem as DSItem;
                 int id = item.ID;
@@ -215,7 +221,6 @@ namespace DS_Gadget
             if (e.KeyCode == Keys.Enter)
             {
                 e.Handled = true;
-                ChangeColor(Color.DarkGray);
                 CreateItem();
                 return;
             }

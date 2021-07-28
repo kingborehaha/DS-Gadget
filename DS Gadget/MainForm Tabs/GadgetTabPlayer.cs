@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
@@ -45,6 +47,95 @@ namespace DS_Gadget
             }
             GetConfigs();
 
+        }
+
+        private void searchBox_TextChanged(object sender, EventArgs e)
+        {
+            cbxBonfire.Items.Clear();
+            foreach (DSBonfire bonfire in DSBonfire.All)
+            {
+                if (bonfire.ToString().ToLower().Contains(searchBox.Text.ToLower()))
+                {
+                    cbxBonfire.Items.Add(bonfire);
+                }
+
+            }
+
+            if (cbxBonfire.Items.Count > 0)
+                cbxBonfire.SelectedIndex = 0;
+
+        }
+
+        private void searchBox_Click(object sender, EventArgs e)
+        {
+            searchBox.SelectAll();
+            searchBox.Focus();
+        }
+
+        private void KeyDownListbox(KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                e.Handled = true;
+
+                if (cbxBonfire.SelectedIndex < cbxBonfire.Items.Count - 1)
+                {
+                    cbxBonfire.SelectedIndex += 1;
+                    return;
+                }
+
+                if (cbxBonfire.SelectedIndex >= cbxBonfire.Items.Count - 1)
+                {
+                    return;
+                }
+            }
+
+            if (e.KeyCode == Keys.Up)
+            {
+                e.Handled = true;
+
+                if (cbxBonfire.SelectedIndex == 0)
+                {
+                    
+                    return;
+                }
+
+                if (cbxBonfire.SelectedIndex != 0)
+                {
+                    cbxBonfire.SelectedIndex -= 1;
+                    return;
+                }
+            }
+
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;
+                btnBonfireWarp_Click(null, null);
+                return;
+            }
+        }
+
+        private async Task ChangeColor(Color new_color)
+        {
+            btnBonfireWarp.BackColor = new_color;
+
+            await Task.Delay(TimeSpan.FromSeconds(.25));
+
+            btnBonfireWarp.BackColor = default(Color);
+        }
+
+        private void KeyPressed(object sender, KeyEventArgs e)
+        {
+            if (cbxBonfire.Items.Count > 0)
+                KeyDownListbox(e);
+
+            if (cbxBonfire.Items.Count == 0)
+            {
+                if (e.KeyCode == Keys.Up)
+                    e.Handled = true;
+                if (e.KeyCode == Keys.Down)
+                    e.Handled = true;
+            }
         }
 
         public void GetConfigs()
@@ -370,7 +461,11 @@ namespace DS_Gadget
 
         private void btnBonfireWarp_Click(object sender, EventArgs e)
         {
-            Hook.BonfireWarp();
+            if (btnBonfireWarp.Enabled == true)
+            {
+                ChangeColor(Color.DarkGray);
+                Hook.BonfireWarp();
+            }
         }
 
         private void cbxSpeed_CheckedChanged(object sender, EventArgs e)
