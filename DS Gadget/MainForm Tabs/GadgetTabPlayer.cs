@@ -23,15 +23,9 @@ namespace DS_Gadget
 
         private XmlSerializer XML = new XmlSerializer(typeof(List<SavedPos>));
 
-        private string SavedPositions = "Resources/SavedPositions.xml";
+        private string SavedPositions = "Resources/Equipment/SavedPositions.xml";
 
-        private List<TeamConfig> TeamConfig = new List<TeamConfig>
-        {
-            new TeamConfig(null, 0, 1),
-            new TeamConfig("FFA", 0, 16),
-            new TeamConfig("HLW", 8, 4),
-            new TeamConfig("HMN", 0, 1),
-        };
+        private List<TeamConfig> TeamConfig = new List<TeamConfig>();
 
         public override void InitTab(MainForm parent)
         {
@@ -49,11 +43,26 @@ namespace DS_Gadget
                 }
                 UpdatePositions();
             }
-            foreach (var config in TeamConfig)
-            {
-                cmbTeamConfig.Items.Add(config);
-            }
+            GetConfigs();
 
+        }
+
+        public void GetConfigs()
+        {
+            TeamConfig.Add(new TeamConfig(null, 0, 1));
+            foreach (string line in GetTxtResourceClass.RegexSplit(GetTxtResourceClass.GetTxtResource("Resources/Systems/TeamConfigs.txt"), "[\r\n]+"))
+            {
+                if (GetTxtResourceClass.IsValidTxtResource(line)) //determine if line is a valid resource or not
+                {
+                    var cfg = GetTxtResourceClass.RegexSplit(line, " ");
+                    TeamConfig.Add(new TeamConfig(cfg[0], int.Parse(cfg[1]), int.Parse(cfg[2])));
+                }
+            };
+
+            foreach (var item in TeamConfig)
+            {
+                cmbTeamConfig.Items.Add(item);
+            }
         }
 
         public void EnableStats(bool enable)

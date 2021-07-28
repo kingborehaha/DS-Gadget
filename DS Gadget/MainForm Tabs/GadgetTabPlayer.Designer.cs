@@ -618,6 +618,7 @@
             this.storedPositions.Margin = new System.Windows.Forms.Padding(4);
             this.storedPositions.Name = "storedPositions";
             this.storedPositions.Size = new System.Drawing.Size(99, 28);
+            this.storedPositions.Sorted = true;
             this.storedPositions.TabIndex = 25;
             this.storedPositions.SelectedIndexChanged += new System.EventHandler(this.storedPositions_SelectedIndexChanged);
             this.storedPositions.KeyDown += new System.Windows.Forms.KeyEventHandler(this.savedPos_KeyDown);

@@ -207,16 +207,27 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <Content Include="Resources\Systems\TeamConfigs.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\Systems\Classes.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Resources\Systems\Bonfires.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Content Include="Resources\Assembly\BonfireWarp.txt" />
-    <Content Include="Resources\Assembly\ItemDrop.txt" />
-    <Content Include="Resources\Assembly\ItemGet.txt" />
-    <Content Include="Resources\Assembly\LevelUp.txt" />
+    <Content Include="Resources\Assembly\BonfireWarp.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Assembly\ItemDrop.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Assembly\ItemGet.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Assembly\LevelUp.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\Systems\Other\Covenants.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -226,10 +237,10 @@
     <None Include="Resources\Systems\Other\Sexes.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Content Include="Resources\DSFashionCategories.txt">
+    <Content Include="Resources\Equipment\DSFashionCategories.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DSItemCategories.txt">
+    <Content Include="Resources\Equipment\DSItemCategories.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Equipment\Weapons\Ammo.txt">

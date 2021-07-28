@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace DS_Gadget
 {
@@ -7,7 +8,7 @@ namespace DS_Gadget
     {
         public static string GetTxtResource(string filePath)
         {
-           //Get local directory + file path, read file, return string contents of file
+            //Get local directory + file path, read file, return string contents of file
 
             //Path.Combine(Environment.CurrentDirectory, filePath);
 
@@ -31,6 +32,11 @@ namespace DS_Gadget
             };
 
             return true; //resource line valid
+        }
+
+        public static string[] RegexSplit(string source, string pattern)
+        {
+            return Regex.Split(source, pattern);
         }
     }
 }
