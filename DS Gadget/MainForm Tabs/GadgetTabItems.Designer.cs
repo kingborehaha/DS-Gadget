@@ -55,12 +55,12 @@
             this.maxUpgrade.AutoSize = true;
             this.maxUpgrade.Checked = true;
             this.maxUpgrade.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.maxUpgrade.Location = new System.Drawing.Point(171, 49);
+            this.maxUpgrade.Location = new System.Drawing.Point(131, 74);
             this.maxUpgrade.Margin = new System.Windows.Forms.Padding(4);
             this.maxUpgrade.Name = "maxUpgrade";
-            this.maxUpgrade.Size = new System.Drawing.Size(130, 24);
+            this.maxUpgrade.Size = new System.Drawing.Size(64, 24);
             this.maxUpgrade.TabIndex = 26;
-            this.maxUpgrade.Text = "Max Upgrade";
+            this.maxUpgrade.Text = "Max";
             this.maxUpgrade.UseVisualStyleBackColor = true;
             // 
             // searchBox
@@ -114,7 +114,7 @@
             // 
             this.nudUpgrade.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.nudUpgrade.Enabled = false;
-            this.nudUpgrade.Location = new System.Drawing.Point(96, 70);
+            this.nudUpgrade.Location = new System.Drawing.Point(50, 70);
             this.nudUpgrade.Margin = new System.Windows.Forms.Padding(4);
             this.nudUpgrade.Maximum = new decimal(new int[] {
             15,
@@ -131,7 +131,7 @@
             // 
             lblUpgrade.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             lblUpgrade.AutoSize = true;
-            lblUpgrade.Location = new System.Drawing.Point(93, 49);
+            lblUpgrade.Location = new System.Drawing.Point(47, 49);
             lblUpgrade.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             lblUpgrade.Name = "lblUpgrade";
             lblUpgrade.Size = new System.Drawing.Size(71, 20);
@@ -143,14 +143,15 @@
             this.cmbInfusion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbInfusion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbInfusion.DropDownWidth = 225;
             this.cmbInfusion.Enabled = false;
             this.cmbInfusion.FormattingEnabled = true;
             this.cmbInfusion.Location = new System.Drawing.Point(4, 70);
             this.cmbInfusion.Margin = new System.Windows.Forms.Padding(4);
             this.cmbInfusion.MaxDropDownItems = 100;
-            this.cmbInfusion.MinimumSize = new System.Drawing.Size(84, 0);
+            this.cmbInfusion.MinimumSize = new System.Drawing.Size(40, 0);
             this.cmbInfusion.Name = "cmbInfusion";
-            this.cmbInfusion.Size = new System.Drawing.Size(84, 28);
+            this.cmbInfusion.Size = new System.Drawing.Size(40, 28);
             this.cmbInfusion.TabIndex = 20;
             this.cmbInfusion.SelectedIndexChanged += new System.EventHandler(this.cmbInfusion_SelectedIndexChanged);
             // 
@@ -168,7 +169,7 @@
             // 
             this.nudQuantity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.nudQuantity.Enabled = false;
-            this.nudQuantity.Location = new System.Drawing.Point(96, 22);
+            this.nudQuantity.Location = new System.Drawing.Point(50, 21);
             this.nudQuantity.Margin = new System.Windows.Forms.Padding(4);
             this.nudQuantity.Maximum = new decimal(new int[] {
             999,
@@ -195,7 +196,7 @@
             this.cbxQuantityRestrict.AutoSize = true;
             this.cbxQuantityRestrict.Checked = true;
             this.cbxQuantityRestrict.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbxQuantityRestrict.Location = new System.Drawing.Point(176, 23);
+            this.cbxQuantityRestrict.Location = new System.Drawing.Point(125, 25);
             this.cbxQuantityRestrict.Margin = new System.Windows.Forms.Padding(4);
             this.cbxQuantityRestrict.Name = "cbxQuantityRestrict";
             this.cbxQuantityRestrict.Size = new System.Drawing.Size(90, 24);
@@ -208,7 +209,7 @@
             // 
             lblQuantity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             lblQuantity.AutoSize = true;
-            lblQuantity.Location = new System.Drawing.Point(93, 0);
+            lblQuantity.Location = new System.Drawing.Point(47, 0);
             lblQuantity.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             lblQuantity.Name = "lblQuantity";
             lblQuantity.Size = new System.Drawing.Size(68, 20);
@@ -220,13 +221,14 @@
             this.cmbCategory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCategory.DropDownWidth = 225;
             this.cmbCategory.FormattingEnabled = true;
             this.cmbCategory.Location = new System.Drawing.Point(4, 21);
             this.cmbCategory.Margin = new System.Windows.Forms.Padding(4);
             this.cmbCategory.MaxDropDownItems = 100;
-            this.cmbCategory.MinimumSize = new System.Drawing.Size(84, 0);
+            this.cmbCategory.MinimumSize = new System.Drawing.Size(40, 0);
             this.cmbCategory.Name = "cmbCategory";
-            this.cmbCategory.Size = new System.Drawing.Size(84, 28);
+            this.cmbCategory.Size = new System.Drawing.Size(40, 28);
             this.cmbCategory.TabIndex = 15;
             this.cmbCategory.SelectedIndexChanged += new System.EventHandler(this.cmbCategory_SelectedIndexChanged);
             // 
@@ -244,10 +246,10 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.AutoSize = true;
+            this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.maxUpgrade);
             this.Controls.Add(this.searchBox);
             this.Controls.Add(this.lbxItems);
-            this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.nudUpgrade);
             this.Controls.Add(lblUpgrade);
             this.Controls.Add(this.cmbInfusion);
