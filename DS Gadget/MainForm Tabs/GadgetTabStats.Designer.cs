@@ -216,7 +216,7 @@
             // 
             lblSoulLevel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             lblSoulLevel.AutoSize = true;
-            lblSoulLevel.Location = new System.Drawing.Point(87, 25);
+            lblSoulLevel.Location = new System.Drawing.Point(87, 23);
             lblSoulLevel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             lblSoulLevel.Name = "lblSoulLevel";
             lblSoulLevel.Size = new System.Drawing.Size(82, 20);
@@ -349,7 +349,7 @@
             // txtSoulLevel
             // 
             this.txtSoulLevel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSoulLevel.Location = new System.Drawing.Point(7, 22);
+            this.txtSoulLevel.Location = new System.Drawing.Point(7, 20);
             this.txtSoulLevel.Margin = new System.Windows.Forms.Padding(4);
             this.txtSoulLevel.Name = "txtSoulLevel";
             this.txtSoulLevel.ReadOnly = true;
