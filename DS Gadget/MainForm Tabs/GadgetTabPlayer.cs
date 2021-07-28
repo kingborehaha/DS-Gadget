@@ -25,6 +25,14 @@ namespace DS_Gadget
 
         private string SavedPositions = "Resources/SavedPositions.xml";
 
+        private List<TeamConfig> TeamConfig = new List<TeamConfig>
+        {
+            new TeamConfig(null, 0, 1),
+            new TeamConfig("FFA", 0, 16),
+            new TeamConfig("HLW", 8, 4),
+            new TeamConfig("HMN", 0, 1),
+        };
+
         public override void InitTab(MainForm parent)
         {
             base.InitTab(parent);
@@ -41,6 +49,11 @@ namespace DS_Gadget
                 }
                 UpdatePositions();
             }
+            foreach (var config in TeamConfig)
+            {
+                cmbTeamConfig.Items.Add(config);
+            }
+
         }
 
         public void EnableStats(bool enable)
@@ -383,11 +396,23 @@ namespace DS_Gadget
             nudPosStoredZ.Value = savedPos.Z;
             nudPosStoredAngle.Value = savedPos.Angle;
             playerState = savedPos.PlayerState;
+            
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
             RemoveSavedPos();
+        }
+
+        private void cmbTeamConfig_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var config = cmbTeamConfig.SelectedItem as TeamConfig;
+            if (!string.IsNullOrWhiteSpace(config.Name))
+            {
+                Hook.ChrType = config.ChrType;
+                Hook.TeamType = config.TeamType;
+            }
+            
         }
     }
 }

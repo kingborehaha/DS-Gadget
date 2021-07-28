@@ -56,6 +56,7 @@
             this.cbxBonfire = new System.Windows.Forms.ComboBox();
             this.lblBonfire = new System.Windows.Forms.Label();
             this.cbxCollision = new System.Windows.Forms.CheckBox();
+            this.cmbTeamConfig = new System.Windows.Forms.ComboBox();
             this.cbxForcePlayRegion = new System.Windows.Forms.CheckBox();
             this.nudPlayRegion = new System.Windows.Forms.NumericUpDown();
             this.nudTeamType = new System.Windows.Forms.NumericUpDown();
@@ -268,6 +269,7 @@
             gbxStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             gbxStatus.AutoSize = true;
+            gbxStatus.Controls.Add(this.cmbTeamConfig);
             gbxStatus.Controls.Add(this.cbxForcePlayRegion);
             gbxStatus.Controls.Add(this.nudPlayRegion);
             gbxStatus.Controls.Add(lblPlayRegion);
@@ -290,10 +292,20 @@
             gbxStatus.Margin = new System.Windows.Forms.Padding(4);
             gbxStatus.Name = "gbxStatus";
             gbxStatus.Padding = new System.Windows.Forms.Padding(4);
-            gbxStatus.Size = new System.Drawing.Size(479, 172);
+            gbxStatus.Size = new System.Drawing.Size(479, 173);
             gbxStatus.TabIndex = 3;
             gbxStatus.TabStop = false;
             gbxStatus.Text = "Status";
+            // 
+            // cmbTeamConfig
+            // 
+            this.cmbTeamConfig.DisplayMember = "Name";
+            this.cmbTeamConfig.FormattingEnabled = true;
+            this.cmbTeamConfig.Location = new System.Drawing.Point(8, 119);
+            this.cmbTeamConfig.Name = "cmbTeamConfig";
+            this.cmbTeamConfig.Size = new System.Drawing.Size(60, 28);
+            this.cmbTeamConfig.TabIndex = 16;
+            this.cmbTeamConfig.SelectedIndexChanged += new System.EventHandler(this.cmbTeamConfig_SelectedIndexChanged);
             // 
             // cbxForcePlayRegion
             // 
@@ -1086,5 +1098,6 @@
         private System.Windows.Forms.ComboBox storedPositions;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Label ImportExportLabel;
+        private System.Windows.Forms.ComboBox cmbTeamConfig;
     }
 }

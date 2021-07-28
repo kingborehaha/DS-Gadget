@@ -155,6 +155,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="SavedPos.cs" />
+    <Compile Include="TeamConfig.cs" />
     <Compile Include="User32.cs" />
     <EmbeddedResource Include="MainForm Tabs\GadgetTabGraphics.resx">
       <DependentUpon>GadgetTabGraphics.cs</DependentUpon>
