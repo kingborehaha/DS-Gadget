@@ -56,6 +56,7 @@
             this.cbxBonfire = new System.Windows.Forms.ComboBox();
             this.lblBonfire = new System.Windows.Forms.Label();
             this.cbxCollision = new System.Windows.Forms.CheckBox();
+            this.Config = new System.Windows.Forms.Label();
             this.cmbTeamConfig = new System.Windows.Forms.ComboBox();
             this.cbxForcePlayRegion = new System.Windows.Forms.CheckBox();
             this.nudPlayRegion = new System.Windows.Forms.NumericUpDown();
@@ -269,6 +270,7 @@
             gbxStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             gbxStatus.AutoSize = true;
+            gbxStatus.Controls.Add(this.Config);
             gbxStatus.Controls.Add(this.cmbTeamConfig);
             gbxStatus.Controls.Add(this.cbxForcePlayRegion);
             gbxStatus.Controls.Add(this.nudPlayRegion);
@@ -296,6 +298,15 @@
             gbxStatus.TabIndex = 3;
             gbxStatus.TabStop = false;
             gbxStatus.Text = "Status";
+            // 
+            // Config
+            // 
+            this.Config.AutoSize = true;
+            this.Config.Location = new System.Drawing.Point(4, 100);
+            this.Config.Name = "Config";
+            this.Config.Size = new System.Drawing.Size(55, 20);
+            this.Config.TabIndex = 17;
+            this.Config.Text = "Config";
             // 
             // cmbTeamConfig
             // 
@@ -1099,5 +1110,6 @@
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Label ImportExportLabel;
         private System.Windows.Forms.ComboBox cmbTeamConfig;
+        private System.Windows.Forms.Label Config;
     }
 }
