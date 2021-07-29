@@ -19,7 +19,8 @@ You can also try adding DS Gadget as an exception to your antivirus
 # Change Log
 
 ###  Prerelease 0.14): 
-Added Bonfire search  
+
+* Added Bonfire search  
 
 * Added Team Config  
 	* Correctly loads the Chr and Team type for each existing combo.  
