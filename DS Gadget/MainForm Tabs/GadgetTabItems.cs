@@ -72,6 +72,10 @@ namespace DS_Gadget
         {
             DSInfusion infusion = cmbInfusion.SelectedItem as DSInfusion;
             nudUpgrade.Maximum = infusion.MaxUpgrade;
+            if (maxUpgrade.Checked)
+            {
+                nudUpgrade.Value = nudUpgrade.Maximum;
+            }
         }
 
         private void lbxItems_SelectedIndexChanged(object sender, EventArgs e)
