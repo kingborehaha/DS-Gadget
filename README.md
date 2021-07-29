@@ -26,10 +26,13 @@ Added Bonfire search
 	* Does not change to correct color for covenant, even though correct value. I think the mtd gets changed on invasion  
 	* Loaded from Resources/Systems/TeamConfigs.txt  
 
-Can now get max upgrade items with a checkbox, instead of typing it in all the time  
+* Can now get max upgrade items with a checkbox, instead of typing it in all the time  
 
-Stats menu now has a checkbox to apply any changes to your character made while character is unloaded  
+* Stats menu now has a checkbox to apply any changes to your character made while character is unloaded  
 
+* Cleaned up Search Bar presentation and can now use Escape to clear search  
+
+###  Prerelease 0.13): 
 
 * Added saving stored positions to XML file which are loaded on DS Gadget Startup
 
