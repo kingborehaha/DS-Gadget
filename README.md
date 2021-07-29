@@ -16,6 +16,8 @@ Resource .txt files are found in DS-Gadget\Resources
 ## DS Gadget (Local Loader) Changelog
 
 ### 3.0.0.72  
+**If you already have changes to your DSItemCategory and DSFashionCategory text files, you can move them to Resources/Equipment after installing. I changed where the Gadget looks for them.**  
+
 Added Bonfire search  
 
 Added Team Config  
