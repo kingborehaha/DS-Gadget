@@ -48,6 +48,7 @@
             System.Windows.Forms.Label lblPosZ;
             System.Windows.Forms.Label lblPosY;
             System.Windows.Forms.Label lblPosX;
+            this.lblSearch = new System.Windows.Forms.Label();
             this.nudSpeed = new System.Windows.Forms.NumericUpDown();
             this.searchBox = new System.Windows.Forms.TextBox();
             this.btnBonfireWarp = new System.Windows.Forms.Button();
@@ -141,6 +142,7 @@
             // 
             gbxOther.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            gbxOther.Controls.Add(this.lblSearch);
             gbxOther.Controls.Add(this.nudSpeed);
             gbxOther.Controls.Add(this.searchBox);
             gbxOther.Controls.Add(this.btnBonfireWarp);
@@ -158,6 +160,17 @@
             gbxOther.TabIndex = 5;
             gbxOther.TabStop = false;
             gbxOther.Text = "Other";
+            // 
+            // lblSearch
+            // 
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.Enabled = false;
+            this.lblSearch.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblSearch.Location = new System.Drawing.Point(13, 79);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(72, 20);
+            this.lblSearch.TabIndex = 8;
+            this.lblSearch.Text = "Search...";
             // 
             // nudSpeed
             // 
@@ -187,7 +200,6 @@
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(460, 26);
             this.searchBox.TabIndex = 7;
-            this.searchBox.Text = "Search...";
             this.searchBox.Click += new System.EventHandler(this.searchBox_Click);
             this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
             this.searchBox.Enter += new System.EventHandler(this.searchBox_Click);
@@ -1128,5 +1140,6 @@
         private System.Windows.Forms.ComboBox cmbTeamConfig;
         private System.Windows.Forms.Label Config;
         private System.Windows.Forms.TextBox searchBox;
+        private System.Windows.Forms.Label lblSearch;
     }
 }

@@ -64,6 +64,10 @@ namespace DS_Gadget
             if (cbxBonfire.Items.Count > 0)
                 cbxBonfire.SelectedIndex = 0;
 
+            if (searchBox.Text == "")
+                lblSearch.Visible = true;
+            else
+                lblSearch.Visible = false;
         }
 
         private void searchBox_Click(object sender, EventArgs e)
@@ -126,6 +130,9 @@ namespace DS_Gadget
 
         private void KeyPressed(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.Escape)
+                searchBox.Clear();
+
             if (cbxBonfire.Items.Count > 0)
                 KeyDownListbox(e);
 
@@ -516,7 +523,6 @@ namespace DS_Gadget
                 Hook.ChrType = config.ChrType;
                 Hook.TeamType = config.TeamType;
             }
-            
         }
     }
 }

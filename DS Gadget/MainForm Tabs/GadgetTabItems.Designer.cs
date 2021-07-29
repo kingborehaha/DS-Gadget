@@ -41,6 +41,7 @@
             this.nudQuantity = new System.Windows.Forms.NumericUpDown();
             this.cbxQuantityRestrict = new System.Windows.Forms.CheckBox();
             this.cmbCategory = new System.Windows.Forms.ComboBox();
+            this.lblSearch = new System.Windows.Forms.Label();
             lblUpgrade = new System.Windows.Forms.Label();
             lblInfusion = new System.Windows.Forms.Label();
             lblQuantity = new System.Windows.Forms.Label();
@@ -114,7 +115,6 @@
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(180, 26);
             this.searchBox.TabIndex = 16;
-            this.searchBox.Text = "Search...";
             this.searchBox.Click += new System.EventHandler(this.searchBox_Click);
             this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
             this.searchBox.Enter += new System.EventHandler(this.searchBox_Click);
@@ -242,10 +242,21 @@
             this.cmbCategory.TabIndex = 15;
             this.cmbCategory.SelectedIndexChanged += new System.EventHandler(this.cmbCategory_SelectedIndexChanged);
             // 
+            // lblSearch
+            // 
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.Enabled = false;
+            this.lblSearch.Location = new System.Drawing.Point(9, 104);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(72, 20);
+            this.lblSearch.TabIndex = 27;
+            this.lblSearch.Text = "Search...";
+            // 
             // GadgetTabItems
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.AutoSize = true;
+            this.Controls.Add(this.lblSearch);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.maxUpgrade);
             this.Controls.Add(this.searchBox);
@@ -279,5 +290,6 @@
         private System.Windows.Forms.ComboBox cmbCategory;
         private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.CheckBox maxUpgrade;
+        private System.Windows.Forms.Label lblSearch;
     }
 }
