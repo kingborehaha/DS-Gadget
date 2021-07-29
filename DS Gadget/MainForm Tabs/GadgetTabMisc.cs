@@ -78,10 +78,14 @@ namespace DS_Gadget
 
         private void ApplyHair()
         {
-            DSFashionCategory category = cmbCategory.SelectedItem as DSFashionCategory;
-            DSItem item = lbxItems.SelectedItem as DSItem;
-            int id = item.ID;
-            Hook.EquipHairID = id;
+            if (btnApplyHair.Enabled == true)
+            {
+                ChangeColor(Color.DarkGray);
+                DSFashionCategory category = cmbCategory.SelectedItem as DSFashionCategory;
+                DSItem item = lbxItems.SelectedItem as DSItem;
+                int id = item.ID;
+                Hook.EquipHairID = id;
+            }
         }
 
         private void searchBox_Click(object sender, EventArgs e)
@@ -129,7 +133,6 @@ namespace DS_Gadget
             if (e.KeyCode == Keys.Enter)
             {
                 e.Handled = true;
-                ChangeColor(Color.DarkGray);
                 ApplyHair();
                 return;
             }

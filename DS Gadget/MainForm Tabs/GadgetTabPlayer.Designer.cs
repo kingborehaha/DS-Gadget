@@ -48,14 +48,17 @@
             System.Windows.Forms.Label lblPosZ;
             System.Windows.Forms.Label lblPosY;
             System.Windows.Forms.Label lblPosX;
+            this.nudSpeed = new System.Windows.Forms.NumericUpDown();
+            this.searchBox = new System.Windows.Forms.TextBox();
             this.btnBonfireWarp = new System.Windows.Forms.Button();
             this.cbxSpeed = new System.Windows.Forms.CheckBox();
-            this.nudSpeed = new System.Windows.Forms.NumericUpDown();
             this.cbxGravity = new System.Windows.Forms.CheckBox();
             this.cbxDeathCam = new System.Windows.Forms.CheckBox();
             this.cbxBonfire = new System.Windows.Forms.ComboBox();
             this.lblBonfire = new System.Windows.Forms.Label();
             this.cbxCollision = new System.Windows.Forms.CheckBox();
+            this.Config = new System.Windows.Forms.Label();
+            this.cmbTeamConfig = new System.Windows.Forms.ComboBox();
             this.cbxForcePlayRegion = new System.Windows.Forms.CheckBox();
             this.nudPlayRegion = new System.Windows.Forms.NumericUpDown();
             this.nudTeamType = new System.Windows.Forms.NumericUpDown();
@@ -138,46 +141,23 @@
             // 
             gbxOther.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            gbxOther.Controls.Add(this.nudSpeed);
+            gbxOther.Controls.Add(this.searchBox);
             gbxOther.Controls.Add(this.btnBonfireWarp);
             gbxOther.Controls.Add(this.cbxSpeed);
-            gbxOther.Controls.Add(this.nudSpeed);
             gbxOther.Controls.Add(this.cbxGravity);
             gbxOther.Controls.Add(this.cbxDeathCam);
             gbxOther.Controls.Add(this.cbxBonfire);
             gbxOther.Controls.Add(this.lblBonfire);
             gbxOther.Controls.Add(this.cbxCollision);
-            gbxOther.Location = new System.Drawing.Point(4, 479);
+            gbxOther.Location = new System.Drawing.Point(4, 490);
             gbxOther.Margin = new System.Windows.Forms.Padding(4);
             gbxOther.Name = "gbxOther";
             gbxOther.Padding = new System.Windows.Forms.Padding(4);
-            gbxOther.Size = new System.Drawing.Size(477, 146);
+            gbxOther.Size = new System.Drawing.Size(479, 143);
             gbxOther.TabIndex = 5;
             gbxOther.TabStop = false;
             gbxOther.Text = "Other";
-            // 
-            // btnBonfireWarp
-            // 
-            this.btnBonfireWarp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBonfireWarp.Location = new System.Drawing.Point(369, 66);
-            this.btnBonfireWarp.Margin = new System.Windows.Forms.Padding(4);
-            this.btnBonfireWarp.Name = "btnBonfireWarp";
-            this.btnBonfireWarp.Size = new System.Drawing.Size(100, 28);
-            this.btnBonfireWarp.TabIndex = 6;
-            this.btnBonfireWarp.Text = "Warp";
-            this.btnBonfireWarp.UseVisualStyleBackColor = true;
-            this.btnBonfireWarp.Click += new System.EventHandler(this.btnBonfireWarp_Click);
-            // 
-            // cbxSpeed
-            // 
-            this.cbxSpeed.AutoSize = true;
-            this.cbxSpeed.Location = new System.Drawing.Point(8, 102);
-            this.cbxSpeed.Margin = new System.Windows.Forms.Padding(4);
-            this.cbxSpeed.Name = "cbxSpeed";
-            this.cbxSpeed.Size = new System.Drawing.Size(132, 24);
-            this.cbxSpeed.TabIndex = 4;
-            this.cbxSpeed.Text = "Modify Speed";
-            this.cbxSpeed.UseVisualStyleBackColor = true;
-            this.cbxSpeed.CheckedChanged += new System.EventHandler(this.cbxSpeed_CheckedChanged);
             // 
             // nudSpeed
             // 
@@ -188,17 +168,54 @@
             0,
             0,
             131072});
-            this.nudSpeed.Location = new System.Drawing.Point(137, 101);
+            this.nudSpeed.Location = new System.Drawing.Point(361, 45);
             this.nudSpeed.Margin = new System.Windows.Forms.Padding(4);
             this.nudSpeed.Name = "nudSpeed";
-            this.nudSpeed.Size = new System.Drawing.Size(121, 26);
+            this.nudSpeed.Size = new System.Drawing.Size(105, 26);
             this.nudSpeed.TabIndex = 5;
+            this.nudSpeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.nudSpeed.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
             this.nudSpeed.ValueChanged += new System.EventHandler(this.nudSpeed_ValueChanged);
+            // 
+            // searchBox
+            // 
+            this.searchBox.Location = new System.Drawing.Point(8, 75);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(460, 26);
+            this.searchBox.TabIndex = 7;
+            this.searchBox.Text = "Search...";
+            this.searchBox.Click += new System.EventHandler(this.searchBox_Click);
+            this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
+            this.searchBox.Enter += new System.EventHandler(this.searchBox_Click);
+            this.searchBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyPressed);
+            // 
+            // btnBonfireWarp
+            // 
+            this.btnBonfireWarp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBonfireWarp.Location = new System.Drawing.Point(371, 102);
+            this.btnBonfireWarp.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBonfireWarp.Name = "btnBonfireWarp";
+            this.btnBonfireWarp.Size = new System.Drawing.Size(100, 30);
+            this.btnBonfireWarp.TabIndex = 6;
+            this.btnBonfireWarp.Text = "Warp";
+            this.btnBonfireWarp.UseVisualStyleBackColor = true;
+            this.btnBonfireWarp.Click += new System.EventHandler(this.btnBonfireWarp_Click);
+            // 
+            // cbxSpeed
+            // 
+            this.cbxSpeed.AutoSize = true;
+            this.cbxSpeed.Location = new System.Drawing.Point(361, 23);
+            this.cbxSpeed.Margin = new System.Windows.Forms.Padding(4);
+            this.cbxSpeed.Name = "cbxSpeed";
+            this.cbxSpeed.Size = new System.Drawing.Size(132, 24);
+            this.cbxSpeed.TabIndex = 4;
+            this.cbxSpeed.Text = "Modify Speed";
+            this.cbxSpeed.UseVisualStyleBackColor = true;
+            this.cbxSpeed.CheckedChanged += new System.EventHandler(this.cbxSpeed_CheckedChanged);
             // 
             // cbxGravity
             // 
@@ -232,17 +249,17 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cbxBonfire.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxBonfire.FormattingEnabled = true;
-            this.cbxBonfire.Location = new System.Drawing.Point(8, 69);
+            this.cbxBonfire.Location = new System.Drawing.Point(8, 105);
             this.cbxBonfire.Margin = new System.Windows.Forms.Padding(4);
             this.cbxBonfire.Name = "cbxBonfire";
-            this.cbxBonfire.Size = new System.Drawing.Size(353, 28);
+            this.cbxBonfire.Size = new System.Drawing.Size(355, 28);
             this.cbxBonfire.TabIndex = 3;
             this.cbxBonfire.SelectedIndexChanged += new System.EventHandler(this.cbxBonfire_SelectedIndexChanged);
             // 
             // lblBonfire
             // 
             this.lblBonfire.AutoSize = true;
-            this.lblBonfire.Location = new System.Drawing.Point(8, 48);
+            this.lblBonfire.Location = new System.Drawing.Point(8, 55);
             this.lblBonfire.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBonfire.Name = "lblBonfire";
             this.lblBonfire.Size = new System.Drawing.Size(60, 20);
@@ -268,6 +285,8 @@
             gbxStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             gbxStatus.AutoSize = true;
+            gbxStatus.Controls.Add(this.Config);
+            gbxStatus.Controls.Add(this.cmbTeamConfig);
             gbxStatus.Controls.Add(this.cbxForcePlayRegion);
             gbxStatus.Controls.Add(this.nudPlayRegion);
             gbxStatus.Controls.Add(lblPlayRegion);
@@ -290,10 +309,29 @@
             gbxStatus.Margin = new System.Windows.Forms.Padding(4);
             gbxStatus.Name = "gbxStatus";
             gbxStatus.Padding = new System.Windows.Forms.Padding(4);
-            gbxStatus.Size = new System.Drawing.Size(479, 172);
+            gbxStatus.Size = new System.Drawing.Size(479, 204);
             gbxStatus.TabIndex = 3;
             gbxStatus.TabStop = false;
             gbxStatus.Text = "Status";
+            // 
+            // Config
+            // 
+            this.Config.AutoSize = true;
+            this.Config.Location = new System.Drawing.Point(15, 154);
+            this.Config.Name = "Config";
+            this.Config.Size = new System.Drawing.Size(55, 20);
+            this.Config.TabIndex = 17;
+            this.Config.Text = "Config";
+            // 
+            // cmbTeamConfig
+            // 
+            this.cmbTeamConfig.DisplayMember = "Name";
+            this.cmbTeamConfig.FormattingEnabled = true;
+            this.cmbTeamConfig.Location = new System.Drawing.Point(76, 150);
+            this.cmbTeamConfig.Name = "cmbTeamConfig";
+            this.cmbTeamConfig.Size = new System.Drawing.Size(60, 28);
+            this.cmbTeamConfig.TabIndex = 16;
+            this.cmbTeamConfig.SelectedIndexChanged += new System.EventHandler(this.cmbTeamConfig_SelectedIndexChanged);
             // 
             // cbxForcePlayRegion
             // 
@@ -554,11 +592,11 @@
             gbxPosition.Controls.Add(this.nudPosStoredZ);
             gbxPosition.Controls.Add(lblPosX);
             gbxPosition.Controls.Add(this.btnPosRestore);
-            gbxPosition.Location = new System.Drawing.Point(4, 176);
+            gbxPosition.Location = new System.Drawing.Point(4, 205);
             gbxPosition.Margin = new System.Windows.Forms.Padding(4);
             gbxPosition.Name = "gbxPosition";
             gbxPosition.Padding = new System.Windows.Forms.Padding(4);
-            gbxPosition.Size = new System.Drawing.Size(477, 302);
+            gbxPosition.Size = new System.Drawing.Size(479, 302);
             gbxPosition.TabIndex = 4;
             gbxPosition.TabStop = false;
             gbxPosition.Text = "Position";
@@ -576,7 +614,7 @@
             // 
             this.deleteButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.deleteButton.AutoSize = true;
-            this.deleteButton.Location = new System.Drawing.Point(399, 37);
+            this.deleteButton.Location = new System.Drawing.Point(400, 37);
             this.deleteButton.Margin = new System.Windows.Forms.Padding(4);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(66, 30);
@@ -595,6 +633,7 @@
             this.storedPositions.Margin = new System.Windows.Forms.Padding(4);
             this.storedPositions.Name = "storedPositions";
             this.storedPositions.Size = new System.Drawing.Size(99, 28);
+            this.storedPositions.Sorted = true;
             this.storedPositions.TabIndex = 25;
             this.storedPositions.SelectedIndexChanged += new System.EventHandler(this.storedPositions_SelectedIndexChanged);
             this.storedPositions.KeyDown += new System.Windows.Forms.KeyEventHandler(this.savedPos_KeyDown);
@@ -1008,10 +1047,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.AutoSize = true;
             this.Controls.Add(gbxOther);
-            this.Controls.Add(gbxStatus);
             this.Controls.Add(gbxPosition);
+            this.Controls.Add(gbxStatus);
             this.Name = "GadgetTabPlayer";
-            this.Size = new System.Drawing.Size(487, 629);
+            this.Size = new System.Drawing.Size(487, 637);
             gbxOther.ResumeLayout(false);
             gbxOther.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudSpeed)).EndInit();
@@ -1086,5 +1125,8 @@
         private System.Windows.Forms.ComboBox storedPositions;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Label ImportExportLabel;
+        private System.Windows.Forms.ComboBox cmbTeamConfig;
+        private System.Windows.Forms.Label Config;
+        private System.Windows.Forms.TextBox searchBox;
     }
 }
