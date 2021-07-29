@@ -149,7 +149,7 @@ namespace DS_Gadget
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            ChangeColor(Color.DarkGray);
+            _ = ChangeColor(Color.DarkGray);
             CreateItem();
         }
 
@@ -162,7 +162,7 @@ namespace DS_Gadget
         {
             if (btnCreate.Enabled)
             {
-                ChangeColor(Color.DarkGray);
+                _ = ChangeColor(Color.DarkGray);
                 DSItemCategory category = cmbCategory.SelectedItem as DSItemCategory;
                 DSItem item = lbxItems.SelectedItem as DSItem;
                 int id = item.ID;

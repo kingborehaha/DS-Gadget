@@ -470,7 +470,7 @@ namespace DS_Gadget
         {
             if (btnBonfireWarp.Enabled == true)
             {
-                ChangeColor(Color.DarkGray);
+                _ = ChangeColor(Color.DarkGray);
                 Hook.BonfireWarp();
             }
         }
