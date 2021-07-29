@@ -216,10 +216,18 @@
     <None Include="Resources\Systems\Bonfires.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Content Include="Resources\Assembly\BonfireWarp.txt" />
-    <Content Include="Resources\Assembly\ItemDrop.txt" />
-    <Content Include="Resources\Assembly\ItemGet.txt" />
-    <Content Include="Resources\Assembly\LevelUp.txt" />
+    <Content Include="Resources\Assembly\BonfireWarp.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Assembly\ItemDrop.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Assembly\ItemGet.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Assembly\LevelUp.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\Systems\Other\Covenants.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
