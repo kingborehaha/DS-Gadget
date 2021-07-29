@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 
 namespace DS_Gadget
 {
@@ -15,7 +14,7 @@ namespace DS_Gadget
             Name = name;
             ID = id;
             Items = new List<DSItem>();
-            foreach (string line in Regex.Split(itemList, "[\r\n]+"))
+            foreach (string line in GetTxtResourceClass.RegexSplit(itemList, "[\r\n]+"))
             {
                 if (GetTxtResourceClass.IsValidTxtResource(line)) //determine if line is a valid resource or not
                     Items.Add(new DSItem(line, showIDs));
@@ -30,11 +29,11 @@ namespace DS_Gadget
 
         public static void GetItemCategories()
         {
-            foreach (string line in Regex.Split(GetTxtResourceClass.GetTxtResource("Resources/DSFashionCategories.txt"), "[\r\n]+"))
+            foreach (string line in GetTxtResourceClass.RegexSplit(GetTxtResourceClass.GetTxtResource("Resources/Equipment/DSFashionCategories.txt"), "[\r\n]+"))
             {
                 if (GetTxtResourceClass.IsValidTxtResource(line)) //determine if line is a valid resource or not
                 {
-                    var att = Regex.Split(line, ",");
+                    var att = GetTxtResourceClass.RegexSplit(line, ",");
                     Array.ForEach<string>(att, x => att[Array.IndexOf<string>(att, x)] = x.Trim());
                     All.Add(new DSFashionCategory(att[0], Convert.ToInt32(att[1], 16), GetTxtResourceClass.GetTxtResource(att[2]), bool.Parse(att[3])));
                 }

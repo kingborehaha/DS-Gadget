@@ -4,12 +4,30 @@ Branch of TKGP's DS Gadget that loads locally accessible .txt files to populate 
 Resource .txt files are found in DS-Gadget\Resources
 
 ## Features courtesy of Nordgaren
-* Item search
+* Item Fashion and Bonfire search
 * Character position saving and loading
 * Custom resource files
 * Fashion menu
+* Team Type configs
+* Max Upgrade values checkbox
+* Unlocked gadget when unloaded
+* Stats menu load changed values
 
 ## DS Gadget (Local Loader) Changelog
+
+### 3.0.0.72  
+**If you already have changes to your DSItemCategory and DSFashionCategory text files, you can move them to Resources/Equipment after installing. I changed where the Gadget looks for them.**  
+
+Added Bonfire search  
+
+Added Team Config  
+* Correctly loads the Chr and Team type for each existing combo.  
+* Does not change to correct color for covenant, even though correct value. I think the mtd gets changed on invasion  
+* Loaded from Resources/Systems/TeamConfigs.txt  
+
+Can now get max upgrade items with a checkbox, instead of typing it in all the time  
+
+Stats menu now has a checkbox to apply any changes to your character made while character is unloaded  
 
 ### 3.0.0.71
 Added saving stored positions to XML file which are loaded on DS Gadget Startup  
@@ -28,6 +46,8 @@ Added local category loading for Item and Fashion categories and split Ammo into
 Added Toggle AI Hotkey.  
 
 Gadget now allows you to change any setting that isn't loaded upon loading a character.  
+
+Cleaned up Search Bar presentation and can now use Escape to clear search  
 
 ### 3.0.0.70
 Added Search function.

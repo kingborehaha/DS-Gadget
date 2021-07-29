@@ -1,0 +1,10 @@
+//Format: Name; Chr Type; Team Type
+//Forest Darkmoon and Dragon do not change your color, but that is the correct chr and team type for them.
+HUM 0 1
+HLW 8 4
+INV 2 16
+WHT 1 2
+FRST 2 17
+DMB 2 17
+DRG 2 18
+FFA 0 16

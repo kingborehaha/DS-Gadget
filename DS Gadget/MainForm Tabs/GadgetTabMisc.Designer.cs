@@ -40,6 +40,7 @@
             this.btnApplyHair = new System.Windows.Forms.Button();
             this.lbxItems = new System.Windows.Forms.ListBox();
             this.groupBoxHair = new System.Windows.Forms.GroupBox();
+            this.lblSearch = new System.Windows.Forms.Label();
             this.searchBox = new System.Windows.Forms.TextBox();
             gbxEventFlags = new System.Windows.Forms.GroupBox();
             lblEventFlagsID = new System.Windows.Forms.Label();
@@ -158,12 +159,12 @@
             this.cmbCategory.TabIndex = 33;
             this.cmbCategory.SelectedIndexChanged += new System.EventHandler(this.cmbCategory_SelectedIndexChanged);
             // 
-            // btnCreate
+            // btnApplyHair
             // 
             this.btnApplyHair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnApplyHair.Location = new System.Drawing.Point(362, 48);
             this.btnApplyHair.Margin = new System.Windows.Forms.Padding(4);
-            this.btnApplyHair.Name = "btnCreate";
+            this.btnApplyHair.Name = "btnApplyHair";
             this.btnApplyHair.Size = new System.Drawing.Size(100, 28);
             this.btnApplyHair.TabIndex = 35;
             this.btnApplyHair.Text = "Apply";
@@ -191,6 +192,7 @@
             // 
             // groupBoxHair
             // 
+            this.groupBoxHair.Controls.Add(this.lblSearch);
             this.groupBoxHair.Controls.Add(this.searchBox);
             this.groupBoxHair.Controls.Add(this.lbxItems);
             this.groupBoxHair.Controls.Add(this.btnApplyHair);
@@ -203,6 +205,16 @@
             this.groupBoxHair.TabStop = false;
             this.groupBoxHair.Text = "Hair";
             // 
+            // lblSearch
+            // 
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.Enabled = false;
+            this.lblSearch.Location = new System.Drawing.Point(17, 92);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(72, 20);
+            this.lblSearch.TabIndex = 36;
+            this.lblSearch.Text = "Search...";
+            // 
             // searchBox
             // 
             this.searchBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -212,7 +224,6 @@
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(450, 26);
             this.searchBox.TabIndex = 34;
-            this.searchBox.Text = "Search...";
             this.searchBox.Click += new System.EventHandler(this.searchBox_Click);
             this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
             this.searchBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyPressed);
@@ -246,5 +257,6 @@
         private System.Windows.Forms.ComboBox cmbCategory;
         private System.Windows.Forms.GroupBox groupBoxHair;
         private System.Windows.Forms.TextBox searchBox;
+        private System.Windows.Forms.Label lblSearch;
     }
 }

@@ -101,10 +101,8 @@ namespace DS_Gadget
         {
             gadgetTabPlayer.EnableStats(enable);
             gadgetTabItems.EnableStats(enable);
-            gadgetTabStats.Enabled = enable;
+            gadgetTabStats.EnabledStats(enable);
             gadgetTabMisc.EnableStats(enable);
-            //foreach (TabPage tab in tabControlMain.TabPages)
-            //    tab.Enabled = enable;
         }
 
         private void timerUpdateProcess_Tick(object sender, EventArgs e)

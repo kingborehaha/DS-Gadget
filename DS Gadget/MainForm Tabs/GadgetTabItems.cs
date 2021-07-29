@@ -23,7 +23,6 @@ namespace DS_Gadget
 
         private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
-            searchBox.Text = "Search...";
             lbxItems.Items.Clear();
             DSItemCategory category = cmbCategory.SelectedItem as DSItemCategory;
             foreach (DSItem item in category.Items)
@@ -47,6 +46,10 @@ namespace DS_Gadget
             if (lbxItems.Items.Count > 0)
                 lbxItems.SelectedIndex = 0;
 
+            if (searchBox.Text == "")
+                lblSearch.Visible = true;
+            else
+                lblSearch.Visible = false;
         }
 
         private void cbxQuantityRestrict_CheckedChanged(object sender, EventArgs e)
@@ -132,6 +135,11 @@ namespace DS_Gadget
                     nudUpgrade.Enabled = true;
                     break;
             }
+
+            if (maxUpgrade.Checked)
+            {
+                nudUpgrade.Value = nudUpgrade.Maximum;
+            }
         }
 
         internal void EnableStats(bool enable)
@@ -141,7 +149,7 @@ namespace DS_Gadget
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            ChangeColor(Color.DarkGray);
+            _ = ChangeColor(Color.DarkGray);
             CreateItem();
         }
 
@@ -154,6 +162,7 @@ namespace DS_Gadget
         {
             if (btnCreate.Enabled)
             {
+                _ = ChangeColor(Color.DarkGray);
                 DSItemCategory category = cmbCategory.SelectedItem as DSItemCategory;
                 DSItem item = lbxItems.SelectedItem as DSItem;
                 int id = item.ID;
@@ -215,7 +224,6 @@ namespace DS_Gadget
             if (e.KeyCode == Keys.Enter)
             {
                 e.Handled = true;
-                ChangeColor(Color.DarkGray);
                 CreateItem();
                 return;
             }
@@ -232,6 +240,9 @@ namespace DS_Gadget
 
         private void KeyPressed(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.Escape)
+                searchBox.Clear();
+
             if (lbxItems.Items.Count > 0)
                 KeyDownListbox(e);
 
