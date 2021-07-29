@@ -853,10 +853,10 @@
             // GadgetTabStats
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.Controls.Add(gbxStats);
+            this.Controls.Add(gbxCovenant);
             this.Controls.Add(this.cbxLoad);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(gbxCovenant);
-            this.Controls.Add(gbxStats);
             this.Name = "GadgetTabStats";
             this.Size = new System.Drawing.Size(415, 615);
             gbxCovenant.ResumeLayout(false);
