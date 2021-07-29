@@ -1,3 +1,5 @@
+//Format: Bonfire Entity ID; Name [arbitrary]
+//Forest Darkmoon and Dragon do not change your color, but that is the correct chr and team type for them.
 HUM 0 1
 HLW 8 4
 INV 2 16

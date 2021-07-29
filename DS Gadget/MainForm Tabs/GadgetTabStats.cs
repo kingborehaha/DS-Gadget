@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace DS_Gadget
 {
@@ -42,6 +44,7 @@ namespace DS_Gadget
             nudSouls.Value = Hook.Souls;
             try
             {
+                Updating = true;
                 nudVit.Value = Hook.Vitality;
                 nudAtt.Value = Hook.Attunement;
                 nudEnd.Value = Hook.Endurance;
@@ -50,6 +53,8 @@ namespace DS_Gadget
                 nudRes.Value = Hook.Resistance;
                 nudInt.Value = Hook.Intelligence;
                 nudFth.Value = Hook.Faith;
+                Updating = false;
+
             }
             // Race condition when checking if the game is still loaded; doesn't really matter
             catch (ArgumentOutOfRangeException) { }
@@ -66,6 +71,7 @@ namespace DS_Gadget
             nudCovForest.Value = Hook.ForestHunterPoints;
             nudCovGravelord.Value = Hook.GravelordServantPoints;
             nudCovSunlight.Value = Hook.WarriorOfSunlightPoints;
+
         }
 
         private void RecalculateStats()
@@ -102,14 +108,17 @@ namespace DS_Gadget
         {
             if (enable)
             {
-                if (SavedStats.GetType().GetProperties().Select(pi => pi.GetValue(SavedStats)).Any(value => value != null))
+                if (cbxLoad.Checked)
                 {
-                    gbxLoadStats.Visible = true;
+                    if (SavedStats.GetType().GetProperties().Select(pi => pi.GetValue(SavedStats)).Any(value => value != null))
+                    {
+                        UpdateTab();
+                        LoadSavedStats();
+                    }
                 }
             }
             else
             {
-                gbxLoadStats.Visible = false;
                 if (Main != null)
                 {
                     ResetPage();
@@ -157,14 +166,18 @@ namespace DS_Gadget
             if (cmbClass.SelectedIndex != -1)
             {
                 DSClass charClass = cmbClass.SelectedItem as DSClass;
-                nudVit.Minimum = charClass.Vitality;
-                nudAtt.Minimum = charClass.Attunement;
-                nudEnd.Minimum = charClass.Endurance;
-                nudStr.Minimum = charClass.Strength;
-                nudDex.Minimum = charClass.Dexterity;
-                nudRes.Minimum = charClass.Resistance;
-                nudInt.Minimum = charClass.Intelligence;
-                nudFth.Minimum = charClass.Faith;
+                if (Hook.Loaded)
+                {
+                    nudVit.Minimum = charClass.Vitality;
+                    nudAtt.Minimum = charClass.Attunement;
+                    nudEnd.Minimum = charClass.Endurance;
+                    nudStr.Minimum = charClass.Strength;
+                    nudDex.Minimum = charClass.Dexterity;
+                    nudRes.Minimum = charClass.Resistance;
+                    nudInt.Minimum = charClass.Intelligence;
+                    nudFth.Minimum = charClass.Faith;
+                }
+
                 if (!Reading)
                 {
                     if (Hook.Loaded)
@@ -179,7 +192,6 @@ namespace DS_Gadget
 
                 }
             }
-
         }
 
         private void cmbPhysique_SelectedIndexChanged(object sender, EventArgs e)
@@ -233,13 +245,18 @@ namespace DS_Gadget
 
         private SavedStats SavedStats = new SavedStats();
 
+        public bool Updating { get; private set; }
+
         private void nudStat_ValueChanged(object sender, EventArgs e)
         {
             if (!Reading)
             {
                 if(Hook.Loaded)
                 {
-                    RecalculateStats();
+                    if (!Updating)
+                    {
+                        RecalculateStats();
+                    }
                 }
                 else
                 {
@@ -440,26 +457,31 @@ namespace DS_Gadget
                 if (SavedStats.Sex.HasValue)
                 {
                     cmbSex.SelectedIndex = SavedStats.Sex.Value;
+                    cmbSex_SelectedIndexChanged(null, null);
                 }
 
                 if (SavedStats.Class.HasValue)
                 {
                     cmbClass.SelectedIndex = SavedStats.Class.Value;
+                    cmbClass_SelectedIndexChanged(null, null);
                 }
 
                 if (SavedStats.Physique.HasValue)
                 {
                     cmbPhysique.SelectedIndex = SavedStats.Physique.Value;
+                    cmbPhysique_SelectedIndexChanged(null, null);
                 }
 
                 if (SavedStats.Humanity.HasValue)
                 {
                     nudHumanity.Value = SavedStats.Humanity.Value;
+                    nudHumanity_ValueChanged(null, null);
                 }
 
                 if (SavedStats.Souls.HasValue)
                 {
                     nudSouls.Value = SavedStats.Souls.Value;
+                    nudSouls_ValueChanged(null, null);
                 }
 
                 if (SavedStats.Vit.HasValue)
@@ -502,58 +524,59 @@ namespace DS_Gadget
                     nudFth.Value = Clamp(SavedStats.Fth.Value, nudFth.Minimum, nudFth.Maximum);
                 }
 
+                RecalculateStats();
+
                 if (SavedStats.Covenant.HasValue)
                 {
                     cmbCovenant.SelectedIndex = SavedStats.Covenant.Value;
+                    cmbCovenant_SelectedIndexChanged(null, null);
                 }
 
                 if (SavedStats.CovChaos.HasValue)
                 {
                     nudCovChaos.Value = SavedStats.CovChaos.Value;
+                    nudCovChaos_ValueChanged(null, null);
                 }
 
                 if (SavedStats.CovDarkmoon.HasValue)
                 {
                     nudCovDarkmoon.Value = SavedStats.CovDarkmoon.Value;
+                    nudCovDarkmoon_ValueChanged(null, null);
+
                 }
 
                 if (SavedStats.CovDarkwraith.HasValue)
                 {
                     nudCovDarkwraith.Value = SavedStats.CovDarkwraith.Value;
+                    nudCovDarkwraith_ValueChanged(null, null);
+
                 }
 
                 if (SavedStats.CovForest.HasValue)
                 {
                     nudCovForest.Value = SavedStats.CovForest.Value;
+                    nudCovForest_ValueChanged(null, null);
                 }
 
                 if (SavedStats.CovGravelord.HasValue)
                 {
                     nudCovGravelord.Value = SavedStats.CovGravelord.Value;
+                    nudCovGravelord_ValueChanged(null, null);
                 }
 
                 if (SavedStats.CovDragon.HasValue)
                 {
                     nudCovDragon.Value = SavedStats.CovDragon.Value;
+                    nudCovDragon_ValueChanged(null, null);
                 }
 
                 if (SavedStats.CovSunlight.HasValue)
                 {
                     nudCovSunlight.Value = SavedStats.CovSunlight.Value;
+                    nudCovSunlight_ValueChanged(null, null);
                 }
             }
 
-        }
-
-        private void btnYes_Click(object sender, EventArgs e)
-        {
-            LoadSavedStats();
-            gbxLoadStats.Visible = false;
-        }
-
-        private void btnNo_Click(object sender, EventArgs e)
-        {
-            gbxLoadStats.Visible = false;
         }
 
         private void ResetPage()
