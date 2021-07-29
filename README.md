@@ -45,6 +45,8 @@ Added Toggle AI Hotkey.
 
 Gadget now allows you to change any setting that isn't loaded upon loading a character.  
 
+Cleaned up Search Bar presentation and can now use Escape to clear search  
+
 ### 3.0.0.70
 Added Search function.
 
