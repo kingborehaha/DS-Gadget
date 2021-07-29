@@ -79,9 +79,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Utility Clases\DSHook.cs" />
-    <Compile Include="Utility Clases\GadgetHotkey.cs" />
-    <Compile Include="Utility Clases\GetTxtResourceClass.cs" />
+    <Compile Include="Utility Classes\DSHook.cs" />
+    <Compile Include="Utility Classes\GadgetHotkey.cs" />
+    <Compile Include="Utility Classes\GetTxtResourceClass.cs" />
     <Compile Include="List Items\DSFashionCategory.cs" />
     <Compile Include="List Items\DSSex.cs" />
     <Compile Include="List Items\DSPhysique.cs" />
@@ -130,7 +130,7 @@
     <Compile Include="List Items\DSInfusion.cs" />
     <Compile Include="List Items\DSItem.cs" />
     <Compile Include="List Items\DSItemCategory.cs" />
-    <Compile Include="Utility Clases\DSOffsets.cs" />
+    <Compile Include="Utility Classes\DSOffsets.cs" />
     <Compile Include="MainForm Tabs\GadgetTabStats.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -146,7 +146,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utility Clases\PlayerState.cs" />
+    <Compile Include="Utility Classes\PlayerState.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -154,10 +154,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Utility Clases\SavedPos.cs" />
-    <Compile Include="Utility Clases\SavedStats.cs" />
-    <Compile Include="Utility Clases\TeamConfig.cs" />
-    <Compile Include="Utility Clases\User32.cs" />
+    <Compile Include="Utility Classes\SavedPos.cs" />
+    <Compile Include="Utility Classes\SavedStats.cs" />
+    <Compile Include="Utility Classes\TeamConfig.cs" />
+    <Compile Include="Utility Classes\User32.cs" />
     <EmbeddedResource Include="MainForm Tabs\GadgetTabGraphics.resx">
       <DependentUpon>GadgetTabGraphics.cs</DependentUpon>
     </EmbeddedResource>

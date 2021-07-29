@@ -744,9 +744,9 @@
             this.cbxLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxLoad.Location = new System.Drawing.Point(10, 565);
             this.cbxLoad.Name = "cbxLoad";
-            this.cbxLoad.Size = new System.Drawing.Size(303, 24);
+            this.cbxLoad.Size = new System.Drawing.Size(306, 24);
             this.cbxLoad.TabIndex = 52;
-            this.cbxLoad.Text = "Load changed stats on character load";
+            this.cbxLoad.Text = "Apply changed stats on character load";
             this.cbxLoad.UseVisualStyleBackColor = true;
             // 
             // groupBox1
