@@ -18,7 +18,19 @@ You can also try adding DS Gadget as an exception to your antivirus
 
 # Change Log
 
-###  Prerelease 0.13): 
+###  Prerelease 0.14): 
+Added Bonfire search  
+
+* Added Team Config  
+	* Correctly loads the Chr and Team type for each existing combo.  
+	* Does not change to correct color for covenant, even though correct value. I think the mtd gets changed on invasion  
+	* Loaded from Resources/Systems/TeamConfigs.txt  
+
+Can now get max upgrade items with a checkbox, instead of typing it in all the time  
+
+Stats menu now has a checkbox to apply any changes to your character made while character is unloaded  
+
+
 * Added saving stored positions to XML file which are loaded on DS Gadget Startup
 
     * Press the store position key or enter after typing a location name in the combo box for the stored position to save or update that positon.
