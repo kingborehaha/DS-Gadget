@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml;
-using System.Xml.Serialization;
 
 namespace DS_Gadget
 {
@@ -23,11 +20,7 @@ namespace DS_Gadget
 
         private List<SavedPos> Positions = new List<SavedPos>();
 
-        private XmlSerializer XML = new XmlSerializer(typeof(List<SavedPos>));
-
-        private string SavedPositions = "Resources/SavedPositions.xml";
-
-        private List<TeamConfig> TeamConfig = new List<TeamConfig>();
+        private List<TeamConfig> SavedConfigs;
 
         public override void InitTab(MainForm parent)
         {
@@ -37,15 +30,13 @@ namespace DS_Gadget
             foreach (DSBonfire bonfire in DSBonfire.All)
                 cbxBonfire.Items.Add(bonfire);
             nudSpeed.Value = Settings.Speed;
-            if (File.Exists(SavedPositions))
+            Positions = SavedPos.GetSavedPositions();
+            UpdatePositions();
+            SavedConfigs = TeamConfig.GetConfigs();
+            foreach (var item in SavedConfigs)
             {
-                using (var stream = new FileStream(SavedPositions, FileMode.Open))
-                {
-                    Positions = (List<SavedPos>)XML.Deserialize(stream);
-                }
-                UpdatePositions();
+                cmbTeamConfig.Items.Add(item);
             }
-            GetConfigs();
 
         }
 
@@ -145,23 +136,7 @@ namespace DS_Gadget
             }
         }
 
-        public void GetConfigs()
-        {
-            TeamConfig.Add(new TeamConfig(null, 0, 1));
-            foreach (string line in GetTxtResourceClass.RegexSplit(GetTxtResourceClass.GetTxtResource("Resources/Systems/TeamConfigs.txt"), "[\r\n]+"))
-            {
-                if (GetTxtResourceClass.IsValidTxtResource(line)) //determine if line is a valid resource or not
-                {
-                    var cfg = GetTxtResourceClass.RegexSplit(line, " ");
-                    TeamConfig.Add(new TeamConfig(cfg[0], int.Parse(cfg[1]), int.Parse(cfg[2])));
-                }
-            };
-
-            foreach (var item in TeamConfig)
-            {
-                cmbTeamConfig.Items.Add(item);
-            }
-        }
+        
 
         public void EnableStats(bool enable)
         {
@@ -187,21 +162,6 @@ namespace DS_Gadget
                 }
             }
 
-        }
-
-        public void Save()
-        {
-            Positions.Sort();
-            using (FileStream stream = new FileStream(SavedPositions, FileMode.Create))
-            {
-                XML.Serialize(stream, Positions);
-            }
-            XmlDocument doc = new XmlDocument();
-            doc.Load(SavedPositions);
-            XmlComment info = doc.CreateComment("Comments denote following value types. FollowCam is a byte array for camera data.");
-            XmlElement root = doc.DocumentElement;
-            doc.InsertBefore(info, root);
-            doc.Save(SavedPositions);
         }
 
         public override void ResetTab()
@@ -304,7 +264,7 @@ namespace DS_Gadget
                 pos.PlayerState = playerState;
                 ProcessSavedPos(pos);
                 UpdatePositions();
-                Save();
+                SavedPos.Save(Positions);
             }
             
         }
@@ -336,7 +296,7 @@ namespace DS_Gadget
                     Positions.Remove(old);
                     storedPositions.SelectedIndex = 0;
                     UpdatePositions();
-                    Save();
+                    SavedPos.Save(Positions);
                 }
                     
             }

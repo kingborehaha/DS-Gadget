@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -42,13 +43,37 @@ namespace DS_Gadget
             return this.Name.CompareTo(other.Name);
         }
 
-        public void Save()
+        private static XmlSerializer XML = new XmlSerializer(typeof(List<SavedPos>));
+
+        private static string SavedPositions = "Resources/SavedPositions.xml";
+
+        public static List<SavedPos> GetSavedPositions()
         {
-            using (FileStream stream = new FileStream("Resources/SavedPositions.xml", FileMode.Create))
+            var positions = new List<SavedPos>();
+            if (File.Exists(SavedPositions))
             {
-                XmlSerializer XML = new XmlSerializer(typeof(SavedPos));
-                XML.Serialize(stream, this);
+                using (var stream = new FileStream(SavedPositions, FileMode.Open))
+                {
+                    positions = (List<SavedPos>)XML.Deserialize(stream);
+                }
             }
+
+            return positions;
+        }
+
+        public static void Save(List<SavedPos> positions)
+        {
+            positions.Sort();
+            using (FileStream stream = new FileStream(SavedPositions, FileMode.Create))
+            {
+                XML.Serialize(stream, positions);
+            }
+            XmlDocument doc = new XmlDocument();
+            doc.Load(SavedPositions);
+            XmlComment info = doc.CreateComment("Comments denote following value types. FollowCam is a byte array for camera data.");
+            XmlElement root = doc.DocumentElement;
+            doc.InsertBefore(info, root);
+            doc.Save(SavedPositions);
         }
     }
 
