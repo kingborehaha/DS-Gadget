@@ -20,6 +20,8 @@ You can also try adding DS Gadget as an exception to your antivirus
 
 ###  Prerelease 0.14): 
 
+**If you already have changes to your DSItemCategory and DSFashionCategory text files, you can move them to Resources/Equipment after installing. I changed where the Gadget looks for them.**  
+
 * Added Bonfire search  
 
 * Added Team Config  
