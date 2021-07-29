@@ -40,7 +40,6 @@ namespace DS_Gadget
 
         private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
-            searchBox.Text = "Search...";
             lbxItems.Items.Clear();
             DSFashionCategory category = cmbCategory.SelectedItem as DSFashionCategory;
             foreach (DSItem item in category.Items)
@@ -63,6 +62,11 @@ namespace DS_Gadget
 
             if (lbxItems.Items.Count > 0)
                 lbxItems.SelectedIndex = 0;
+
+            if (searchBox.Text == "")
+                lblSearch.Visible = true;
+            else
+                lblSearch.Visible = false;
         }
 
         private void lbxItems_SelectedIndexChanged(object sender, EventArgs e)
@@ -156,6 +160,9 @@ namespace DS_Gadget
 
         private void KeyPressed(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.Escape)
+                searchBox.Clear();
+
             if (lbxItems.Items.Count > 0)
                 KeyDownListbox(e);
 
