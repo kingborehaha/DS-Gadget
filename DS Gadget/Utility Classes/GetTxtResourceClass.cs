@@ -36,7 +36,7 @@ namespace DS_Gadget
 
         public static string[] RegexSplit(string source, string pattern)
         {
-            return Regex.Split(source, pattern);
+            return GetTxtResourceClass.RegexSplit(source, pattern);
         }
     }
 }

@@ -26,7 +26,7 @@ namespace DS_Gadget
         static DSCovenant()
         {
             var all = new List<DSCovenant>();
-            foreach (string line in Regex.Split(GetTxtResourceClass.GetTxtResource("Resources/Systems/Other/Covenants.txt"), "[\r\n]+"))
+            foreach (string line in GetTxtResourceClass.RegexSplit(GetTxtResourceClass.GetTxtResource("Resources/Systems/Other/Covenants.txt"), "[\r\n]+"))
             {
                 if (GetTxtResourceClass.IsValidTxtResource(line)) //determine if line is a valid resource or not
                 {
