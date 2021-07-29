@@ -76,7 +76,7 @@ namespace DS_Gadget
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            ChangeColor(Color.DarkGray);
+            _ = ChangeColor(Color.DarkGray);
             ApplyHair();
         }
 
@@ -84,7 +84,7 @@ namespace DS_Gadget
         {
             if (btnApplyHair.Enabled == true)
             {
-                ChangeColor(Color.DarkGray);
+                _ = ChangeColor(Color.DarkGray);
                 DSFashionCategory category = cmbCategory.SelectedItem as DSFashionCategory;
                 DSItem item = lbxItems.SelectedItem as DSItem;
                 int id = item.ID;
