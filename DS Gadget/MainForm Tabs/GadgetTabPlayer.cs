@@ -25,7 +25,7 @@ namespace DS_Gadget
 
         private XmlSerializer XML = new XmlSerializer(typeof(List<SavedPos>));
 
-        private string SavedPositions = "Resources/Equipment/SavedPositions.xml";
+        private string SavedPositions = "Resources/SavedPositions.xml";
 
         private List<TeamConfig> TeamConfig = new List<TeamConfig>();
 
