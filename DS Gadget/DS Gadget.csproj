@@ -207,6 +207,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <Content Include="Resources\SavedPositions.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Systems\TeamConfigs.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
