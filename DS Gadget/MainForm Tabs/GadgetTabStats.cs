@@ -39,7 +39,9 @@ namespace DS_Gadget
         {
             txtSoulLevel.Text = Hook.SoulLevel.ToString();
             nudHumanity.Value = Hook.Humanity;
+            nudHumanity.Text = Hook.Humanity.ToString();
             nudSouls.Value = Hook.Souls;
+            nudSouls.Text = Hook.Souls.ToString();
             try
             {
                 Updating = true;
@@ -63,13 +65,19 @@ namespace DS_Gadget
                     .FirstOrDefault(c => c.ID == Hook.Covenant);
             }
             nudCovChaos.Value = Hook.ChaosServantPoints;
+            nudCovChaos.Text = Hook.ChaosServantPoints.ToString();
             nudCovDarkmoon.Value = Hook.DarkmoonBladePoints;
+            nudCovDarkmoon.Text = Hook.DarkmoonBladePoints.ToString();
             nudCovDarkwraith.Value = Hook.DarkwraithPoints;
+            nudCovDarkwraith.Text = Hook.DarkwraithPoints.ToString();
             nudCovDragon.Value = Hook.PathOfTheDragonPoints;
+            nudCovDragon.Text = Hook.PathOfTheDragonPoints.ToString();
             nudCovForest.Value = Hook.ForestHunterPoints;
+            nudCovForest.Text = Hook.ForestHunterPoints.ToString();
             nudCovGravelord.Value = Hook.GravelordServantPoints;
+            nudCovGravelord.Text = Hook.GravelordServantPoints.ToString();
             nudCovSunlight.Value = Hook.WarriorOfSunlightPoints;
-
+            nudCovSunlight.Text = Hook.WarriorOfSunlightPoints.ToString();
         }
 
         private void RecalculateStats()
@@ -587,31 +595,31 @@ namespace DS_Gadget
             nudHumanity.Text = "";
             nudSouls.Value = 0;
             nudSouls.Text = "";
-            txtSoulLevel.Text = "";
-            nudVit.Minimum = 1;
-            nudVit.Value = 1;
+            nudVit.Minimum = 0;
+            nudVit.Value = 0;
             nudVit.Text = "";
-            nudAtt.Minimum = 1;
-            nudAtt.Value = 1;
+            nudAtt.Minimum = 0;
+            nudAtt.Value = 0;
             nudAtt.Text = "";
-            nudEnd.Minimum = 1;
-            nudEnd.Value = 1;
+            nudEnd.Minimum = 0;
+            nudEnd.Value = 0;
             nudEnd.Text = "";
-            nudStr.Minimum = 1;
-            nudStr.Value = 1;
+            nudStr.Minimum = 0;
+            nudStr.Value = 0;
             nudStr.Text = "";
-            nudDex.Minimum = 1;
-            nudDex.Value = 1;
+            nudDex.Minimum = 0;
+            nudDex.Value = 0;
             nudDex.Text = "";
-            nudRes.Minimum = 1;
-            nudRes.Value = 1;
+            nudRes.Minimum = 0;
+            nudRes.Value = 0;
             nudRes.Text = "";
-            nudInt.Minimum = 1;
-            nudInt.Value = 1;
+            nudInt.Minimum = 0;
+            nudInt.Value = 0;
             nudInt.Text = "";
-            nudFth.Minimum = 1;
-            nudFth.Value = 1;
+            nudFth.Minimum = 0;
+            nudFth.Value = 0;
             nudFth.Text = "";
+            txtSoulLevel.Text = "";
             cmbCovenant.SelectedIndex = -1;
             nudCovChaos.Value = 0;
             nudCovChaos.Text = "";
@@ -649,36 +657,36 @@ namespace DS_Gadget
                             nudSouls.Text = nudSouls.Value.ToString();
                             break;
                         case "nudVit":
-                            SavedStats.Vit = nudVit.Value;
-                            nudVit.Text = nudVit.Value.ToString();
+                            SavedStats.Vit = Clamp(nudVit.Value, 1, 99);
+                            nudVit.Text = SavedStats.Vit.Value.ToString();
                             break;
                         case "nudAtt":
-                            SavedStats.Att = nudAtt.Value;
-                            nudAtt.Text = nudAtt.Value.ToString();
+                            SavedStats.Att = Clamp(nudAtt.Value, 1, 99);
+                            nudAtt.Text = SavedStats.Att.Value.ToString();
                             break;
                         case "nudEnd":
-                            SavedStats.End = nudEnd.Value;
-                            nudEnd.Text = nudEnd.Value.ToString();
+                            SavedStats.End = Clamp(nudEnd.Value, 1, 99);
+                            nudEnd.Text = SavedStats.End.Value.ToString();
                             break;
                         case "nudStr":
-                            SavedStats.Str = nudStr.Value;
-                            nudStr.Text = nudStr.Value.ToString();
+                            SavedStats.Str = Clamp(nudStr.Value, 1, 99);
+                            nudStr.Text = SavedStats.Str.Value.ToString();
                             break;
                         case "nudDex":
-                            SavedStats.Dex = nudDex.Value;
-                            nudDex.Text = nudDex.Value.ToString();
+                            SavedStats.Dex = Clamp(nudDex.Value, 1, 99);
+                            nudDex.Text = SavedStats.Dex.Value.ToString();
                             break;
                         case "nudRes":
-                            SavedStats.Res = nudRes.Value;
-                            nudRes.Text = nudRes.Value.ToString();
+                            SavedStats.Res = Clamp(nudRes.Value, 1, 99);
+                            nudRes.Text = SavedStats.Res.Value.ToString();
                             break;
                         case "nudInt":
-                            SavedStats.Int = nudInt.Value;
-                            nudInt.Text = nudInt.Value.ToString();
+                            SavedStats.Int = Clamp(nudInt.Value, 1, 99);
+                            nudInt.Text = SavedStats.Int.Value.ToString();
                             break;
                         case "nudFth":
-                            SavedStats.Fth = nudFth.Value;
-                            nudFth.Text = nudFth.Value.ToString();
+                            SavedStats.Fth = Clamp(nudFth.Value, 1, 99);
+                            nudFth.Text = SavedStats.Fth.Value.ToString();
                             break;
                         case "nudCovChaos":
                             SavedStats.CovChaos = nudCovChaos.Value;
@@ -720,42 +728,52 @@ namespace DS_Gadget
                     switch (stat.Name)
                     {
                         case "nudHumanity":
+                            nudHumanity.Value = 0;
                             nudHumanity.Text = "";
                             SavedStats.Humanity = null;
                             break;
                         case "nudSouls":
+                            nudSouls.Value = 0;
                             nudSouls.Text = "";
                             SavedStats.Souls = null;
                             break;
                         case "nudVit":
+                            nudVit.Value = 0;
                             nudVit.Text = "";
                             SavedStats.Vit = null;
                             break;
                         case "nudAtt":
+                            nudAtt.Value = 0;
                             nudAtt.Text = "";
                             SavedStats.Att = null;
                             break;
                         case "nudEnd":
+                            nudEnd.Value = 0;
                             nudEnd.Text = "";
                             SavedStats.End = null;
                             break;
                         case "nudStr":
+                            nudStr.Value = 0;
                             nudStr.Text = "";
                             SavedStats.Str = null;
                             break;
                         case "nudDex":
+                            nudDex.Value = 0;
                             nudDex.Text = "";
                             SavedStats.Dex = null;
                             break;
                         case "nudRes":
+                            nudRes.Value = 0;
                             nudRes.Text = "";
                             SavedStats.Res = null;
                             break;
                         case "nudInt":
+                            nudInt.Value = 0;
                             nudInt.Text = "";
                             SavedStats.Int = null;
                             break;
                         case "nudFth":
+                            nudFth.Value = 0;
                             nudFth.Text = "";
                             SavedStats.Fth = null;
                             break;
