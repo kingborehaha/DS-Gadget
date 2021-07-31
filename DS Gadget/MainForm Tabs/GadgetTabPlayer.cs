@@ -43,6 +43,7 @@ namespace DS_Gadget
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
             cbxBonfire.Items.Clear();
+            cbxBonfire.SelectedItem = null;
             foreach (DSBonfire bonfire in DSBonfire.All)
             {
                 if (bonfire.ToString().ToLower().Contains(searchBox.Text.ToLower()))
@@ -52,8 +53,10 @@ namespace DS_Gadget
 
             }
 
-            if (cbxBonfire.Items.Count > 0)
-                cbxBonfire.SelectedIndex = 0;
+            if (cbxBonfire.Items.Count < 1)
+                cbxBonfire.Items.Add(DSBonfire.All[0]);
+
+            cbxBonfire.SelectedIndex = 0;
 
             if (searchBox.Text == "")
                 lblSearch.Visible = true;
@@ -237,6 +240,7 @@ namespace DS_Gadget
                 {
                     result = new DSBonfire(bonfireID, $"Unknown: {bonfireID}");
                     cbxBonfire.Items.Add(result);
+                    DSBonfire.All.Add(result);
                 }
                 cbxBonfire.SelectedItem = result;
             }

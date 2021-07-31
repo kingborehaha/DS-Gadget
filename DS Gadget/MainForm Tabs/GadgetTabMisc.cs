@@ -45,6 +45,8 @@ namespace DS_Gadget
             foreach (DSItem item in category.Items)
                 lbxItems.Items.Add(item);
             lbxItems.SelectedIndex = 0;
+            searchBox.Text = "";
+            lblSearch.Visible = true;
         }
 
         private void searchBox_TextChanged(object sender, EventArgs e)
