@@ -21,6 +21,7 @@ You can also try adding DS Gadget as an exception to your antivirus
 ###  Prerelease 0.14.1):
 
 * Saved stats improvement and various minor bugfixes 
+* UI improvements for 0.14 features by [King Borehaha](https://github.com/kingborehaha/)
 
 ###  Prerelease 0.14): 
 
