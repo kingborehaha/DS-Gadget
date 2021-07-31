@@ -39,9 +39,7 @@ namespace DS_Gadget
         {
             txtSoulLevel.Text = Hook.SoulLevel.ToString();
             nudHumanity.Value = Hook.Humanity;
-            nudHumanity.Text = Hook.Humanity.ToString();
             nudSouls.Value = Hook.Souls;
-            nudSouls.Text = Hook.Souls.ToString();
             try
             {
                 Updating = true;
@@ -65,19 +63,12 @@ namespace DS_Gadget
                     .FirstOrDefault(c => c.ID == Hook.Covenant);
             }
             nudCovChaos.Value = Hook.ChaosServantPoints;
-            nudCovChaos.Text = Hook.ChaosServantPoints.ToString();
             nudCovDarkmoon.Value = Hook.DarkmoonBladePoints;
-            nudCovDarkmoon.Text = Hook.DarkmoonBladePoints.ToString();
             nudCovDarkwraith.Value = Hook.DarkwraithPoints;
-            nudCovDarkwraith.Text = Hook.DarkwraithPoints.ToString();
             nudCovDragon.Value = Hook.PathOfTheDragonPoints;
-            nudCovDragon.Text = Hook.PathOfTheDragonPoints.ToString();
             nudCovForest.Value = Hook.ForestHunterPoints;
-            nudCovForest.Text = Hook.ForestHunterPoints.ToString();
             nudCovGravelord.Value = Hook.GravelordServantPoints;
-            nudCovGravelord.Text = Hook.GravelordServantPoints.ToString();
             nudCovSunlight.Value = Hook.WarriorOfSunlightPoints;
-            nudCovSunlight.Text = Hook.WarriorOfSunlightPoints.ToString();
         }
 
         private void RecalculateStats()
@@ -122,6 +113,25 @@ namespace DS_Gadget
                         LoadSavedStats();
                     }
                 }
+                if(nudHumanity.Text == "")
+                    nudHumanity.Text = Hook.Humanity.ToString();
+                if (nudSouls.Text == "")
+                    nudSouls.Text = Hook.Souls.ToString();
+                if (nudCovChaos.Text == "")
+                    nudCovChaos.Text = Hook.ChaosServantPoints.ToString();
+                if (nudCovDarkmoon.Text == "")
+                    nudCovDarkmoon.Text = Hook.DarkmoonBladePoints.ToString();
+                if (nudCovDarkwraith.Text == "")
+                    nudCovDarkwraith.Text = Hook.DarkwraithPoints.ToString();
+                if (nudCovForest.Text == "")
+                    nudCovForest.Text = Hook.ForestHunterPoints.ToString();
+                if (nudCovGravelord.Text == "")
+                    nudCovGravelord.Text = Hook.GravelordServantPoints.ToString();
+                if (nudCovDragon.Text == "")
+                    nudCovDragon.Text = Hook.PathOfTheDragonPoints.ToString();
+                if (nudCovSunlight.Text == "")
+                    nudCovSunlight.Text = Hook.WarriorOfSunlightPoints.ToString();
+
             }
             else
             {
