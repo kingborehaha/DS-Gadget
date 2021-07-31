@@ -240,6 +240,7 @@ namespace DS_Gadget
                 {
                     result = new DSBonfire(bonfireID, $"Unknown: {bonfireID}");
                     cbxBonfire.Items.Add(result);
+                    DSBonfire.All.Add(result);
                 }
                 cbxBonfire.SelectedItem = result;
             }
