@@ -113,14 +113,23 @@ namespace DS_Gadget
                         LoadSavedStats();
                     }
                 }
+                if(nudHumanity.Text == "")
                     nudHumanity.Text = Hook.Humanity.ToString();
+                if (nudSouls.Text == "")
                     nudSouls.Text = Hook.Souls.ToString();
+                if (nudCovChaos.Text == "")
                     nudCovChaos.Text = Hook.ChaosServantPoints.ToString();
+                if (nudCovDarkmoon.Text == "")
                     nudCovDarkmoon.Text = Hook.DarkmoonBladePoints.ToString();
+                if (nudCovDarkwraith.Text == "")
                     nudCovDarkwraith.Text = Hook.DarkwraithPoints.ToString();
+                if (nudCovForest.Text == "")
                     nudCovForest.Text = Hook.ForestHunterPoints.ToString();
+                if (nudCovGravelord.Text == "")
                     nudCovGravelord.Text = Hook.GravelordServantPoints.ToString();
+                if (nudCovDragon.Text == "")
                     nudCovDragon.Text = Hook.PathOfTheDragonPoints.ToString();
+                if (nudCovSunlight.Text == "")
                     nudCovSunlight.Text = Hook.WarriorOfSunlightPoints.ToString();
 
             }
