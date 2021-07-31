@@ -295,29 +295,73 @@ namespace DS_Gadget
             var stat = sender as System.Windows.Forms.NumericUpDown;
             switch (stat.Name)
             {
+                case "nudHumanity":
+                    SavedStats.Humanity = nudHumanity.Value;
+                    nudHumanity.Text = nudHumanity.Value.ToString();
+                    break;
+                case "nudSouls":
+                    SavedStats.Souls = nudSouls.Value;
+                    nudSouls.Text = nudSouls.Value.ToString();
+                    break;
                 case "nudVit":
-                    SavedStats.Vit = nudVit.Value;
+                    SavedStats.Vit = Clamp(nudVit.Value, 1, 99);
+                    nudVit.Text = SavedStats.Vit.Value.ToString();
                     break;
                 case "nudAtt":
-                    SavedStats.Att = nudAtt.Value;
+                    SavedStats.Att = Clamp(nudAtt.Value, 1, 99);
+                    nudAtt.Text = SavedStats.Att.Value.ToString();
                     break;
                 case "nudEnd":
-                    SavedStats.End = nudEnd.Value;
+                    SavedStats.End = Clamp(nudEnd.Value, 1, 99);
+                    nudEnd.Text = SavedStats.End.Value.ToString();
                     break;
                 case "nudStr":
-                    SavedStats.Str = nudStr.Value;
+                    SavedStats.Str = Clamp(nudStr.Value, 1, 99);
+                    nudStr.Text = SavedStats.Str.Value.ToString();
                     break;
                 case "nudDex":
-                    SavedStats.Dex = nudDex.Value;
+                    SavedStats.Dex = Clamp(nudDex.Value, 1, 99);
+                    nudDex.Text = SavedStats.Dex.Value.ToString();
                     break;
                 case "nudRes":
-                    SavedStats.Res = nudRes.Value;
+                    SavedStats.Res = Clamp(nudRes.Value, 1, 99);
+                    nudRes.Text = SavedStats.Res.Value.ToString();
                     break;
                 case "nudInt":
-                    SavedStats.Int = nudInt.Value;
+                    SavedStats.Int = Clamp(nudInt.Value, 1, 99);
+                    nudInt.Text = SavedStats.Int.Value.ToString();
                     break;
                 case "nudFth":
-                    SavedStats.Fth = nudFth.Value;
+                    SavedStats.Fth = Clamp(nudFth.Value, 1, 99);
+                    nudFth.Text = SavedStats.Fth.Value.ToString();
+                    break;
+                case "nudCovChaos":
+                    SavedStats.CovChaos = nudCovChaos.Value;
+                    nudCovChaos.Text = nudCovChaos.Value.ToString();
+                    break;
+                case "nudCovDarkmoon":
+                    SavedStats.CovDarkmoon = nudCovDarkmoon.Value;
+                    nudCovDarkmoon.Text = nudCovDarkmoon.Value.ToString();
+                    break;
+                case "nudCovDarkwraith":
+                    SavedStats.CovDarkwraith = nudCovDarkwraith.Value;
+                    nudCovDarkwraith.Text = nudCovDarkwraith.Value.ToString();
+                    break;
+                case "nudCovForest":
+                    SavedStats.CovForest = nudCovForest.Value;
+                    nudCovForest.Text = nudCovForest.Value.ToString();
+                    break;
+                case "nudCovGravelord":
+                    SavedStats.CovGravelord = nudCovGravelord.Value;
+                    nudCovGravelord.Text = nudCovGravelord.Value.ToString();
+                    break;
+                case "nudCovDragon":
+                    SavedStats.CovDragon = nudCovDragon.Value;
+                    nudCovDragon.Text = nudCovDragon.Value.ToString();
+                    break;
+                case "nudCovSunlight":
+                    SavedStats.CovSunlight = nudCovSunlight.Value;
+                    nudCovSunlight.Text = nudCovSunlight.Value.ToString();
                     break;
                 default:
                     break;
@@ -655,172 +699,102 @@ namespace DS_Gadget
                 if (e.KeyCode == System.Windows.Forms.Keys.Enter)
                 {
                     SaveStats(sender);
-                    var stat = sender as System.Windows.Forms.NumericUpDown;
-                    switch (stat.Name)
-                    {
-                        case "nudHumanity":
-                            SavedStats.Humanity = nudHumanity.Value;
-                            nudHumanity.Text = nudHumanity.Value.ToString();
-                            break;
-                        case "nudSouls":
-                            SavedStats.Souls = nudSouls.Value;
-                            nudSouls.Text = nudSouls.Value.ToString();
-                            break;
-                        case "nudVit":
-                            SavedStats.Vit = Clamp(nudVit.Value, 1, 99);
-                            nudVit.Text = SavedStats.Vit.Value.ToString();
-                            break;
-                        case "nudAtt":
-                            SavedStats.Att = Clamp(nudAtt.Value, 1, 99);
-                            nudAtt.Text = SavedStats.Att.Value.ToString();
-                            break;
-                        case "nudEnd":
-                            SavedStats.End = Clamp(nudEnd.Value, 1, 99);
-                            nudEnd.Text = SavedStats.End.Value.ToString();
-                            break;
-                        case "nudStr":
-                            SavedStats.Str = Clamp(nudStr.Value, 1, 99);
-                            nudStr.Text = SavedStats.Str.Value.ToString();
-                            break;
-                        case "nudDex":
-                            SavedStats.Dex = Clamp(nudDex.Value, 1, 99);
-                            nudDex.Text = SavedStats.Dex.Value.ToString();
-                            break;
-                        case "nudRes":
-                            SavedStats.Res = Clamp(nudRes.Value, 1, 99);
-                            nudRes.Text = SavedStats.Res.Value.ToString();
-                            break;
-                        case "nudInt":
-                            SavedStats.Int = Clamp(nudInt.Value, 1, 99);
-                            nudInt.Text = SavedStats.Int.Value.ToString();
-                            break;
-                        case "nudFth":
-                            SavedStats.Fth = Clamp(nudFth.Value, 1, 99);
-                            nudFth.Text = SavedStats.Fth.Value.ToString();
-                            break;
-                        case "nudCovChaos":
-                            SavedStats.CovChaos = nudCovChaos.Value;
-                            nudCovChaos.Text = nudCovChaos.Value.ToString();
-                            break;
-                        case "nudCovDarkmoon":
-                            SavedStats.CovDarkmoon = nudCovDarkmoon.Value;
-                            nudCovDarkmoon.Text = nudCovDarkmoon.Value.ToString();
-                            break;
-                        case "nudCovDarkwraith":
-                            SavedStats.CovDarkwraith = nudCovDarkwraith.Value;
-                            nudCovDarkwraith.Text = nudCovDarkwraith.Value.ToString();
-                            break;
-                        case "nudCovForest":
-                            SavedStats.CovForest = nudCovForest.Value;
-                            nudCovForest.Text = nudCovForest.Value.ToString();
-                            break;
-                        case "nudCovGravelord":
-                            SavedStats.CovGravelord = nudCovGravelord.Value;
-                            nudCovGravelord.Text = nudCovGravelord.Value.ToString();
-                            break;
-                        case "nudCovDragon":
-                            SavedStats.CovDragon = nudCovDragon.Value;
-                            nudCovDragon.Text = nudCovDragon.Value.ToString();
-                            break;
-                        case "nudCovSunlight":
-                            SavedStats.CovSunlight = nudCovSunlight.Value;
-                            nudCovSunlight.Text = nudCovSunlight.Value.ToString();
-                            break;
-                        default:
-                            break;
-                    }
-                    
                 }
 
                 if (e.KeyCode == System.Windows.Forms.Keys.Escape)
                 {
-                    var stat = sender as System.Windows.Forms.NumericUpDown;
-                    switch (stat.Name)
-                    {
-                        case "nudHumanity":
-                            nudHumanity.Value = 0;
-                            nudHumanity.Text = "";
-                            SavedStats.Humanity = null;
-                            break;
-                        case "nudSouls":
-                            nudSouls.Value = 0;
-                            nudSouls.Text = "";
-                            SavedStats.Souls = null;
-                            break;
-                        case "nudVit":
-                            nudVit.Value = 0;
-                            nudVit.Text = "";
-                            SavedStats.Vit = null;
-                            break;
-                        case "nudAtt":
-                            nudAtt.Value = 0;
-                            nudAtt.Text = "";
-                            SavedStats.Att = null;
-                            break;
-                        case "nudEnd":
-                            nudEnd.Value = 0;
-                            nudEnd.Text = "";
-                            SavedStats.End = null;
-                            break;
-                        case "nudStr":
-                            nudStr.Value = 0;
-                            nudStr.Text = "";
-                            SavedStats.Str = null;
-                            break;
-                        case "nudDex":
-                            nudDex.Value = 0;
-                            nudDex.Text = "";
-                            SavedStats.Dex = null;
-                            break;
-                        case "nudRes":
-                            nudRes.Value = 0;
-                            nudRes.Text = "";
-                            SavedStats.Res = null;
-                            break;
-                        case "nudInt":
-                            nudInt.Value = 0;
-                            nudInt.Text = "";
-                            SavedStats.Int = null;
-                            break;
-                        case "nudFth":
-                            nudFth.Value = 0;
-                            nudFth.Text = "";
-                            SavedStats.Fth = null;
-                            break;
-                        case "nudCovChaos":
-                            nudCovChaos.Text = "";
-                            SavedStats.CovChaos = null;
-                            break;
-                        case "nudCovDarkmoon":
-                            nudCovDarkmoon.Text = "";
-                            SavedStats.CovDarkmoon = null;
-                            break;
-                        case "nudCovDarkwraith":
-                            nudCovDarkwraith.Text = "";
-                            SavedStats.CovDarkwraith = null;
-                            break;
-                        case "nudCovForest":
-                            nudCovForest.Text = "";
-                            SavedStats.CovForest = null;
-                            break;
-                        case "nudCovGravelord":
-                            nudCovGravelord.Text = "";
-                            SavedStats.CovGravelord = null;
-                            break;
-                        case "nudCovDragon":
-                            nudCovDragon.Text = "";
-                            SavedStats.CovDragon = null;
-                            break;
-                        case "nudCovSunlight":
-                            nudCovSunlight.Text = "";
-                            SavedStats.CovSunlight = null;
-                            break;
-                        default:
-                            break;
-                    }
+                    NullStat(sender);
                 }
             }
 
+        }
+
+        private void NullStat(object sender)
+        {
+            var stat = sender as System.Windows.Forms.NumericUpDown;
+            switch (stat.Name)
+            {
+                case "nudHumanity":
+                    nudHumanity.Value = 0;
+                    nudHumanity.Text = "";
+                    SavedStats.Humanity = null;
+                    break;
+                case "nudSouls":
+                    nudSouls.Value = 0;
+                    nudSouls.Text = "";
+                    SavedStats.Souls = null;
+                    break;
+                case "nudVit":
+                    nudVit.Value = 0;
+                    nudVit.Text = "";
+                    SavedStats.Vit = null;
+                    break;
+                case "nudAtt":
+                    nudAtt.Value = 0;
+                    nudAtt.Text = "";
+                    SavedStats.Att = null;
+                    break;
+                case "nudEnd":
+                    nudEnd.Value = 0;
+                    nudEnd.Text = "";
+                    SavedStats.End = null;
+                    break;
+                case "nudStr":
+                    nudStr.Value = 0;
+                    nudStr.Text = "";
+                    SavedStats.Str = null;
+                    break;
+                case "nudDex":
+                    nudDex.Value = 0;
+                    nudDex.Text = "";
+                    SavedStats.Dex = null;
+                    break;
+                case "nudRes":
+                    nudRes.Value = 0;
+                    nudRes.Text = "";
+                    SavedStats.Res = null;
+                    break;
+                case "nudInt":
+                    nudInt.Value = 0;
+                    nudInt.Text = "";
+                    SavedStats.Int = null;
+                    break;
+                case "nudFth":
+                    nudFth.Value = 0;
+                    nudFth.Text = "";
+                    SavedStats.Fth = null;
+                    break;
+                case "nudCovChaos":
+                    nudCovChaos.Text = "";
+                    SavedStats.CovChaos = null;
+                    break;
+                case "nudCovDarkmoon":
+                    nudCovDarkmoon.Text = "";
+                    SavedStats.CovDarkmoon = null;
+                    break;
+                case "nudCovDarkwraith":
+                    nudCovDarkwraith.Text = "";
+                    SavedStats.CovDarkwraith = null;
+                    break;
+                case "nudCovForest":
+                    nudCovForest.Text = "";
+                    SavedStats.CovForest = null;
+                    break;
+                case "nudCovGravelord":
+                    nudCovGravelord.Text = "";
+                    SavedStats.CovGravelord = null;
+                    break;
+                case "nudCovDragon":
+                    nudCovDragon.Text = "";
+                    SavedStats.CovDragon = null;
+                    break;
+                case "nudCovSunlight":
+                    nudCovSunlight.Text = "";
+                    SavedStats.CovSunlight = null;
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void txtName_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
@@ -842,29 +816,34 @@ namespace DS_Gadget
             {
                 if (e.KeyCode == System.Windows.Forms.Keys.Escape)
                 {
-                    var cmb = sender as System.Windows.Forms.ComboBox;
-                    switch (cmb.Name)
-                    {
-                        case "cmbSex":
-                            cmbSex.SelectedIndex = -1;
-                            SavedStats.Sex = null;
-                            break;
-                        case "cmbClass":
-                            cmbClass.SelectedIndex = -1;
-                            SavedStats.Class = null;
-                            break;
-                        case "cmbPhysique":
-                            cmbPhysique.SelectedIndex = -1;
-                            SavedStats.Physique = null;
-                            break;
-                        case "cmbCovenant":
-                            cmbCovenant.SelectedIndex = -1;
-                            SavedStats.Covenant = null;
-                            break;
-                        default:
-                            break;
-                    }
+                    cmbNull(sender);
                 }
+            }
+        }
+
+        private void cmbNull(object sender)
+        {
+            var cmb = sender as System.Windows.Forms.ComboBox;
+            switch (cmb.Name)
+            {
+                case "cmbSex":
+                    cmbSex.SelectedIndex = -1;
+                    SavedStats.Sex = null;
+                    break;
+                case "cmbClass":
+                    cmbClass.SelectedIndex = -1;
+                    SavedStats.Class = null;
+                    break;
+                case "cmbPhysique":
+                    cmbPhysique.SelectedIndex = -1;
+                    SavedStats.Physique = null;
+                    break;
+                case "cmbCovenant":
+                    cmbCovenant.SelectedIndex = -1;
+                    SavedStats.Covenant = null;
+                    break;
+                default:
+                    break;
             }
         }
     }
