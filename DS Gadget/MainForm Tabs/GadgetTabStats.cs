@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Forms;
 
 namespace DS_Gadget
 {
@@ -15,7 +13,6 @@ namespace DS_Gadget
         public override void InitTab(MainForm parent)
         {
             base.InitTab(parent);
-            MakeDict();
             foreach (DSSex sex in DSSex.All)
                 cmbSex.Items.Add(sex);
             foreach (DSClass charClass in DSClass.All)
@@ -293,39 +290,9 @@ namespace DS_Gadget
             }
         }
 
-        private Dictionary<string, Action<decimal?>> SaveDict = new Dictionary<string, Action<decimal?>>();
-
-        private void MakeDict()
-        {
-            SaveDict.Add(nudHumanity.Name, val => { SavedStats.Humanity = (decimal)val; });
-            SaveDict.Add(nudSouls.Name, val => { SavedStats.Souls = (decimal)val; });
-            SaveDict.Add(nudVit.Name, val => { SavedStats.Vit = (decimal)val; });
-            SaveDict.Add(nudAtt.Name, val => { SavedStats.Att = (decimal)val; });
-            SaveDict.Add(nudEnd.Name, val => { SavedStats.End = (decimal)val; });
-            SaveDict.Add(nudStr.Name, val => { SavedStats.Str = (decimal)val; });
-            SaveDict.Add(nudDex.Name, val => { SavedStats.Dex = (decimal)val; });
-            SaveDict.Add(nudRes.Name, val => { SavedStats.Res = (decimal)val; });
-            SaveDict.Add(nudInt.Name, val => { SavedStats.Int = (decimal)val; });
-            SaveDict.Add(nudFth.Name, val => { SavedStats.Fth = (decimal)val; });
-            SaveDict.Add(nudCovChaos.Name, val => { SavedStats.CovChaos = (decimal)val; });
-            SaveDict.Add(nudCovDarkmoon.Name, val => { SavedStats.CovDarkmoon = (decimal)val; });
-            SaveDict.Add(nudCovDarkwraith.Name, val => { SavedStats.CovDarkwraith = (decimal)val; });
-            SaveDict.Add(nudCovForest.Name, val => { SavedStats.CovForest = (decimal)val; });
-            SaveDict.Add(nudCovGravelord.Name, val => { SavedStats.CovGravelord = (decimal)val; });
-            SaveDict.Add(nudCovDragon.Name, val => { SavedStats.CovDragon = (decimal)val; });
-            SaveDict.Add(nudCovSunlight.Name, val => { SavedStats.CovSunlight = (decimal)val; });
-        }
-
         private void SaveStats(object sender)
         {
-            var nud = sender as NumericUpDown;
-            SaveDict[nud.Name].Invoke(nud.Value);
-            nud.Text = nud.Value.ToString();
-        }
-
-        private void SaveStatsOld(object sender)
-        {
-            var stat = sender as NumericUpDown;
+            var stat = sender as System.Windows.Forms.NumericUpDown;
             switch (stat.Name)
             {
                 case "nudHumanity":
