@@ -743,11 +743,11 @@
             // 
             this.cbxLoad.AutoSize = true;
             this.cbxLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxLoad.Location = new System.Drawing.Point(10, 565);
+            this.cbxLoad.Location = new System.Drawing.Point(9, 579);
             this.cbxLoad.Name = "cbxLoad";
-            this.cbxLoad.Size = new System.Drawing.Size(208, 17);
+            this.cbxLoad.Size = new System.Drawing.Size(163, 17);
             this.cbxLoad.TabIndex = 51;
-            this.cbxLoad.Text = "Apply changed stats on character load";
+            this.cbxLoad.Text = "Apply Changes After Loading";
             this.cbxLoad.UseVisualStyleBackColor = true;
             // 
             // groupBox1
