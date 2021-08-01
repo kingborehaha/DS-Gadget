@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace DS_Gadget
 {
@@ -14,12 +12,36 @@ namespace DS_Gadget
 
         public int TeamType { get; set; }
 
-        public TeamConfig(string name, int chrType, int teamType)
+        public TeamConfig()
         {
-            Name = name;
-            ChrType = chrType;
-            TeamType = teamType;
+            Name = null;
+            ChrType = 0;
+            TeamType = 1;
         }
 
+        public TeamConfig(string config)
+        {
+            var configEntry = configEntryRx.Match(config);
+            Name = configEntry.Groups["name"].Value;
+            ChrType = Convert.ToInt32(configEntry.Groups["chr"].Value);
+            TeamType = Convert.ToInt32(configEntry.Groups["team"].Value);
+        }
+
+        private static Regex configEntryRx = new Regex(@"^(?<chr>\S+) (?<team>\S+) (?<name>.+)$");
+
+        public static List<TeamConfig> GetConfigs()
+        {
+            var teamConfig = new List<TeamConfig>();
+            teamConfig.Add(new TeamConfig());
+            foreach (string line in GetTxtResourceClass.RegexSplit(GetTxtResourceClass.GetTxtResource("Resources/Systems/TeamConfigs.txt"), "[\r\n]+"))
+            {
+                if (GetTxtResourceClass.IsValidTxtResource(line)) //determine if line is a valid resource or not
+                {
+                    teamConfig.Add(new TeamConfig(line));
+                }
+            };
+
+            return teamConfig;
+        }
     }
 }

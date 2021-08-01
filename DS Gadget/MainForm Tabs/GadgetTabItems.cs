@@ -28,6 +28,8 @@ namespace DS_Gadget
             foreach (DSItem item in category.Items)
                 lbxItems.Items.Add(item);
             lbxItems.SelectedIndex = 0;
+            searchBox.Text = "";
+            lblSearch.Visible = true;
         }
 
         private void searchBox_TextChanged(object sender, EventArgs e)
@@ -72,6 +74,10 @@ namespace DS_Gadget
         {
             DSInfusion infusion = cmbInfusion.SelectedItem as DSInfusion;
             nudUpgrade.Maximum = infusion.MaxUpgrade;
+            if (maxUpgrade.Checked)
+            {
+                nudUpgrade.Value = nudUpgrade.Maximum;
+            }
         }
 
         private void lbxItems_SelectedIndexChanged(object sender, EventArgs e)

@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml;
-using System.Xml.Serialization;
 
 namespace DS_Gadget
 {
@@ -23,11 +20,7 @@ namespace DS_Gadget
 
         private List<SavedPos> Positions = new List<SavedPos>();
 
-        private XmlSerializer XML = new XmlSerializer(typeof(List<SavedPos>));
-
-        private string SavedPositions = "Resources/SavedPositions.xml";
-
-        private List<TeamConfig> TeamConfig = new List<TeamConfig>();
+        private List<TeamConfig> SavedConfigs;
 
         public override void InitTab(MainForm parent)
         {
@@ -37,37 +30,19 @@ namespace DS_Gadget
             foreach (DSBonfire bonfire in DSBonfire.All)
                 cbxBonfire.Items.Add(bonfire);
             nudSpeed.Value = Settings.Speed;
-            if (File.Exists(SavedPositions))
+            Positions = SavedPos.GetSavedPositions();
+            UpdatePositions();
+            SavedConfigs = TeamConfig.GetConfigs();
+            foreach (var item in SavedConfigs)
             {
-                using (var stream = new FileStream(SavedPositions, FileMode.Open))
-                {
-                    Positions = (List<SavedPos>)XML.Deserialize(stream);
-                }
-                UpdatePositions();
+                cmbTeamConfig.Items.Add(item);
             }
-            GetConfigs();
 
         }
 
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
-            cbxBonfire.Items.Clear();
-            foreach (DSBonfire bonfire in DSBonfire.All)
-            {
-                if (bonfire.ToString().ToLower().Contains(searchBox.Text.ToLower()))
-                {
-                    cbxBonfire.Items.Add(bonfire);
-                }
-
-            }
-
-            if (cbxBonfire.Items.Count > 0)
-                cbxBonfire.SelectedIndex = 0;
-
-            if (searchBox.Text == "")
-                lblSearch.Visible = true;
-            else
-                lblSearch.Visible = false;
+            FilterBonfires();
         }
 
         private void searchBox_Click(object sender, EventArgs e)
@@ -145,23 +120,7 @@ namespace DS_Gadget
             }
         }
 
-        public void GetConfigs()
-        {
-            TeamConfig.Add(new TeamConfig(null, 0, 1));
-            foreach (string line in GetTxtResourceClass.RegexSplit(GetTxtResourceClass.GetTxtResource("Resources/Systems/TeamConfigs.txt"), "[\r\n]+"))
-            {
-                if (GetTxtResourceClass.IsValidTxtResource(line)) //determine if line is a valid resource or not
-                {
-                    var cfg = GetTxtResourceClass.RegexSplit(line, " ");
-                    TeamConfig.Add(new TeamConfig(cfg[0], int.Parse(cfg[1]), int.Parse(cfg[2])));
-                }
-            };
-
-            foreach (var item in TeamConfig)
-            {
-                cmbTeamConfig.Items.Add(item);
-            }
-        }
+        
 
         public void EnableStats(bool enable)
         {
@@ -187,21 +146,6 @@ namespace DS_Gadget
                 }
             }
 
-        }
-
-        public void Save()
-        {
-            Positions.Sort();
-            using (FileStream stream = new FileStream(SavedPositions, FileMode.Create))
-            {
-                XML.Serialize(stream, Positions);
-            }
-            XmlDocument doc = new XmlDocument();
-            doc.Load(SavedPositions);
-            XmlComment info = doc.CreateComment("Comments denote following value types. FollowCam is a byte array for camera data.");
-            XmlElement root = doc.DocumentElement;
-            doc.InsertBefore(info, root);
-            doc.Save(SavedPositions);
         }
 
         public override void ResetTab()
@@ -240,6 +184,48 @@ namespace DS_Gadget
                 Hook.SetSpeed((float)nudSpeed.Value);
         }
 
+
+        private void FilterBonfires()
+        {
+            ClearLastCurrentBonfire();
+            cbxBonfire.Items.Clear();
+            cbxBonfire.SelectedItem = null;
+            foreach (DSBonfire bonfire in DSBonfire.All)
+            {
+                if (bonfire.ToString().ToLower().Contains(searchBox.Text.ToLower()))
+                {
+                    cbxBonfire.Items.Add(bonfire);
+                }
+            }
+            /*
+            //if no bonfires in list, display None
+            if (cbxBonfire.Items.Count < 1)
+                cbxBonfire.Items.Add(DSBonfire.All[0]);
+            
+            cbxBonfire.SelectedIndex = 0;
+            */
+
+            if (searchBox.Text == "")
+                lblSearch.Visible = true;
+            else
+                lblSearch.Visible = false;
+        }
+
+        private DSBonfire lastCurrentBonfire;
+
+        private void ClearLastCurrentBonfire()
+        {
+            //remove "Current: " from last current bonfire
+            if (lastCurrentBonfire != null)
+            {
+                if (lastCurrentBonfire.Name.Contains("Current: "))
+                {
+                    lastCurrentBonfire.Name = lastCurrentBonfire.Name.Remove(0, 9); //remove "Current: " from label
+                }
+                lastCurrentBonfire = null;
+            }
+        }
+
         public override void UpdateTab()
         {
             nudHealth.Value = Hook.Health;
@@ -269,17 +255,39 @@ namespace DS_Gadget
 
             cbxDeathCam.Checked = Hook.DeathCam;
 
+
+            //manage unknown warps and current warps that are not in filter
+            //
             int bonfireID = Hook.LastBonfire;
-            if (!cbxBonfire.DroppedDown && bonfireID != (cbxBonfire.SelectedItem as DSBonfire)?.ID)
+            if (!cbxBonfire.DroppedDown && bonfireID != (cbxBonfire.SelectedItem as DSBonfire)?.ID) //check if dropdown not active AND last bonfire is not selected bonfire
             {
-                DSBonfire result = cbxBonfire.Items.Cast<DSBonfire>().FirstOrDefault(b => b.ID == bonfireID);
+
+                FilterBonfires();
+
+                DSBonfire result = cbxBonfire.Items.Cast<DSBonfire>().FirstOrDefault(b => b.ID == bonfireID); //check if bonfire in filtered list
                 if (result == null)
                 {
-                    result = new DSBonfire(bonfireID, $"Unknown: {bonfireID}");
-                    cbxBonfire.Items.Add(result);
+                    //target warp is not in filter
+                    result = DSBonfire.All.FirstOrDefault(b => b.ID == bonfireID); //check if warp is in bonfire resource
+                    if (result == null)
+                    {
+                        //bonfire not in filter. Add to filter as unknown
+                        result = new DSBonfire(bonfireID, $"Unknown {bonfireID}");
+                        cbxBonfire.Items.Add(result);
+                        DSBonfire.All.Add(result);
+                    }
+                    else
+                    {
+                        //bonfire in list, but not in filter. add "Current: " to label and add to filter
+                        result.Name = "Current: " + result.Name;
+                        cbxBonfire.Items.Add(result);
+                        lastCurrentBonfire = result; //set last current bonfire
+                    }
                 }
                 cbxBonfire.SelectedItem = result;
             }
+            //
+
 
             // Backstabbing resets speed, so reapply it 24/7
             if (cbxSpeed.Checked)
@@ -304,7 +312,7 @@ namespace DS_Gadget
                 pos.PlayerState = playerState;
                 ProcessSavedPos(pos);
                 UpdatePositions();
-                Save();
+                SavedPos.Save(Positions);
             }
             
         }
@@ -336,7 +344,7 @@ namespace DS_Gadget
                     Positions.Remove(old);
                     storedPositions.SelectedIndex = 0;
                     UpdatePositions();
-                    Save();
+                    SavedPos.Save(Positions);
                 }
                     
             }
@@ -437,7 +445,6 @@ namespace DS_Gadget
         private void btnPosStore_Click(object sender, EventArgs e)
         {
             StorePosition();
-
         }
 
         private void btnPosRestore_Click(object sender, EventArgs e)
@@ -462,7 +469,23 @@ namespace DS_Gadget
 
         private void cbxBonfire_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            //if no items in bonfire list, add "None -1" to list and select
+            if (cbxBonfire.Items.Count < 1)
+            {
+                cbxBonfire.Items.Add(DSBonfire.All[0]);
+                cbxBonfire.SelectedIndex = 0;
+            }
+
             DSBonfire bonfire = cbxBonfire.SelectedItem as DSBonfire;
+
+            //re-filter bonfire list if lastCurrentBonfire was set and it is not currently selected bonfire
+            if (lastCurrentBonfire != null && lastCurrentBonfire != bonfire)
+            {
+                FilterBonfires();
+            };
+
+            //hook warp entityID
             Hook.LastBonfire = bonfire.ID;
         }
 
