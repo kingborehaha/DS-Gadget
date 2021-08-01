@@ -48,6 +48,10 @@ namespace DS_Gadget
             if (cbxBonfire.Items.Count < 1) 
                 cbxBonfire.Items.Add(DSBonfire.All[0]);
             cbxBonfire.SelectedIndex = 0; //select first index in bonfire list
+            if (searchBox.Text == "")
+                lblSearch.Visible = true;
+            else
+                lblSearch.Visible = false;
         }
 
         private void searchBox_Click(object sender, EventArgs e)
@@ -202,18 +206,6 @@ namespace DS_Gadget
                     cbxBonfire.Items.Add(bonfire);
                 }
             }
-            /*
-            //if no bonfires in list, display None
-            if (cbxBonfire.Items.Count < 1)
-                cbxBonfire.Items.Add(DSBonfire.All[0]);
-            
-            cbxBonfire.SelectedIndex = 0;
-            */
-
-            if (searchBox.Text == "")
-                lblSearch.Visible = true;
-            else
-                lblSearch.Visible = false;
         }
 
         private DSBonfire lastCurrentBonfire;
