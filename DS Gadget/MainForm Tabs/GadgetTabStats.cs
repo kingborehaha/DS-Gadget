@@ -164,9 +164,7 @@ namespace DS_Gadget
             }
         }
 
-        /// <summary>
-        /// Checks if the nuds value is null or not. Loads correct value if it is, and saves correct value if it isn't. Prevents numbers not showing up and not saving
-        /// </summary>
+        // Checks if the nuds value is null or not. Loads correct value if it is, and saves correct value if it isn't. Prevents numbers not showing up and not saving
         private void CheckTextChange()
         {
             if (nudHumanity.Text == "")
@@ -352,10 +350,7 @@ namespace DS_Gadget
 
         private Dictionary<string, Action<decimal?>> StatsDict = new Dictionary<string, Action<decimal?>>();
         
-        /// <summary>
-        /// Takes Sender as NumericUpDown and retrieves set Action from StatsDict
-        /// </summary>
-        /// <param name="sender"></param>
+        // Takes Sender as NumericUpDown and retrieves set Action from StatsDict
         private void SaveStats(object sender)
         {
             var nud = sender as NumericUpDown;
@@ -381,6 +376,7 @@ namespace DS_Gadget
             }
         }
 
+        //Dictionary that contains all of the Nuds and their corresponding Hook property (Except stats, as they are handled by their own method)
         private Dictionary<string, Action<int>> NudDict = new Dictionary<string, Action<int>>();
 
         private void nud_ValueChanged(object sender, EventArgs e)
@@ -404,6 +400,7 @@ namespace DS_Gadget
             return (value < min) ? min : (value > max) ? max : value;
         }
 
+        //Check each saved stat if it's null and load them if they aren't
         private void LoadSavedStats()
         {
             if (Hook.Loaded)
@@ -538,9 +535,7 @@ namespace DS_Gadget
 
         }
 
-        /// <summary>
-        /// Resets all values on page to a blank state
-        /// </summary>
+        // Resets all values on page to a blank state in order of the SavedStats class
         private void ResetPage()
         {
             txtName.Text = null;
@@ -548,24 +543,24 @@ namespace DS_Gadget
             NullCMB(cmbSex);
             NullCMB(cmbClass);
             NullCMB(cmbPhysique);
-            NullStat(nudHumanity);
-            NullStat(nudSouls);
-            NullStat(nudVit);
-            NullStat(nudAtt);
-            NullStat(nudEnd);
-            NullStat(nudStr);
-            NullStat(nudDex);
-            NullStat(nudRes);
-            NullStat(nudInt);
-            NullStat(nudFth);
+            NullNUD(nudHumanity);
+            NullNUD(nudSouls);
+            NullNUD(nudVit);
+            NullNUD(nudAtt);
+            NullNUD(nudEnd);
+            NullNUD(nudStr);
+            NullNUD(nudDex);
+            NullNUD(nudRes);
+            NullNUD(nudInt);
+            NullNUD(nudFth);
             NullCMB(cmbCovenant);
-            NullStat(nudCovChaos);
-            NullStat(nudCovDarkmoon);
-            NullStat(nudCovDarkwraith);
-            NullStat(nudCovForest);
-            NullStat(nudCovGravelord);
-            NullStat(nudCovDragon);
-            NullStat(nudCovSunlight);
+            NullNUD(nudCovChaos);
+            NullNUD(nudCovDarkmoon);
+            NullNUD(nudCovDarkwraith);
+            NullNUD(nudCovForest);
+            NullNUD(nudCovGravelord);
+            NullNUD(nudCovDragon);
+            NullNUD(nudCovSunlight);
         }
 
         
@@ -582,17 +577,14 @@ namespace DS_Gadget
                 //If Escape Null stats
                 if (e.KeyCode == Keys.Escape)
                 {
-                    NullStat(sender);
+                    NullNUD(sender);
                 }
             }
 
         }
 
-        /// <summary>
-        /// Null Stats based on sender name
-        /// </summary>
-        /// <param name="sender"></param>
-        private void NullStat(object sender)
+        //Switch that nulls out nuds and their associated SavedStat
+        private void NullNUD(object sender)
         {
             var stat = sender as NumericUpDown;
             switch (stat.Name)
@@ -712,6 +704,7 @@ namespace DS_Gadget
             }
         }
 
+        //Switch that nulls out combo boxes and their associated SavedStat
         private void NullCMB(object sender)
         {
             var cmb = sender as ComboBox;

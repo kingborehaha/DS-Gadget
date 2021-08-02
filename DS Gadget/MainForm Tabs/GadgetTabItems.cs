@@ -32,6 +32,7 @@ namespace DS_Gadget
             lblSearch.Visible = true;
         }
 
+        //Clear items and add the ones that match text in search box
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
             lbxItems.Items.Clear();
@@ -48,6 +49,12 @@ namespace DS_Gadget
             if (lbxItems.Items.Count > 0)
                 lbxItems.SelectedIndex = 0;
 
+            HandleSearchLable();
+        }
+
+        //Handles the "Searching..." label on the text box
+        private void HandleSearchLable()
+        {
             if (searchBox.Text == "")
                 lblSearch.Visible = true;
             else
@@ -74,6 +81,7 @@ namespace DS_Gadget
         {
             DSInfusion infusion = cmbInfusion.SelectedItem as DSInfusion;
             nudUpgrade.Maximum = infusion.MaxUpgrade;
+            //Checks if maxUpgrade is checked and sets the value to max value
             if (maxUpgrade.Checked)
             {
                 nudUpgrade.Value = nudUpgrade.Maximum;
@@ -142,6 +150,7 @@ namespace DS_Gadget
                     break;
             }
 
+            //Checks if maxUpgrade is checked and sets the value to max value
             if (maxUpgrade.Checked)
             {
                 nudUpgrade.Value = nudUpgrade.Maximum;
@@ -159,14 +168,18 @@ namespace DS_Gadget
             CreateItem();
         }
 
+        //I think this is for safety so you don't spawn two items (not my code) - Nord
         private void lbxItems_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+            _ = ChangeColor(Color.DarkGray);
             CreateItem();
         }
 
+        //Apply hair to currently loaded character
         public void CreateItem()
         {
-            if (btnCreate.Enabled)
+            //Check if the button is enabled and the selected item isn't null
+            if (btnCreate.Enabled && lbxItems.SelectedItem != null)
             {
                 _ = ChangeColor(Color.DarkGray);
                 DSItemCategory category = cmbCategory.SelectedItem as DSItemCategory;
@@ -185,56 +198,58 @@ namespace DS_Gadget
             }
         }
 
+        //Give focus and select all
         private void searchBox_Click(object sender, EventArgs e)
         {
             searchBox.SelectAll();
             searchBox.Focus();
         }
 
-        private void KeyDownListbox(KeyEventArgs e)
+        //handles up and down scrolling
+        private void ScrollListbox(KeyEventArgs e)
         {
+            //Scroll down through Items listbox and go back to bottom at end
+            if (e.KeyCode == Keys.Up)
+            {
+                e.Handled = true;//Do not pass keypress along
+                //Check is there's still items to go through
+                if (lbxItems.SelectedIndex > 0)
+                {
+                    lbxItems.SelectedIndex -= 1;
+                    return;
+                }
+
+                //Check if last item or "over" for safety
+                if (lbxItems.SelectedIndex <= 0)
+                {
+                    lbxItems.SelectedIndex = lbxItems.Items.Count - 1; //-1 because Selected Index is 0 based and Count isn't
+                    return;
+                }
+            }
+
+            //Scroll down through Items listbox and go back to top at end
             if (e.KeyCode == Keys.Down)
             {
-                e.Handled = true;
-
-                if (lbxItems.SelectedIndex < lbxItems.Items.Count - 1)
+                e.Handled = true;//Do not pass keypress along
+                //Check is there's still items to go through
+                if (lbxItems.SelectedIndex < lbxItems.Items.Count - 1) //-1 because Selected Index is 0 based and Count isn't
                 {
                     lbxItems.SelectedIndex += 1;
                     return;
                 }
 
-                if (lbxItems.SelectedIndex >= lbxItems.Items.Count - 1)
+                //Check if last item or "over" for safety
+                if (lbxItems.SelectedIndex >= lbxItems.Items.Count - 1) //-1 because Selected Index is 0 based and Count isn't
                 {
                     lbxItems.SelectedIndex = 0;
                     return;
                 }
             }
 
-            if (e.KeyCode == Keys.Up)
-            {
-                e.Handled = true;
 
-                if (lbxItems.SelectedIndex == 0)
-                {
-                    lbxItems.SelectedIndex = lbxItems.Items.Count - 1;
-                    return;
-                }
-
-                if (lbxItems.SelectedIndex != 0)
-                {
-                    lbxItems.SelectedIndex -= 1;
-                    return;
-                }
-            }
-
-            if (e.KeyCode == Keys.Enter)
-            {
-                e.Handled = true;
-                CreateItem();
-                return;
-            }
         }
 
+        //Changes the color of the Apply button
         private async Task ChangeColor(Color new_color)
         {
             btnCreate.BackColor = new_color;
@@ -244,23 +259,36 @@ namespace DS_Gadget
             btnCreate.BackColor = default(Color);
         }
 
+        //handles escape
         private void KeyPressed(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
+            {
                 searchBox.Clear();
+                return;
+            }
 
-            if (lbxItems.Items.Count > 0)
-                KeyDownListbox(e);
+            //Create selected index as item
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true; //Do not pass keypress along
+                CreateItem();
+                return;
+            }
 
             if (lbxItems.Items.Count == 0)
             {
                 if (e.KeyCode == Keys.Up)
-                    e.Handled = true;
+                    e.Handled = true; //Do not pass keypress along
                 if (e.KeyCode == Keys.Down)
-                    e.Handled = true;
+                    e.Handled = true; //Do not pass keypress along
+                return;
             }
+
+            ScrollListbox(e);
         }
 
+        //Select number in nud
         private void nudUpgrade_Click(object sender, EventArgs e)
         {
             nudUpgrade.Select(0, nudUpgrade.Text.Length);
