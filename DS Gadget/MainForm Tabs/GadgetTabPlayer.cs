@@ -480,7 +480,7 @@ namespace DS_Gadget
 
                     //set lastSetBonfire info
                     lastSetBonfire.ID = result.ID;
-                    lastSetBonfire.Name = "Last Warp: " + result.Name;
+                    lastSetBonfire.Name = "Last Set: " + result.Name;
 
                     cbxBonfire.Items.Add(lastSetBonfire); //add to end of filter
 
