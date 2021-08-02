@@ -450,10 +450,12 @@ namespace DS_Gadget
 
         private void cbxBonfire_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DSBonfire bonfire = cbxBonfire.SelectedItem as DSBonfire;
-
-            //hook warp entityID
-            Hook.LastBonfire = bonfire.ID;
+            if (btnBonfireWarp.Enabled)
+            {
+                DSBonfire bonfire = cbxBonfire.SelectedItem as DSBonfire;
+                //hook warp entityID
+                Hook.LastBonfire = bonfire.ID;
+            }
         }
 
         private void btnBonfireWarp_Click(object sender, EventArgs e)
