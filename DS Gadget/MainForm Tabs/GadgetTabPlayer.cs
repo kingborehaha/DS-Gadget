@@ -132,6 +132,8 @@ namespace DS_Gadget
             btnBonfireWarp.Enabled = enable;
             btnPosRestore.Enabled = enable;
             btnPosStore.Enabled = enable;
+            if (enable)
+                AddLastSetBonfire();
         }
 
         private void UpdatePositions()
@@ -264,21 +266,7 @@ namespace DS_Gadget
                     }
                 }
 
-                //set last set bonfire, add to filter
-                if (lastSetBonfire.ID != bonfireID)
-                {
-                    cbxBonfire.Items.Remove(lastSetBonfire); //remove from filter (if there)
-
-                    //set lastSetBonfire info
-                    lastSetBonfire.ID = result.ID;
-                    lastSetBonfire.Name = "Last Set: " + result.Name;
-
-                    cbxBonfire.Items.Add(lastSetBonfire); //add to end of filter
-
-                    cbxBonfire.SelectedItem = lastSetBonfire;
-                }
-                else
-                    cbxBonfire.SelectedItem = result;
+                
             }
             //
 
@@ -474,7 +462,33 @@ namespace DS_Gadget
             {
                 _ = ChangeColor(Color.DarkGray);
                 Hook.BonfireWarp();
+                AddLastSetBonfire();
             }
+        }
+
+        private void AddLastSetBonfire()
+        {
+            int bonfireID = Hook.LastBonfire;
+            DSBonfire result = cbxBonfire.Items.Cast<DSBonfire>().FirstOrDefault(b => b.ID == bonfireID);
+            if (result != null)
+            {
+                if (lastSetBonfire.ID != bonfireID)
+                {
+                    cbxBonfire.Items.Remove(lastSetBonfire); //remove from filter (if there)
+
+                    //set lastSetBonfire info
+                    lastSetBonfire.ID = result.ID;
+                    lastSetBonfire.Name = "Last Set: " + result.Name;
+
+                    cbxBonfire.Items.Add(lastSetBonfire); //add to end of filter
+
+                    cbxBonfire.SelectedItem = lastSetBonfire;
+                }
+                else
+                    cbxBonfire.SelectedItem = result;
+            }
+            //set last set bonfire, add to filter
+            
         }
 
         private void cbxSpeed_CheckedChanged(object sender, EventArgs e)
