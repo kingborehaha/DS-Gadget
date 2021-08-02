@@ -43,11 +43,6 @@ namespace DS_Gadget
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
             FilterBonfires();
-
-            //if no items in bonfire list, add "None -1" to list and select
-            if (cbxBonfire.Items.Count < 1) 
-                cbxBonfire.Items.Add(DSBonfire.All[0]);
-            cbxBonfire.SelectedIndex = 0; //select first index in bonfire list
         }
 
         private void searchBox_Click(object sender, EventArgs e)
