@@ -144,7 +144,6 @@ namespace DS_Gadget
         {
             if (enable)
             {
-                CheckTextChange();
 
                 if (cbxLoad.Checked)
                 {
@@ -154,6 +153,7 @@ namespace DS_Gadget
                         LoadSavedStats();
                     }
                 }
+                CheckTextChange();
             }
             else
             {
@@ -561,6 +561,7 @@ namespace DS_Gadget
             NullNUD(nudCovGravelord);
             NullNUD(nudCovDragon);
             NullNUD(nudCovSunlight);
+            SavedStats = new SavedStats();
         }
 
         
@@ -648,30 +649,37 @@ namespace DS_Gadget
                     SavedStats.Fth = null;
                     break;
                 case "nudCovChaos":
+                    nudCovChaos.Value = 0;
                     nudCovChaos.Text = "";
                     SavedStats.CovChaos = null;
                     break;
                 case "nudCovDarkmoon":
+                    nudCovDarkmoon.Value = 0;
                     nudCovDarkmoon.Text = "";
                     SavedStats.CovDarkmoon = null;
                     break;
                 case "nudCovDarkwraith":
+                    nudCovDarkwraith.Value = 0;
                     nudCovDarkwraith.Text = "";
                     SavedStats.CovDarkwraith = null;
                     break;
                 case "nudCovForest":
+                    nudCovForest.Value = 0;
                     nudCovForest.Text = "";
                     SavedStats.CovForest = null;
                     break;
                 case "nudCovGravelord":
+                    nudCovGravelord.Value = 0;
                     nudCovGravelord.Text = "";
                     SavedStats.CovGravelord = null;
                     break;
                 case "nudCovDragon":
+                    nudCovDragon.Value = 0;
                     nudCovDragon.Text = "";
                     SavedStats.CovDragon = null;
                     break;
                 case "nudCovSunlight":
+                    nudCovSunlight.Value = 0;
                     nudCovSunlight.Text = "";
                     SavedStats.CovSunlight = null;
                     break;
