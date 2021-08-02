@@ -37,7 +37,7 @@ namespace DS_Gadget
             {
                 cmbTeamConfig.Items.Add(item);
             }
-
+            lastSetBonfire = new DSBonfire(-1, "Last Set: None"); //last set bonfire (default values)
         }
 
         private void searchBox_TextChanged(object sender, EventArgs e)
@@ -184,7 +184,7 @@ namespace DS_Gadget
                 Hook.SetSpeed((float)nudSpeed.Value);
         }
 
-        private DSBonfire lastSetBonfire = new DSBonfire(-1, "Last Set: None"); //last set bonfire (default values)
+        private DSBonfire lastSetBonfire;
 
         private void FilterBonfires()
         {
