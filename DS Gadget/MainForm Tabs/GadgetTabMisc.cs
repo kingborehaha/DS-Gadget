@@ -82,66 +82,68 @@ namespace DS_Gadget
             ApplyHair();
         }
 
+        //Apply hair to currently loaded character
         private void ApplyHair()
         {
-            if (btnApplyHair.Enabled == true)
+            //Check if the button is enabled and the selected item isn't null
+            if (btnApplyHair.Enabled == true && lbxItems.SelectedItem != null)
             {
                 _ = ChangeColor(Color.DarkGray);
-                DSFashionCategory category = cmbCategory.SelectedItem as DSFashionCategory;
                 DSItem item = lbxItems.SelectedItem as DSItem;
                 int id = item.ID;
                 Hook.EquipHairID = id;
             }
         }
 
+        //Give focus and select all
         private void searchBox_Click(object sender, EventArgs e)
         {
             searchBox.SelectAll();
             searchBox.Focus();
         }
 
+        //handles up down and enter
         private void KeyDownListbox(KeyEventArgs e)
         {
+            //Scroll down through Items listbox and go back to bottom at end
+            if (e.KeyCode == Keys.Up)
+            {
+                e.Handled = true;//Do not pass keypress along
+                //Check is there's still items to go through
+                if (lbxItems.SelectedIndex > 0)
+                {
+                    lbxItems.SelectedIndex -= 1;
+                    return;
+                }
+
+                //Check if last item or "over" for safety
+                if (lbxItems.SelectedIndex <= 0)
+                {
+                    lbxItems.SelectedIndex = lbxItems.Items.Count - 1; //-1 because Selected Index is 0 based and Count isn't
+                    return;
+                }
+            }
+
+            //Scroll down through Items listbox and go back to top at end
             if (e.KeyCode == Keys.Down)
             {
-                e.Handled = true;
-
-                if (lbxItems.SelectedIndex < lbxItems.Items.Count - 1)
+                e.Handled = true;//Do not pass keypress along
+                //Check is there's still items to go through
+                if (lbxItems.SelectedIndex < lbxItems.Items.Count - 1) //-1 because Selected Index is 0 based and Count isn't
                 {
                     lbxItems.SelectedIndex += 1;
                     return;
                 }
 
-                if (lbxItems.SelectedIndex >= lbxItems.Items.Count - 1)
+                //Check if last item or "over" for safety
+                if (lbxItems.SelectedIndex >= lbxItems.Items.Count - 1) //-1 because Selected Index is 0 based and Count isn't
                 {
                     lbxItems.SelectedIndex = 0;
                     return;
                 }
             }
 
-            if (e.KeyCode == Keys.Up)
-            {
-                e.Handled = true;
-
-                if (lbxItems.SelectedIndex == 0)
-                {
-                    lbxItems.SelectedIndex = lbxItems.Items.Count - 1;
-                    return;
-                }
-
-                if (lbxItems.SelectedIndex != 0)
-                {
-                    lbxItems.SelectedIndex -= 1;
-                    return;
-                }
-            }
-
-            if (e.KeyCode == Keys.Enter)
-            {
-                e.Handled = true;
-                ApplyHair();
-                return;
-            }
+            
         }
 
         internal void EnableStats(bool enable)
@@ -151,6 +153,7 @@ namespace DS_Gadget
             btnEventFlagWrite.Enabled = enable;
         }
 
+        //Changes the color of the Apply button
         private async Task ChangeColor(Color new_color)
         {
             btnApplyHair.BackColor = new_color;
@@ -160,13 +163,22 @@ namespace DS_Gadget
             btnApplyHair.BackColor = default(Color);
         }
 
+        //handles escape
         private void KeyPressed(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
+            {
                 searchBox.Clear();
+                return;
+            }
 
-            if (lbxItems.Items.Count > 0)
-                KeyDownListbox(e);
+            //Create selected index as item
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true; //Do not pass keypress along
+                ApplyHair();
+                return;
+            }
 
             if (lbxItems.Items.Count == 0)
             {
@@ -174,7 +186,11 @@ namespace DS_Gadget
                     e.Handled = true;
                 if (e.KeyCode == Keys.Down)
                     e.Handled = true;
+                return;
             }
+
+            KeyDownListbox(e);
+
         }
 
     }

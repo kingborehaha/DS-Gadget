@@ -29,6 +29,8 @@ Added Team Config
 * Does not change phantom color as expected for some covenant variations, even though values are correct.
 * Loaded from Resources/Systems/TeamConfigs.txt  
 
+Last Warp Bonfire feature puts the last bonfire you warped to at the bottom of the list of bonfires.
+
 ### 3.0.0.71
 Added saving stored positions to XML file which are loaded on DS Gadget Startup  
 * Press the store position key or enter after typing a location name in the combo box for the stored position to save or update that positon.  
