@@ -43,12 +43,6 @@ namespace DS_Gadget
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
             FilterBonfires();
-            /*
-            //if no items in bonfire list, add "None -1" to list and select
-            if (cbxBonfire.Items.Count < 1) 
-                cbxBonfire.Items.Add(DSBonfire.All[0]);
-            cbxBonfire.SelectedIndex = 0; //select first index in bonfire list
-            */
         }
 
         private void searchBox_Click(object sender, EventArgs e)
@@ -251,8 +245,9 @@ namespace DS_Gadget
             //manage unknown warps and current warps that are not in filter
             //
             int bonfireID = Hook.LastBonfire;
-            //check if dropdown not active AND (last bonfire is not selected bonfire OR last set bonfire is not index 0)
-            if (!cbxBonfire.DroppedDown && (bonfireID != (cbxBonfire.SelectedItem as DSBonfire)?.ID || lastSetBonfire.ID != bonfireID)) 
+            
+            if (!cbxBonfire.DroppedDown  //check if dropdown not active
+                && (bonfireID != (cbxBonfire.SelectedItem as DSBonfire)?.ID || lastSetBonfire.ID != bonfireID)) // && last bonfire is not selected bonfire OR last set bonfire is accurate
             {
 
                 DSBonfire result = cbxBonfire.Items.Cast<DSBonfire>().FirstOrDefault(b => b.ID == bonfireID); //check if bonfire in filtered list
@@ -286,7 +281,6 @@ namespace DS_Gadget
                     cbxBonfire.SelectedItem = result;
             }
             //
-
 
             // Backstabbing resets speed, so reapply it 24/7
             if (cbxSpeed.Checked)
