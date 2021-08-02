@@ -133,7 +133,7 @@ namespace DS_Gadget
             btnPosRestore.Enabled = enable;
             btnPosStore.Enabled = enable;
             if (enable)
-                AddLastSetBonfire();
+                cbxBonfire.SelectedIndex = cbxBonfire.Items.Count - 1;
         }
 
         private void UpdatePositions()
