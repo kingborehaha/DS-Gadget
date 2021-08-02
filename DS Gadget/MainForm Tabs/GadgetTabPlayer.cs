@@ -269,7 +269,7 @@ namespace DS_Gadget
                 
             }
             //
-
+            AddLastSetBonfire();
             // Backstabbing resets speed, so reapply it 24/7
             if (cbxSpeed.Checked)
                 Hook.SetSpeed((float)nudSpeed.Value);
@@ -452,19 +452,19 @@ namespace DS_Gadget
         {
             if (btnBonfireWarp.Enabled)
             {
-                DSBonfire bonfire = cbxBonfire.SelectedItem as DSBonfire;
-                //hook warp entityID
-                Hook.LastBonfire = bonfire.ID;
+                
             }
         }
 
         private void btnBonfireWarp_Click(object sender, EventArgs e)
         {
-            if (btnBonfireWarp.Enabled == true)
+            if (btnBonfireWarp.Enabled)
             {
+                DSBonfire bonfire = cbxBonfire.SelectedItem as DSBonfire;
+                //hook warp entityID
+                Hook.LastBonfire = bonfire.ID;
                 _ = ChangeColor(Color.DarkGray);
                 Hook.BonfireWarp();
-                AddLastSetBonfire();
             }
         }
 
@@ -486,8 +486,6 @@ namespace DS_Gadget
 
                     cbxBonfire.SelectedItem = lastSetBonfire;
                 }
-                else
-                    cbxBonfire.SelectedItem = result;
             }
             //set last set bonfire, add to filter
         }
