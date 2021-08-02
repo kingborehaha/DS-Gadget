@@ -276,6 +276,7 @@ namespace DS_Gadget
                 return;
             }
 
+            //Prevents up and down keys from moving the cursor left and right when nothing in item box
             if (lbxItems.Items.Count == 0)
             {
                 if (e.KeyCode == Keys.Up)
