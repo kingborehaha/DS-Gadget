@@ -490,7 +490,6 @@ namespace DS_Gadget
                     cbxBonfire.SelectedItem = result;
             }
             //set last set bonfire, add to filter
-            
         }
 
         private void cbxSpeed_CheckedChanged(object sender, EventArgs e)
