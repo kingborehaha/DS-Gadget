@@ -10,7 +10,7 @@ namespace DS_Gadget
 {
     internal partial class GadgetTabPlayer : GadgetTab
     {
-        
+
         private State.PlayerState playerState;
 
         public GadgetTabPlayer()
@@ -43,15 +43,6 @@ namespace DS_Gadget
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
             FilterBonfires();
-
-            //if no items in bonfire list, add "None -1" to list and select
-            if (cbxBonfire.Items.Count < 1) 
-                cbxBonfire.Items.Add(DSBonfire.All[0]);
-            cbxBonfire.SelectedIndex = 0; //select first index in bonfire list
-            if (searchBox.Text == "")
-                lblSearch.Visible = true;
-            else
-                lblSearch.Visible = false;
         }
 
         private void searchBox_Click(object sender, EventArgs e)
@@ -84,7 +75,7 @@ namespace DS_Gadget
 
                 if (cbxBonfire.SelectedIndex == 0)
                 {
-                    
+
                     return;
                 }
 
@@ -129,7 +120,7 @@ namespace DS_Gadget
             }
         }
 
-        
+
 
         public void EnableStats(bool enable)
         {
@@ -193,12 +184,16 @@ namespace DS_Gadget
                 Hook.SetSpeed((float)nudSpeed.Value);
         }
 
+        private DSBonfire lastSetBonfire = new DSBonfire(-1, "Last Set: None"); //last set bonfire (default values)
 
         private void FilterBonfires()
         {
-            ClearLastCurrentBonfire();
+            //warp filter management
+
             cbxBonfire.Items.Clear();
             cbxBonfire.SelectedItem = null;
+
+            //go through bonfire resource and add to filter
             foreach (DSBonfire bonfire in DSBonfire.All)
             {
                 if (bonfire.ToString().ToLower().Contains(searchBox.Text.ToLower()))
@@ -206,21 +201,15 @@ namespace DS_Gadget
                     cbxBonfire.Items.Add(bonfire);
                 }
             }
-        }
 
-        private DSBonfire lastCurrentBonfire;
+            cbxBonfire.Items.Add(lastSetBonfire); //add lastSetBonfire to end of filter
 
-        private void ClearLastCurrentBonfire()
-        {
-            //remove "Current: " from last current bonfire
-            if (lastCurrentBonfire != null)
-            {
-                if (lastCurrentBonfire.Name.Contains("Current: "))
-                {
-                    lastCurrentBonfire.Name = lastCurrentBonfire.Name.Remove(0, 9); //remove "Current: " from label
-                }
-                lastCurrentBonfire = null;
-            }
+            cbxBonfire.SelectedIndex = 0;
+
+            if (searchBox.Text == "")
+                lblSearch.Visible = true;
+            else
+                lblSearch.Visible = false;
         }
 
         public override void UpdateTab()
@@ -256,10 +245,10 @@ namespace DS_Gadget
             //manage unknown warps and current warps that are not in filter
             //
             int bonfireID = Hook.LastBonfire;
-            if (!cbxBonfire.DroppedDown && bonfireID != (cbxBonfire.SelectedItem as DSBonfire)?.ID) //check if dropdown not active AND last bonfire is not selected bonfire
+            
+            if (!cbxBonfire.DroppedDown  //check if dropdown not active
+                && (bonfireID != (cbxBonfire.SelectedItem as DSBonfire)?.ID || lastSetBonfire.ID != bonfireID)) // && last bonfire is not selected bonfire OR last set bonfire is accurate
             {
-
-                FilterBonfires();
 
                 DSBonfire result = cbxBonfire.Items.Cast<DSBonfire>().FirstOrDefault(b => b.ID == bonfireID); //check if bonfire in filtered list
                 if (result == null)
@@ -273,18 +262,25 @@ namespace DS_Gadget
                         cbxBonfire.Items.Add(result);
                         DSBonfire.All.Add(result);
                     }
-                    else
-                    {
-                        //bonfire in list, but not in filter. add "Current: " to label and add to filter
-                        result.Name = "Current: " + result.Name;
-                        cbxBonfire.Items.Add(result);
-                        lastCurrentBonfire = result; //set last current bonfire
-                    }
                 }
-                cbxBonfire.SelectedItem = result;
+
+                //set last set bonfire, add to filter
+                if (lastSetBonfire.ID != bonfireID)
+                {
+                    cbxBonfire.Items.Remove(lastSetBonfire); //remove from filter (if there)
+
+                    //set lastSetBonfire info
+                    lastSetBonfire.ID = result.ID;
+                    lastSetBonfire.Name = "Last Set: " + result.Name;
+
+                    cbxBonfire.Items.Add(lastSetBonfire); //add to end of filter
+
+                    cbxBonfire.SelectedItem = lastSetBonfire;
+                }
+                else
+                    cbxBonfire.SelectedItem = result;
             }
             //
-
 
             // Backstabbing resets speed, so reapply it 24/7
             if (cbxSpeed.Checked)
@@ -466,21 +462,7 @@ namespace DS_Gadget
 
         private void cbxBonfire_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            //if no items in bonfire list, add "None -1" to list and select
-            if (cbxBonfire.Items.Count < 1)
-            {
-                cbxBonfire.Items.Add(DSBonfire.All[0]);
-                cbxBonfire.SelectedIndex = 0;
-            }
-
             DSBonfire bonfire = cbxBonfire.SelectedItem as DSBonfire;
-
-            //re-filter bonfire list if lastCurrentBonfire was set and it is not currently selected bonfire
-            if (lastCurrentBonfire != null && lastCurrentBonfire != bonfire)
-            {
-                FilterBonfires();
-            };
 
             //hook warp entityID
             Hook.LastBonfire = bonfire.ID;
