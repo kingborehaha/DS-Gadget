@@ -28,6 +28,7 @@ You can also try adding DS Gadget as an exception to your antivirus
 
 * Saved stats improvement and various minor bugfixes 
 * UI improvements for 0.14 features by [King Borehaha](https://github.com/kingborehaha/)
+* * Fixed an issue where DS Gadget couldn't find files after launching from Windows search (0.14.2.1).
 
 ###  Prerelease 0.14): 
 
