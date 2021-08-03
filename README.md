@@ -16,13 +16,19 @@ You can also try adding DS Gadget as an exception to your antivirus
 #### Updated by [Stagmattica](https://github.com/Stagmattica) until Prerelease 0.5.
 #### Updated by [Nordgaren](https://github.com/Nordgaren) from Prerelease 0.6 onward.
 
+## Thank You
+**[TKGP](https://github.com/JKAnderson/)** Author of DS Gadget and answering my dumb questions  
+**[King Borehaha](https://github.com/kingborehaha/)** Implimenting features, great suggestions and helping to polish my features  
+**[InfernoPlus](https://github.com/infernoplus/)** Author of Dark Souls Remastest, also answers my dumb questions :fatcat:  
+**[Stagmattica](https://github.com/Stagmattica)** Helped me get started with DS Gadget   
+
 # Change Log
 
 ###  Prerelease 0.14.2):
 
 * Fixed an issue where DS Gadget couldn't find files after launching from Windows search.  
 
-***Thank You King Borehaha](https://github.com/kingborehaha/) for these features***
+***Thank You [King Borehaha](https://github.com/kingborehaha/) for these features***
 * "Last Set" Bonfire feature puts the last bonfire you warped to at the bottom of the list of bonfires
 * Various bugfixes and minor improvement on the code side
 * Code Cleanup and Bug fixes courtesy
