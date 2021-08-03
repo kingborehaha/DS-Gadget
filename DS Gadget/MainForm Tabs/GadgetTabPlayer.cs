@@ -249,28 +249,23 @@ namespace DS_Gadget
             int bonfireID = Hook.LastBonfire;
             
             if (!cbxBonfire.DroppedDown  //check if dropdown not active
-                && (bonfireID != (cbxBonfire.SelectedItem as DSBonfire)?.ID || lastSetBonfire.ID != bonfireID)) // && last bonfire is not selected bonfire OR last set bonfire is accurate
+                && ((cbxBonfire.SelectedItem as DSBonfire)?.ID != bonfireID || lastSetBonfire.ID != bonfireID)) // && UI selected bonfire OR lastSetBonfire does not match
             {
-
-                DSBonfire result = cbxBonfire.Items.Cast<DSBonfire>().FirstOrDefault(b => b.ID == bonfireID); //check if bonfire in filtered list
+                //target warp is not in filter
+                DSBonfire result = DSBonfire.All.FirstOrDefault(b => b.ID == bonfireID); //check if warp is in bonfire resource
                 if (result == null)
                 {
-                    //target warp is not in filter
-                    result = DSBonfire.All.FirstOrDefault(b => b.ID == bonfireID); //check if warp is in bonfire resource
-                    if (result == null)
-                    {
-                        //bonfire not in filter. Add to filter as unknown
-                        result = new DSBonfire(bonfireID, $"Unknown {bonfireID}");
-                        cbxBonfire.Items.Add(result);
-                        DSBonfire.All.Add(result);
-                        FilterBonfires();
-                    }
+                    //bonfire not in filter. Add to filter as unknown
+                    result = new DSBonfire(bonfireID, $"Unknown {bonfireID}");
+                    cbxBonfire.Items.Add(result);
+                    DSBonfire.All.Add(result);
+                    FilterBonfires();
                 }
-
-                
             }
-            //
             AddLastSetBonfire();
+            //
+
+
             // Backstabbing resets speed, so reapply it 24/7
             if (cbxSpeed.Checked)
                 Hook.SetSpeed((float)nudSpeed.Value);
@@ -466,7 +461,7 @@ namespace DS_Gadget
             int bonfireID = Hook.LastBonfire;
             if (lastSetBonfire.ID != bonfireID)
             {
-                DSBonfire result = cbxBonfire.Items.Cast<DSBonfire>().FirstOrDefault(b => b.ID == bonfireID);
+                DSBonfire result = cbxBonfire.Items.Cast<DSBonfire>().FirstOrDefault(b => b.ID == bonfireID); //check for bonfire in filter
                 if (result != null)
                 {
                     cbxBonfire.Items.Remove(lastSetBonfire); //remove from filter (if there)
@@ -480,7 +475,6 @@ namespace DS_Gadget
                     cbxBonfire.SelectedItem = lastSetBonfire;
                 }
             }
-            
         }
 
         private void cbxSpeed_CheckedChanged(object sender, EventArgs e)
