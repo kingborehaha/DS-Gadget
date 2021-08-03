@@ -38,6 +38,7 @@ namespace DS_Gadget
                 cmbTeamConfig.Items.Add(item);
             }
             lastSetBonfire = new DSBonfire(-1, "Last Set: None"); //last set bonfire (default values)
+            cbxBonfire.Items.Add(lastSetBonfire); //add to end of filter
         }
 
         private void searchBox_TextChanged(object sender, EventArgs e)
@@ -248,8 +249,7 @@ namespace DS_Gadget
             //
             int bonfireID = Hook.LastBonfire;
             
-            if (!cbxBonfire.DroppedDown  //check if dropdown not active
-                && ((cbxBonfire.SelectedItem as DSBonfire)?.ID != bonfireID || lastSetBonfire.ID != bonfireID)) // && UI selected bonfire OR lastSetBonfire does not match
+            if (lastSetBonfire.ID != bonfireID) // lastSetBonfire does not match game LastBonfire
             {
                 //target warp is not in filter
                 DSBonfire result = DSBonfire.All.FirstOrDefault(b => b.ID == bonfireID); //check if warp is in bonfire resource
@@ -260,8 +260,8 @@ namespace DS_Gadget
                     DSBonfire.All.Add(result);
                     FilterBonfires();
                 }
+                AddLastSetBonfire();
             }
-            AddLastSetBonfire();
             //
 
 
@@ -458,22 +458,17 @@ namespace DS_Gadget
         private void AddLastSetBonfire()
         {
             int bonfireID = Hook.LastBonfire;
-            if (lastSetBonfire.ID != bonfireID)
-            {
-                DSBonfire result = DSBonfire.All.FirstOrDefault(b => b.ID == bonfireID); //check for bonfire in resource
-                if (result != null)
-                {
-                    cbxBonfire.Items.Remove(lastSetBonfire); //remove from filter (if there)
+            DSBonfire result = DSBonfire.All.FirstOrDefault(b => b.ID == bonfireID); //check for bonfire in resource
+            //if (result != null)
+            cbxBonfire.Items.Remove(lastSetBonfire); //remove from filter (if there)
 
-                    //set lastSetBonfire info
-                    lastSetBonfire.ID = result.ID;
-                    lastSetBonfire.Name = "Last Set: " + result.Name;
+            //set lastSetBonfire info
+            lastSetBonfire.ID = result.ID;
+            lastSetBonfire.Name = "Last Set: " + result.Name;
 
-                    cbxBonfire.Items.Add(lastSetBonfire); //add to end of filter
+            cbxBonfire.Items.Add(lastSetBonfire); //add to end of filter
 
-                    cbxBonfire.SelectedItem = lastSetBonfire;
-                }
-            }
+            cbxBonfire.SelectedItem = lastSetBonfire;
         }
 
         private void cbxSpeed_CheckedChanged(object sender, EventArgs e)
