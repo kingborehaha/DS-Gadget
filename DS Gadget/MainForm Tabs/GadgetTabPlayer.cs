@@ -471,10 +471,10 @@ namespace DS_Gadget
         private void AddLastSetBonfire()
         {
             int bonfireID = Hook.LastBonfire;
-            DSBonfire result = cbxBonfire.Items.Cast<DSBonfire>().FirstOrDefault(b => b.ID == bonfireID);
-            if (result != null)
+            if (lastSetBonfire.ID != bonfireID)
             {
-                if (lastSetBonfire.ID != bonfireID)
+                DSBonfire result = cbxBonfire.Items.Cast<DSBonfire>().FirstOrDefault(b => b.ID == bonfireID);
+                if (result != null)
                 {
                     cbxBonfire.Items.Remove(lastSetBonfire); //remove from filter (if there)
 
@@ -487,7 +487,7 @@ namespace DS_Gadget
                     cbxBonfire.SelectedItem = lastSetBonfire;
                 }
             }
-            //set last set bonfire, add to filter
+            
         }
 
         private void cbxSpeed_CheckedChanged(object sender, EventArgs e)
