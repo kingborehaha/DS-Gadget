@@ -31,6 +31,8 @@ Added Team Config
 
 Last Warp Bonfire feature puts the last bonfire you warped to at the bottom of the list of bonfires.
 
+Fixed an issue where DS Gadget couldn't find the Resource files when launching from Windows Search results
+
 ### 3.0.0.71
 Added saving stored positions to XML file which are loaded on DS Gadget Startup  
 * Press the store position key or enter after typing a location name in the combo box for the stored position to save or update that positon.  
