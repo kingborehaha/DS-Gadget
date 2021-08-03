@@ -31,7 +31,9 @@ Added Team Config
 
 Last Warp Bonfire feature puts the last bonfire you warped to at the bottom of the list of bonfires.
 
-Fixed an issue where DS Gadget couldn't find the Resource files when launching from Windows Search results
+Fixed an issue where DS Gadget couldn't find the Resource files when launching from Windows Search results.
+
+Fixed program update checker.
 
 ### 3.0.0.71
 Added saving stored positions to XML file which are loaded on DS Gadget Startup  
@@ -60,7 +62,7 @@ Added Search function.
 Release. Added local file loading.
 
 ### Local Loader Credits
-* TKGP - made DS Gadget
+* TKGP - Made DS Gadget
 * Nordagen - Implemented most of the new features
 
 -------------------
