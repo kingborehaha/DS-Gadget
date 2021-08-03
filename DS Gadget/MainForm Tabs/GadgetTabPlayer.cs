@@ -448,14 +448,6 @@ namespace DS_Gadget
             Hook.DeathCam = cbxDeathCam.Checked;
         }
 
-        private void cbxBonfire_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (btnBonfireWarp.Enabled)
-            {
-                
-            }
-        }
-
         private void btnBonfireWarp_Click(object sender, EventArgs e)
         {
             if (btnBonfireWarp.Enabled)
