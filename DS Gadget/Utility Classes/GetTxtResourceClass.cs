@@ -5,13 +5,15 @@ namespace DS_Gadget
 {
     class GetTxtResourceClass
     {
+        private static string ExeDir = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+
         public static string GetTxtResource(string filePath)
         {
             //Get local directory + file path, read file, return string contents of file
 
             //Path.Combine(Environment.CurrentDirectory, filePath);
 
-            string fileString = File.ReadAllText(filePath);
+            string fileString = File.ReadAllText($@"{ExeDir}/{filePath}");
 
             return fileString;
         }

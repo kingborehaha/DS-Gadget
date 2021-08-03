@@ -561,7 +561,6 @@ namespace DS_Gadget
             NullNUD(nudCovGravelord);
             NullNUD(nudCovDragon);
             NullNUD(nudCovSunlight);
-            SavedStats = new SavedStats();
         }
 
         
