@@ -257,7 +257,6 @@ namespace DS_Gadget
                 {
                     //bonfire not in filter. Add to filter as unknown
                     result = new DSBonfire(bonfireID, $"Unknown {bonfireID}");
-                    cbxBonfire.Items.Add(result);
                     DSBonfire.All.Add(result);
                     FilterBonfires();
                 }
@@ -461,7 +460,7 @@ namespace DS_Gadget
             int bonfireID = Hook.LastBonfire;
             if (lastSetBonfire.ID != bonfireID)
             {
-                DSBonfire result = cbxBonfire.Items.Cast<DSBonfire>().FirstOrDefault(b => b.ID == bonfireID); //check for bonfire in filter
+                DSBonfire result = DSBonfire.All.FirstOrDefault(b => b.ID == bonfireID); //check for bonfire in resource
                 if (result != null)
                 {
                     cbxBonfire.Items.Remove(lastSetBonfire); //remove from filter (if there)
