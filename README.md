@@ -20,11 +20,13 @@ You can also try adding DS Gadget as an exception to your antivirus
 
 ###  Prerelease 0.14.2):
 
-* "Last Set" Bonfire feature puts the last bonfire you warped to at the bottom of the list of bonfires by [King Borehaha](https://github.com/kingborehaha/)
+* Fixed an issue where DS Gadget couldn't find files after launching from Windows search.  
+* 
+***Thank You King Borehaha](https://github.com/kingborehaha/) for these features***
+* "Last Set" Bonfire feature puts the last bonfire you warped to at the bottom of the list of bonfires
 * Various bugfixes and minor improvement on the code side
-* Fixed an issue where DS Gadget couldn't find files after launching from Windows search.
-* Code Cleanup and Bug fixes courtesy of [DS-Gadget 3.0 Local Loader](https://github.com/kingborehaha/DS-Gadget) by King Borehaha.
-* Fixed version checking, courtesy of [DS-Gadget 3.0 Local Loader](https://github.com/kingborehaha/DS-Gadget) by King Borehaha.
+* Code Cleanup and Bug fixes courtesy
+* Fixed version checking, courtesy
 
 ###  Prerelease 0.14.1):
 
