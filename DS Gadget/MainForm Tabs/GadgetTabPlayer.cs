@@ -248,7 +248,7 @@ namespace DS_Gadget
             //manage unknown warps and current warps that are not in filter
             //
             int bonfireID = Hook.LastBonfire;
-            
+
             if (lastSetBonfire.ID != bonfireID) // lastSetBonfire does not match game LastBonfire
             {
                 //target warp is not in filter
@@ -260,7 +260,16 @@ namespace DS_Gadget
                     DSBonfire.All.Add(result);
                     FilterBonfires();
                 }
-                AddLastSetBonfire();
+
+                //manage lastSetBonfire
+                cbxBonfire.Items.Remove(lastSetBonfire); //remove from filter (if there)
+
+                lastSetBonfire.ID = result.ID;
+                lastSetBonfire.Name = "Last Set: " + result.Name;
+
+                cbxBonfire.Items.Add(lastSetBonfire); //add to end of filter
+                cbxBonfire.SelectedItem = lastSetBonfire;
+                //AddLastSetBonfire();
             }
             //
 
@@ -455,11 +464,13 @@ namespace DS_Gadget
             }
         }
 
+        /*
+        //moved to UpdateTab() since this was only called there, DSBonfire resource was being checked for result anyway
         private void AddLastSetBonfire()
         {
             int bonfireID = Hook.LastBonfire;
             DSBonfire result = DSBonfire.All.FirstOrDefault(b => b.ID == bonfireID); //check for bonfire in resource
-            //if (result != null)
+
             cbxBonfire.Items.Remove(lastSetBonfire); //remove from filter (if there)
 
             //set lastSetBonfire info
@@ -470,6 +481,7 @@ namespace DS_Gadget
 
             cbxBonfire.SelectedItem = lastSetBonfire;
         }
+        */
 
         private void cbxSpeed_CheckedChanged(object sender, EventArgs e)
         {
