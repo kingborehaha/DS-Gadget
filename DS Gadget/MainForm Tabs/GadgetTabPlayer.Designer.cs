@@ -266,7 +266,6 @@
             this.cbxBonfire.Name = "cbxBonfire";
             this.cbxBonfire.Size = new System.Drawing.Size(355, 21);
             this.cbxBonfire.TabIndex = 3;
-            this.cbxBonfire.SelectedIndexChanged += new System.EventHandler(this.cbxBonfire_SelectedIndexChanged);
             // 
             // lblBonfire
             // 
