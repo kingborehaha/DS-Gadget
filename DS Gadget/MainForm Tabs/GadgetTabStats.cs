@@ -416,7 +416,7 @@ namespace DS_Gadget
 
         private List<ComboBox> CmbList = new List<ComboBox>();
 
-
+        //Check each saved stat if it's null and load them if they aren't
         private void LoadSavedStats()
         {
             if (Hook.Loaded)
@@ -443,140 +443,6 @@ namespace DS_Gadget
                     {
                         cmb.SelectedIndex = index.Value;
                     }
-                }
-            }
-        }
-
-        //Check each saved stat if it's null and load them if they aren't
-        private void LoadSavedStatsOld()
-        {
-            if (Hook.Loaded)
-            {
-                if (!string.IsNullOrWhiteSpace(SavedStats.Name))
-                {
-                    txtName.Text = SavedStats.Name;
-                }
-
-                if (SavedStats.Sex.HasValue)
-                {
-                    cmbSex.SelectedIndex = SavedStats.Sex.Value;
-                    cmbSex_SelectedIndexChanged(null, null);
-                }
-
-                if (SavedStats.Class.HasValue)
-                {
-                    cmbClass.SelectedIndex = SavedStats.Class.Value;
-                    cmbClass_SelectedIndexChanged(null, null);
-                }
-
-                if (SavedStats.Physique.HasValue)
-                {
-                    cmbPhysique.SelectedIndex = SavedStats.Physique.Value;
-                    cmbPhysique_SelectedIndexChanged(null, null);
-                }
-
-                if (SavedStats.Humanity.HasValue)
-                {
-                    nudHumanity.Value = SavedStats.Humanity.Value;
-                    nud_ValueChanged(nudHumanity, null);
-                }
-
-                if (SavedStats.Souls.HasValue)
-                {
-                    nudSouls.Value = SavedStats.Souls.Value;
-                    nud_ValueChanged(nudSouls, null);
-                }
-
-                if (SavedStats.Vit.HasValue)
-                {
-                    nudVit.Value = Clamp(SavedStats.Vit.Value, nudVit.Minimum, nudVit.Maximum);
-                }
-
-                if (SavedStats.Att.HasValue)
-                {
-                    nudAtt.Value = Clamp(SavedStats.Att.Value, nudAtt.Minimum, nudAtt.Maximum);
-                }
-
-                if (SavedStats.End.HasValue)
-                {
-                    nudEnd.Value = Clamp(SavedStats.End.Value, nudEnd.Minimum, nudEnd.Maximum);
-                }
-
-                if (SavedStats.Str.HasValue)
-                {
-                    nudStr.Value = Clamp(SavedStats.Str.Value, nudStr.Minimum, nudStr.Maximum);
-                }
-
-                if (SavedStats.Dex.HasValue)
-                {
-                    nudDex.Value = Clamp(SavedStats.Dex.Value, nudDex.Minimum, nudDex.Maximum);
-                }
-
-                if (SavedStats.Res.HasValue)
-                {
-                    nudRes.Value = Clamp(SavedStats.Res.Value, nudRes.Minimum, nudRes.Maximum);
-                }
-
-                if (SavedStats.Int.HasValue)
-                {
-                    nudInt.Value = Clamp(SavedStats.Int.Value, nudInt.Minimum, nudInt.Maximum);
-                }
-
-                if (SavedStats.Fth.HasValue)
-                {
-                    nudFth.Value = Clamp(SavedStats.Fth.Value, nudFth.Minimum, nudFth.Maximum);
-                }
-
-                RecalculateStats();
-
-                if (SavedStats.Covenant.HasValue)
-                {
-                    cmbCovenant.SelectedIndex = SavedStats.Covenant.Value;
-                    cmbCovenant_SelectedIndexChanged(null, null);
-                }
-
-                if (SavedStats.CovChaos.HasValue)
-                {
-                    nudCovChaos.Value = SavedStats.CovChaos.Value;
-                    nud_ValueChanged(nudCovChaos, null);
-                }
-
-                if (SavedStats.CovDarkmoon.HasValue)
-                {
-                    nudCovDarkmoon.Value = SavedStats.CovDarkmoon.Value;
-                    nud_ValueChanged(nudCovDarkmoon, null);
-
-                }
-
-                if (SavedStats.CovDarkwraith.HasValue)
-                {
-                    nudCovDarkwraith.Value = SavedStats.CovDarkwraith.Value;
-                    nud_ValueChanged(nudCovDarkwraith, null);
-
-                }
-
-                if (SavedStats.CovForest.HasValue)
-                {
-                    nudCovForest.Value = SavedStats.CovForest.Value;
-                    nud_ValueChanged(nudCovForest, null);
-                }
-
-                if (SavedStats.CovGravelord.HasValue)
-                {
-                    nudCovGravelord.Value = SavedStats.CovGravelord.Value;
-                    nud_ValueChanged(nudCovGravelord, null);
-                }
-
-                if (SavedStats.CovDragon.HasValue)
-                {
-                    nudCovDragon.Value = SavedStats.CovDragon.Value;
-                    nud_ValueChanged(nudCovDragon, null);
-                }
-
-                if (SavedStats.CovSunlight.HasValue)
-                {
-                    nudCovSunlight.Value = SavedStats.CovSunlight.Value;
-                    nud_ValueChanged(nudCovSunlight, null);
                 }
             }
         }
