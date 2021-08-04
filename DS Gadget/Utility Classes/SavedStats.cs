@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 
 namespace DS_Gadget
 {
@@ -13,41 +14,41 @@ namespace DS_Gadget
         [Control("cmbPhysique")]
         public int? Physique { get; set; }
         [Control("nudHumanity")]
-        public decimal? Humanity { get; set; }
+        public int? Humanity { get; set; }
         [Control("nudSouls")]
-        public decimal? Souls { get; set; }
+        public int? Souls { get; set; }
         [Control("nudVit")]
-        public decimal? Vit { get; set; }
+        public int? Vit { get; set; }
         [Control("nudAtt")]
-        public decimal? Att { get; set; }
+        public int? Att { get; set; }
         [Control("nudEnd")]
-        public decimal? End { get; set; }
+        public int? End { get; set; }
         [Control("nudStr")]
-        public decimal? Str{ get; set; }
+        public int? Str{ get; set; }
         [Control("nudDex")]
-        public decimal? Dex { get; set; }
+        public int? Dex { get; set; }
         [Control("nudRes")]
-        public decimal? Res { get; set; }
+        public int? Res { get; set; }
         [Control("nudInt")]
-        public decimal? Int { get; set; }
+        public int? Int { get; set; }
         [Control("nudFth")]
-        public decimal? Fth { get; set; }
+        public int? Fth { get; set; }
         [Control("cmbCovenant")]
         public int? Covenant { get; set; }
         [Control("nudCovChaos")]
-        public decimal? CovChaos { get; set; }
+        public int? CovChaos { get; set; }
         [Control("nudCovDarkmoon")]
-        public decimal? CovDarkmoon { get; set; }
+        public int? CovDarkmoon { get; set; }
         [Control("nudCovDarkwraith")]
-        public decimal? CovDarkwraith { get; set; }
+        public int? CovDarkwraith { get; set; }
         [Control("nudCovForest")]
-        public decimal? CovForest { get; set; }
+        public int? CovForest { get; set; }
         [Control("nudCovGravelord")]
-        public decimal? CovGravelord { get; set; }
+        public int? CovGravelord { get; set; }
         [Control("nudCovDragon")]
-        public decimal? CovDragon { get; set; }
+        public int? CovDragon { get; set; }
         [Control("nudCovSunlight")]
-        public decimal? CovSunlight { get; set; }
+        public int? CovSunlight { get; set; }
 
         public object this[string attributeName]
         {
@@ -69,7 +70,12 @@ namespace DS_Gadget
                 {
                     var Attr = prop.GetCustomAttribute<ControlAttribute>();
                     if (Attr != null && Attr.Name == attributeName)
-                        prop.SetValue(this, value, null);
+                    {
+                        if (value is decimal)
+                            prop.SetValue(this, Convert.ToInt32(value) , null);
+                        else
+                            prop.SetValue(this, value, null);
+                    }
                 }
             }
         }

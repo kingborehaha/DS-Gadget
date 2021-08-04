@@ -178,47 +178,47 @@ namespace DS_Gadget
             if (nudHumanity.Text == "")
                 nudHumanity.Text = Hook.Humanity.ToString();
             else
-                SavedStats.Humanity = nudHumanity.Value;
+                SavedStats.Humanity = (int)nudHumanity.Value;
 
             if (nudSouls.Text == "")
                 nudSouls.Text = Hook.Souls.ToString();
             else
-                SavedStats.Souls = nudSouls.Value;
+                SavedStats.Souls = (int)nudSouls.Value;
 
             if (nudCovChaos.Text == "")
                 nudCovChaos.Text = Hook.ChaosServantPoints.ToString();
             else
-                SavedStats.CovChaos = nudCovChaos.Value;
+                SavedStats.CovChaos = (int)nudCovChaos.Value;
 
             if (nudCovDarkmoon.Text == "")
                 nudCovDarkmoon.Text = Hook.DarkmoonBladePoints.ToString();
             else
-                SavedStats.CovDarkmoon = nudCovDarkmoon.Value;
+                SavedStats.CovDarkmoon = (int)nudCovDarkmoon.Value;
 
             if (nudCovDarkwraith.Text == "")
                 nudCovDarkwraith.Text = Hook.DarkwraithPoints.ToString();
             else
-                SavedStats.CovDarkwraith = nudCovDarkwraith.Value;
+                SavedStats.CovDarkwraith = (int)nudCovDarkwraith.Value;
 
             if (nudCovForest.Text == "")
                 nudCovForest.Text = Hook.ForestHunterPoints.ToString();
             else
-                SavedStats.CovForest = nudCovForest.Value;
+                SavedStats.CovForest = (int)nudCovForest.Value;
 
             if (nudCovGravelord.Text == "")
                 nudCovGravelord.Text = Hook.GravelordServantPoints.ToString();
             else
-                SavedStats.CovGravelord = nudCovGravelord.Value;
+                SavedStats.CovGravelord = (int)nudCovGravelord.Value;
 
             if (nudCovDragon.Text == "")
                 nudCovDragon.Text = Hook.PathOfTheDragonPoints.ToString();
             else
-                SavedStats.CovDragon = nudCovDragon.Value;
+                SavedStats.CovDragon = (int)nudCovDragon.Value;
 
             if (nudCovSunlight.Text == "")
                 nudCovSunlight.Text = Hook.WarriorOfSunlightPoints.ToString();
             else
-                SavedStats.CovSunlight = nudCovSunlight.Value;
+                SavedStats.CovSunlight = (int)nudCovSunlight.Value;
         }
 
         //checks if the stats was changed from "". This is to make sure stats save if the value entered happened to be the same as the blank nud value (usually 0)
@@ -421,7 +421,7 @@ namespace DS_Gadget
 
                 foreach (var nud in NudList)
                 {
-                    var stat = (decimal?)SavedStats[nud.Name];
+                    var stat = (int?)SavedStats[nud.Name];
                     if (stat.HasValue)
                     {
                         nud.Value = Clamp(stat.Value, nud.Minimum, nud.Maximum);
