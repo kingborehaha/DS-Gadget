@@ -36,17 +36,6 @@ namespace DS_Gadget
         /// </summary>
         private void MakeCollections()
         {
-            //NudDict entries
-            NudDict.Add(nudHumanity.Name, val => Hook.Humanity = val);
-            NudDict.Add(nudSouls.Name, val => Hook.Souls = val);
-            NudDict.Add(nudCovChaos.Name, val => Hook.ChaosServantPoints = (byte)val);
-            NudDict.Add(nudCovDarkmoon.Name, val => Hook.DarkmoonBladePoints = (byte)val);
-            NudDict.Add(nudCovDarkwraith.Name, val => Hook.DarkwraithPoints = (byte)val);
-            NudDict.Add(nudCovForest.Name, val => Hook.ForestHunterPoints = (byte)val);
-            NudDict.Add(nudCovGravelord.Name, val => Hook.GravelordServantPoints = (byte)val);
-            NudDict.Add(nudCovDragon.Name, val => Hook.PathOfTheDragonPoints = (byte)val);
-            NudDict.Add(nudCovSunlight.Name, val => Hook.WarriorOfSunlightPoints = (byte)val);
-
             //NudList
             NudList.Add(nudHumanity);
             NudList.Add(nudSouls);
@@ -350,9 +339,6 @@ namespace DS_Gadget
             SavedStats[cmb.Name] = cmb.SelectedIndex;
         }
 
-        //Dictionary that contains all of the Nuds and their corresponding Hook property (Except stats, as they are handled by their own method)
-        private Dictionary<string, Action<int>> NudDict = new Dictionary<string, Action<int>>();
-
         //handle all Cov, Humanity and Souls nud changes
         private void nud_ValueChanged(object sender, EventArgs e)
         {
@@ -361,7 +347,7 @@ namespace DS_Gadget
                 var nud = sender as NumericUpDown;
                 if (Hook.Loaded)
                 {
-                    NudDict[nud.Name].Invoke((int)nud.Value);
+                    Hook[nud.Name] = (int)nud.Value;
                 }
                 else
                 {

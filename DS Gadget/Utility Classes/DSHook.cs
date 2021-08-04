@@ -472,6 +472,20 @@ namespace DS_Gadget
                 }
                 throw new MissingMemberException();
             }
+            set
+            {
+                //Get each property
+                var props = typeof(DSHook).GetProperties();
+                foreach (var prop in props)
+                {
+                    //Check if it has a ControlAttribute with the same name
+                    var Attr = prop.GetCustomAttribute<ControlAttribute>();
+                    if (Attr != null && Attr.Name == attributeName)
+                    {
+                        prop.SetValue(this, (byte)value, null); //Set the properties value
+                    }
+                }
+            }
         }
         #endregion
 
