@@ -49,28 +49,33 @@ namespace DS_Gadget
         [Control("nudCovSunlight")]
         public int? CovSunlight { get; set; }
 
+        //This indexer will take a name and match it to the Control Attribute name above each property
         public int? this[string attributeName]
         {
             get
             {
+                //Get each property
                 var props = typeof(SavedStats).GetProperties();
                 foreach (var prop in props)
                 {
+                    //Check if it has a ControlAttribute with the same name
                     var Attr = prop.GetCustomAttribute<ControlAttribute>();
                     if (Attr != null && Attr.Name == attributeName)
-                        return prop.GetValue(this, null) as int?;
+                        return (int?)prop.GetValue(this, null); //Return matching Control Attribute as int?
                 }
                 return null;
             }
             set
             {
+                //Get each property
                 var props = typeof(SavedStats).GetProperties();
                 foreach (var prop in props)
                 {
+                    //Check if it has a ControlAttribute with the same name
                     var Attr = prop.GetCustomAttribute<ControlAttribute>();
                     if (Attr != null && Attr.Name == attributeName)
                     {
-                        prop.SetValue(this, value, null);
+                        prop.SetValue(this, value, null); //Set the properties value
                     }
                 }
             }

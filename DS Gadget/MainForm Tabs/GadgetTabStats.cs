@@ -16,7 +16,7 @@ namespace DS_Gadget
         public override void InitTab(MainForm parent)
         {
             base.InitTab(parent);
-            MakeDicts();
+            MakeCollections();
             foreach (DSSex sex in DSSex.All)
                 cmbSex.Items.Add(sex);
             foreach (DSClass charClass in DSClass.All)
@@ -34,7 +34,7 @@ namespace DS_Gadget
         /// <summary>
         /// One init function to make all of the dictionaries
         /// </summary>
-        private void MakeDicts()
+        private void MakeCollections()
         {
             //NudDict entries
             NudDict.Add(nudHumanity.Name, val => Hook.Humanity = val);
@@ -147,7 +147,7 @@ namespace DS_Gadget
             sl += faith - charClass.Faith;
             return sl;
         }
-
+        //Get's run from MainForm when character is loaded and unloaded
         internal void EnabledStats(bool enable)
         {
             if (enable)
@@ -247,6 +247,7 @@ namespace DS_Gadget
 
         }
 
+        //Combobox selected index changed. Might be able to simplify later, but right now they cast to their own class. (Also sex uses a short instead of a byte like the other 2.
         private void cmbSex_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbSex.SelectedIndex != -1)
@@ -368,7 +369,7 @@ namespace DS_Gadget
             }
         }
         
-        // Takes Sender as NumericUpDown and retrieves set Action from StatsDict
+        //Takes Sender as NumericUpDown and sets via SavedStats[nud.Name] indexer
         private void SaveStatsNud(object sender)
         {
             var nud = sender as NumericUpDown;
@@ -376,6 +377,7 @@ namespace DS_Gadget
             nud.Text = nud.Value.ToString(); //Update the text incase the value was the same as the previous value
         }
 
+        //Takes Sender as ComboBox and sets via SavedStats[cmb.Name] indexer
         private void SaveStatsCmb(object sender)
         {
             var cmb = sender as ComboBox;
@@ -425,6 +427,15 @@ namespace DS_Gadget
                     txtName.Text = SavedStats.Name;
                 }
 
+                //Check each nud to see if it's null or not and then set value
+                foreach (var nud in NudList)
+                {
+                    var stat = (int?)SavedStats[nud.Name];
+                    if (stat.HasValue)
+                    {
+                        nud.Value = Clamp(stat.Value, nud.Minimum, nud.Maximum);
+                    }
+                }
 
                 //Check each cmb to see if it's null or not and then set index
                 foreach (var cmb in CmbList)
@@ -433,16 +444,6 @@ namespace DS_Gadget
                     if (index.HasValue)
                     {
                         cmb.SelectedIndex = index.Value;
-                    }
-                }
-
-                //Check each nud to see if it's null or not and then set value
-                foreach (var nud in NudList)
-                {
-                    var stat = (int?)SavedStats[nud.Name];
-                    if (stat.HasValue)
-                    {
-                        nud.Value = Clamp(stat.Value, nud.Minimum, nud.Maximum);
                     }
                 }
             }
