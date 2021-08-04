@@ -474,7 +474,6 @@ namespace DS_Gadget
             NullNUD(nudCovDragon);
             NullNUD(nudCovSunlight);
         }
-
         
         private void nudKeyDown(object sender, KeyEventArgs e)
         {
