@@ -31,8 +31,8 @@ You can also try adding DS Gadget as an exception to your antivirus
 ***Thank You [King Borehaha](https://github.com/kingborehaha/) for these features***
 * "Last Set" Bonfire feature puts the last bonfire you warped to at the bottom of the list of bonfires
 * Various bugfixes and minor improvement on the code side
-* Code Cleanup and Bug fixes courtesy
-* Fixed version checking, courtesy
+* Code Cleanup and Bug fixes
+* Fixed version checking
 
 ###  Prerelease 0.14.1):
 
