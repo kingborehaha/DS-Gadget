@@ -227,7 +227,7 @@ namespace DS_Gadget
             foreach (var nud in NudList)
             {
                 if (nud.Text != "")
-                    SavedStats[nud.Name] = nud.Value;
+                    SavedStats[nud.Name] = (int)nud.Value;
             }
         }
 
@@ -318,10 +318,29 @@ namespace DS_Gadget
             
         }
 
+        private void cmbCovenant_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbCovenant.SelectedIndex != -1)
+            {
+                if (!Reading)
+                {
+                    if (Hook.Loaded)
+                    {
+                        Hook.Covenant = ((DSCovenant)cmbCovenant.SelectedItem).ID;
+                    }
+                    else
+                    {
+                        SaveStatsCmb(sender);
+                    }
+                }
+            }
+        }
+
         private SavedStats SavedStats = new SavedStats();
 
         public bool Updating { get; private set; }
 
+        //Hand stat nud changes
         private void nudStat_ValueChanged(object sender, EventArgs e)
         {
             if (!Reading)
@@ -353,7 +372,7 @@ namespace DS_Gadget
         private void SaveStatsNud(object sender)
         {
             var nud = sender as NumericUpDown;
-            SavedStats[nud.Name] = nud.Value;
+            SavedStats[nud.Name] = (int)nud.Value;
             nud.Text = nud.Value.ToString(); //Update the text incase the value was the same as the previous value
         }
 
@@ -363,27 +382,10 @@ namespace DS_Gadget
             SavedStats[cmb.Name] = cmb.SelectedIndex;
         }
 
-        private void cmbCovenant_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbCovenant.SelectedIndex != -1)
-            {
-                if (!Reading)
-                {
-                    if (Hook.Loaded)
-                    {
-                        Hook.Covenant = ((DSCovenant)cmbCovenant.SelectedItem).ID;
-                    }
-                    else
-                    {
-                        SaveStatsCmb(sender);
-                    }
-                }
-            }
-        }
-
         //Dictionary that contains all of the Nuds and their corresponding Hook property (Except stats, as they are handled by their own method)
         private Dictionary<string, Action<int>> NudDict = new Dictionary<string, Action<int>>();
 
+        //handle all Cov, Humanity and Souls nud changes
         private void nud_ValueChanged(object sender, EventArgs e)
         {
             if (!Reading)
@@ -400,13 +402,16 @@ namespace DS_Gadget
             }
         }
 
+        //Returns a value between the min and max, even if value is below or above
         public static decimal Clamp(decimal value, decimal min, decimal max)
         {
             return (value < min) ? min : (value > max) ? max : value;
         }
 
+        //List of nuds for enumeration
         private List<NumericUpDown> NudList = new List<NumericUpDown>();
 
+        //list of cmbs for enumeration
         private List<ComboBox> CmbList = new List<ComboBox>();
 
         //Check each saved stat if it's null and load them if they aren't
@@ -414,27 +419,30 @@ namespace DS_Gadget
         {
             if (Hook.Loaded)
             {
+                //Check if Name is null and set name
                 if (!string.IsNullOrWhiteSpace(SavedStats.Name))
                 {
                     txtName.Text = SavedStats.Name;
                 }
 
-                foreach (var nud in NudList)
-                {
-                    var stat = (int?)SavedStats[nud.Name];
-                    if (stat.HasValue)
-                    {
-                        nud.Value = Clamp(stat.Value, nud.Minimum, nud.Maximum);
-                    }
-                        
-                }
 
+                //Check each cmb to see if it's null or not and then set index
                 foreach (var cmb in CmbList)
                 {
                     var index = (int?)SavedStats[cmb.Name];
                     if (index.HasValue)
                     {
                         cmb.SelectedIndex = index.Value;
+                    }
+                }
+
+                //Check each nud to see if it's null or not and then set value
+                foreach (var nud in NudList)
+                {
+                    var stat = (int?)SavedStats[nud.Name];
+                    if (stat.HasValue)
+                    {
+                        nud.Value = Clamp(stat.Value, nud.Minimum, nud.Maximum);
                     }
                 }
             }
