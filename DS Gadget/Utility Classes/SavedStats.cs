@@ -5,7 +5,6 @@ namespace DS_Gadget
 {
     class SavedStats
     {
-        [Control("txtName")]
         public string Name { get; set; }
         [Control("cmbSex")]
         public int? Sex { get; set; }
@@ -50,7 +49,7 @@ namespace DS_Gadget
         [Control("nudCovSunlight")]
         public int? CovSunlight { get; set; }
 
-        public object this[string attributeName]
+        public int? this[string attributeName]
         {
             get
             {
@@ -59,7 +58,7 @@ namespace DS_Gadget
                 {
                     var Attr = prop.GetCustomAttribute<ControlAttribute>();
                     if (Attr != null && Attr.Name == attributeName)
-                        return prop.GetValue(this, null);
+                        return prop.GetValue(this, null) as int?;
                 }
                 return null;
             }
@@ -71,10 +70,7 @@ namespace DS_Gadget
                     var Attr = prop.GetCustomAttribute<ControlAttribute>();
                     if (Attr != null && Attr.Name == attributeName)
                     {
-                        if (value is decimal)
-                            prop.SetValue(this, Convert.ToInt32(value) , null);
-                        else
-                            prop.SetValue(this, value, null);
+                        prop.SetValue(this, value, null);
                     }
                 }
             }
