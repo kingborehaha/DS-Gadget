@@ -147,6 +147,7 @@ namespace DS_Gadget
             sl += faith - charClass.Faith;
             return sl;
         }
+
         //Get's run from MainForm when character is loaded and unloaded
         internal void EnabledStats(bool enable)
         {
@@ -172,62 +173,27 @@ namespace DS_Gadget
             }
         }
 
-        // Checks if the nuds value is null or not. Loads correct value if it is, and saves correct value if it isn't. Prevents numbers not showing up and not saving
+        //Checks if the nuds value is blank or not. Loads correct value if it is. Prevents numbers not showing if the value entered happened to be the same as the blank nud value (usually 0)
         private void CheckTextChange()
         {
-            if (nudHumanity.Text == "")
-                nudHumanity.Text = Hook.Humanity.ToString();
-            else
-                SavedStats.Humanity = (int)nudHumanity.Value;
-
-            if (nudSouls.Text == "")
-                nudSouls.Text = Hook.Souls.ToString();
-            else
-                SavedStats.Souls = (int)nudSouls.Value;
-
-            if (nudCovChaos.Text == "")
-                nudCovChaos.Text = Hook.ChaosServantPoints.ToString();
-            else
-                SavedStats.CovChaos = (int)nudCovChaos.Value;
-
-            if (nudCovDarkmoon.Text == "")
-                nudCovDarkmoon.Text = Hook.DarkmoonBladePoints.ToString();
-            else
-                SavedStats.CovDarkmoon = (int)nudCovDarkmoon.Value;
-
-            if (nudCovDarkwraith.Text == "")
-                nudCovDarkwraith.Text = Hook.DarkwraithPoints.ToString();
-            else
-                SavedStats.CovDarkwraith = (int)nudCovDarkwraith.Value;
-
-            if (nudCovForest.Text == "")
-                nudCovForest.Text = Hook.ForestHunterPoints.ToString();
-            else
-                SavedStats.CovForest = (int)nudCovForest.Value;
-
-            if (nudCovGravelord.Text == "")
-                nudCovGravelord.Text = Hook.GravelordServantPoints.ToString();
-            else
-                SavedStats.CovGravelord = (int)nudCovGravelord.Value;
-
-            if (nudCovDragon.Text == "")
-                nudCovDragon.Text = Hook.PathOfTheDragonPoints.ToString();
-            else
-                SavedStats.CovDragon = (int)nudCovDragon.Value;
-
-            if (nudCovSunlight.Text == "")
-                nudCovSunlight.Text = Hook.WarriorOfSunlightPoints.ToString();
-            else
-                SavedStats.CovSunlight = (int)nudCovSunlight.Value;
+            //Check if each nud has emty text, if it does, set the text to the Hook value.
+            foreach (var nud in NudList)
+            {
+                if (nud.Text == "")
+                {
+                    nud.Text = Hook[nud.Name].ToString();
+                }
+            }
         }
 
         //checks if the stats was changed from "". This is to make sure stats save if the value entered happened to be the same as the blank nud value (usually 0)
         private void CheckStatsChange()
         {
+            //Check if each nud in the nudlist as empty text, and save if necessary
             foreach (var nud in NudList)
             {
                 if (nud.Text != "")
-                    SavedStats[nud.Name] = (int)nud.Value;
+                    SavedStats[nud.Name] = (int)nud.Value;//Save stat if it's not ""
             }
         }
 
