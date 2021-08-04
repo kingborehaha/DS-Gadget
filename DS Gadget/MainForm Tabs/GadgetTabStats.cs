@@ -152,7 +152,7 @@ namespace DS_Gadget
         {
             if (enable)
             {
-
+                CheckStatsChange();
                 if (cbxLoad.Checked)
                 {
                     if (SavedStats.GetType().GetProperties().Select(pi => pi.GetValue(SavedStats) is Nullable).Any(value => value != null) || !string.IsNullOrWhiteSpace(SavedStats.Name))
@@ -219,23 +219,16 @@ namespace DS_Gadget
                 nudCovSunlight.Text = Hook.WarriorOfSunlightPoints.ToString();
             else
                 SavedStats.CovSunlight = nudCovSunlight.Value;
+        }
 
-            if (nudVit.Text != "")
-                SavedStats.Vit = nudVit.Value;
-            if (nudAtt.Text != "")
-                SavedStats.Att = nudAtt.Value;
-            if (nudEnd.Text != "")
-                SavedStats.End = nudEnd.Value;
-            if (nudStr.Text != "")
-                SavedStats.Str = nudStr.Value;
-            if (nudDex.Text != "")
-                SavedStats.Dex = nudDex.Value;
-            if (nudRes.Text != "")
-                SavedStats.Res = nudRes.Value;
-            if (nudInt.Text != "")
-                SavedStats.Int = nudInt.Value;
-            if (nudFth.Text != "")
-                SavedStats.Fth = nudFth.Value;
+        //checks if the stats was changed from "". This is to make sure stats save if the value entered happened to be the same as the blank nud value (usually 0)
+        private void CheckStatsChange()
+        {
+            foreach (var nud in NudList)
+            {
+                if (nud.Text != "")
+                    SavedStats[nud.Name] = nud.Value;
+            }
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)
