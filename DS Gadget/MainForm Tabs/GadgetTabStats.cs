@@ -152,6 +152,7 @@ namespace DS_Gadget
                     }
                 }
                 CheckTextChange();
+                RecalculateStats();
             }
             else
             {
