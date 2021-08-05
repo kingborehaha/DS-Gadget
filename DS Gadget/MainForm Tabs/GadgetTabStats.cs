@@ -25,6 +25,7 @@ namespace DS_Gadget
                 cmbPhysique.Items.Add(physique);
             nudHumanity.Maximum = int.MaxValue;
             nudHumanity.Minimum = int.MinValue;
+            //nudSouls.Maximum = int.MaxValue;
 
             foreach (DSCovenant covenant in DSCovenant.All)
                 cmbCovenant.Items.Add(covenant);
@@ -143,11 +144,11 @@ namespace DS_Gadget
             if (enable)
             {
                 CheckStatsChange();
+                UpdateTab();
                 if (cbxLoad.Checked)
                 {
                     if (SavedStats.GetType().GetProperties().Select(pi => pi.GetValue(SavedStats) is Nullable).Any(value => value != null) || !string.IsNullOrWhiteSpace(SavedStats.Name))
                     {
-                        UpdateTab();
                         LoadSavedStats();
                     }
                 }
