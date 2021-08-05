@@ -324,7 +324,7 @@ namespace DS_Gadget
             }
         }
         
-        //Takes Sender as NumericUpDown and sets via SavedStats[nud.Name] indexer
+        //Takes Sender as NumericUpDown and sets Value via SavedStats[nud.Name] indexer
         private void SaveStatsNud(object sender)
         {
             var nud = sender as NumericUpDown;
@@ -332,7 +332,7 @@ namespace DS_Gadget
             nud.Text = nud.Value.ToString(); //Update the text incase the value was the same as the previous value
         }
 
-        //Takes Sender as ComboBox and sets via SavedStats[cmb.Name] indexer
+        //Takes Sender as ComboBox and sets SelectedIndex via SavedStats[cmb.Name] indexer
         private void SaveStatsCmb(object sender)
         {
             var cmb = sender as ComboBox;
