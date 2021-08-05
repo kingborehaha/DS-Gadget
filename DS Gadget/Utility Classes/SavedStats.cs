@@ -76,6 +76,7 @@ namespace DS_Gadget
                     if (Attr != null && Attr.Name == attributeName)
                     {
                         prop.SetValue(this, value, null); //Set the properties value
+                        return;
                     }
                 }
             }

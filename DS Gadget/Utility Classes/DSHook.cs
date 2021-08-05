@@ -486,6 +486,8 @@ namespace DS_Gadget
                             prop.SetValue(this, (byte)value, null); //Set the properties value
                         else
                             prop.SetValue(this, value, null); //Set the properties value
+
+                        return;
                     }
                 }
             }
