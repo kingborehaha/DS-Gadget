@@ -2,6 +2,7 @@
 using PropertyHook;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 
 namespace DS_Gadget
@@ -319,61 +320,61 @@ namespace DS_Gadget
             get => CharData2.ReadInt32((int)DSOffsets.CharData2.SoulLevel);
             set => CharData2.WriteInt32((int)DSOffsets.CharData2.SoulLevel, value);
         }
-
+        [Control("nudHumanity")]
         public int Humanity
         {
             get => CharData2.ReadInt32((int)DSOffsets.CharData2.Humanity);
             set => CharData2.WriteInt32((int)DSOffsets.CharData2.Humanity, value);
         }
-
+        [Control("nudSouls")]
         public int Souls
         {
             get => CharData2.ReadInt32((int)DSOffsets.CharData2.Souls);
             set => CharData2.WriteInt32((int)DSOffsets.CharData2.Souls, value);
         }
-
+        [Control("nudVit")]
         public int Vitality
         {
             get => CharData2.ReadInt32((int)DSOffsets.CharData2.Vitality);
             set => CharData2.WriteInt32((int)DSOffsets.CharData2.Vitality, value);
         }
-
+        [Control("nudAtt")]
         public int Attunement
         {
             get => CharData2.ReadInt32((int)DSOffsets.CharData2.Attunement);
             set => CharData2.WriteInt32((int)DSOffsets.CharData2.Attunement, value);
         }
-
+        [Control("nudEnd")]
         public int Endurance
         {
             get => CharData2.ReadInt32((int)DSOffsets.CharData2.Endurance);
             set => CharData2.WriteInt32((int)DSOffsets.CharData2.Endurance, value);
         }
-
+        [Control("nudStr")]
         public int Strength
         {
             get => CharData2.ReadInt32((int)DSOffsets.CharData2.Strength);
             set => CharData2.WriteInt32((int)DSOffsets.CharData2.Strength, value);
         }
-
+        [Control("nudDex")]
         public int Dexterity
         {
             get => CharData2.ReadInt32((int)DSOffsets.CharData2.Dexterity);
             set => CharData2.WriteInt32((int)DSOffsets.CharData2.Dexterity, value);
         }
-
+        [Control("nudRes")]
         public int Resistance
         {
             get => CharData2.ReadInt32((int)DSOffsets.CharData2.Resistance);
             set => CharData2.WriteInt32((int)DSOffsets.CharData2.Resistance, value);
         }
-
+        [Control("nudInt")]
         public int Intelligence
         {
             get => CharData2.ReadInt32((int)DSOffsets.CharData2.Intelligence);
             set => CharData2.WriteInt32((int)DSOffsets.CharData2.Intelligence, value);
         }
-
+        [Control("nudFth")]
         public int Faith
         {
             get => CharData2.ReadInt32((int)DSOffsets.CharData2.Faith);
@@ -404,43 +405,43 @@ namespace DS_Gadget
 
             Humanity = humanity;
         }
-
+        [Control("nudCovSunlight")]
         public byte WarriorOfSunlightPoints
         {
             get => CharData2.ReadByte((int)DSOffsets.CharData2.WarriorOfSunlightPoints);
             set => CharData2.WriteByte((int)DSOffsets.CharData2.WarriorOfSunlightPoints, value);
         }
-
+        [Control("nudCovDarkwraith")]
         public byte DarkwraithPoints
         {
             get => CharData2.ReadByte((int)DSOffsets.CharData2.DarkwraithPoints);
             set => CharData2.WriteByte((int)DSOffsets.CharData2.DarkwraithPoints, value);
         }
-
+        [Control("nudCovDragon")]
         public byte PathOfTheDragonPoints
         {
             get => CharData2.ReadByte((int)DSOffsets.CharData2.PathOfTheDragonPoints);
             set => CharData2.WriteByte((int)DSOffsets.CharData2.PathOfTheDragonPoints, value);
         }
-
+        [Control("nudCovGravelord")]
         public byte GravelordServantPoints
         {
             get => CharData2.ReadByte((int)DSOffsets.CharData2.GravelordServantPoints);
             set => CharData2.WriteByte((int)DSOffsets.CharData2.GravelordServantPoints, value);
         }
-
+        [Control("nudCovForest")]
         public byte ForestHunterPoints
         {
             get => CharData2.ReadByte((int)DSOffsets.CharData2.ForestHunterPoints);
             set => CharData2.WriteByte((int)DSOffsets.CharData2.ForestHunterPoints, value);
         }
-
+        [Control("nudCovDarkmoon")]
         public byte DarkmoonBladePoints
         {
             get => CharData2.ReadByte((int)DSOffsets.CharData2.DarkmoonBladePoints);
             set => CharData2.WriteByte((int)DSOffsets.CharData2.DarkmoonBladePoints, value);
         }
-
+        [Control("nudCovChaos")]
         public byte ChaosServantPoints
         {
             get => CharData2.ReadByte((int)DSOffsets.CharData2.ChaosServantPoints);
@@ -451,6 +452,40 @@ namespace DS_Gadget
         {
             get => CharData2.ReadByte((int)DSOffsets.CharData2.Covenant);
             set => CharData2.WriteByte((int)DSOffsets.CharData2.Covenant, value);
+        }
+        #endregion
+
+        #region Indexer
+        //This indexer will take a name and match it to the Control Attribute name above each property
+        public int this[string attributeName]
+        {
+            get
+            {
+                //Get each property
+                var props = typeof(DSHook).GetProperties();
+                foreach (var prop in props)
+                {
+                    //Check if it has a ControlAttribute with the same name
+                    var Attr = prop.GetCustomAttribute<ControlAttribute>();
+                    if (Attr != null && Attr.Name == attributeName)
+                        return Convert.ToInt32(prop.GetValue(this, null)); //Return matching Control Attribute as int?
+                }
+                throw new MissingMemberException();
+            }
+            set
+            {
+                //Get each property
+                var props = typeof(DSHook).GetProperties();
+                foreach (var prop in props)
+                {
+                    //Check if it has a ControlAttribute with the same name
+                    var Attr = prop.GetCustomAttribute<ControlAttribute>();
+                    if (Attr != null && Attr.Name == attributeName)
+                    {
+                        prop.SetValue(this, (byte)value, null); //Set the properties value
+                    }
+                }
+            }
         }
         #endregion
 

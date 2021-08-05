@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace DS_Gadget
@@ -15,7 +16,7 @@ namespace DS_Gadget
         public override void InitTab(MainForm parent)
         {
             base.InitTab(parent);
-            MakeDicts();
+            MakeCollections();
             foreach (DSSex sex in DSSex.All)
                 cmbSex.Items.Add(sex);
             foreach (DSClass charClass in DSClass.All)
@@ -33,37 +34,33 @@ namespace DS_Gadget
         /// <summary>
         /// One init function to make all of the dictionaries
         /// </summary>
-        private void MakeDicts()
+        private void MakeCollections()
         {
-            //StatsDict entries
-            StatsDict.Add(nudHumanity.Name, val => { SavedStats.Humanity = (decimal)val; });
-            StatsDict.Add(nudSouls.Name, val => { SavedStats.Souls = (decimal)val; });
-            StatsDict.Add(nudVit.Name, val => { SavedStats.Vit = (decimal)val; });
-            StatsDict.Add(nudAtt.Name, val => { SavedStats.Att = (decimal)val; });
-            StatsDict.Add(nudEnd.Name, val => { SavedStats.End = (decimal)val; });
-            StatsDict.Add(nudStr.Name, val => { SavedStats.Str = (decimal)val; });
-            StatsDict.Add(nudDex.Name, val => { SavedStats.Dex = (decimal)val; });
-            StatsDict.Add(nudRes.Name, val => { SavedStats.Res = (decimal)val; });
-            StatsDict.Add(nudInt.Name, val => { SavedStats.Int = (decimal)val; });
-            StatsDict.Add(nudFth.Name, val => { SavedStats.Fth = (decimal)val; });
-            StatsDict.Add(nudCovChaos.Name, val => { SavedStats.CovChaos = (decimal)val; });
-            StatsDict.Add(nudCovDarkmoon.Name, val => { SavedStats.CovDarkmoon = (decimal)val; });
-            StatsDict.Add(nudCovDarkwraith.Name, val => { SavedStats.CovDarkwraith = (decimal)val; });
-            StatsDict.Add(nudCovForest.Name, val => { SavedStats.CovForest = (decimal)val; });
-            StatsDict.Add(nudCovGravelord.Name, val => { SavedStats.CovGravelord = (decimal)val; });
-            StatsDict.Add(nudCovDragon.Name, val => { SavedStats.CovDragon = (decimal)val; });
-            StatsDict.Add(nudCovSunlight.Name, val => { SavedStats.CovSunlight = (decimal)val; });
+            //NudList
+            NudList.Add(nudHumanity);
+            NudList.Add(nudSouls);
+            NudList.Add(nudVit);
+            NudList.Add(nudAtt);
+            NudList.Add(nudEnd);
+            NudList.Add(nudStr);
+            NudList.Add(nudDex);
+            NudList.Add(nudRes);
+            NudList.Add(nudInt);
+            NudList.Add(nudFth);
+            NudList.Add(nudCovChaos);
+            NudList.Add(nudCovDarkmoon);
+            NudList.Add(nudCovDarkwraith);
+            NudList.Add(nudCovForest);
+            NudList.Add(nudCovGravelord);
+            NudList.Add(nudCovDragon);
+            NudList.Add(nudCovSunlight);
 
-            //NudDict entries
-            NudDict.Add(nudHumanity.Name, val => { Hook.Humanity = val; });
-            NudDict.Add(nudSouls.Name, val => { Hook.Souls = val; });
-            NudDict.Add(nudCovChaos.Name, val => { Hook.ChaosServantPoints = (byte)val; });
-            NudDict.Add(nudCovDarkmoon.Name, val => { Hook.DarkmoonBladePoints = (byte)val; });
-            NudDict.Add(nudCovDarkwraith.Name, val => { Hook.DarkwraithPoints = (byte)val; });
-            NudDict.Add(nudCovForest.Name, val => { Hook.ForestHunterPoints = (byte)val; });
-            NudDict.Add(nudCovGravelord.Name, val => { Hook.GravelordServantPoints = (byte)val; });
-            NudDict.Add(nudCovDragon.Name, val => { Hook.PathOfTheDragonPoints = (byte)val; });
-            NudDict.Add(nudCovSunlight.Name, val => { Hook.WarriorOfSunlightPoints = (byte)val; });
+            //CmbList
+            CmbList.Add(cmbSex);
+            CmbList.Add(cmbClass);
+            CmbList.Add(cmbPhysique);
+            CmbList.Add(cmbCovenant);
+
         }
 
         public override void ReloadTab()
@@ -140,20 +137,22 @@ namespace DS_Gadget
             return sl;
         }
 
+        //Get's run from MainForm when character is loaded and unloaded
         internal void EnabledStats(bool enable)
         {
             if (enable)
             {
-
+                CheckStatsChange();
                 if (cbxLoad.Checked)
                 {
-                    if (SavedStats.GetType().GetProperties().Select(pi => pi.GetValue(SavedStats)).Any(value => value != null))
+                    if (SavedStats.GetType().GetProperties().Select(pi => pi.GetValue(SavedStats) is Nullable).Any(value => value != null) || !string.IsNullOrWhiteSpace(SavedStats.Name))
                     {
                         UpdateTab();
                         LoadSavedStats();
                     }
                 }
                 CheckTextChange();
+                RecalculateStats();
             }
             else
             {
@@ -164,70 +163,28 @@ namespace DS_Gadget
             }
         }
 
-        // Checks if the nuds value is null or not. Loads correct value if it is, and saves correct value if it isn't. Prevents numbers not showing up and not saving
+        //Checks if the nuds value is blank or not. Loads correct value if it is. Prevents numbers not showing if the value entered happened to be the same as the blank nud value (usually 0)
         private void CheckTextChange()
         {
-            if (nudHumanity.Text == "")
-                nudHumanity.Text = Hook.Humanity.ToString();
-            else
-                SavedStats.Humanity = nudHumanity.Value;
+            //Check if each nud has emty text, if it does, set the text to the Hook value.
+            foreach (var nud in NudList)
+            {
+                if (nud.Text == "")
+                {
+                    nud.Text = Hook[nud.Name].ToString();
+                }
+            }
+        }
 
-            if (nudSouls.Text == "")
-                nudSouls.Text = Hook.Souls.ToString();
-            else
-                SavedStats.Souls = nudSouls.Value;
-
-            if (nudCovChaos.Text == "")
-                nudCovChaos.Text = Hook.ChaosServantPoints.ToString();
-            else
-                SavedStats.CovChaos = nudCovChaos.Value;
-
-            if (nudCovDarkmoon.Text == "")
-                nudCovDarkmoon.Text = Hook.DarkmoonBladePoints.ToString();
-            else
-                SavedStats.CovDarkmoon = nudCovDarkmoon.Value;
-
-            if (nudCovDarkwraith.Text == "")
-                nudCovDarkwraith.Text = Hook.DarkwraithPoints.ToString();
-            else
-                SavedStats.CovDarkwraith = nudCovDarkwraith.Value;
-
-            if (nudCovForest.Text == "")
-                nudCovForest.Text = Hook.ForestHunterPoints.ToString();
-            else
-                SavedStats.CovForest = nudCovForest.Value;
-
-            if (nudCovGravelord.Text == "")
-                nudCovGravelord.Text = Hook.GravelordServantPoints.ToString();
-            else
-                SavedStats.CovGravelord = nudCovGravelord.Value;
-
-            if (nudCovDragon.Text == "")
-                nudCovDragon.Text = Hook.PathOfTheDragonPoints.ToString();
-            else
-                SavedStats.CovDragon = nudCovDragon.Value;
-
-            if (nudCovSunlight.Text == "")
-                nudCovSunlight.Text = Hook.WarriorOfSunlightPoints.ToString();
-            else
-                SavedStats.CovSunlight = nudCovSunlight.Value;
-
-            if (nudVit.Text != "")
-                SavedStats.Vit = nudVit.Value;
-            if (nudAtt.Text != "")
-                SavedStats.Att = nudAtt.Value;
-            if (nudEnd.Text != "")
-                SavedStats.End = nudEnd.Value;
-            if (nudStr.Text != "")
-                SavedStats.Str = nudStr.Value;
-            if (nudDex.Text != "")
-                SavedStats.Dex = nudDex.Value;
-            if (nudRes.Text != "")
-                SavedStats.Res = nudRes.Value;
-            if (nudInt.Text != "")
-                SavedStats.Int = nudInt.Value;
-            if (nudFth.Text != "")
-                SavedStats.Fth = nudFth.Value;
+        //checks if the stats was changed from "". This is to make sure stats save if the value entered happened to be the same as the blank nud value (usually 0)
+        private void CheckStatsChange()
+        {
+            //Check if each nud in the nudlist as empty text, and save if necessary
+            foreach (var nud in NudList)
+            {
+                if (nud.Text != "")
+                    SavedStats[nud.Name] = (int)nud.Value;//Save stat if it's not ""
+            }
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)
@@ -246,6 +203,7 @@ namespace DS_Gadget
 
         }
 
+        //Combobox selected index changed. Might be able to simplify later, but right now they cast to their own class. (Also sex uses a short instead of a byte like the other 2.
         private void cmbSex_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbSex.SelectedIndex != -1)
@@ -258,7 +216,7 @@ namespace DS_Gadget
                     }
                     else
                     {
-                        SavedStats.Sex = cmbSex.SelectedIndex;
+                        SaveStatsCmb(sender);
                     }
                 }
             }
@@ -291,7 +249,7 @@ namespace DS_Gadget
                     }
                     else
                     {
-                        SavedStats.Class = cmbClass.SelectedIndex;
+                        SaveStatsCmb(sender);
                     }
 
                 }
@@ -310,52 +268,11 @@ namespace DS_Gadget
                     }
                     else
                     {
-                        SavedStats.Physique = cmbPhysique.SelectedIndex;
+                        SaveStatsCmb(sender);
                     }
                 }
             }
             
-        }
-
-        private SavedStats SavedStats = new SavedStats();
-
-        public bool Updating { get; private set; }
-
-        private void nudStat_ValueChanged(object sender, EventArgs e)
-        {
-            if (!Reading)
-            {
-                if(Hook.Loaded)
-                {
-                    if (!Updating)
-                    {
-                        RecalculateStats();
-                    }
-                }
-                else
-                {
-                    SaveStats(sender);
-
-                    if (cmbClass.SelectedIndex == -1)
-                    {
-                        txtSoulLevel.Text = (nudVit.Value + nudAtt.Value + nudEnd.Value + nudStr.Value + nudDex.Value + nudRes.Value + nudInt.Value + nudFth.Value).ToString();
-                    }
-                    else
-                    {
-                        txtSoulLevel.Text = CalculateSL((int)nudVit.Value, (int)nudAtt.Value, (int)nudEnd.Value, (int)nudStr.Value, (int)nudDex.Value, (int)nudRes.Value, (int)nudInt.Value, (int)nudFth.Value).ToString();
-                    }
-                }
-            }
-        }
-
-        private Dictionary<string, Action<decimal?>> StatsDict = new Dictionary<string, Action<decimal?>>();
-        
-        // Takes Sender as NumericUpDown and retrieves set Action from StatsDict
-        private void SaveStats(object sender)
-        {
-            var nud = sender as NumericUpDown;
-            StatsDict[nud.Name].Invoke(nud.Value); //Invoke takes nud.Value and sets it via the function in the dictionary using nud.Name
-            nud.Text = nud.Value.ToString(); //Update the text incase the value was the same as the previous value
         }
 
         private void cmbCovenant_SelectedIndexChanged(object sender, EventArgs e)
@@ -370,15 +287,60 @@ namespace DS_Gadget
                     }
                     else
                     {
-                        SavedStats.Covenant = cmbCovenant.SelectedIndex;
+                        SaveStatsCmb(sender);
                     }
                 }
             }
         }
 
-        //Dictionary that contains all of the Nuds and their corresponding Hook property (Except stats, as they are handled by their own method)
-        private Dictionary<string, Action<int>> NudDict = new Dictionary<string, Action<int>>();
+        private SavedStats SavedStats = new SavedStats();
 
+        public bool Updating { get; private set; }
+
+        //Hand stat nud changes
+        private void nudStat_ValueChanged(object sender, EventArgs e)
+        {
+            if (!Reading)
+            {
+                if(Hook.Loaded)
+                {
+                    if (!Updating)
+                    {
+                        RecalculateStats();
+                    }
+                }
+                else
+                {
+                    SaveStatsNud(sender);
+
+                    if (cmbClass.SelectedIndex == -1)
+                    {
+                        txtSoulLevel.Text = (nudVit.Value + nudAtt.Value + nudEnd.Value + nudStr.Value + nudDex.Value + nudRes.Value + nudInt.Value + nudFth.Value).ToString();
+                    }
+                    else
+                    {
+                        txtSoulLevel.Text = CalculateSL((int)nudVit.Value, (int)nudAtt.Value, (int)nudEnd.Value, (int)nudStr.Value, (int)nudDex.Value, (int)nudRes.Value, (int)nudInt.Value, (int)nudFth.Value).ToString();
+                    }
+                }
+            }
+        }
+        
+        //Takes Sender as NumericUpDown and sets Value via SavedStats[nud.Name] indexer
+        private void SaveStatsNud(object sender)
+        {
+            var nud = sender as NumericUpDown;
+            SavedStats[nud.Name] = (int)nud.Value;
+            nud.Text = nud.Value.ToString(); //Update the text incase the value was the same as the previous value
+        }
+
+        //Takes Sender as ComboBox and sets SelectedIndex via SavedStats[cmb.Name] indexer
+        private void SaveStatsCmb(object sender)
+        {
+            var cmb = sender as ComboBox;
+            SavedStats[cmb.Name] = cmb.SelectedIndex;
+        }
+
+        //handle all Cov, Humanity and Souls nud changes
         private void nud_ValueChanged(object sender, EventArgs e)
         {
             if (!Reading)
@@ -386,153 +348,58 @@ namespace DS_Gadget
                 var nud = sender as NumericUpDown;
                 if (Hook.Loaded)
                 {
-                    NudDict[nud.Name].Invoke((int)nud.Value);
+                    Hook[nud.Name] = (int)nud.Value;
                 }
                 else
                 {
-                    SaveStats(sender);
+                    SaveStatsNud(sender);
                 }
             }
         }
 
+        //Returns a value between the min and max, even if value is below or above
         public static decimal Clamp(decimal value, decimal min, decimal max)
         {
             return (value < min) ? min : (value > max) ? max : value;
         }
+
+        //List of nuds for enumeration
+        private List<NumericUpDown> NudList = new List<NumericUpDown>();
+
+        //list of cmbs for enumeration
+        private List<ComboBox> CmbList = new List<ComboBox>();
 
         //Check each saved stat if it's null and load them if they aren't
         private void LoadSavedStats()
         {
             if (Hook.Loaded)
             {
+                //Check if Name is null and set name
                 if (!string.IsNullOrWhiteSpace(SavedStats.Name))
                 {
                     txtName.Text = SavedStats.Name;
                 }
 
-                if (SavedStats.Sex.HasValue)
+                //Check each nud to see if it's null or not and then set value
+                foreach (var nud in NudList)
                 {
-                    cmbSex.SelectedIndex = SavedStats.Sex.Value;
-                    cmbSex_SelectedIndexChanged(null, null);
+                    var stat = (int?)SavedStats[nud.Name];
+                    if (stat.HasValue)
+                    {
+                        nud.Value = Clamp(stat.Value, nud.Minimum, nud.Maximum);
+                    }
                 }
 
-                if (SavedStats.Class.HasValue)
+                //Check each cmb to see if it's null or not and then set index
+                foreach (var cmb in CmbList)
                 {
-                    cmbClass.SelectedIndex = SavedStats.Class.Value;
-                    cmbClass_SelectedIndexChanged(null, null);
-                }
-
-                if (SavedStats.Physique.HasValue)
-                {
-                    cmbPhysique.SelectedIndex = SavedStats.Physique.Value;
-                    cmbPhysique_SelectedIndexChanged(null, null);
-                }
-
-                if (SavedStats.Humanity.HasValue)
-                {
-                    nudHumanity.Value = SavedStats.Humanity.Value;
-                    nud_ValueChanged(nudHumanity, null);
-                }
-
-                if (SavedStats.Souls.HasValue)
-                {
-                    nudSouls.Value = SavedStats.Souls.Value;
-                    nud_ValueChanged(nudSouls, null);
-                }
-
-                if (SavedStats.Vit.HasValue)
-                {
-                    nudVit.Value = Clamp(SavedStats.Vit.Value, nudVit.Minimum, nudVit.Maximum);
-                }
-
-                if (SavedStats.Att.HasValue)
-                {
-                    nudAtt.Value = Clamp(SavedStats.Att.Value, nudAtt.Minimum, nudAtt.Maximum);
-                }
-
-                if (SavedStats.End.HasValue)
-                {
-                    nudEnd.Value = Clamp(SavedStats.End.Value, nudEnd.Minimum, nudEnd.Maximum);
-                }
-
-                if (SavedStats.Str.HasValue)
-                {
-                    nudStr.Value = Clamp(SavedStats.Str.Value, nudStr.Minimum, nudStr.Maximum);
-                }
-
-                if (SavedStats.Dex.HasValue)
-                {
-                    nudDex.Value = Clamp(SavedStats.Dex.Value, nudDex.Minimum, nudDex.Maximum);
-                }
-
-                if (SavedStats.Res.HasValue)
-                {
-                    nudRes.Value = Clamp(SavedStats.Res.Value, nudRes.Minimum, nudRes.Maximum);
-                }
-
-                if (SavedStats.Int.HasValue)
-                {
-                    nudInt.Value = Clamp(SavedStats.Int.Value, nudInt.Minimum, nudInt.Maximum);
-                }
-
-                if (SavedStats.Fth.HasValue)
-                {
-                    nudFth.Value = Clamp(SavedStats.Fth.Value, nudFth.Minimum, nudFth.Maximum);
-                }
-
-                RecalculateStats();
-
-                if (SavedStats.Covenant.HasValue)
-                {
-                    cmbCovenant.SelectedIndex = SavedStats.Covenant.Value;
-                    cmbCovenant_SelectedIndexChanged(null, null);
-                }
-
-                if (SavedStats.CovChaos.HasValue)
-                {
-                    nudCovChaos.Value = SavedStats.CovChaos.Value;
-                    nud_ValueChanged(nudCovChaos, null);
-                }
-
-                if (SavedStats.CovDarkmoon.HasValue)
-                {
-                    nudCovDarkmoon.Value = SavedStats.CovDarkmoon.Value;
-                    nud_ValueChanged(nudCovDarkmoon, null);
-
-                }
-
-                if (SavedStats.CovDarkwraith.HasValue)
-                {
-                    nudCovDarkwraith.Value = SavedStats.CovDarkwraith.Value;
-                    nud_ValueChanged(nudCovDarkwraith, null);
-
-                }
-
-                if (SavedStats.CovForest.HasValue)
-                {
-                    nudCovForest.Value = SavedStats.CovForest.Value;
-                    nud_ValueChanged(nudCovForest, null);
-                }
-
-                if (SavedStats.CovGravelord.HasValue)
-                {
-                    nudCovGravelord.Value = SavedStats.CovGravelord.Value;
-                    nud_ValueChanged(nudCovGravelord, null);
-                }
-
-                if (SavedStats.CovDragon.HasValue)
-                {
-                    nudCovDragon.Value = SavedStats.CovDragon.Value;
-                    nud_ValueChanged(nudCovDragon, null);
-                }
-
-                if (SavedStats.CovSunlight.HasValue)
-                {
-                    nudCovSunlight.Value = SavedStats.CovSunlight.Value;
-                    nud_ValueChanged(nudCovSunlight, null);
+                    var index = (int?)SavedStats[cmb.Name];
+                    if (index.HasValue)
+                    {
+                        cmb.SelectedIndex = index.Value;
+                    }
                 }
             }
-
         }
 
         // Resets all values on page to a blank state in order of the SavedStats class
@@ -562,7 +429,6 @@ namespace DS_Gadget
             NullNUD(nudCovDragon);
             NullNUD(nudCovSunlight);
         }
-
         
         private void nudKeyDown(object sender, KeyEventArgs e)
         {
@@ -571,7 +437,7 @@ namespace DS_Gadget
                 //If Enter Save stats
                 if (e.KeyCode == Keys.Enter)
                 {
-                    SaveStats(sender);
+                    SaveStatsNud(sender);
                 }
 
                 //If Escape Null stats
@@ -580,111 +446,17 @@ namespace DS_Gadget
                     NullNUD(sender);
                 }
             }
-
         }
 
         //Switch that nulls out nuds and their associated SavedStat
         private void NullNUD(object sender)
         {
             var stat = sender as NumericUpDown;
-            switch (stat.Name)
-            {
-                case "nudHumanity":
-                    nudHumanity.Value = 0;
-                    nudHumanity.Text = "";
-                    SavedStats.Humanity = null;
-                    break;
-                case "nudSouls":
-                    nudSouls.Value = 0;
-                    nudSouls.Text = "";
-                    SavedStats.Souls = null;
-                    break;
-                case "nudVit":
-                    nudVit.Minimum = 0;
-                    nudVit.Value = 0;
-                    nudVit.Text = "";
-                    SavedStats.Vit = null;
-                    break;
-                case "nudAtt":
-                    nudAtt.Minimum = 0;
-                    nudAtt.Value = 0;
-                    nudAtt.Text = "";
-                    SavedStats.Att = null;
-                    break;
-                case "nudEnd":
-                    nudEnd.Minimum = 0;
-                    nudEnd.Value = 0;
-                    nudEnd.Text = "";
-                    SavedStats.End = null;
-                    break;
-                case "nudStr":
-                    nudStr.Minimum = 0;
-                    nudStr.Value = 0;
-                    nudStr.Text = "";
-                    SavedStats.Str = null;
-                    break;
-                case "nudDex":
-                    nudDex.Minimum = 0;
-                    nudDex.Value = 0;
-                    nudDex.Text = "";
-                    SavedStats.Dex = null;
-                    break;
-                case "nudRes":
-                    nudRes.Minimum = 0;
-                    nudRes.Value = 0;
-                    nudRes.Text = "";
-                    SavedStats.Res = null;
-                    break;
-                case "nudInt":
-                    nudInt.Minimum = 0;
-                    nudInt.Value = 0;
-                    nudInt.Text = "";
-                    SavedStats.Int = null;
-                    break;
-                case "nudFth":
-                    nudFth.Minimum = 0;
-                    nudFth.Value = 0;
-                    nudFth.Text = "";
-                    SavedStats.Fth = null;
-                    break;
-                case "nudCovChaos":
-                    nudCovChaos.Value = 0;
-                    nudCovChaos.Text = "";
-                    SavedStats.CovChaos = null;
-                    break;
-                case "nudCovDarkmoon":
-                    nudCovDarkmoon.Value = 0;
-                    nudCovDarkmoon.Text = "";
-                    SavedStats.CovDarkmoon = null;
-                    break;
-                case "nudCovDarkwraith":
-                    nudCovDarkwraith.Value = 0;
-                    nudCovDarkwraith.Text = "";
-                    SavedStats.CovDarkwraith = null;
-                    break;
-                case "nudCovForest":
-                    nudCovForest.Value = 0;
-                    nudCovForest.Text = "";
-                    SavedStats.CovForest = null;
-                    break;
-                case "nudCovGravelord":
-                    nudCovGravelord.Value = 0;
-                    nudCovGravelord.Text = "";
-                    SavedStats.CovGravelord = null;
-                    break;
-                case "nudCovDragon":
-                    nudCovDragon.Value = 0;
-                    nudCovDragon.Text = "";
-                    SavedStats.CovDragon = null;
-                    break;
-                case "nudCovSunlight":
-                    nudCovSunlight.Value = 0;
-                    nudCovSunlight.Text = "";
-                    SavedStats.CovSunlight = null;
-                    break;
-                default:
-                    break;
-            }
+            if (stat.Minimum > 0)
+                stat.Minimum = 0;
+            stat.Value = 0;
+            stat.Text = "";
+            SavedStats[stat.Name] = null;
         }
 
         private void txtName_KeyDown(object sender, KeyEventArgs e)
@@ -697,7 +469,6 @@ namespace DS_Gadget
                     SavedStats.Name = null;
                 }
             }
-
         }
 
         private void cmbKeyDown(object sender, KeyEventArgs e)
@@ -715,27 +486,8 @@ namespace DS_Gadget
         private void NullCMB(object sender)
         {
             var cmb = sender as ComboBox;
-            switch (cmb.Name)
-            {
-                case "cmbSex":
-                    cmbSex.SelectedIndex = -1;
-                    SavedStats.Sex = null;
-                    break;
-                case "cmbClass":
-                    cmbClass.SelectedIndex = -1;
-                    SavedStats.Class = null;
-                    break;
-                case "cmbPhysique":
-                    cmbPhysique.SelectedIndex = -1;
-                    SavedStats.Physique = null;
-                    break;
-                case "cmbCovenant":
-                    cmbCovenant.SelectedIndex = -1;
-                    SavedStats.Covenant = null;
-                    break;
-                default:
-                    break;
-            }
+            cmb.SelectedIndex = -1;
+            SavedStats[cmb.Name] = null;
         }
     }
 }
