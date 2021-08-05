@@ -25,7 +25,6 @@ namespace DS_Gadget
                 cmbPhysique.Items.Add(physique);
             nudHumanity.Maximum = int.MaxValue;
             nudHumanity.Minimum = int.MinValue;
-            //nudSouls.Maximum = int.MaxValue;
 
             foreach (DSCovenant covenant in DSCovenant.All)
                 cmbCovenant.Items.Add(covenant);
