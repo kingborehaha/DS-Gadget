@@ -24,6 +24,10 @@ You can also try adding DS Gadget as an exception to your antivirus
 
 # Change Log
 
+###  Prerelease 0.14.2.4):
+
+* Code improvemnt, fixed release packing internally.
+
 ###  Prerelease 0.14.2.3):
 
 * Fixed formatting error in Item and Fashion dropdown categories
