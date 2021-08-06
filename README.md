@@ -24,7 +24,11 @@ You can also try adding DS Gadget as an exception to your antivirus
 
 # Change Log
 
-###  Prerelease 0.14.2):
+###  Prerelease 0.14.2.3):
+
+* Fixed formatting error in 
+
+###  Prerelease 0.14.2.3):
 
 * Fixed bug where DS Gadget would load all stats at min value if Load stats checkbox was checked and values weren't changed  
 
