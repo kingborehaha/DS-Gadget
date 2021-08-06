@@ -482,7 +482,12 @@ namespace DS_Gadget
                     var Attr = prop.GetCustomAttribute<ControlAttribute>();
                     if (Attr != null && Attr.Name == attributeName)
                     {
-                        prop.SetValue(this, (byte)value, null); //Set the properties value
+                        if (prop.PropertyType.Equals(typeof(byte)))
+                            prop.SetValue(this, (byte)value, null); //Set the properties value
+                        else
+                            prop.SetValue(this, value, null); //Set the properties value
+
+                        return;
                     }
                 }
             }

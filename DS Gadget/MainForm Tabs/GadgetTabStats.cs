@@ -16,7 +16,7 @@ namespace DS_Gadget
         public override void InitTab(MainForm parent)
         {
             base.InitTab(parent);
-            MakeCollections();
+            MakeLists();
             foreach (DSSex sex in DSSex.All)
                 cmbSex.Items.Add(sex);
             foreach (DSClass charClass in DSClass.All)
@@ -31,10 +31,8 @@ namespace DS_Gadget
             ResetPage();
         }
 
-        /// <summary>
-        /// One init function to make all of the dictionaries
-        /// </summary>
-        private void MakeCollections()
+        // One init function to make all of the lists
+        private void MakeLists()
         {
             //NudList
             NudList.Add(nudHumanity);
@@ -143,11 +141,11 @@ namespace DS_Gadget
             if (enable)
             {
                 CheckStatsChange();
+                UpdateTab();
                 if (cbxLoad.Checked)
                 {
                     if (SavedStats.GetType().GetProperties().Select(pi => pi.GetValue(SavedStats) is Nullable).Any(value => value != null) || !string.IsNullOrWhiteSpace(SavedStats.Name))
                     {
-                        UpdateTab();
                         LoadSavedStats();
                     }
                 }
@@ -166,7 +164,7 @@ namespace DS_Gadget
         //Checks if the nuds value is blank or not. Loads correct value if it is. Prevents numbers not showing if the value entered happened to be the same as the blank nud value (usually 0)
         private void CheckTextChange()
         {
-            //Check if each nud has emty text, if it does, set the text to the Hook value.
+            //Check if each nud has empty text, if it does, set the text to the Hook value.
             foreach (var nud in NudList)
             {
                 if (nud.Text == "")
