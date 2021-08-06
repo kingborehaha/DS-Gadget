@@ -61,7 +61,7 @@ namespace DS_Gadget
                 int releaseTag = Int32.Parse(release.TagName.Replace(".","")); //version of latest release on github
                 int productVer = Int32.Parse(System.Windows.Forms.Application.ProductVersion.Replace(".", "")); //version of program
                 //if (SemVersion.Parse(release.TagName) > System.Windows.Forms.Application.ProductVersion) //original code (not compatible with local loader's stupid version numbering
-                if (releaseTag < productVer)
+                if (releaseTag > productVer)
                 {
                     labelCheckVersion.Visible = false;
                     LinkLabel.Link link = new LinkLabel.Link();
