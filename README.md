@@ -26,6 +26,10 @@ You can also try adding DS Gadget as an exception to your antivirus
 
 ###  Prerelease 0.14.2):
 
+* Fixed bug where DS Gadget would load all stats at min value if Load stats checkbox was checked and values weren't changed  
+
+###  Prerelease 0.14.2):
+
 * Fixed an issue where DS Gadget couldn't find files after launching from Windows search.  
 
 **Thank You [King Borehaha](https://github.com/kingborehaha/) for:**
