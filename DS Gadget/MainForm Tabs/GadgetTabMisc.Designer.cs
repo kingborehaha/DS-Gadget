@@ -40,6 +40,7 @@
             this.btnApplyHair = new System.Windows.Forms.Button();
             this.lbxItems = new System.Windows.Forms.ListBox();
             this.groupBoxHair = new System.Windows.Forms.GroupBox();
+            this.SearchAllCheckbox = new System.Windows.Forms.CheckBox();
             this.lblSearch = new System.Windows.Forms.Label();
             this.searchBox = new System.Windows.Forms.TextBox();
             gbxEventFlags = new System.Windows.Forms.GroupBox();
@@ -187,11 +188,11 @@
             this.lbxItems.ScrollAlwaysVisible = true;
             this.lbxItems.Size = new System.Drawing.Size(450, 309);
             this.lbxItems.TabIndex = 35;
-            this.lbxItems.SelectedIndexChanged += new System.EventHandler(this.lbxItems_SelectedIndexChanged);
             this.lbxItems.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyPressed);
             // 
             // groupBoxHair
             // 
+            this.groupBoxHair.Controls.Add(this.SearchAllCheckbox);
             this.groupBoxHair.Controls.Add(this.lblSearch);
             this.groupBoxHair.Controls.Add(this.searchBox);
             this.groupBoxHair.Controls.Add(this.lbxItems);
@@ -204,6 +205,17 @@
             this.groupBoxHair.TabIndex = 29;
             this.groupBoxHair.TabStop = false;
             this.groupBoxHair.Text = "Hair";
+            // 
+            // SearchAllCheckbox
+            // 
+            this.SearchAllCheckbox.AutoSize = true;
+            this.SearchAllCheckbox.Location = new System.Drawing.Point(361, 88);
+            this.SearchAllCheckbox.Name = "SearchAllCheckbox";
+            this.SearchAllCheckbox.Size = new System.Drawing.Size(107, 24);
+            this.SearchAllCheckbox.TabIndex = 37;
+            this.SearchAllCheckbox.Text = "Search All";
+            this.SearchAllCheckbox.UseVisualStyleBackColor = true;
+            this.SearchAllCheckbox.CheckedChanged += new System.EventHandler(this.SearchAllCheckbox_CheckedChanged);
             // 
             // lblSearch
             // 
@@ -222,7 +234,7 @@
             this.searchBox.Location = new System.Drawing.Point(12, 88);
             this.searchBox.Margin = new System.Windows.Forms.Padding(4);
             this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(450, 26);
+            this.searchBox.Size = new System.Drawing.Size(342, 26);
             this.searchBox.TabIndex = 34;
             this.searchBox.Click += new System.EventHandler(this.searchBox_Click);
             this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
@@ -258,5 +270,6 @@
         private System.Windows.Forms.GroupBox groupBoxHair;
         private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.Label lblSearch;
+        private System.Windows.Forms.CheckBox SearchAllCheckbox;
     }
 }
