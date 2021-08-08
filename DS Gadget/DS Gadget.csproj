@@ -341,6 +341,7 @@ copy "$(TargetPath).config" "%25output%25\"
 copy "$(SolutionDir)\README.md" "%25output%25\"
   
 ren "%25output%25\README.md" "README.txt"  
+del "%25output%25\README.md"
 copy "$(TargetDir)*.dll" "%25output%25\lib\"
   
 copy "$(TargetDir)*.xml" "%25output%25\lib\"
