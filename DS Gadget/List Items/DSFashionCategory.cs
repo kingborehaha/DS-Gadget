@@ -17,7 +17,7 @@ namespace DS_Gadget
             foreach (string line in GetTxtResourceClass.RegexSplit(itemList, "[\r\n]+"))
             {
                 if (GetTxtResourceClass.IsValidTxtResource(line)) //determine if line is a valid resource or not
-                    Items.Add(new DSItem(line, showIDs));
+                    Items.Add(new DSItem(line, showIDs, id));
             };
             Items.Sort();
         }
