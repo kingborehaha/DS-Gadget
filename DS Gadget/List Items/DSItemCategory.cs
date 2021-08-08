@@ -9,14 +9,14 @@ namespace DS_Gadget
         public string Name;
         public List<DSItem> Items;
 
-        private DSItemCategory(string name, int id, string itemList, bool showIDs)
+        private DSItemCategory(string name, int categoryID, string itemList, bool showIDs)
         {
             Name = name;
             Items = new List<DSItem>();
             foreach (string line in GetTxtResourceClass.RegexSplit(itemList, "[\r\n]+"))
             {
                 if (GetTxtResourceClass.IsValidTxtResource(line)) //determine if line is a valid resource or not
-                    Items.Add(new DSItem(line, showIDs, id));
+                    Items.Add(new DSItem(line, showIDs, categoryID));
             };
             Items.Sort();
         }
