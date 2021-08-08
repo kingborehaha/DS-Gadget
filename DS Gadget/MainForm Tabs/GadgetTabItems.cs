@@ -230,7 +230,7 @@ namespace DS_Gadget
                     DSInfusion infusion = cmbInfusion.SelectedItem as DSInfusion;
                     id += infusion.Value;
                 }
-                Hook.GetItem(category.ID, id, (int)nudQuantity.Value);
+                Hook.GetItem(item.CategoryID, id, (int)nudQuantity.Value);
             }
         }
 
