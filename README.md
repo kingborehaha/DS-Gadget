@@ -24,6 +24,10 @@ You can also try adding DS Gadget as an exception to your antivirus
 
 # Change Log
 
+###  Prerelease 0.14.2.6):
+
+* "Search All" functionality added to Item and Fashion search boxes courtesy of [King Borehaha](https://github.com/kingborehaha/)
+
 ###  Prerelease 0.14.2.5):
 
 * Fixed loading saved stats.... Hopefully...
