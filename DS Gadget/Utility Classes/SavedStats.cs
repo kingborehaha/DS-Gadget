@@ -5,6 +5,7 @@ namespace DS_Gadget
 {
     class SavedStats
     {
+        [Control("cmbSex")]
         public string Name { get; set; }
         [Control("cmbSex")]
         public int? Sex { get; set; }
