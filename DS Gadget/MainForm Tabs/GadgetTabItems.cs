@@ -218,7 +218,6 @@ namespace DS_Gadget
             if (btnCreate.Enabled && lbxItems.SelectedItem != null)
             {
                 _ = ChangeColor(Color.DarkGray);
-                DSItemCategory category = cmbCategory.SelectedItem as DSItemCategory;
                 DSItem item = lbxItems.SelectedItem as DSItem;
                 int id = item.ID;
                 if (item.UpgradeType == DSItem.Upgrade.PyroFlame || item.UpgradeType == DSItem.Upgrade.PyroFlameAscended)
