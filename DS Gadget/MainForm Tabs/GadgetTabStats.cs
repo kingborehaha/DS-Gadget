@@ -144,7 +144,7 @@ namespace DS_Gadget
                 UpdateTab();
                 if (cbxLoad.Checked)
                 {
-                    if (SavedStats.GetType().GetProperties().Where(pi => pi.CustomAttributes.Count() > 0).Select(pi => pi.GetValue(SavedStats)).Any(value => value != null))
+                    if (SavedStats.GetType().GetProperties().Where(pi => pi.CustomAttributes.Count() > 0).Select(pi => pi.GetValue(SavedStats)).Any(value => value != null) || string.IsNullOrWhiteSpace(SavedStats.Name))
                     {
                         LoadSavedStats();
                     }
