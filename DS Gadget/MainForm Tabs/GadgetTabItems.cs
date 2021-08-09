@@ -41,7 +41,7 @@ namespace DS_Gadget
 
             lbxItems.Items.Clear();
 
-            if (SearchAllCheckbox.Checked)
+            if (SearchAllCheckbox.Checked && searchBox.Text != "")
             {
                 //search every item category
                 foreach (DSItemCategory category in cmbCategory.Items)
@@ -333,8 +333,9 @@ namespace DS_Gadget
 
         private void SearchAllCheckbox_CheckedChanged(object sender, EventArgs e)
         {
-            //checkbox changed, refresh search filter
-            FilterItems();
+            //checkbox changed, refresh search filter (if searchBox is not empty)
+            if (searchBox.Text != "")
+                FilterItems();
         }
     }
 }
