@@ -23,6 +23,8 @@ namespace DS_Gadget
 
         private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
+            FilterItems();
+            /*
             lbxItems.Items.Clear();
             DSItemCategory category = cmbCategory.SelectedItem as DSItemCategory;
             foreach (DSItem item in category.Items)
@@ -30,12 +32,41 @@ namespace DS_Gadget
             lbxItems.SelectedIndex = 0;
             searchBox.Text = "";
             lblSearch.Visible = true;
+            */
         }
 
         //Clear items and add the ones that match text in search box
-        private void searchBox_TextChanged(object sender, EventArgs e)
+        private void FilterItems()
         {
+
             lbxItems.Items.Clear();
+
+            if (SearchAllCheckbox.Checked && searchBox.Text != "")
+            {
+                //search every item category
+                foreach (DSItemCategory category in cmbCategory.Items)
+                {
+                    foreach (DSItem item in category.Items)
+                    {
+                        if (item.ToString().ToLower().Contains(searchBox.Text.ToLower()))
+                            lbxItems.Items.Add(item);
+                    }
+                }
+            }
+            else
+            {
+                //only search selected item category
+                DSItemCategory category = cmbCategory.SelectedItem as DSItemCategory;
+                foreach (DSItem item in category.Items)
+                {
+                    if (item.ToString().ToLower().Contains(searchBox.Text.ToLower()))
+                        lbxItems.Items.Add(item);
+                }
+            }
+
+
+            /*
+            //original code
             DSItemCategory category = cmbCategory.SelectedItem as DSItemCategory;
             foreach (DSItem item in category.Items)
             {
@@ -43,17 +74,22 @@ namespace DS_Gadget
                 {
                     lbxItems.Items.Add(item);
                 }
-
             }
+            */
 
             if (lbxItems.Items.Count > 0)
                 lbxItems.SelectedIndex = 0;
 
-            HandleSearchLable();
+            HandleSearchLabel();
+        }
+
+        private void searchBox_TextChanged(object sender, EventArgs e)
+        {
+            FilterItems();
         }
 
         //Handles the "Searching..." label on the text box
-        private void HandleSearchLable()
+        private void HandleSearchLabel()
         {
             if (searchBox.Text == "")
                 lblSearch.Visible = true;
@@ -182,7 +218,6 @@ namespace DS_Gadget
             if (btnCreate.Enabled && lbxItems.SelectedItem != null)
             {
                 _ = ChangeColor(Color.DarkGray);
-                DSItemCategory category = cmbCategory.SelectedItem as DSItemCategory;
                 DSItem item = lbxItems.SelectedItem as DSItem;
                 int id = item.ID;
                 if (item.UpgradeType == DSItem.Upgrade.PyroFlame || item.UpgradeType == DSItem.Upgrade.PyroFlameAscended)
@@ -194,7 +229,7 @@ namespace DS_Gadget
                     DSInfusion infusion = cmbInfusion.SelectedItem as DSInfusion;
                     id += infusion.Value;
                 }
-                Hook.GetItem(category.ID, id, (int)nudQuantity.Value);
+                Hook.GetItem(item.CategoryID, id, (int)nudQuantity.Value);
             }
         }
 
@@ -294,6 +329,13 @@ namespace DS_Gadget
         {
             nudUpgrade.Select(0, nudUpgrade.Text.Length);
             nudUpgrade.Focus();
+        }
+
+        private void SearchAllCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            //checkbox changed, refresh search filter (if searchBox is not empty)
+            if (searchBox.Text != "")
+                FilterItems();
         }
     }
 }

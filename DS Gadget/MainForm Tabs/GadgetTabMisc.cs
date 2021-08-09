@@ -49,31 +49,66 @@ namespace DS_Gadget
             lblSearch.Visible = true;
         }
 
-        private void searchBox_TextChanged(object sender, EventArgs e)
+        //Clear items and add the ones that match text in search box
+        private void FilterItems()
         {
+
             lbxItems.Items.Clear();
-            DSFashionCategory category = cmbCategory.SelectedItem as DSFashionCategory;
+
+            if (SearchAllCheckbox.Checked)
+            {
+                //search every item category
+                foreach (DSFashionCategory category in cmbCategory.Items)
+                {
+                    foreach (DSItem item in category.Items)
+                    {
+                        if (item.ToString().ToLower().Contains(searchBox.Text.ToLower()))
+                            lbxItems.Items.Add(item);
+                    }
+                }
+            }
+            else
+            {
+                //only search selected item category
+                DSFashionCategory category = cmbCategory.SelectedItem as DSFashionCategory;
+                foreach (DSItem item in category.Items)
+                {
+                    if (item.ToString().ToLower().Contains(searchBox.Text.ToLower()))
+                        lbxItems.Items.Add(item);
+                }
+            }
+
+
+            /*
+            //original code
+            DSItemCategory category = cmbCategory.SelectedItem as DSItemCategory;
             foreach (DSItem item in category.Items)
             {
                 if (item.ToString().ToLower().Contains(searchBox.Text.ToLower()))
                 {
                     lbxItems.Items.Add(item);
                 }
-
             }
+            */
 
             if (lbxItems.Items.Count > 0)
                 lbxItems.SelectedIndex = 0;
 
+            HandleSearchLabel();
+        }
+
+        private void searchBox_TextChanged(object sender, EventArgs e)
+        {
+            FilterItems();
+        }
+
+        //Handles the "Searching..." label on the text box
+        private void HandleSearchLabel()
+        {
             if (searchBox.Text == "")
                 lblSearch.Visible = true;
             else
                 lblSearch.Visible = false;
-        }
-
-        private void lbxItems_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            DSItem item = lbxItems.SelectedItem as DSItem;
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
@@ -191,6 +226,12 @@ namespace DS_Gadget
 
             KeyDownListbox(e);
 
+        }
+
+        private void SearchAllCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            //checkbox changed, refresh search filter
+            FilterItems();
         }
 
     }

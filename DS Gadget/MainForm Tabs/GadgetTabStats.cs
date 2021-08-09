@@ -63,6 +63,7 @@ namespace DS_Gadget
 
         public override void ReloadTab()
         {
+            CheckStatsChange(); // This has to be called before any nud values get set.
             txtName.Text = Hook.CharName;
             cmbSex.SelectedItem = cmbSex.Items.Cast<DSSex>().FirstOrDefault(s => s.ID == Hook.Sex);
             cmbClass.SelectedItem = cmbClass.Items.Cast<DSClass>().FirstOrDefault(c => c.ID == Hook.Class);
@@ -140,11 +141,10 @@ namespace DS_Gadget
         {
             if (enable)
             {
-                CheckStatsChange();
                 UpdateTab();
                 if (cbxLoad.Checked)
                 {
-                    if (SavedStats.GetType().GetProperties().Select(pi => pi.GetValue(SavedStats) is Nullable).Any(value => value != null) || !string.IsNullOrWhiteSpace(SavedStats.Name))
+                    if (SavedStats.GetType().GetProperties().Where(pi => pi.CustomAttributes.Count() > 0).Select(pi => pi.GetValue(SavedStats)).Any(value => value != null) || !string.IsNullOrWhiteSpace(SavedStats.Name))
                     {
                         LoadSavedStats();
                     }
