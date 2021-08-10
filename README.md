@@ -6,6 +6,14 @@ A multi-purpose testing tool for Dark Souls: Prepare to Die Edition. Compatible 
 
 You probably already have both.
 
+## Installing
+
+* Extract contents of zip archive to it's own folder. You may have to run as admin if DS Gadget crashes
+
+## Updating
+
+* If you have a previous version of DS Gadget Local Loader with a Resource folder, there is no need to copy the resource folder over, unless noted in the patch notes. This prevents you from overwriting the changes you made and the saved positions you stored.
+
 ## Troubleshooting
 If you are having problems getting it to launch and you tried installing the packages above, right click the exe, go to properties, hit the compatability tab and hit "Run compatability troubleshooter". If it works, apply the settings windows found.  
 
