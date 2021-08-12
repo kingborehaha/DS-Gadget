@@ -55,7 +55,7 @@ namespace DS_Gadget
 
             lbxItems.Items.Clear();
 
-            if (SearchAllCheckbox.Checked)
+            if (SearchAllCheckbox.Checked && searchBox.Text != "")
             {
                 //search every item category
                 foreach (DSFashionCategory category in cmbCategory.Items)
