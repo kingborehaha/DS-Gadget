@@ -90,7 +90,11 @@ namespace DS_Gadget
 
             }
             // Race condition when checking if the game is still loaded; doesn't really matter
-            catch (ArgumentOutOfRangeException) { }
+            catch (ArgumentOutOfRangeException) 
+            {
+                //Try recalculating stats. Putting in a try catch block just in case catch block triggered for purpose of comment above
+                try { RecalculateStats(); } catch { }
+            }
 
             if (!cmbCovenant.DroppedDown)
             {
@@ -150,7 +154,7 @@ namespace DS_Gadget
                     }
                 }
                 CheckTextChange();
-                RecalculateStats();
+                //RecalculateStats();
             }
             else
             {

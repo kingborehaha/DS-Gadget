@@ -3,6 +3,14 @@
 Branch of TKGP's DS Gadget that loads locally accessible .txt files to populate various lists (bonfire, items, etc)
 Resource .txt files are found in DS-Gadget\Resources
 
+## Installing
+
+* Extract contents of zip archive to it's own folder. You may have to run as admin if DS Gadget crashes
+
+## Updating
+
+* If you have a previous version of DS Gadget Local Loader with a Resource folder, there is no need to copy the resource folder over, unless noted in the patch notes. This prevents you from overwriting the changes you made and the saved positions you stored.
+
 ## Features courtesy of Nordgaren
 * Item, Fashion, and Bonfire search
 * Character position saving and loading
