@@ -209,7 +209,7 @@
             // SearchAllCheckbox
             // 
             this.SearchAllCheckbox.AutoSize = true;
-            this.SearchAllCheckbox.Location = new System.Drawing.Point(361, 88);
+            this.SearchAllCheckbox.Location = new System.Drawing.Point(364, 88);
             this.SearchAllCheckbox.Name = "SearchAllCheckbox";
             this.SearchAllCheckbox.Size = new System.Drawing.Size(107, 24);
             this.SearchAllCheckbox.TabIndex = 37;
