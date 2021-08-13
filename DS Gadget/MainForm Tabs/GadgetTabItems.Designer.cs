@@ -128,6 +128,7 @@
             this.maxUpgrade.TabIndex = 26;
             this.maxUpgrade.Text = "Max";
             this.maxUpgrade.UseVisualStyleBackColor = true;
+            this.maxUpgrade.CheckedChanged += new System.EventHandler(this.maxUpgrade_CheckedChanged);
             // 
             // searchBox
             // 
