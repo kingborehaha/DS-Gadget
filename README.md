@@ -32,6 +32,12 @@ You can also try adding DS Gadget as an exception to your antivirus
 
 # Change Log
 
+###  Prerelease 0.14.2.7)
+
+* Minor patch, now up to date with Vanilla Gadget. 
+
+* Max upgrade unchecked now gives you min upgrade for all items
+
 ###  Prerelease 0.14.2.6):
 
 * "Search All" functionality added to Item and Fashion search boxes courtesy of [King Borehaha](https://github.com/kingborehaha/)
