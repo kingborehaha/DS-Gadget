@@ -337,5 +337,14 @@ namespace DS_Gadget
             if (searchBox.Text != "")
                 FilterItems();
         }
+
+        private void maxUpgrade_CheckedChanged(object sender, EventArgs e)
+        {
+            //maxUpgrade checkbox changed, set upgrade nud to max or minimum value accordingly
+            if (maxUpgrade.Checked)
+                nudUpgrade.Value = nudUpgrade.Maximum;
+            else
+                nudUpgrade.Value = nudUpgrade.Minimum;
+        }
     }
 }
