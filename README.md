@@ -39,6 +39,8 @@ Added Team Config
 
 Last Warp Bonfire feature puts the last bonfire you warped to at the bottom of the list of bonfires.
 
+Added "Search All" checkbox to items and misc menu.
+
 Fixed an issue where DS Gadget couldn't find the Resource files when launching from Windows Search results.
 
 Fixed program update checker.
