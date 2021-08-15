@@ -9,6 +9,8 @@
    3100  99 0 Sorcery: Soul Weapon
    3110  99 0 Sorcery: Soul Dart
    3120  99 0 Sorcery: Crystalize Weapon
+   3200  99 0 Sorcery: Soul Vault
+   3210  99 0 Sorcery: Soul Sap
    3300  99 0 Sorcery: Soul Shield
    3310  99 0 Sorcery: Deflection
    3400  99 0 Sorcery: Hidden Weapon
