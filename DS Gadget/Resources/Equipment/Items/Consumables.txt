@@ -1,3 +1,4 @@
+//Format: Item ID; Stack Limit; Reinforce Type; Name [arbitrary]
     201  20 0 Estus Flask
     203  20 0 Estus Flask +1
     205  20 0 Estus Flask +2

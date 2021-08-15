@@ -1,3 +1,4 @@
+//Format: Item ID; Stack Limit; Reinforce Type; Name [arbitrary]
     100   1 0 White Sign Soapstone
     101   1 0 Red Sign Soapstone
     102   1 0 Red Eye Orb
@@ -14,6 +15,8 @@
     117   1 0 Darksign
     118   1 0 Purple Coward's Crystal
     220  99 0 Silver Pendant
+    360   1 0 TTT Queue Match
+    368   1 0 White Eye Orb
     371   1 0 Binoculars
     377  99 0 Dragon Head Stone
     378  99 0 Dragon Torso Stone

@@ -1,3 +1,4 @@
+//Format: Item ID; Stack Limit; Reinforce Type; Name [arbitrary]
  3101100  1 2 Ancient King's Breastplate - M
  3201100  1 2 Ancient King's Gauntlets - M
  3301100  1 2 Ancient King's Leggings - M

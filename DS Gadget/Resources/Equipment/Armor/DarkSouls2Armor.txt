@@ -1,3 +1,4 @@
+//Format: Item ID; Stack Limit; Reinforce Type; Name [arbitrary]
  4000000  1 2 Alva Helm
  4001000  1 2 Alva Armor
  4002000  1 2 Alva Gauntlets

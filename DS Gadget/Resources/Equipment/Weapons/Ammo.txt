@@ -1,3 +1,4 @@
+//Format: Item ID; Stack Limit; Reinforce Type; Name [arbitrary]
 2000000 999 0 Arrow - Standard
 2001000 999 0 Arrow - Large
 2002000 999 0 Arrow - Feather
