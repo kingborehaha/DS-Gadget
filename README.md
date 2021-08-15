@@ -30,7 +30,10 @@ Added Bonfire search
 
 Added checkbox in items menu to always grant equipment at max reinforcement
 
-Added checkbox in stats menu to apply changes made while a character is not loaded
+Added checkbox in stats menu to apply changes made while a character is not loaded  
+* Check the "Apply Changes" checkbox and any changes made will be applied on load  
+* Escape to clear any changes you don't want made  
+* Enter will give you a value of 0 on any numerical stat  
 
 Added Team Config  
 * Correctly loads the Chr and Team type for each existing combo.  
