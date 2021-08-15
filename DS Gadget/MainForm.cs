@@ -57,9 +57,11 @@ namespace DS_Gadget
             GitHubClient gitHubClient = new GitHubClient(new ProductHeaderValue("DS-Gadget-for-Remastest"));
             try
             {
-                
+
                 Release release = await gitHubClient.Repository.Release.GetLatest("Nordgaren", "DS-Gadget");
-                if (Version.Parse(release.TagName) > Version.Parse(System.Windows.Forms.Application.ProductVersion)) //Compare latest version to current version
+                Version gitVersion = Version.Parse(release.TagName);
+                Version exeVersion = Version.Parse(System.Windows.Forms.Application.ProductVersion);
+                if (gitVersion > exeVersion) //Compare latest version to current version
                 {
                     labelCheckVersion.Visible = false;
                     LinkLabel.Link link = new LinkLabel.Link();
@@ -67,9 +69,13 @@ namespace DS_Gadget
                     llbNewVersion.Links.Add(link);
                     llbNewVersion.Visible = true;
                 }
-                else
+                else if (gitVersion == exeVersion)
                 {
                     labelCheckVersion.Text = "App up to date";
+                }
+                else
+                {
+                    labelCheckVersion.Text = "App version unreleased. Be wary of bugs!";
                 }
             }
             catch (Exception ex) when (ex is HttpRequestException || ex is ApiException || ex is ArgumentException)
