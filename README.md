@@ -34,7 +34,10 @@ You can also try adding DS Gadget as an exception to your antivirus
 
 ###  Prerelease 0.14.3)
 **Spells.txt and Rings.txt updated**
-* Added 1.4 beta items
+
+* Added TTT items  
+
+* Added 1.4 beta items  
 
 ###  Prerelease 0.14.2.7)
 
