@@ -1,5 +1,4 @@
 ﻿using Octokit;
-using Semver;
 using System;
 using System.Diagnostics;
 using System.Drawing;
