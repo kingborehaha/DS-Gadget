@@ -50,7 +50,7 @@ namespace DS_Gadget
         private async void MainForm_Load(object sender, EventArgs e)
         {
             Location = settings.WindowLocation;
-            Text = "DS Gadget " + System.Windows.Forms.Application.ProductVersion;
+            Text = "DS Gadget Local Loader " + System.Windows.Forms.Application.ProductVersion;
             EnableTabs(false);
             InitAllTabs();
 
