@@ -18,7 +18,7 @@
    3410  99 0 Sorcery: Hidden Body
    3500  99 0 Sorcery: Light
    3510  99 0 Sorcery: Conversion
-   3520  99 0 Sorcery: Distract
+   3520  99 0 Sorcery: Distract (Aural Decoy)
    3530  99 0 Sorcery: Repair
    3540  99 0 Sorcery: Soul Roots
    3550  99 0 Sorcery: Chameleon
