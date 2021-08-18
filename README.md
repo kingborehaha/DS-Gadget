@@ -23,6 +23,19 @@ Resource .txt files are found in DS-Gadget\Resources
 
 ## DS Gadget (Local Loader) Changelog
 
+### 3.0.0.73  
+**Update to Resources/Systems/Bonfires.txt**
+
+Max checkbox now gives max upgrade and max item quantity  
+
+Quick Select Bonfire checkbox now gives vanilla gadget functionality of changing your bonfire when you select it from the dropdown. (Does not work when searching or using the arrow keys).  
+
+Can now spawn items with enter when Infusion  
+
+Bonfires.txt updated so that Ash Lake Entrance and Ash Lake Dragon are no longer swapped  
+
+
+
 ### 3.0.0.72  
 **If you have modified DSItemCategory and DSFashionCategory resources from v3.0.0.71, move them to "Resources/Equipment" after installing.**  
 

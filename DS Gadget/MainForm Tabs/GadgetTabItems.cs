@@ -118,10 +118,8 @@ namespace DS_Gadget
             DSInfusion infusion = cmbInfusion.SelectedItem as DSInfusion;
             nudUpgrade.Maximum = infusion.MaxUpgrade;
             //Checks if maxUpgrade is checked and sets the value to max value
-            if (maxUpgrade.Checked)
-            {
-                nudUpgrade.Value = nudUpgrade.Maximum;
-            }
+            HandleMinMax();
+
         }
 
         private void lbxItems_SelectedIndexChanged(object sender, EventArgs e)
@@ -186,11 +184,7 @@ namespace DS_Gadget
                     break;
             }
 
-            //Checks if maxUpgrade is checked and sets the value to max value
-            if (maxUpgrade.Checked)
-            {
-                nudUpgrade.Value = nudUpgrade.Maximum;
-            }
+            HandleMinMax();
         }
 
         internal void EnableStats(bool enable)
@@ -340,11 +334,33 @@ namespace DS_Gadget
 
         private void maxUpgrade_CheckedChanged(object sender, EventArgs e)
         {
+            HandleMinMax();
+        }
+
+        private void HandleMinMax()
+        {
             //maxUpgrade checkbox changed, set upgrade nud to max or minimum value accordingly
             if (maxUpgrade.Checked)
+            {
                 nudUpgrade.Value = nudUpgrade.Maximum;
+                nudQuantity.Value = nudQuantity.Maximum;
+            }
             else
+            {
                 nudUpgrade.Value = nudUpgrade.Minimum;
+                nudQuantity.Value = nudQuantity.Minimum;
+            }
+        }
+
+        private void cmbInfusion_KeyDown(object sender, KeyEventArgs e)
+        {
+            //Create selected index as item
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true; //Do not pass keypress along
+                CreateItem();
+                return;
+            }
         }
     }
 }
