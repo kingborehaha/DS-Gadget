@@ -118,7 +118,7 @@ namespace DS_Gadget
             DSInfusion infusion = cmbInfusion.SelectedItem as DSInfusion;
             nudUpgrade.Maximum = infusion.MaxUpgrade;
             //Checks if maxUpgrade is checked and sets the value to max value
-            HandleMinMax();
+            HandleMaxItemCheckbox();
 
         }
 
@@ -184,7 +184,7 @@ namespace DS_Gadget
                     break;
             }
 
-            HandleMinMax();
+            HandleMaxItemCheckbox();
         }
 
         internal void EnableStats(bool enable)
@@ -334,12 +334,7 @@ namespace DS_Gadget
 
         private void maxUpgrade_CheckedChanged(object sender, EventArgs e)
         {
-            HandleMinMax();
-        }
-
-        private void HandleMinMax()
-        {
-            //maxUpgrade checkbox changed, set upgrade nud to max or minimum value accordingly
+            //HandleMaxItemCheckbox()
             if (maxUpgrade.Checked)
             {
                 nudUpgrade.Value = nudUpgrade.Maximum;
@@ -349,6 +344,16 @@ namespace DS_Gadget
             {
                 nudUpgrade.Value = nudUpgrade.Minimum;
                 nudQuantity.Value = nudQuantity.Minimum;
+            }
+        }
+
+        private void HandleMaxItemCheckbox()
+        {
+            //Set upgrade nud to max if max checkbox is ticked
+            if (maxUpgrade.Checked)
+            {
+                nudUpgrade.Value = nudUpgrade.Maximum;
+                nudQuantity.Value = nudQuantity.Maximum;
             }
         }
 
