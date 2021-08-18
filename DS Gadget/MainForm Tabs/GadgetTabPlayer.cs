@@ -532,5 +532,11 @@ namespace DS_Gadget
                 Hook.TeamType = config.TeamType;
             }
         }
+
+        private void cbxBonfire_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (Hook.Loaded && cbxQuickSelectBonfire.Checked)
+                Hook.LastBonfire = ((DSBonfire)cbxBonfire.SelectedItem).ID;
+        }
     }
 }
