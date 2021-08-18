@@ -5,11 +5,11 @@ Resource .txt files are found in DS-Gadget\Resources
 
 ## Installing
 
-* Extract contents of zip archive to it's own folder. You may have to run as admin if DS Gadget crashes
+* Extract contents of zip archive to its own folder. You may have to run as admin if DS Gadget crashes
 
 ## Updating
 
-* If you have a previous version of DS Gadget Local Loader with a Resource folder, there is no need to copy the resource folder over, unless noted in the patch notes. This prevents you from overwriting the changes you made and the saved positions you stored.
+* If you have a previous version of DS Gadget Local Loader, you do not need to overwrite the resource folder with the updated resource folder unless specifically mentioned in the patch notes. Skipping the resource folder will retain any changes you have made to resources and saved positions.
 
 ## Features courtesy of Nordgaren
 * Item, Fashion, and Bonfire search
@@ -24,17 +24,15 @@ Resource .txt files are found in DS-Gadget\Resources
 ## DS Gadget (Local Loader) Changelog
 
 ### 3.0.0.73  
-**Update to Resources/Systems/Bonfires.txt**
+**Resources/Systems/Bonfires.txt has been updated**
 
-Max checkbox now gives max upgrade and max item quantity  
+* Swapped IDs for Ash Lake Entrance and Ash Lake Dragon
 
-Quick Select Bonfire checkbox now gives vanilla gadget functionality of changing your bonfire when you select it from the dropdown. (Does not work when searching or using the arrow keys).  
+Item menu "Max" checkbox now also sets item quantity to maximum
 
-Can now spawn items with enter when Infusion  
+Quick Select Bonfire checkbox restores vanilla DS Gadget functionality of immediately changing your bonfire when one is directly selected from the bonfire list (Bonfire searching, arrow keys, and other misc selectors will not trigger quick select bonfire)
 
-Bonfires.txt updated so that Ash Lake Entrance and Ash Lake Dragon are no longer swapped  
-
-
+Pressing enter when using the infusion dropdown menu will create items
 
 ### 3.0.0.72  
 **If you have modified DSItemCategory and DSFashionCategory resources from v3.0.0.71, move them to "Resources/Equipment" after installing.**  
