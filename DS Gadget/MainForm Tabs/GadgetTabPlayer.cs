@@ -533,10 +533,39 @@ namespace DS_Gadget
             }
         }
 
+        //Only when item selected from combobox (Or arrow keys while it's in focus.)
         private void cbxBonfire_SelectionChangeCommitted(object sender, EventArgs e)
         {
             if (Hook.Loaded && cbxQuickSelectBonfire.Checked)
                 Hook.LastBonfire = ((DSBonfire)cbxBonfire.SelectedItem).ID;
+        }
+
+        //Manually handle arrow keys while in focus so that they don't trip the SelectionChangeCommitted method
+        private void cbxBonfire_KeyDown(object sender, KeyEventArgs e)
+        {
+            //Scroll down through Items listbox and stop at the top
+            if (e.KeyCode == Keys.Up)
+            {
+                e.Handled = true;//Do not pass keypress along
+                //Check is there's still items to go through
+                if (cbxBonfire.SelectedIndex > 0)
+                {
+                    cbxBonfire.SelectedIndex -= 1;
+                    return;
+                }
+            }
+
+            //Scroll down through Items listbox and stop at the bottom
+            if (e.KeyCode == Keys.Down)
+            {
+                e.Handled = true;//Do not pass keypress along
+                //Check is there's still items to go through
+                if (cbxBonfire.SelectedIndex < cbxBonfire.Items.Count - 1) //-1 because Selected Index is 0 based and Count isn't
+                {
+                    cbxBonfire.SelectedIndex += 1;
+                    return;
+                }
+            }
         }
     }
 }
