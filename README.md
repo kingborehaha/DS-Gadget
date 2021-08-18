@@ -33,6 +33,19 @@ You can also try adding DS Gadget as an exception to your antivirus
 # Change Log
 
 ###  Prerelease 0.14.3)
+**Update to Resources/Systems/Bonfires.txt, Resources/Rings/Rings.txt and Resources/Items/Spells.txt**  
+
+* Max checkbox now gives max upgrade and max item quantity  
+
+* Quick Select Bonfire checkbox now gives vanilla gadget functionality of changing your bonfire when you select it from the dropdown. (Does not work when searching or using the arrow keys).  
+
+* Can now spawn items with enter when Infusion  
+
+* Bonfires.txt updated so that Ash Lake Entrance and Ash Lake Dragon are no longer swapped  
+
+* Spells.txt and Rings.txt updated to reflect vanilla item names in parenthesis  
+
+###  Prerelease 0.14.3)
 **Spells.txt and Rings.txt updated**
 
 * Added TTT items  
