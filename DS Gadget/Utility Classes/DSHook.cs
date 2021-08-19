@@ -464,7 +464,7 @@ namespace DS_Gadget
                 //Get each property
                 var props = typeof(DSHook).GetProperties();
 
-                for (int i = 30; i < 47; i++)
+                for (int i = 30; i < 47; i++) //start at index 30 and go until index 26
                 {
                     //Check if it has a ControlAttribute with the same name
                     var Attr = props[i].GetCustomAttribute<ControlAttribute>();
@@ -484,7 +484,7 @@ namespace DS_Gadget
             {
                 //Get each property
                 var props = typeof(DSHook).GetProperties();
-                for (int i = 30; i < 47; i++)
+                for (int i = 30; i < 47; i++) //start at index 30 and go until index 26
                 {
                     //Check if it has a ControlAttribute with the same name
                     var Attr = props[i].GetCustomAttribute<ControlAttribute>();
