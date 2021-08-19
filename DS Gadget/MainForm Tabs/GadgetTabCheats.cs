@@ -112,6 +112,13 @@ namespace DS_Gadget
             // So only re-set it when it has actually been unset
             if (cbxPlayerDeadMode.Checked && !Hook.PlayerDeadMode)
                 Hook.PlayerDeadMode = true;
+
+            if (Hook.ReadEventFlag(19900030))
+            {
+                cbxAllNoArrow.Checked = false;
+                cbxAllNoStamina.Checked = false;
+                cbxPlayerNoStamina.Checked = false;
+            }
         }
 
         public void FlipPlayerDeadMode()
