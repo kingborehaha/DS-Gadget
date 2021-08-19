@@ -463,33 +463,57 @@ namespace DS_Gadget
             {
                 //Get each property
                 var props = typeof(DSHook).GetProperties();
-                foreach (var prop in props)
+
+                for (int i = 30; i < 47; i++)
                 {
                     //Check if it has a ControlAttribute with the same name
-                    var Attr = prop.GetCustomAttribute<ControlAttribute>();
+                    var Attr = props[i].GetCustomAttribute<ControlAttribute>();
                     if (Attr != null && Attr.Name == attributeName)
-                        return Convert.ToInt32(prop.GetValue(this, null)); //Return matching Control Attribute as int?
+                        return Convert.ToInt32(props[i].GetValue(this, null)); //Return matching Control Attribute as int?
                 }
-                throw new MissingMemberException();
+                //foreach (var prop in props)
+                //{
+                //    //Check if it has a ControlAttribute with the same name
+                //    var Attr = prop.GetCustomAttribute<ControlAttribute>();
+                //    if (Attr != null && Attr.Name == attributeName)
+                //        return Convert.ToInt32(prop.GetValue(this, null)); //Return matching Control Attribute as int?
+                //}
+                throw new MissingMemberException("DSHook", attributeName);
             }
             set
             {
                 //Get each property
                 var props = typeof(DSHook).GetProperties();
-                foreach (var prop in props)
+                for (int i = 30; i < 47; i++)
                 {
                     //Check if it has a ControlAttribute with the same name
-                    var Attr = prop.GetCustomAttribute<ControlAttribute>();
+                    var Attr = props[i].GetCustomAttribute<ControlAttribute>();
                     if (Attr != null && Attr.Name == attributeName)
                     {
-                        if (prop.PropertyType.Equals(typeof(byte)))
-                            prop.SetValue(this, (byte)value, null); //Set the properties value
+                        if (props[i].PropertyType.Equals(typeof(byte)))
+                            props[i].SetValue(this, (byte)value, null); //Set the properties value
                         else
-                            prop.SetValue(this, value, null); //Set the properties value
+                            props[i].SetValue(this, value, null); //Set the properties value
 
                         return;
                     }
                 }
+                //foreach (var prop in props)
+                //{
+                //    //Check if it has a ControlAttribute with the same name
+                //    var Attr = prop.GetCustomAttribute<ControlAttribute>();
+                //    if (Attr != null && Attr.Name == attributeName)
+                //    {
+                //        if (prop.PropertyType.Equals(typeof(byte)))
+                //            prop.SetValue(this, (byte)value, null); //Set the properties value
+                //        else
+                //            prop.SetValue(this, value, null); //Set the properties value
+
+                //        return;
+                //    }
+                //}
+                throw new MissingMemberException("DSHook", attributeName);
+
             }
         }
         #endregion
