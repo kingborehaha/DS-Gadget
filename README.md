@@ -24,9 +24,11 @@ Resource .txt files are found in DS-Gadget\Resources
 ## DS Gadget (Local Loader) Changelog
 
 ### 3.0.0.73  
-**Resources/Systems/Bonfires.txt has been updated**
+**Resources/Systems/Bonfires.txt and Resources/Equipment/Weapons/Shields.txt have been updated**  
 
-* Swapped IDs for Ash Lake Entrance and Ash Lake Dragon
+* Swapped IDs for Ash Lake Entrance and Ash Lake Dragon  
+
+* Fixed Bonewheel Spiked and Pierce Shield having incorrect infusion paths.  
 
 Item menu "Max" checkbox now also sets item quantity to maximum
 
