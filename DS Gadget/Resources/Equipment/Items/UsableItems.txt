@@ -1,5 +1,5 @@
 //Format: Item ID; Stack Limit; Reinforce Type; Name [arbitrary]
-    100   1 0 White Sign Soapstone
+    100   1 0 Blue Sign Soapstone (White Sign Soapstone)
     101   1 0 Red Sign Soapstone
     102   1 0 Red Eye Orb
     103   1 0 Black Separation Crystal
