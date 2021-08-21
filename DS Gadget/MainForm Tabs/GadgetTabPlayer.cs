@@ -279,19 +279,20 @@ namespace DS_Gadget
                 Hook.SetSpeed((float)nudSpeed.Value);
 
 
-            if (!cmbTeamConfig.DroppedDown)
+            if (!cmbTeamConfig.DroppedDown) // added this so that cursor doesn't jump around while dropdown is open
             {
                 var selectedConfig = cmbTeamConfig.SelectedItem as TeamConfig;
-
+                //Set the new TeamConfig if selectedConfig is null and either chr or team type values don't match
                 if (selectedConfig == null || selectedConfig.ChrType != nudChrType.Value || selectedConfig.TeamType != nudTeamType.Value)
                 {
                     var result = SavedConfigs.FirstOrDefault(c => c.ChrType == nudChrType.Value && c.TeamType == nudTeamType.Value);
                     if (result == null)
                     {
+                        //Add unknown config if the result is null
                         result = new TeamConfig($"Unknown: Chr: {nudChrType.Value} Team: {nudTeamType.Value}", (int)nudChrType.Value, (int)nudTeamType.Value);
                         cmbTeamConfig.Items.Add(result);
                     }
-
+                    //Update selected Item.
                     cmbTeamConfig.SelectedItem = result;
                 }
             }
