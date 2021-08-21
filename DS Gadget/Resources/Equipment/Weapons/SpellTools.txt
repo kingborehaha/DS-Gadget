@@ -8,8 +8,8 @@
 1306000   1 0 Tin Crystallization Catalyst
 1307000   1 0 Demon's Catalyst
 1308000   1 0 Izalith Catalyst
-1330000   1 5 Pyromancy Flame
-1332000   1 6 Pyromancy Flame (Ascended)
+1330000   1 5 Rapid Flame (Pyromancy Flame) 
+1332000   1 6 Powerful Flame (Pyromancy Flame (Ascended))
 1360000   1 0 Talisman
 1361000   1 0 Canvas Talisman
 1362000   1 0 Thorolund Talisman

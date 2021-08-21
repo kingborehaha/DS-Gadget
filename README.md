@@ -32,8 +32,8 @@ You can also try adding DS Gadget as an exception to your antivirus
 
 # Change Log
 
-###  Prerelease 0.14.3)
-**Update to Resources/Systems/Bonfires.txt, Resources/Equipment/Items/Rings/Rings.txt and Resources/Equipment/Items/Spells.txt**  
+###  Prerelease 0.14.4)
+**Update to Resources/Systems/Bonfires.txt, Resources/Equipment/Rings/Rings.txt, Resources/Equipment/Items/Spells.txt, Resources\Equipment\Items\UsableItems.txt, and Resources/Equipment/Weapons/Shields.txt**  
 * Max checkbox now gives max upgrade and max item quantity  
 
 * Quick Select Bonfire checkbox now gives vanilla gadget functionality of changing your bonfire when you select it from the dropdown. (Does not work when searching or using the arrow keys).  
@@ -45,6 +45,8 @@ You can also try adding DS Gadget as an exception to your antivirus
 * Spells.txt and Rings.txt updated to reflect vanilla item names in parenthesis  
 
 * Shields.txt Fixed Bonewheel Spiked and Pierce Shield having incorrect infusion paths.  
+
+* UseableItems.txt Changed White Sign Soapstone to Blue Sign Soapstone (White Sign Soapstone)
 
 ###  Prerelease 0.14.3)
 **Spells.txt and Rings.txt updated**
