@@ -277,6 +277,24 @@ namespace DS_Gadget
             // Backstabbing resets speed, so reapply it 24/7
             if (cbxSpeed.Checked)
                 Hook.SetSpeed((float)nudSpeed.Value);
+
+
+            if (!cmbTeamConfig.DroppedDown)
+            {
+                var selectedConfig = cmbTeamConfig.SelectedItem as TeamConfig;
+
+                if (selectedConfig == null || selectedConfig.ChrType != nudChrType.Value || selectedConfig.TeamType != nudTeamType.Value)
+                {
+                    var result = SavedConfigs.FirstOrDefault(c => c.ChrType == nudChrType.Value && c.TeamType == nudTeamType.Value);
+                    if (result == null)
+                    {
+                        result = new TeamConfig($"Unknown: Chr: {nudChrType.Value} Team: {nudTeamType.Value}", (int)nudChrType.Value, (int)nudTeamType.Value);
+                        cmbTeamConfig.Items.Add(result);
+                    }
+
+                    cmbTeamConfig.SelectedItem = result;
+                }
+            }
         }
 
         public void StorePosition()
