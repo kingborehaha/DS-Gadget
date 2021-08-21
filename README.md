@@ -30,23 +30,23 @@ You can also try adding DS Gadget as an exception to your antivirus
 **[InfernoPlus](https://github.com/infernoplus/)** Author of Dark Souls Remastest, also answers my dumb questions :fatcat:  
 **[Stagmattica](https://github.com/Stagmattica)** Helped me get started with DS Gadget   
 
-# Change Log
+# Change Log  
 
-###  Prerelease 0.14.4)
-**Update to Resources/Systems/Bonfires.txt, Resources/Equipment/Rings/Rings.txt, Resources/Equipment/Items/Spells.txt, Resources\Equipment\Items\UsableItems.txt, and Resources/Equipment/Weapons/Shields.txt**  
+###  Prerelease 0.14.4)  
+**Update to Resources/Systems/Bonfires.txt, Resources/Equipment/Rings/Rings.txt, Resources/Equipment/Items/Spells.txt, Resources/Equipment/Items/UsableItems.txt, /Equipment/Weapons/SpellTools.txt and Resources/Equipment/Weapons/Shields.txt**  
 * Max checkbox now gives max upgrade and max item quantity  
 
 * Quick Select Bonfire checkbox now gives vanilla gadget functionality of changing your bonfire when you select it from the dropdown. (Does not work when searching or using the arrow keys).  
 
 * Can now spawn items with enter when Infusion  
 
+* Config now updates with player and gives unknown if game gives you a bad config value (Please report this value and how it occured if you do see an unknown!)
+
 * Bonfires.txt updated so that Ash Lake Entrance and Ash Lake Dragon are no longer swapped  
 
-* Spells.txt and Rings.txt updated to reflect vanilla item names in parenthesis  
+* Spells.txt, Spelltools.txt, UseableItems.txt and Rings.txt updated to reflect vanilla item names in parenthesis  
 
 * Shields.txt Fixed Bonewheel Spiked and Pierce Shield having incorrect infusion paths.  
-
-* UseableItems.txt Changed White Sign Soapstone to Blue Sign Soapstone (White Sign Soapstone)
 
 ###  Prerelease 0.14.3)
 **Spells.txt and Rings.txt updated**
