@@ -36,6 +36,8 @@ Quick Select Bonfire checkbox restores vanilla DS Gadget functionality of immedi
 
 Pressing enter when using the infusion dropdown menu will create items
 
+Config now updates with player and gives unknown if game gives you a bad config value (Please report this value and how it occured if you do see an unknown!)
+
 ### 3.0.0.72  
 **If you have modified DSItemCategory and DSFashionCategory resources from v3.0.0.71, move them to "Resources/Equipment" after installing.**  
 
