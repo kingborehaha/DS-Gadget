@@ -543,11 +543,14 @@ namespace DS_Gadget
 
         private void cmbTeamConfig_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var config = cmbTeamConfig.SelectedItem as TeamConfig;
-            if (!string.IsNullOrWhiteSpace(config.Name))
+            if (Hook.Loaded)
             {
-                Hook.ChrType = config.ChrType;
-                Hook.TeamType = config.TeamType;
+                var config = cmbTeamConfig.SelectedItem as TeamConfig;
+                if (!string.IsNullOrWhiteSpace(config.Name))
+                {
+                    Hook.ChrType = config.ChrType;
+                    Hook.TeamType = config.TeamType;
+                }
             }
         }
 
