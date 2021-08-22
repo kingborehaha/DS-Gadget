@@ -118,7 +118,7 @@ namespace DS_Gadget
 
             if (cbxRefill.Checked && Hook.Health < Hook.HealthMax)
             {
-                await RefillHP();
+                _ = RefillHP();
             }
         }
 
