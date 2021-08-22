@@ -280,7 +280,7 @@
             this.cbxBonfire.Size = new System.Drawing.Size(355, 28);
             this.cbxBonfire.TabIndex = 3;
             this.cbxBonfire.SelectionChangeCommitted += new System.EventHandler(this.cbxBonfire_SelectionChangeCommitted);
-            this.cbxBonfire.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbxBonfire_KeyDown);
+            this.cbxBonfire.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyPressed);
             // 
             // lblBonfire
             // 

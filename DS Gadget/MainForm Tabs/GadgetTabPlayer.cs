@@ -63,22 +63,11 @@ namespace DS_Gadget
                     cbxBonfire.SelectedIndex += 1;
                     return;
                 }
-
-                if (cbxBonfire.SelectedIndex >= cbxBonfire.Items.Count - 1)
-                {
-                    return;
-                }
             }
 
             if (e.KeyCode == Keys.Up)
             {
                 e.Handled = true;
-
-                if (cbxBonfire.SelectedIndex == 0)
-                {
-
-                    return;
-                }
 
                 if (cbxBonfire.SelectedIndex != 0)
                 {
@@ -109,19 +98,8 @@ namespace DS_Gadget
             if (e.KeyCode == Keys.Escape)
                 searchBox.Clear();
 
-            if (cbxBonfire.Items.Count > 0)
-                KeyDownListbox(e);
-
-            if (cbxBonfire.Items.Count == 0)
-            {
-                if (e.KeyCode == Keys.Up)
-                    e.Handled = true;
-                if (e.KeyCode == Keys.Down)
-                    e.Handled = true;
-            }
+            KeyDownListbox(e);
         }
-
-
 
         public void EnableStats(bool enable)
         {
@@ -560,34 +538,6 @@ namespace DS_Gadget
         {
             if (Hook.Loaded && cbxQuickSelectBonfire.Checked)
                 Hook.LastBonfire = ((DSBonfire)cbxBonfire.SelectedItem).ID;
-        }
-
-        //Manually handle arrow keys while in focus so that they don't trip the SelectionChangeCommitted method
-        private void cbxBonfire_KeyDown(object sender, KeyEventArgs e)
-        {
-            //Scroll down through Items listbox and stop at the top
-            if (e.KeyCode == Keys.Up)
-            {
-                e.Handled = true;//Do not pass keypress along
-                //Check is there's still items to go through
-                if (cbxBonfire.SelectedIndex > 0)
-                {
-                    cbxBonfire.SelectedIndex -= 1;
-                    return;
-                }
-            }
-
-            //Scroll down through Items listbox and stop at the bottom
-            if (e.KeyCode == Keys.Down)
-            {
-                e.Handled = true;//Do not pass keypress along
-                //Check is there's still items to go through
-                if (cbxBonfire.SelectedIndex < cbxBonfire.Items.Count - 1) //-1 because Selected Index is 0 based and Count isn't
-                {
-                    cbxBonfire.SelectedIndex += 1;
-                    return;
-                }
-            }
         }
     }
 }
