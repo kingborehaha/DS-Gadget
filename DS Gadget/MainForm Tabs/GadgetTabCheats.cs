@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace DS_Gadget
 {
@@ -55,8 +56,6 @@ namespace DS_Gadget
                         Hook.SetPlayerSuperArmor(false);
                     if (cbxPlayerNoGoods.Checked)
                         Hook.SetPlayerNoGoods(false);
-                    if (cbxRefill.Checked)
-                        Hook.PlayerDeadMode = false;
                 }
             }
         }
@@ -101,8 +100,6 @@ namespace DS_Gadget
                 Hook.SetAllNoMove(true);
             if (cbxAllNoUpdateAI.Checked)
                 Hook.SetAllNoUpdateAI(true);
-            if (cbxRefill.Checked)
-                Hook.PlayerDeadMode = true;
         }
 
         internal void ToggleAI()
@@ -110,19 +107,27 @@ namespace DS_Gadget
             cbxAllNoUpdateAI.Checked = !cbxAllNoUpdateAI.Checked;
         }
 
-        public override void UpdateTab()
+        public override async void UpdateTab()
         {
             // The game sometimes sets and unsets this, for instance when dropping into Manus' or BoC's arena
             // However for reasons I don't understand, constantly setting it causes issues with bow aiming for some users
             // So only re-set it when it has actually been unset
+            // Also check for cbxRefill.Checked
             if (cbxPlayerDeadMode.Checked && !Hook.PlayerDeadMode)
                 Hook.PlayerDeadMode = true;
 
             if (cbxRefill.Checked && Hook.Health < Hook.HealthMax)
             {
-                Thread.Sleep(1000);
-                Hook.Health = Hook.HealthMax;
+                await RefillHP();
             }
+        }
+
+        private async Task RefillHP()
+        {
+            var hp = Hook.Health;
+            await Task.Delay(1000);
+            if (hp == Hook.Health)
+                Hook.Health = Hook.HealthMax;
         }
 
         public void FlipPlayerDeadMode()
@@ -137,7 +142,7 @@ namespace DS_Gadget
 
         private void cbxRefill_CheckedChanged(object sender, EventArgs e)
         {
-            Hook.PlayerDeadMode = cbxRefill.Checked;
+            cbxPlayerDeadMode.Checked = cbxRefill.Checked;
         }
 
         private void cbxPlayerNoDamage_CheckedChanged(object sender, EventArgs e)
