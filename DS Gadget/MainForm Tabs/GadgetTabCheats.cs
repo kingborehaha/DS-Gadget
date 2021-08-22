@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace DS_Gadget
 {
@@ -112,6 +113,12 @@ namespace DS_Gadget
             // So only re-set it when it has actually been unset
             if (cbxPlayerDeadMode.Checked && !Hook.PlayerDeadMode)
                 Hook.PlayerDeadMode = true;
+
+            if (cbxRefill.Checked && Hook.Health < Hook.HealthMax)
+            {
+                Thread.Sleep(1000);
+                Hook.Health = Hook.HealthMax;
+            }
         }
 
         public void FlipPlayerDeadMode()
@@ -122,6 +129,11 @@ namespace DS_Gadget
         private void cbxPlayerDeadMode_CheckedChanged(object sender, EventArgs e)
         {
             Hook.PlayerDeadMode = cbxPlayerDeadMode.Checked;
+        }
+
+        private void cbxRefill_CheckedChanged(object sender, EventArgs e)
+        {
+            Hook.PlayerDeadMode = cbxRefill.Checked;
         }
 
         private void cbxPlayerNoDamage_CheckedChanged(object sender, EventArgs e)
