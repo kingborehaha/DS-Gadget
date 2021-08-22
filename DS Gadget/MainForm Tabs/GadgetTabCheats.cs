@@ -55,6 +55,8 @@ namespace DS_Gadget
                         Hook.SetPlayerSuperArmor(false);
                     if (cbxPlayerNoGoods.Checked)
                         Hook.SetPlayerNoGoods(false);
+                    if (cbxRefill.Checked)
+                        Hook.PlayerDeadMode = false;
                 }
             }
         }
@@ -99,6 +101,8 @@ namespace DS_Gadget
                 Hook.SetAllNoMove(true);
             if (cbxAllNoUpdateAI.Checked)
                 Hook.SetAllNoUpdateAI(true);
+            if (cbxRefill.Checked)
+                Hook.PlayerDeadMode = true;
         }
 
         internal void ToggleAI()
