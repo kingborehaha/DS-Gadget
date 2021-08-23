@@ -196,6 +196,7 @@
             this.cmbInfusion.Size = new System.Drawing.Size(386, 28);
             this.cmbInfusion.TabIndex = 20;
             this.cmbInfusion.SelectedIndexChanged += new System.EventHandler(this.cmbInfusion_SelectedIndexChanged);
+            this.cmbInfusion.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyPressed);
             // 
             // nudQuantity
             // 
