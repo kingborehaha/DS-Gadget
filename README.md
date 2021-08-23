@@ -5,11 +5,11 @@ Resource .txt files are found in DS-Gadget\Resources
 
 ## Installing
 
-* Extract contents of zip archive to it's own folder. You may have to run as admin if DS Gadget crashes
+* Extract contents of zip archive to its own folder. You may have to run as admin if DS Gadget crashes
 
 ## Updating
 
-* If you have a previous version of DS Gadget Local Loader with a Resource folder, there is no need to copy the resource folder over, unless noted in the patch notes. This prevents you from overwriting the changes you made and the saved positions you stored.
+* If you have a previous version of DS Gadget Local Loader, you do not need to overwrite the resource folder with the updated resource folder unless specifically mentioned in the patch notes. Skipping the resource folder will retain any changes you have made to resources and saved positions.
 
 ## Features courtesy of Nordgaren
 * Item, Fashion, and Bonfire search
@@ -23,6 +23,21 @@ Resource .txt files are found in DS-Gadget\Resources
 
 ## DS Gadget (Local Loader) Changelog
 
+### 3.0.0.73  
+**Resources/Systems/Bonfires.txt and Resources/Equipment/Weapons/Shields.txt have been updated**  
+
+* Swapped IDs for Ash Lake Entrance and Ash Lake Dragon  
+
+* Fixed Bonewheel Spiked and Pierce Shield having incorrect infusion paths.  
+
+Item menu "Max" checkbox now also sets item quantity to maximum
+
+Quick Select Bonfire checkbox restores vanilla DS Gadget functionality of immediately changing your bonfire when one is directly selected from the bonfire list (Bonfire searching, arrow keys, and other misc selectors will not trigger quick select bonfire)
+
+Pressing enter when using the infusion dropdown menu will create items
+
+Config now updates with player and gives unknown if game gives you a bad config value (Please report this value and how it occured if you do see an unknown!)
+
 ### 3.0.0.72  
 **If you have modified DSItemCategory and DSFashionCategory resources from v3.0.0.71, move them to "Resources/Equipment" after installing.**  
 
@@ -30,7 +45,10 @@ Added Bonfire search
 
 Added checkbox in items menu to always grant equipment at max reinforcement
 
-Added checkbox in stats menu to apply changes made while a character is not loaded
+Added checkbox in stats menu to apply changes made while a character is not loaded  
+* Check the "Apply Changes" checkbox and any changes made will be applied on load  
+* Escape to clear any changes you don't want made  
+* Enter will give you a value of 0 on any numerical stat  
 
 Added Team Config  
 * Correctly loads the Chr and Team type for each existing combo.  
@@ -38,6 +56,8 @@ Added Team Config
 * Loaded from Resources/Systems/TeamConfigs.txt  
 
 Last Warp Bonfire feature puts the last bonfire you warped to at the bottom of the list of bonfires.
+
+Added "Search All" checkbox to items and misc menu.
 
 Fixed an issue where DS Gadget couldn't find the Resource files when launching from Windows Search results.
 

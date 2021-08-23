@@ -19,6 +19,13 @@ namespace DS_Gadget
             TeamType = 1;
         }
 
+        public TeamConfig(string name, int chrType, int teamType)
+        {
+            Name = name;
+            ChrType = chrType;
+            TeamType = teamType;
+        }
+
         public TeamConfig(string config)
         {
             var configEntry = configEntryRx.Match(config);
@@ -32,7 +39,6 @@ namespace DS_Gadget
         public static List<TeamConfig> GetConfigs()
         {
             var teamConfig = new List<TeamConfig>();
-            teamConfig.Add(new TeamConfig());
             foreach (string line in GetTxtResourceClass.RegexSplit(GetTxtResourceClass.GetTxtResource("Resources/Systems/TeamConfigs.txt"), "[\r\n]+"))
             {
                 if (GetTxtResourceClass.IsValidTxtResource(line)) //determine if line is a valid resource or not

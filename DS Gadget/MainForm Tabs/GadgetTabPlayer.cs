@@ -63,22 +63,11 @@ namespace DS_Gadget
                     cbxBonfire.SelectedIndex += 1;
                     return;
                 }
-
-                if (cbxBonfire.SelectedIndex >= cbxBonfire.Items.Count - 1)
-                {
-                    return;
-                }
             }
 
             if (e.KeyCode == Keys.Up)
             {
                 e.Handled = true;
-
-                if (cbxBonfire.SelectedIndex == 0)
-                {
-
-                    return;
-                }
 
                 if (cbxBonfire.SelectedIndex != 0)
                 {
@@ -109,19 +98,8 @@ namespace DS_Gadget
             if (e.KeyCode == Keys.Escape)
                 searchBox.Clear();
 
-            if (cbxBonfire.Items.Count > 0)
-                KeyDownListbox(e);
-
-            if (cbxBonfire.Items.Count == 0)
-            {
-                if (e.KeyCode == Keys.Up)
-                    e.Handled = true;
-                if (e.KeyCode == Keys.Down)
-                    e.Handled = true;
-            }
+            KeyDownListbox(e);
         }
-
-
 
         public void EnableStats(bool enable)
         {
@@ -277,6 +255,25 @@ namespace DS_Gadget
             // Backstabbing resets speed, so reapply it 24/7
             if (cbxSpeed.Checked)
                 Hook.SetSpeed((float)nudSpeed.Value);
+
+
+            if (!cmbTeamConfig.DroppedDown) // added this so that cursor doesn't jump around while dropdown is open
+            {
+                var selectedConfig = cmbTeamConfig.SelectedItem as TeamConfig;
+                //Set the new TeamConfig if selectedConfig is null and either chr or team type values don't match
+                if (selectedConfig == null || selectedConfig.ChrType != nudChrType.Value || selectedConfig.TeamType != nudTeamType.Value)
+                {
+                    var result = SavedConfigs.FirstOrDefault(c => c.ChrType == nudChrType.Value && c.TeamType == nudTeamType.Value);
+                    if (result == null)
+                    {
+                        //Add unknown config if the result is null
+                        result = new TeamConfig($"Unknown: Chr: {nudChrType.Value} Team: {nudTeamType.Value}", (int)nudChrType.Value, (int)nudTeamType.Value);
+                        cmbTeamConfig.Items.Add(result);
+                    }
+                    //Update selected Item.
+                    cmbTeamConfig.SelectedItem = result;
+                }
+            }
         }
 
         public void StorePosition()
@@ -525,12 +522,22 @@ namespace DS_Gadget
 
         private void cmbTeamConfig_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var config = cmbTeamConfig.SelectedItem as TeamConfig;
-            if (!string.IsNullOrWhiteSpace(config.Name))
+            if (Hook.Loaded)
             {
-                Hook.ChrType = config.ChrType;
-                Hook.TeamType = config.TeamType;
+                var config = cmbTeamConfig.SelectedItem as TeamConfig;
+                if (!string.IsNullOrWhiteSpace(config.Name))
+                {
+                    Hook.ChrType = config.ChrType;
+                    Hook.TeamType = config.TeamType;
+                }
             }
+        }
+
+        //Only when item selected from combobox (Or arrow keys while it's in focus.)
+        private void cbxBonfire_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (Hook.Loaded && cbxQuickSelectBonfire.Checked)
+                Hook.LastBonfire = ((DSBonfire)cbxBonfire.SelectedItem).ID;
         }
     }
 }

@@ -118,10 +118,8 @@ namespace DS_Gadget
             DSInfusion infusion = cmbInfusion.SelectedItem as DSInfusion;
             nudUpgrade.Maximum = infusion.MaxUpgrade;
             //Checks if maxUpgrade is checked and sets the value to max value
-            if (maxUpgrade.Checked)
-            {
-                nudUpgrade.Value = nudUpgrade.Maximum;
-            }
+            HandleMaxItemCheckbox();
+
         }
 
         private void lbxItems_SelectedIndexChanged(object sender, EventArgs e)
@@ -186,11 +184,7 @@ namespace DS_Gadget
                     break;
             }
 
-            //Checks if maxUpgrade is checked and sets the value to max value
-            if (maxUpgrade.Checked)
-            {
-                nudUpgrade.Value = nudUpgrade.Maximum;
-            }
+            HandleMaxItemCheckbox();
         }
 
         internal void EnableStats(bool enable)
@@ -336,6 +330,42 @@ namespace DS_Gadget
             //checkbox changed, refresh search filter (if searchBox is not empty)
             if (searchBox.Text != "")
                 FilterItems();
+        }
+
+        private void maxUpgrade_CheckedChanged(object sender, EventArgs e)
+        {
+            //HandleMaxItemCheckbox()
+            if (maxUpgrade.Checked)
+            {
+                nudUpgrade.Value = nudUpgrade.Maximum;
+                nudQuantity.Value = nudQuantity.Maximum;
+            }
+            else
+            {
+                nudUpgrade.Value = nudUpgrade.Minimum;
+                nudQuantity.Value = nudQuantity.Minimum;
+            }
+        }
+
+        private void HandleMaxItemCheckbox()
+        {
+            //Set upgrade nud to max if max checkbox is ticked
+            if (maxUpgrade.Checked)
+            {
+                nudUpgrade.Value = nudUpgrade.Maximum;
+                nudQuantity.Value = nudQuantity.Maximum;
+            }
+        }
+
+        private void cmbInfusion_KeyDown(object sender, KeyEventArgs e)
+        {
+            //Create selected index as item
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true; //Do not pass keypress along
+                CreateItem();
+                return;
+            }
         }
     }
 }

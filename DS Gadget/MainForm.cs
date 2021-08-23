@@ -50,7 +50,7 @@ namespace DS_Gadget
         private async void MainForm_Load(object sender, EventArgs e)
         {
             Location = settings.WindowLocation;
-            Text = "DS Gadget " + System.Windows.Forms.Application.ProductVersion;
+            Text = "DS Gadget Local Loader " + System.Windows.Forms.Application.ProductVersion;
             EnableTabs(false);
             InitAllTabs();
 
@@ -58,10 +58,9 @@ namespace DS_Gadget
             try
             {
                 Release release = await gitHubClient.Repository.Release.GetLatest("kingborehaha", "DS-Gadget");
-                int releaseTag = Int32.Parse(release.TagName.Replace(".","")); //version of latest release on github
-                int productVer = Int32.Parse(System.Windows.Forms.Application.ProductVersion.Replace(".", "")); //version of program
-                //if (SemVersion.Parse(release.TagName) > System.Windows.Forms.Application.ProductVersion) //original code (not compatible with local loader's stupid version numbering
-                if (releaseTag > productVer)
+                Version gitVersion = Version.Parse(release.TagName);
+                Version exeVersion = Version.Parse(System.Windows.Forms.Application.ProductVersion);
+                if (gitVersion > exeVersion) //Compare latest version to current version
                 {
                     labelCheckVersion.Visible = false;
                     LinkLabel.Link link = new LinkLabel.Link();
@@ -69,9 +68,13 @@ namespace DS_Gadget
                     llbNewVersion.Links.Add(link);
                     llbNewVersion.Visible = true;
                 }
-                else
+                else if (gitVersion == exeVersion)
                 {
                     labelCheckVersion.Text = "App up to date";
+                }
+                else
+                {
+                    labelCheckVersion.Text = "App version unreleased. Be wary of bugs!";
                 }
             }
             catch (Exception ex) when (ex is HttpRequestException || ex is ApiException || ex is ArgumentException)

@@ -470,7 +470,7 @@ namespace DS_Gadget
                     if (Attr != null && Attr.Name == attributeName)
                         return Convert.ToInt32(prop.GetValue(this, null)); //Return matching Control Attribute as int?
                 }
-                throw new MissingMemberException();
+                throw new MissingMemberException("DSHook", attributeName);
             }
             set
             {
@@ -490,6 +490,8 @@ namespace DS_Gadget
                         return;
                     }
                 }
+                throw new MissingMemberException("DSHook", attributeName);
+
             }
         }
         #endregion

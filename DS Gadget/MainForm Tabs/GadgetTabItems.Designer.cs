@@ -58,7 +58,7 @@
             lblUpgrade.Location = new System.Drawing.Point(395, 50);
             lblUpgrade.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             lblUpgrade.Name = "lblUpgrade";
-            lblUpgrade.Size = new System.Drawing.Size(48, 13);
+            lblUpgrade.Size = new System.Drawing.Size(71, 20);
             lblUpgrade.TabIndex = 21;
             lblUpgrade.Text = "Upgrade";
             // 
@@ -68,7 +68,7 @@
             lblInfusion.Location = new System.Drawing.Point(4, 49);
             lblInfusion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             lblInfusion.Name = "lblInfusion";
-            lblInfusion.Size = new System.Drawing.Size(44, 13);
+            lblInfusion.Size = new System.Drawing.Size(66, 20);
             lblInfusion.TabIndex = 19;
             lblInfusion.Text = "Infusion";
             // 
@@ -79,7 +79,7 @@
             lblQuantity.Location = new System.Drawing.Point(395, 1);
             lblQuantity.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             lblQuantity.Name = "lblQuantity";
-            lblQuantity.Size = new System.Drawing.Size(46, 13);
+            lblQuantity.Size = new System.Drawing.Size(68, 20);
             lblQuantity.TabIndex = 16;
             lblQuantity.Text = "Quantity";
             // 
@@ -89,7 +89,7 @@
             lblCategory.Location = new System.Drawing.Point(4, 0);
             lblCategory.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             lblCategory.Name = "lblCategory";
-            lblCategory.Size = new System.Drawing.Size(49, 13);
+            lblCategory.Size = new System.Drawing.Size(73, 20);
             lblCategory.TabIndex = 14;
             lblCategory.Text = "Category";
             // 
@@ -99,7 +99,7 @@
             this.lblSearch.Enabled = false;
             this.lblSearch.Location = new System.Drawing.Point(9, 104);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(50, 13);
+            this.lblSearch.Size = new System.Drawing.Size(72, 20);
             this.lblSearch.TabIndex = 27;
             this.lblSearch.Text = "Search...";
             // 
@@ -121,13 +121,14 @@
             this.maxUpgrade.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.maxUpgrade.Checked = true;
             this.maxUpgrade.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.maxUpgrade.Location = new System.Drawing.Point(490, 71);
+            this.maxUpgrade.Location = new System.Drawing.Point(490, 50);
             this.maxUpgrade.Margin = new System.Windows.Forms.Padding(4);
             this.maxUpgrade.Name = "maxUpgrade";
             this.maxUpgrade.Size = new System.Drawing.Size(96, 21);
             this.maxUpgrade.TabIndex = 26;
             this.maxUpgrade.Text = "Max";
             this.maxUpgrade.UseVisualStyleBackColor = true;
+            this.maxUpgrade.CheckedChanged += new System.EventHandler(this.maxUpgrade_CheckedChanged);
             // 
             // searchBox
             // 
@@ -136,7 +137,7 @@
             this.searchBox.Location = new System.Drawing.Point(4, 100);
             this.searchBox.Margin = new System.Windows.Forms.Padding(4);
             this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(386, 20);
+            this.searchBox.Size = new System.Drawing.Size(386, 26);
             this.searchBox.TabIndex = 16;
             this.searchBox.Click += new System.EventHandler(this.searchBox_Click);
             this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
@@ -150,6 +151,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbxItems.FormattingEnabled = true;
             this.lbxItems.IntegralHeight = false;
+            this.lbxItems.ItemHeight = 20;
             this.lbxItems.Location = new System.Drawing.Point(4, 132);
             this.lbxItems.Margin = new System.Windows.Forms.Padding(4);
             this.lbxItems.MinimumSize = new System.Drawing.Size(0, 24);
@@ -173,7 +175,7 @@
             0,
             0});
             this.nudUpgrade.Name = "nudUpgrade";
-            this.nudUpgrade.Size = new System.Drawing.Size(84, 20);
+            this.nudUpgrade.Size = new System.Drawing.Size(84, 26);
             this.nudUpgrade.TabIndex = 22;
             this.nudUpgrade.Click += new System.EventHandler(this.nudUpgrade_Click);
             this.nudUpgrade.Enter += new System.EventHandler(this.nudUpgrade_Click);
@@ -191,7 +193,7 @@
             this.cmbInfusion.MaxDropDownItems = 100;
             this.cmbInfusion.MinimumSize = new System.Drawing.Size(90, 0);
             this.cmbInfusion.Name = "cmbInfusion";
-            this.cmbInfusion.Size = new System.Drawing.Size(386, 21);
+            this.cmbInfusion.Size = new System.Drawing.Size(386, 28);
             this.cmbInfusion.TabIndex = 20;
             this.cmbInfusion.SelectedIndexChanged += new System.EventHandler(this.cmbInfusion_SelectedIndexChanged);
             // 
@@ -212,7 +214,7 @@
             0,
             0});
             this.nudQuantity.Name = "nudQuantity";
-            this.nudQuantity.Size = new System.Drawing.Size(84, 20);
+            this.nudQuantity.Size = new System.Drawing.Size(84, 26);
             this.nudQuantity.TabIndex = 18;
             this.nudQuantity.Value = new decimal(new int[] {
             1,
@@ -246,7 +248,7 @@
             this.cmbCategory.MaxDropDownItems = 100;
             this.cmbCategory.MinimumSize = new System.Drawing.Size(90, 0);
             this.cmbCategory.Name = "cmbCategory";
-            this.cmbCategory.Size = new System.Drawing.Size(386, 21);
+            this.cmbCategory.Size = new System.Drawing.Size(386, 28);
             this.cmbCategory.TabIndex = 15;
             this.cmbCategory.SelectedIndexChanged += new System.EventHandler(this.cmbCategory_SelectedIndexChanged);
             // 
