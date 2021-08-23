@@ -126,8 +126,6 @@ namespace DS_Gadget
             }
         }
 
-        public bool Refilling { get; set; }
-
         System.Timers.Timer Timer = new System.Timers.Timer();
 
         private void RefillTimer()
