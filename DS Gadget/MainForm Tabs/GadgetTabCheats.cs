@@ -116,11 +116,10 @@ namespace DS_Gadget
             // The game sometimes sets and unsets this, for instance when dropping into Manus' or BoC's arena
             // However for reasons I don't understand, constantly setting it causes issues with bow aiming for some users
             // So only re-set it when it has actually been unset
-            // Also check for cbxRefill.Checked
             if (cbxPlayerDeadMode.Checked && !Hook.PlayerDeadMode)
                 Hook.PlayerDeadMode = true;
 
-            // Only refill if enabled, health is lower than max and the timer isn't already going
+            // Only start refill timer if enabled, health is lower than max and the timer isn't already going
             if (cbxRefill.Checked && (Hook.Health < Hook.HealthMax) && !Timer.Enabled)
             {
                 _ = Task.Run(() => RefillTimer());
