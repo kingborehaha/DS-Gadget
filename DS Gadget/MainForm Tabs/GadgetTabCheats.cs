@@ -131,16 +131,7 @@ namespace DS_Gadget
 
         private void RefillTimer()
         {
-            double time;
-            // Try to parse the text box. If it doesn't parse, set it time to 1
-            double.TryParse(txtInterval.Text, out time);
-            
-            // Check is user entered 0 or the TryParse failed
-            if (time == 0)
-            {
-                Invoke((Action)delegate { txtInterval.Text = "1"; });
-                time = 1;
-            }
+            double time = (double)nudHealInterval.Value;
 
             //Set interval in ms, record hp and start the timer
             Timer.Interval = time * 1000; 
@@ -171,11 +162,6 @@ namespace DS_Gadget
         private void cbxPlayerDeadMode_CheckedChanged(object sender, EventArgs e)
         {
             Hook.PlayerDeadMode = cbxPlayerDeadMode.Checked;
-        }
-
-        private void cbxRefill_CheckedChanged(object sender, EventArgs e)
-        {
-            cbxPlayerDeadMode.Checked = cbxRefill.Checked;
         }
 
         private void cbxPlayerNoDamage_CheckedChanged(object sender, EventArgs e)
