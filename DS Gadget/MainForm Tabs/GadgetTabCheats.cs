@@ -127,6 +127,7 @@ namespace DS_Gadget
                 cbxPlayerNoStamina.Checked = false;
             }
 
+            // Only refill if enabled, health is lower than max and the timer isn't already going
             if (cbxRefill.Checked && (Hook.Health < Hook.HealthMax) && !Timer.Enabled)
             {
                 _ = Task.Run(() => RefillTimer());
