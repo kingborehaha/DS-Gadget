@@ -135,7 +135,7 @@ namespace DS_Gadget
             // Try to parse the text box. If it doesn't parse, set it time to 1
             double.TryParse(txtInterval.Text, out time);
             
-            // Check is user entered 0
+            // Check is user entered 0 or the TryParse failed
             if (time == 0)
             {
                 Invoke((Action)delegate { txtInterval.Text = "1"; });
