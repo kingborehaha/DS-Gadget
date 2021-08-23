@@ -133,15 +133,14 @@ namespace DS_Gadget
         {
             double time;
             // Try to parse the text box. If it doesn't parse, set it time to 1
-            if (!double.TryParse(txtInterval.Text, out time))
+            double.TryParse(txtInterval.Text, out time);
+            
+            // Check is user entered 0
+            if (time == 0)
             {
                 Invoke((Action)delegate { txtInterval.Text = "1"; });
                 time = 1;
             }
-
-            // Check is user entered 0
-            if (time == 0)
-                time = 1;
 
             //Set interval in ms, record hp and start the timer
             Timer.Interval = time * 1000; 
