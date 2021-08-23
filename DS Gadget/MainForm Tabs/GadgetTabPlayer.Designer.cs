@@ -63,8 +63,8 @@
             this.cmbTeamConfig = new System.Windows.Forms.ComboBox();
             this.cbxForcePlayRegion = new System.Windows.Forms.CheckBox();
             this.nudPlayRegion = new System.Windows.Forms.NumericUpDown();
-            this.nudTeamType = new System.Windows.Forms.NumericUpDown();
-            this.nudChrType = new System.Windows.Forms.NumericUpDown();
+            this.nudTeamType = new DS_Gadget.NumericUpDownExt();
+            this.nudChrType = new DS_Gadget.NumericUpDownExt();
             this.nudStaminaModMax = new System.Windows.Forms.NumericUpDown();
             this.nudStaminaMax = new System.Windows.Forms.NumericUpDown();
             this.nudStamina = new System.Windows.Forms.NumericUpDown();
@@ -411,6 +411,7 @@
             this.nudTeamType.Name = "nudTeamType";
             this.nudTeamType.Size = new System.Drawing.Size(100, 26);
             this.nudTeamType.TabIndex = 1;
+            this.nudTeamType.ButtonClicked += new System.EventHandler(this.nud_ButtonClicked);
             this.nudTeamType.ValueChanged += new System.EventHandler(this.nudTeamType_ValueChanged);
             // 
             // nudChrType
@@ -425,6 +426,7 @@
             this.nudChrType.Name = "nudChrType";
             this.nudChrType.Size = new System.Drawing.Size(100, 26);
             this.nudChrType.TabIndex = 0;
+            this.nudChrType.ButtonClicked += new System.EventHandler(this.nud_ButtonClicked);
             this.nudChrType.ValueChanged += new System.EventHandler(this.nudChrType_ValueChanged);
             // 
             // lblTeamType
@@ -1122,8 +1124,8 @@
         private System.Windows.Forms.CheckBox cbxCollision;
         private System.Windows.Forms.CheckBox cbxForcePlayRegion;
         private System.Windows.Forms.NumericUpDown nudPlayRegion;
-        private System.Windows.Forms.NumericUpDown nudTeamType;
-        private System.Windows.Forms.NumericUpDown nudChrType;
+        private DS_Gadget.NumericUpDownExt nudTeamType;
+        private DS_Gadget.NumericUpDownExt nudChrType;
         private System.Windows.Forms.NumericUpDown nudStaminaModMax;
         private System.Windows.Forms.NumericUpDown nudStaminaMax;
         private System.Windows.Forms.NumericUpDown nudStamina;

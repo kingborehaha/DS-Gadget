@@ -257,8 +257,13 @@ namespace DS_Gadget
                 Hook.SetSpeed((float)nudSpeed.Value);
 
 
+            if (SavedConfigs.Any(c => c.ChrType == nudChrType.Value && c.TeamType == nudTeamType.Value))
+                DisableAutoConfig = false;
+
             if (!cmbTeamConfig.DroppedDown) // added this so that cursor doesn't jump around while dropdown is open
             {
+                if (DisableAutoConfig)
+                    return;
                 var selectedConfig = cmbTeamConfig.SelectedItem as TeamConfig;
                 //Set the new TeamConfig if selectedConfig is null and either chr or team type values don't match
                 if (selectedConfig == null || selectedConfig.ChrType != nudChrType.Value || selectedConfig.TeamType != nudTeamType.Value)
@@ -461,6 +466,8 @@ namespace DS_Gadget
             }
         }
 
+
+
         /*
         //moved to UpdateTab() since this was only called there, DSBonfire resource was being checked for result anyway
         private void AddLastSetBonfire()
@@ -538,6 +545,13 @@ namespace DS_Gadget
         {
             if (Hook.Loaded && cbxQuickSelectBonfire.Checked)
                 Hook.LastBonfire = ((DSBonfire)cbxBonfire.SelectedItem).ID;
+        }
+
+        private bool DisableAutoConfig { get; set; }
+
+        private void nud_ButtonClicked(object sender, EventArgs e)
+        {
+            DisableAutoConfig = true;
         }
     }
 }

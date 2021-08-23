@@ -79,6 +79,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Utility Classes\NumericUpDownExt.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Utility Classes\NumericUpDownExt.Designer.cs">
+      <DependentUpon>NumericUpDownExt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utility Classes\ControlAttribute.cs" />
     <Compile Include="Utility Classes\DSHook.cs" />
     <Compile Include="Utility Classes\GadgetHotkey.cs" />
@@ -159,6 +165,9 @@
     <Compile Include="Utility Classes\SavedStats.cs" />
     <Compile Include="Utility Classes\TeamConfig.cs" />
     <Compile Include="Utility Classes\User32.cs" />
+    <EmbeddedResource Include="Utility Classes\NumericUpDownExt.resx">
+      <DependentUpon>NumericUpDownExt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm Tabs\GadgetTabGraphics.resx">
       <DependentUpon>GadgetTabGraphics.cs</DependentUpon>
     </EmbeddedResource>
