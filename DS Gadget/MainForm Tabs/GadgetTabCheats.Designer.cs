@@ -202,7 +202,7 @@
             gbxCheatPlayer.Margin = new System.Windows.Forms.Padding(4);
             gbxCheatPlayer.Name = "gbxCheatPlayer";
             gbxCheatPlayer.Padding = new System.Windows.Forms.Padding(4);
-            gbxCheatPlayer.Size = new System.Drawing.Size(339, 245);
+            gbxCheatPlayer.Size = new System.Drawing.Size(339, 243);
             gbxCheatPlayer.TabIndex = 17;
             gbxCheatPlayer.TabStop = false;
             gbxCheatPlayer.Text = "Player";

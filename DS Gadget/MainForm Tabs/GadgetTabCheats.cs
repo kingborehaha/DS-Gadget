@@ -120,13 +120,6 @@ namespace DS_Gadget
             if (cbxPlayerDeadMode.Checked && !Hook.PlayerDeadMode)
                 Hook.PlayerDeadMode = true;
 
-            if (Hook.ReadEventFlag(19900030))
-            {
-                cbxAllNoArrow.Checked = false;
-                cbxAllNoStamina.Checked = false;
-                cbxPlayerNoStamina.Checked = false;
-            }
-
             // Only refill if enabled, health is lower than max and the timer isn't already going
             if (cbxRefill.Checked && (Hook.Health < Hook.HealthMax) && !Timer.Enabled)
             {
@@ -140,15 +133,14 @@ namespace DS_Gadget
         {
             double time;
             // Try to parse the text box. If it doesn't parse, set it time to 1
-            if (!double.TryParse(txtInterval.Text, out time))
+            double.TryParse(txtInterval.Text, out time);
+            
+            // Check is user entered 0 or the TryParse failed
+            if (time == 0)
             {
                 Invoke((Action)delegate { txtInterval.Text = "1"; });
                 time = 1;
             }
-
-            // Check is user entered 0
-            if (time == 0)
-                time = 1;
 
             //Set interval in ms, record hp and start the timer
             Timer.Interval = time * 1000; 
