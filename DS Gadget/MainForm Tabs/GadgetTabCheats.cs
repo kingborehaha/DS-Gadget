@@ -11,8 +11,8 @@ namespace DS_Gadget
         public GadgetTabCheats()
         {
             InitializeComponent();
-            Timer.Elapsed += RefillHP;
-            Timer.AutoReset = false;
+            Timer.Elapsed += RefillHP; // Timer elapsed method to call when triggered
+            Timer.AutoReset = false; // Do not reset the timer when it is finished
         }
 
         public override void ResetTab()
@@ -140,23 +140,25 @@ namespace DS_Gadget
         private void RefillTimer()
         {
             double time;
-
+            // Try to parse the text box. If it doesn't parse, set it time to 1
             if (!double.TryParse(txtInterval.Text, out time))
             {
                 Invoke((Action)delegate { txtInterval.Text = "1"; });
                 time = 1;
             }
 
+            // Check is user entered 0
             if (time == 0)
                 time = 1;
 
-            Timer.Interval = time * 1000;
-            
+            //Set interval in ms, record hp and start the timer
+            Timer.Interval = time * 1000; 
             var hp = Hook.Health;
             Timer.Start();
 
             while (Timer.Enabled)
             {
+                // If the recorded hp variable is over Hook.Health, set the timer interval again (resseting it) and set the recorded hp value
                 if (hp > Hook.Health)
                 {
                     Timer.Interval = time * 1000;
