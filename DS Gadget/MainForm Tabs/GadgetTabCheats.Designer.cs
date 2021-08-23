@@ -31,7 +31,6 @@
             System.Windows.Forms.GroupBox gbxCheatEnemy;
             System.Windows.Forms.GroupBox gbxCheatAll;
             System.Windows.Forms.GroupBox gbxCheatPlayer;
-            this.cbxRefill = new System.Windows.Forms.CheckBox();
             this.cbxAllNoAttack = new System.Windows.Forms.CheckBox();
             this.cbxAllNoMove = new System.Windows.Forms.CheckBox();
             this.cbxAllNoUpdateAI = new System.Windows.Forms.CheckBox();
@@ -39,6 +38,8 @@
             this.cbxAllNoDamage = new System.Windows.Forms.CheckBox();
             this.cbxAllNoHit = new System.Windows.Forms.CheckBox();
             this.cbxAllNoStamina = new System.Windows.Forms.CheckBox();
+            this.txtInterval = new System.Windows.Forms.TextBox();
+            this.cbxRefill = new System.Windows.Forms.CheckBox();
             this.cbxPlayerNoHit = new System.Windows.Forms.CheckBox();
             this.cbxPlayerNoStamina = new System.Windows.Forms.CheckBox();
             this.cbxPlayerNoDamage = new System.Windows.Forms.CheckBox();
@@ -75,17 +76,6 @@
             gbxCheatEnemy.TabIndex = 19;
             gbxCheatEnemy.TabStop = false;
             gbxCheatEnemy.Text = "Enemies";
-            // 
-            // cbxRefill
-            // 
-            this.cbxRefill.AutoSize = true;
-            this.cbxRefill.Location = new System.Drawing.Point(8, 193);
-            this.cbxRefill.Name = "cbxRefill";
-            this.cbxRefill.Size = new System.Drawing.Size(96, 24);
-            this.cbxRefill.TabIndex = 14;
-            this.cbxRefill.Text = "Refill HP";
-            this.cbxRefill.UseVisualStyleBackColor = true;
-            this.cbxRefill.CheckedChanged += new System.EventHandler(this.cbxRefill_CheckedChanged);
             // 
             // cbxAllNoAttack
             // 
@@ -194,6 +184,7 @@
             gbxCheatPlayer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             gbxCheatPlayer.AutoSize = true;
+            gbxCheatPlayer.Controls.Add(this.txtInterval);
             gbxCheatPlayer.Controls.Add(this.cbxRefill);
             gbxCheatPlayer.Controls.Add(this.cbxPlayerNoHit);
             gbxCheatPlayer.Controls.Add(this.cbxPlayerNoStamina);
@@ -211,10 +202,30 @@
             gbxCheatPlayer.Margin = new System.Windows.Forms.Padding(4);
             gbxCheatPlayer.Name = "gbxCheatPlayer";
             gbxCheatPlayer.Padding = new System.Windows.Forms.Padding(4);
-            gbxCheatPlayer.Size = new System.Drawing.Size(339, 243);
+            gbxCheatPlayer.Size = new System.Drawing.Size(339, 245);
             gbxCheatPlayer.TabIndex = 17;
             gbxCheatPlayer.TabStop = false;
             gbxCheatPlayer.Text = "Player";
+            // 
+            // txtInterval
+            // 
+            this.txtInterval.Location = new System.Drawing.Point(98, 190);
+            this.txtInterval.Name = "txtInterval";
+            this.txtInterval.Size = new System.Drawing.Size(40, 26);
+            this.txtInterval.TabIndex = 19;
+            this.txtInterval.Text = "1";
+            this.txtInterval.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // cbxRefill
+            // 
+            this.cbxRefill.AutoSize = true;
+            this.cbxRefill.Location = new System.Drawing.Point(8, 193);
+            this.cbxRefill.Name = "cbxRefill";
+            this.cbxRefill.Size = new System.Drawing.Size(96, 24);
+            this.cbxRefill.TabIndex = 14;
+            this.cbxRefill.Text = "Refill HP";
+            this.cbxRefill.UseVisualStyleBackColor = true;
+            this.cbxRefill.CheckedChanged += new System.EventHandler(this.cbxRefill_CheckedChanged);
             // 
             // cbxPlayerNoHit
             // 
@@ -402,5 +413,6 @@
         private System.Windows.Forms.CheckBox cbxPlayerSilence;
         private System.Windows.Forms.CheckBox cbxAllNoArrow;
         private System.Windows.Forms.CheckBox cbxRefill;
+        private System.Windows.Forms.TextBox txtInterval;
     }
 }

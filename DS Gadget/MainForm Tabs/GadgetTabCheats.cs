@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace DS_Gadget
 {
@@ -9,6 +11,8 @@ namespace DS_Gadget
         public GadgetTabCheats()
         {
             InitializeComponent();
+            Timer.Elapsed += RefillHP;
+            Timer.AutoReset = false;
         }
 
         public override void ResetTab()
@@ -107,7 +111,7 @@ namespace DS_Gadget
             cbxAllNoUpdateAI.Checked = !cbxAllNoUpdateAI.Checked;
         }
 
-        public override async void UpdateTab()
+        public override void UpdateTab()
         {
             // The game sometimes sets and unsets this, for instance when dropping into Manus' or BoC's arena
             // However for reasons I don't understand, constantly setting it causes issues with bow aiming for some users
@@ -116,18 +120,47 @@ namespace DS_Gadget
             if (cbxPlayerDeadMode.Checked && !Hook.PlayerDeadMode)
                 Hook.PlayerDeadMode = true;
 
-            if (cbxRefill.Checked && Hook.Health < Hook.HealthMax)
+            if (cbxRefill.Checked && (Hook.Health < Hook.HealthMax) && !Timer.Enabled)
             {
-                _ = RefillHP();
+                _ = Task.Run(() => RefillTimer());
             }
         }
 
-        private async Task RefillHP()
+        public bool Refilling { get; set; }
+
+        System.Timers.Timer Timer = new System.Timers.Timer();
+
+        private void RefillTimer()
         {
+            double time;
+
+            if (!double.TryParse(txtInterval.Text, out time))
+            {
+                Invoke((Action)delegate { txtInterval.Text = "1"; });
+                time = 1;
+            }
+
+            if (time == 0)
+                time = 1;
+
+            Timer.Interval = time * 1000;
+            
             var hp = Hook.Health;
-            await Task.Delay(1000);
-            if (hp == Hook.Health)
-                Hook.Health = Hook.HealthMax;
+            Timer.Start();
+
+            while (Timer.Enabled)
+            {
+                if (hp > Hook.Health)
+                {
+                    Timer.Interval = time * 1000;
+                    hp = Hook.Health;
+                }
+            }
+        }
+
+        private void RefillHP(object sender, ElapsedEventArgs e)
+        {
+            Hook.Health = Hook.HealthMax;
         }
 
         public void FlipPlayerDeadMode()
