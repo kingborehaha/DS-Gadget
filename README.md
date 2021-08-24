@@ -34,7 +34,9 @@ Item menu "Max" checkbox now also sets item quantity to maximum
 
 Quick Select Bonfire checkbox restores vanilla DS Gadget functionality of immediately changing your bonfire when one is directly selected from the bonfire list (Bonfire searching, arrow keys, and other misc selectors will not trigger quick select bonfire)
 
-Pressing enter when using the infusion dropdown menu will create items
+Keyboard functionality extended to player tab bonfire combo box and item tab infusion combobox (up, down, enter and escape)
+
+Heal timer allows the player to set a timer that heals you when it ends, and resets on taking damage.
 
 Config now updates with player and gives unknown if game gives you a bad config value (Please report this value and how it occured if you do see an unknown!)
 

@@ -139,7 +139,7 @@ namespace DS_Gadget
 
             while (Timer.Enabled)
             {
-                // If the recorded hp variable is over Hook.Health, set the timer interval again (resseting it) and set the recorded hp value
+                // If the recorded hp variable is over Hook.Health, set the timer interval again (resetting it) and set the recorded hp value
                 if (hp > Hook.Health)
                 {
                     Timer.Interval = time * 1000;
