@@ -30,7 +30,7 @@ Resource .txt files are found in DS-Gadget\Resources
 
 * Fixed Bonewheel Spiked and Pierce Shield having incorrect infusion paths.  
 
-Added heal timer cheat. When the player takes damage, start a timer fully heals the player when finished. Timer duration is user-defined, and reset when taking additional damage during its duration.
+Added heal timer cheat. When the player takes damage, start a timer fully heals the player when finished. Timer duration is user-defined, and resets when taking additional damage during its duration
 
 Item menu "Max" checkbox now also sets item quantity to maximum
 
