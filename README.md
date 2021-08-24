@@ -28,7 +28,7 @@ Resource .txt files are found in DS-Gadget\Resources
 
 * Swapped IDs for Ash Lake Entrance and Ash Lake Dragon  
 
-* Fixed Bonewheel Spiked and Pierce Shield having incorrect infusion paths.  
+* Fixed Bonewheel Shield, Spiked Shield, and Pierce Shield having incorrect infusion paths
 
 Added heal timer cheat. When the player takes damage, start a timer fully heals the player when finished. Timer duration is user-defined, and resets when taking additional damage during its duration
 
