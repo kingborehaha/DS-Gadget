@@ -79,6 +79,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GadgetLogger.cs" />
     <Compile Include="Utility Classes\ControlAttribute.cs" />
     <Compile Include="Utility Classes\DSHook.cs" />
     <Compile Include="Utility Classes\GadgetHotkey.cs" />

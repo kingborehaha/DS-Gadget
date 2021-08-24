@@ -519,13 +519,45 @@ namespace DS_Gadget
 
         private void storedPositions_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var savedPos = storedPositions.SelectedItem as SavedPos;
-            nudPosStoredX.Value = savedPos.X;
-            nudPosStoredY.Value = savedPos.Y;
-            nudPosStoredZ.Value = savedPos.Z;
-            nudPosStoredAngle.Value = savedPos.Angle;
-            playerState = savedPos.PlayerState;
-            
+            try
+            {
+                var savedPos = storedPositions.SelectedItem as SavedPos;
+                nudPosStoredX.Value = savedPos.X;
+                nudPosStoredY.Value = savedPos.Y;
+                nudPosStoredZ.Value = savedPos.Z;
+                nudPosStoredAngle.Value = savedPos.Angle;
+                playerState = savedPos.PlayerState;
+            }
+            catch (NullReferenceException eX)
+            {
+                //Bug Hunting, check each possible thing that could be null
+                var savedPos = storedPositions.SelectedItem as SavedPos;
+                GadgetLogger.Log($"NullReferenceException{eX.StackTrace}");
+                GadgetLogger.Log($"Format: Object = IsNull");
+                GadgetLogger.Log($"storedPosition Index = {storedPositions.SelectedIndex}");
+                GadgetLogger.Log($"storedPositon Count = {storedPositions.Items.Count}");
+                GadgetLogger.Log($"nudPosStoredX = {nudPosStoredX == null}");
+                GadgetLogger.Log($"nudPosStoredY = {nudPosStoredY == null}");
+                GadgetLogger.Log($"nudPosStoredY = {nudPosStoredZ == null}");
+                GadgetLogger.Log($"nudPosStoredAngle = {nudPosStoredAngle == null}");
+                GadgetLogger.Log($"savedPos = {savedPos == null}");
+                GadgetLogger.Log($"SavedPosition Entries: ");
+                foreach (var prop in typeof(SavedPos).GetProperties())
+                {
+                    if (prop.Name.Contains("Xml"))
+                        continue;
+                    GadgetLogger.Log($"{prop.Name} = {prop.GetValue(savedPos) == null}");
+                }
+                GadgetLogger.Log($"PlayerState Entries: ");
+                foreach (var prop in typeof(State.PlayerState).GetFields())
+                {
+                    GadgetLogger.Log($"{prop.Name} = {prop.GetValue(savedPos.PlayerState) == null}");
+                }
+                GadgetLogger.Flush();
+
+                MessageBox.Show("NullReferenceException. Please see GadgetLog.txt for more information!", "NullReferenceException", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
