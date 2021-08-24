@@ -34,13 +34,15 @@ You can also try adding DS Gadget as an exception to your antivirus
 
 ###  Prerelease 0.14.4)  
 **Update to Resources/Systems/Bonfires.txt, Resources/Equipment/Rings/Rings.txt, Resources/Equipment/Items/Spells.txt, Resources/Equipment/Items/UsableItems.txt, /Equipment/Weapons/SpellTools.txt and Resources/Equipment/Weapons/Shields.txt**  
-* Max checkbox now gives max upgrade and max item quantity  
+* Added heal timer cheat. When the player takes damage, start a timer fully heals the player when finished. Timer duration is user-defined, and resets when taking additional damage during its duration
 
-* Quick Select Bonfire checkbox now gives vanilla gadget functionality of changing your bonfire when you select it from the dropdown. (Does not work when searching or using the arrow keys).  
+* Item menu "Max" checkbox now also sets item quantity to maximum
 
-* Can now spawn items with enter when Infusion  
+* Quick Select Bonfire checkbox restores vanilla DS Gadget functionality of immediately changing your bonfire when one is directly selected from the bonfire list (Bonfire searching, arrow keys, and other misc selectors will not trigger quick select bonfire)
 
-* Config now updates with player and gives unknown if game gives you a bad config value (Please report this value and how it occured if you do see an unknown!)
+* Keyboard functionality extended to player tab bonfire combo box and item tab infusion combobox (up, down, enter and escape)
+
+* Config now updates with player and adds temporary "unknown" configs to list if the game sets the player with an unknown config (If you see an unknown config and are playing an unmodified game, please tell us!)
 
 * Bonfires.txt updated so that Ash Lake Entrance and Ash Lake Dragon are no longer swapped  
 
