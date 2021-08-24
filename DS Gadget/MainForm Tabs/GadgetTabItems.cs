@@ -305,6 +305,9 @@ namespace DS_Gadget
                 return;
             }
 
+            //Return if sender is cmbInfusion so that arrow keys are handled correctly
+            if (sender == cmbInfusion)
+                return;
             //Prevents up and down keys from moving the cursor left and right when nothing in item box
             if (lbxItems.Items.Count == 0)
             {

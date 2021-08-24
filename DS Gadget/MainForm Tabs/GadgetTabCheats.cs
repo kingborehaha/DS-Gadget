@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Timers;
 
 namespace DS_Gadget
 {
@@ -7,6 +10,9 @@ namespace DS_Gadget
         public GadgetTabCheats()
         {
             InitializeComponent();
+            Timer.Elapsed += RefillHP; // Timer elapsed method to call when triggered
+            Timer.AutoReset = false; // Do not reset the timer when it is finished
+            nudHealInterval.Value = Settings.HealInterval;
         }
 
         public override void ResetTab()
@@ -112,6 +118,39 @@ namespace DS_Gadget
             // So only re-set it when it has actually been unset
             if (cbxPlayerDeadMode.Checked && !Hook.PlayerDeadMode)
                 Hook.PlayerDeadMode = true;
+
+            // Only start refill timer if enabled, health is lower than max and the timer isn't already going
+            if (cbxRefill.Checked && (Hook.Health < Hook.HealthMax) && !Timer.Enabled)
+            {
+                _ = Task.Run(() => RefillTimer());
+            }
+        }
+
+        System.Timers.Timer Timer = new System.Timers.Timer();
+
+        private void RefillTimer()
+        {
+            double time = (double)nudHealInterval.Value;
+
+            //Set interval in ms, record hp and start the timer
+            Timer.Interval = time * 1000; 
+            var hp = Hook.Health;
+            Timer.Start();
+
+            while (Timer.Enabled)
+            {
+                // If the recorded hp variable is over Hook.Health, set the timer interval again (resetting it) and set the recorded hp value
+                if (hp > Hook.Health)
+                {
+                    Timer.Interval = time * 1000;
+                    hp = Hook.Health;
+                }
+            }
+        }
+
+        private void RefillHP(object sender, ElapsedEventArgs e)
+        {
+            Hook.Health = Hook.HealthMax;
         }
 
         public void FlipPlayerDeadMode()
@@ -212,6 +251,11 @@ namespace DS_Gadget
         private void cbxAllNoMove_CheckedChanged(object sender, EventArgs e)
         {
             Hook.SetAllNoMove(cbxAllNoMove.Checked);
+        }
+
+        private void nudHealInterval_ValueChanged(object sender, EventArgs e)
+        {
+            Settings.HealInterval = nudHealInterval.Value;
         }
     }
 }

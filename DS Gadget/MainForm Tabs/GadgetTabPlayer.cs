@@ -63,22 +63,11 @@ namespace DS_Gadget
                     cbxBonfire.SelectedIndex += 1;
                     return;
                 }
-
-                if (cbxBonfire.SelectedIndex >= cbxBonfire.Items.Count - 1)
-                {
-                    return;
-                }
             }
 
             if (e.KeyCode == Keys.Up)
             {
                 e.Handled = true;
-
-                if (cbxBonfire.SelectedIndex == 0)
-                {
-
-                    return;
-                }
 
                 if (cbxBonfire.SelectedIndex != 0)
                 {
@@ -109,19 +98,8 @@ namespace DS_Gadget
             if (e.KeyCode == Keys.Escape)
                 searchBox.Clear();
 
-            if (cbxBonfire.Items.Count > 0)
-                KeyDownListbox(e);
-
-            if (cbxBonfire.Items.Count == 0)
-            {
-                if (e.KeyCode == Keys.Up)
-                    e.Handled = true;
-                if (e.KeyCode == Keys.Down)
-                    e.Handled = true;
-            }
+            KeyDownListbox(e);
         }
-
-
 
         public void EnableStats(bool enable)
         {
@@ -246,7 +224,6 @@ namespace DS_Gadget
 
 
             //manage unknown warps and current warps that are not in filter
-            //
             int bonfireID = Hook.LastBonfire;
 
             if (lastSetBonfire.ID != bonfireID) // lastSetBonfire does not match game LastBonfire
@@ -271,12 +248,47 @@ namespace DS_Gadget
                 cbxBonfire.SelectedItem = lastSetBonfire;
                 //AddLastSetBonfire();
             }
-            //
 
 
             // Backstabbing resets speed, so reapply it 24/7
             if (cbxSpeed.Checked)
                 Hook.SetSpeed((float)nudSpeed.Value);
+
+            //Check last known config to see if it's in the SavedConfigs, and re-enable auto config if it is.
+            if (lastKnownConfig != null && SavedConfigs.Any(c => c.ChrType == lastKnownConfig.ChrType && c.TeamType == lastKnownConfig.TeamType))
+                DisableAutoConfig = false;
+
+            var active = nudChrType == ActiveControl || nudTeamType == ActiveControl; // Check if either of the nuds are active control
+
+            if (!cmbTeamConfig.DroppedDown && !active) // Prevents issues when the combo box is open and the nuds are active
+            {
+                HandleTeamConfig();
+            }
+        }
+
+        TeamConfig lastKnownConfig;
+
+        //Turned this into a method so that it can be returned from properly without breaking the update method
+        private void HandleTeamConfig()
+        {
+            if (DisableAutoConfig) // Just return from the function if AutoConfig is disabled
+                return;
+
+            var selectedConfig = cmbTeamConfig.SelectedItem as TeamConfig;
+            //Set the new TeamConfig if selectedConfig is null and either chr or team type values don't match
+            if (selectedConfig == null || selectedConfig.ChrType != nudChrType.Value || selectedConfig.TeamType != nudTeamType.Value)
+            {
+                var result = SavedConfigs.FirstOrDefault(c => c.ChrType == nudChrType.Value && c.TeamType == nudTeamType.Value);
+
+                if (result == null)
+                {
+                    //Add unknown config if the result is null
+                    result = new TeamConfig($"Unknown: Chr: {nudChrType.Value} Team: {nudTeamType.Value}", (int)nudChrType.Value, (int)nudTeamType.Value);
+                    cmbTeamConfig.Items.Add(result);
+                }
+                //Update selected Item.
+                cmbTeamConfig.SelectedItem = result;
+            }
         }
 
         public void StorePosition()
@@ -390,16 +402,33 @@ namespace DS_Gadget
                 Hook.Stamina = (int)nudStamina.Value;
         }
 
+        private bool DisableAutoConfig { get; set; }
+
         private void nudChrType_ValueChanged(object sender, EventArgs e)
         {
+            HandleAutoConfig(sender);
+
             if (!Reading)
                 Hook.ChrType = (int)nudChrType.Value;
         }
 
         private void nudTeamType_ValueChanged(object sender, EventArgs e)
         {
+            HandleAutoConfig(sender);
+
             if (!Reading)
                 Hook.TeamType = (int)nudTeamType.Value;
+        }
+
+        private void HandleAutoConfig(object sender)
+        {
+            if (sender == ActiveControl)
+                DisableAutoConfig = true;
+            else
+                DisableAutoConfig = false;
+
+            lastKnownConfig = new TeamConfig("Auto", (int)nudChrType.Value, (int)nudTeamType.Value);
+
         }
 
         private void nudPlayRegion_ValueChanged(object sender, EventArgs e)
@@ -464,25 +493,6 @@ namespace DS_Gadget
             }
         }
 
-        /*
-        //moved to UpdateTab() since this was only called there, DSBonfire resource was being checked for result anyway
-        private void AddLastSetBonfire()
-        {
-            int bonfireID = Hook.LastBonfire;
-            DSBonfire result = DSBonfire.All.FirstOrDefault(b => b.ID == bonfireID); //check for bonfire in resource
-
-            cbxBonfire.Items.Remove(lastSetBonfire); //remove from filter (if there)
-
-            //set lastSetBonfire info
-            lastSetBonfire.ID = result.ID;
-            lastSetBonfire.Name = "Last Set: " + result.Name;
-
-            cbxBonfire.Items.Add(lastSetBonfire); //add to end of filter
-
-            cbxBonfire.SelectedItem = lastSetBonfire;
-        }
-        */
-
         private void cbxSpeed_CheckedChanged(object sender, EventArgs e)
         {
             nudSpeed.Enabled = cbxSpeed.Checked;
@@ -525,11 +535,14 @@ namespace DS_Gadget
 
         private void cmbTeamConfig_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var config = cmbTeamConfig.SelectedItem as TeamConfig;
-            if (!string.IsNullOrWhiteSpace(config.Name))
+            if (Hook.Loaded)
             {
-                Hook.ChrType = config.ChrType;
-                Hook.TeamType = config.TeamType;
+                var config = cmbTeamConfig.SelectedItem as TeamConfig;
+                if (!string.IsNullOrWhiteSpace(config.Name))
+                {
+                    Hook.ChrType = config.ChrType;
+                    Hook.TeamType = config.TeamType;
+                }
             }
         }
 
@@ -540,32 +553,6 @@ namespace DS_Gadget
                 Hook.LastBonfire = ((DSBonfire)cbxBonfire.SelectedItem).ID;
         }
 
-        //Manually handle arrow keys while in focus so that they don't trip the SelectionChangeCommitted method
-        private void cbxBonfire_KeyDown(object sender, KeyEventArgs e)
-        {
-            //Scroll down through Items listbox and stop at the top
-            if (e.KeyCode == Keys.Up)
-            {
-                e.Handled = true;//Do not pass keypress along
-                //Check is there's still items to go through
-                if (cbxBonfire.SelectedIndex > 0)
-                {
-                    cbxBonfire.SelectedIndex -= 1;
-                    return;
-                }
-            }
-
-            //Scroll down through Items listbox and stop at the bottom
-            if (e.KeyCode == Keys.Down)
-            {
-                e.Handled = true;//Do not pass keypress along
-                //Check is there's still items to go through
-                if (cbxBonfire.SelectedIndex < cbxBonfire.Items.Count - 1) //-1 because Selected Index is 0 based and Count isn't
-                {
-                    cbxBonfire.SelectedIndex += 1;
-                    return;
-                }
-            }
-        }
+        
     }
 }
