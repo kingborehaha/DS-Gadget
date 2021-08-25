@@ -82,6 +82,7 @@
     <Compile Include="Utility Classes\ControlAttribute.cs" />
     <Compile Include="Utility Classes\DSHook.cs" />
     <Compile Include="Utility Classes\GadgetHotkey.cs" />
+    <Compile Include="Utility Classes\GadgetLogger.cs" />
     <Compile Include="Utility Classes\GetTxtResourceClass.cs" />
     <Compile Include="List Items\DSFashionCategory.cs" />
     <Compile Include="List Items\DSSex.cs" />
