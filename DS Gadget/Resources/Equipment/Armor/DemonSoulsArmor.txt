@@ -1,0 +1,74 @@
+//Format: Item ID; Stack Limit; Reinforce Type; Name [arbitrary]
+ 3101100  1 2 Ancient King's Breastplate - M
+ 3201100  1 2 Ancient King's Gauntlets - M
+ 3301100  1 2 Ancient King's Leggings - M
+ 3001100  1 2 Ancient King's Mask - M
+ 3000200  1 2 Assassin's Mask
+ 3302000  1 2 Binded Boots - F
+ 3102000  1 2 Binded Cross - F
+ 3202000  1 2 Binded Gloves - F
+ 3002000  1 2 Binded Hood - F
+ 3300200  1 2 Black Boots
+ 3200200  1 2 Black Gloves
+ 3100200  1 2 Black Leather
+ 3100800  1 2 Brushwood Armor
+ 3200800  1 2 Brushwood Gauntlets
+ 3000800  1 2 Brushwood Helmet
+ 3300800  1 2 Brushwood Leggings
+ 3200400  1 2 Chain Gloves
+ 3000400  1 2 Chain Helmet
+ 3100400  1 2 Chain Mail
+ 3100600  1 2 Coat of Plate
+ 3100900  1 2 Dark Silver Armor - M
+ 3200900  1 2 Dark Silver Gauntlets - M
+ 3000900  1 2 Dark Silver Helmet - M
+ 3300900  1 2 Dark Silver Leggings - M
+ 3101900  1 2 Dull Gold Armor - F
+ 3201900  1 2 Dull Gold Gauntlets - F
+ 3001900  1 2 Dull Gold Helmet - F
+ 3301900  1 2 Dull Gold Leggings - F
+ 3100700  1 2 Fluted Armor
+ 3200700  1 2 Fluted Gauntlets
+ 3000700  1 2 Fluted Helmet
+ 3300700  1 2 Fluted Leggings
+ 3101000  1 2 Gloom Armor
+ 3201000  1 2 Gloom Gauntlets
+ 3001000  1 2 Gloom Helmet
+ 3301000  1 2 Gloom Leggings
+ 3000000  1 2 Gold Mask
+ 3300400  1 2 Hard Leather Boots
+ 3100300  1 2 Leather Armor
+ 3300300  1 2 Leather Boots
+ 3000300  1 2 Leather Cap
+ 3200300  1 2 Leather Gloves
+ 3200500  1 2 Mirdan Gauntlets
+ 3000500  1 2 Mirdan Helmet
+ 3300500  1 2 Mirdan Leggings
+ 3100500  1 2 Mirdan Scale Mail
+ 3080000  1 2 Monk's Head Wrappings
+ 3001800  1 2 Official's Cap
+ 3302100  1 2 Old Ragged Boots - F
+ 3202100  1 2 Old Ragged Gloves - F
+ 3102100  1 2 Old Ragged Robes - F
+ 3200600  1 2 Plate Gauntlets
+ 3000600  1 2 Plate Helmet
+ 3300600  1 2 Plate Leggings
+ 3301800  1 2 Rogue's Boots - F
+ 3101800  1 2 Rogue's Clothes - F
+ 3201800  1 2 Rogue's Gloves - F
+ 3301200  1 2 Saint's Boots - M
+ 3201200  1 2 Saint's Gloves - M
+ 3101200  1 2 Saint's Robe - M
+ 3200000  1 2 Shaman's Armbands - M
+ 3100000  1 2 Shaman's Clothes - M
+ 3300000  1 2 Shaman's Tabi - M
+ 3201700  1 2 Silver Bracelets - F
+ 3000100  1 2 Silver Coronet
+ 3002100  1 2 Three-Cornered Hat - F
+ 3301400  1 2 Venerable Sage's Boots - M
+ 3201400  1 2 Venerable Sage's Gloves - M
+ 3001400  1 2 Venerable Sage's Hood - M
+ 3101400  1 2 Venerable Sage's Robe - M
+ 3100100  1 2 Wizard's Clothes
+ 3200100  1 2 Wizard's Gloves
+ 3300100  1 2 Wizard's Shoes

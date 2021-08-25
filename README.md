@@ -1,103 +1,224 @@
+# This version of DS Gadget has been created for InfernoPlus' "Remastest" mod and contains various changes to item lists.
+A multi-purpose testing tool for Dark Souls: Prepare to Die Edition. Compatible with the current Steam and debug versions as well as, in theory, everything else.  
+## Requirements 
+* [.NET 4.6.2](https://www.microsoft.com/net/download/thank-you/net462)
+* [VC Redist 2012 x86](https://www.microsoft.com/en-us/download/details.aspx?id=30679)  
 
-# DS Gadget (Local Loader)
-Branch of TKGP's DS Gadget that loads locally accessible .txt files to populate various lists (bonfire, items, etc)
-Resource .txt files are found in DS-Gadget\Resources
+You probably already have both.
 
 ## Installing
 
-* Extract contents of zip archive to its own folder. You may have to run as admin if DS Gadget crashes
+* Extract contents of zip archive to it's own folder. You may have to run as admin if DS Gadget crashes
 
 ## Updating
 
-* If you have a previous version of DS Gadget Local Loader, you do not need to overwrite the resource folder with the updated resource folder unless specifically mentioned in the patch notes. Skipping the resource folder will retain any changes you have made to resources and saved positions.
+* If you have a previous version of DS Gadget Local Loader with a Resource folder, there is no need to copy the resource folder over, unless noted in the patch notes. This prevents you from overwriting the changes you made and the saved positions you stored.
 
-## Features courtesy of Nordgaren
-* Item, Fashion, and Bonfire search
-* Character position saving and loading
-* Customizable resource files
-* Fashion menu
-* Chr/Team Type configs
-* Max Reinforcement checkbox
-* Unlocked gadget when unloaded
-* Stats menu load changed values
+## Troubleshooting
+If you are having problems getting it to launch and you tried installing the packages above, right click the exe, go to properties, hit the compatability tab and hit "Run compatability troubleshooter". If it works, apply the settings windows found.  
 
-## DS Gadget (Local Loader) Changelog
+You can also try adding DS Gadget as an exception to your antivirus
 
-### 3.0.0.73  
-**Resources/Systems/Bonfires.txt and Resources/Equipment/Weapons/Shields.txt have been updated**  
+#### Based on [DS-Gadget 3.0](https://github.com/JKAnderson/DS-Gadget) by JKAnderson.
+#### Fork of [DS-Gadget 3.0 Local Loader](https://github.com/kingborehaha/DS-Gadget) by King Borehaha.
+#### Updated by [Stagmattica](https://github.com/Stagmattica) until Prerelease 0.5.
+#### Updated by [Nordgaren](https://github.com/Nordgaren) from Prerelease 0.6 onward.
 
-* Swapped IDs for Ash Lake Entrance and Ash Lake Dragon  
+## Thank You
+**[TKGP](https://github.com/JKAnderson/)** Author of DS Gadget and answering my dumb questions  
+**[King Borehaha](https://github.com/kingborehaha/)** Implimenting features, great suggestions and helping to polish my features  
+**[InfernoPlus](https://github.com/infernoplus/)** Author of Dark Souls Remastest, also answers my dumb questions :fatcat:  
+**[Stagmattica](https://github.com/Stagmattica)** Helped me get started with DS Gadget   
 
-* Fixed Bonewheel Shield, Spiked Shield, and Pierce Shield having incorrect infusion paths
+# Change Log  
 
-Added heal timer cheat. When the player takes damage, start a timer fully heals the player when finished. Timer duration is user-defined, and resets when taking additional damage during its duration
+###  Prerelease 0.14.4)  
+**Update to Resources/Systems/Bonfires.txt, Resources/Equipment/Rings/Rings.txt, Resources/Equipment/Items/Spells.txt, Resources/Equipment/Items/UsableItems.txt, /Equipment/Weapons/SpellTools.txt and Resources/Equipment/Weapons/Shields.txt**  
+* Added heal timer cheat. When the player takes damage, start a timer fully heals the player when finished. Timer duration is user-defined, and resets when taking additional damage during its duration
 
-Item menu "Max" checkbox now also sets item quantity to maximum
+* Item menu "Max" checkbox now also sets item quantity to maximum
 
-Quick Select Bonfire checkbox restores vanilla DS Gadget functionality of immediately changing your bonfire when one is directly selected from the bonfire list (Bonfire searching, arrow keys, and other misc selectors will not trigger quick select bonfire)
+* Quick Select Bonfire checkbox restores vanilla DS Gadget functionality of immediately changing your bonfire when one is directly selected from the bonfire list (Bonfire searching, arrow keys, and other misc selectors will not trigger quick select bonfire)
 
-Keyboard functionality extended to player tab bonfire combo box and item tab infusion combobox (up, down, enter and escape)
+* Keyboard functionality extended to player tab bonfire combo box and item tab infusion combobox (up, down, enter and escape)
 
-Config now updates with player and adds temporary "unknown" configs to list if the game sets the player with an unknown config (If you see an unknown config and are playing an unmodified game, please tell us!)
+* Config now updates with player and adds temporary "unknown" configs to list if the game sets the player with an unknown config (If you see an unknown config and are playing an unmodified game, please tell us!)
 
-### 3.0.0.72  
-**If you have modified DSItemCategory and DSFashionCategory resources from v3.0.0.71, move them to "Resources/Equipment" after installing.**  
+* Bonfires.txt updated so that Ash Lake Entrance and Ash Lake Dragon are no longer swapped  
 
-Added Bonfire search  
+* Spells.txt, Spelltools.txt, UseableItems.txt and Rings.txt updated to reflect vanilla item names in parenthesis  
 
-Added checkbox in items menu to always grant equipment at max reinforcement
+* Shields.txt Fixed Bonewheel Spiked and Pierce Shield having incorrect infusion paths.  
 
-Added checkbox in stats menu to apply changes made while a character is not loaded  
-* Check the "Apply Changes" checkbox and any changes made will be applied on load  
-* Escape to clear any changes you don't want made  
-* Enter will give you a value of 0 on any numerical stat  
+###  Prerelease 0.14.3)
+**Spells.txt and Rings.txt updated**
 
-Added Team Config  
-* Correctly loads the Chr and Team type for each existing combo.  
-* Does not change phantom color as expected for some covenant variations, even though values are correct.
-* Loaded from Resources/Systems/TeamConfigs.txt  
+* Added TTT items  
 
-Last Warp Bonfire feature puts the last bonfire you warped to at the bottom of the list of bonfires.
+* Added 1.4 beta items  
 
-Added "Search All" checkbox to items and misc menu.
+###  Prerelease 0.14.2.7)
 
-Fixed an issue where DS Gadget couldn't find the Resource files when launching from Windows Search results.
+* Minor patch, now up to date with Vanilla Gadget. 
 
-Fixed program update checker.
+* Max upgrade unchecked now gives you min upgrade for all items
 
-### 3.0.0.71
-Added saving stored positions to XML file which are loaded on DS Gadget Startup  
-* Press the store position key or enter after typing a location name in the combo box for the stored position to save or update that positon.  
-* Press Shift + Del or click the "Delete" button to delete the stored location.  
-* XML file can be edited, but you must re-launch the gadget.  
+###  Prerelease 0.14.2.6):
 
-Added fashion feature to Misc tab (Apply any armor or hair to hair slot)  
+* "Search All" functionality added to Item and Fashion search boxes courtesy of [King Borehaha](https://github.com/kingborehaha/)
 
-Added local category loading for Item and Fashion categories and split Ammo into it's own category.  
-* Resources/DSItemCategory.txt is for the dropdown categories in Items tab, Resources/DSFashionCategory.txt is for the dropdown in the Misc tab for fashion.  
-* Categories must consist of items of the same Category ID. For instance, Ranged Melee and Ammo all share the weapon category ID, so you could make a "Favorite Weapons" category that has a combination of those items. Current Item lists are all sorted into their respective category IDs as a guide.  
-* Make sure to setup a new item list at Resources/Equipment/Category/YourNewCategory.txt for your category and copy-paste items from other lists to that new text file. Make sure your new category references the correctly named text file!  
-* The order in the file is the order in the dropdown menu  
+###  Prerelease 0.14.2.5):
 
-Added Toggle AI Hotkey.  
+* Fixed loading saved stats.... Hopefully...
 
-Gadget now allows you to change any setting that isn't loaded upon loading a character.  
+###  Prerelease 0.14.2.4):
 
-Cleaned up Search Bar presentation and can now use Escape to clear search  
+* Code improvemnt, fixed release packing internally.
 
-### 3.0.0.70
-Added Search function.
+###  Prerelease 0.14.2.3):
 
-### 3.0.0.69
-Release. Added local file loading.
+* Fixed formatting error in Item and Fashion dropdown categories
 
-### Local Loader Credits
-* TKGP - Made DS Gadget
-* Nordagen - Implemented most of the new features
+###  Prerelease 0.14.2.3):
 
--------------------
+* Fixed bug where DS Gadget would load all stats at min value if Load stats checkbox was checked and values weren't changed  
 
-# Original DS Gadget Readme
+###  Prerelease 0.14.2):
+
+* Fixed an issue where DS Gadget couldn't find files after launching from Windows search.  
+
+**Thank You [King Borehaha](https://github.com/kingborehaha/) for:**
+* "Last Set" Bonfire feature puts the last bonfire you warped to at the bottom of the list of bonfires
+* Various bugfixes and minor improvement on the code side
+* Code Cleanup and Bug fixes
+* Fixed version checking
+
+###  Prerelease 0.14.1):
+
+* Saved stats improvement and various minor bugfixes 
+* UI improvements for 0.14 features by [King Borehaha](https://github.com/kingborehaha/)
+* * Fixed an issue where DS Gadget couldn't find files after launching from Windows search (0.14.2.1).
+
+###  Prerelease 0.14): 
+
+**If you already have changes to your DSItemCategory and DSFashionCategory text files, you can move them to Resources/Equipment after installing. I changed where the Gadget looks for them.**  
+
+* Added Bonfire search  
+
+* Added Team Config  
+	* Correctly loads the Chr and Team type for each existing combo.  
+	* Does not change to correct color for covenant, even though correct value. I think the mtd gets changed on invasion  
+	* Loaded from Resources/Systems/TeamConfigs.txt  
+
+* Can now get max upgrade items with a checkbox, instead of typing it in all the time  
+
+* Stats menu now has a checkbox to apply any changes to your character made while character is unloaded  
+
+* Cleaned up Search Bar presentation and can now use Escape to clear search  
+
+###  Prerelease 0.13): 
+
+* Added saving stored positions to XML file which are loaded on DS Gadget Startup
+
+    * Press the store position key or enter after typing a location name in the combo box for the stored position to save or update that positon.
+    * Press Shift + Del or click the "Delete" button to delete the stored location.
+    * XML file can be edited, but you must re-launch the gadget.
+
+* Merged with [DS-Gadget 3.0 Local Loader](https://github.com/kingborehaha/DS-Gadget). Item lists and categories now editable via a text file in Resources folder.  
+
+* Added local category loading for Item and Fashion categories and split Ammo into it's own category.
+
+    * Resources/DSItemCategory.txt is for the dropdown categories in Items tab, Resources/DSFashionCategory.txt is for the dropdown in the Misc tab for fashion.
+    * Categories must consist of items of the same Category ID. For instance, Ranged Melee and Ammo all share the weapon category ID, so you could make a "Favorite Weapons" category that has a combination of those items. Current Item lists are all sorted into their respective category IDs as a guide.
+    * Make sure to setup a new item list at Resources/Equipment/Category/YourNewCategory.txt for your category and copy-paste items from other lists to that new text file. Make sure your new category references the correctly named text file!
+    * The order in the file is the order in the dropdown menu
+
+* Added Toggle AI Hotkey.
+
+* Gadget now allows you to change any setting that isn't loaded upon loading a character.
+
+###  Prerelease 0.12): 
+* Search bar now fully operational. you can use up and down keys to select and item in the listbox and enter to spawn that item. Works on hair as well, but applies hair instead of spawning items.
+
+###  Prerelease 0.11): 
+* Added search bar
+* Hid DS2 armors until they are ready
+
+###  Prerelease 0.10): 
+* Added Hair tool to Misc tab  
+* Added indicator for male and female only armor  
+* Added Male and Female Hair category to Hair tool  
+* DS Gadget now checks if up to date or not  
+
+###  Prerelease 0.9):
+* Gave ammo their own menu
+* Prefixed ammo with type for better sorting
+
+###  Prerelease 0.8):
+* Added Dark Souls 2 armors
+* Separated armors into categories
+
+
+###  Prerelease 0.7):
+* Fixed some armors not being upgradeable
+
+
+###  Prerelease 0.6):
+* Added Demon Souls Armors
+* Added Blunt and Splintering Bolts
+* Added new 1.3 spells
+* Re-added the Master Key
+
+
+###  Prerelease 0.5):
+* Disabled the version indicator turning orange to avoid confusion.
+
+
+###  Prerelease 0.4):
+* Various bug fixes
+* Removed the "Master Key" Key item, due to it having lost its purpose.
+* Moved "Eye of Death" and "Cracked Red Eye Orb" consumables to "Usable Items" tab for consistency across invasion-based items.
+* Renamed the "Cat Covenant Ring" to "Bandit Ring".
+
+
+###  Prerelease 0.3):
+* Bug fixes
+* Some changes from Prerelease 1.1 did not function properly: Rename of "Black Eye Orb(s)" did not function properly due to character limit, name shortened; Fix of "Skull Lantern bug" not working due to restrictions within item category definitions. "Skull Lantern" has been moved to "Melee Weapons" item category.
+
+
+###  Prerelease 0.2):
+* Fixed title bar version counter
+* Fixed a target mismatch between the Bonfires "Ash Lake (Bonfire)" and "Ash Lake (Stone Dragon)"
+* Fixed a bug that caused the "Skull Lantern" item to not spawn for some players
+* Renamed the unused "Gwynevere Talisman" and "Miracle: Escape Death" descriptors
+* Renamed "Black Eye Orb" to "Black Eye Orb (Target: Lautrec of Carim)" and "Black Eye Orb (Shiva)" to "Black Eye Orb (Target: Shiva of the East) (Cut Content)"
+* Renamed "Sunlight Spear" spell to "Sunlight Slam"
+* Moved "Black Eye Orb (Target: Shiva of the East) (Cut Content)" from "Key Items" to "Usable Items_
+
+
+###  Prerelease 0.1):
+* Removed version indicator on main window title bar (will be added back in future releases)
+* Removed "Mystery Armor", "Mystery Weapons" and "Mystery Goods" item lists
+* Moved "Elite Cleric" and "Mage Smith" Armor sets to "Armor" item list
+* Moved all "Estus Flask" entries to "Consumables" item list, removed "Empty Estus Flask" entries
+* Moved "Black Eye Orb (Shiva)" cut content item to "Key Items" item list (functionality missing)
+* Moved "Escape Death" cut content spell to "Spells" item list (works, has identical function to Rare Ring of Sactifice, uses "Magic Revival" death message instead of "Ring Revival")
+* Moved "Gwynevere's Talisman" cut content spell tool to "Spell Tools" item list (does not work properly, usage in Arena+ strongly discouraged)
+* Moved "Skull Lantern" from "Spell Tools" to "Usable Items" item list due to its placement in "Spell Tools" item list having caused confusion
+* Renamed the following Magic-based Spells (located under "Spells" item list :"Soul Arrow" spell to "Soul Ray", "Great Soul Arrow" to "Soul Arrow", "Heavy Soul Arrow" to "Heavy Soul Ray", "Great Heavy Soul Arrow" to "Heavy Soul Arrow", "Homing Crystal Soulmass" to "Crystal Mass", 
+"Crystal Soul Spear" to "Crystal Storm", "Magic Weapon" to "Soul Weapon", "Great Magic Weapon" to "Soul Dart", "Crystal Magic Weapon" to "Crystalize Weapon", "Magic Shield" to "Soul Shield", "Strong Magic Shield" to "Deflection", "Cast Light" to "Light", "Hush" to "Conversion", "Aural Decoy" to "Distract", 
+"Fall Control" to "Soul Roots", "Resist Curse" to "Break Curse" and "White Dragon Breath" to "Crystal Ray"
+* Renamed the following Pyromancies (located under "Spells item list :"Fire Orb" to "Eruption" and "Firestorm" to "Warmth"
+* Renamed the following Miracles (located under "Spells" item list :"Gravelord Sword Dance" to "Gravelord Sword Strike", "Gravelord Greatsword Dance" to "Gravelord Sword Strike", "Seek Guidance" to "Sacred Oath", "Great Lightning Spear" to "Lightning Storm" and "Karmic Justice" to "Karmic Balance"
+* Added "Bear" cut content Armor set to "Armor" item list
+* Added the Pyromancies "Flame Swathe" (ID: 4120) and "Black Fissure" (ID: 4560) to "Spells" item list
+* Added the Miracles "Intervention" (ID: 5315) and "Projected Heal" (ID: 5330) to "Spells" item list
+* Added the Spell IDs 5920, 5930, 5940 and 5959 to "Spells" item list (as requested by InfernoPLus; these are IDs for potential future spells. Judging by the ID prefix "5", these will most likely be populated by Miracles, if at all)
+
+--------------------------------------------------------------------------------------------------------------------------------------
+Original readme:
+
+# DS Gadget
 A multi-purpose testing tool for Dark Souls: Prepare to Die Edition. Compatible with the current Steam and debug versions as well as, in theory, everything else.  
 Requires [.NET 4.6.2](https://www.microsoft.com/net/download/thank-you/net462) and [VC Redist 2012 x86](https://www.microsoft.com/en-us/download/details.aspx?id=30679)  
 You probably already have both.

@@ -1,0 +1,133 @@
+//Format: Item ID; Stack Limit; Reinforce Type; Name [arbitrary]
+ 4000000  1 2 Alva Helm
+ 4001000  1 2 Alva Armor
+ 4002000  1 2 Alva Gauntlets
+ 4003000  1 2 Alva Leggings
+ 4010000  1 2 Faraam Helm
+ 4011000  1 2 Faraam Armor
+ 4012000  1 2 Faraam Gauntlets
+ 4013000  1 2 Faraam Leggings
+ 4020000  1 2 Mad Warrior Mask
+ 4021000  1 2 Mad Warrior Armor
+ 4022000  1 2 Mad Warrior Gauntlets
+ 4023000  1 2 Mad Warrior Leggings
+ 4030000  1 2 Royal Soldier Helm
+ 4031000  1 2 Royal Soldier Armor
+ 4032000  1 2 Royal Soldier Gauntlets
+ 4033000  1 2 Royal Soldier Leggings
+ 4040000  1 2 Heide Knight Greathelm
+ 4040100  1 2 Heide Knight Iron Mask
+ 4041000  1 2 Heide Knight Chainmail
+ 4042000  1 2 Heide Knight Gauntlets
+ 4043000  1 2 Heide Knight Leggings
+ 4050000  1 2 Infantry Helm
+ 4051000  1 2 Infantry Armor
+ 4052000  1 2 Infantry Gloves
+ 4053000  1 2 Infantry Boots
+ 4060000  1 2 Alonne Knight Helm
+ 4061000  1 2 Alonne Knight Armor
+ 4062000  1 2 Alonne Knight Gauntlets
+ 4063000  1 2 Alonne Knight Leggings
+ 4060100  1 2 Alonne Knight Captain Helm
+ 4061100  1 2 Alonne Knight Captain Armor
+ 4070000  1 2 Gyrm Warrior Helm
+ 4070100  1 2 Gyrm Warrior Greathelm
+ 4071000  1 2 Gyrm Warrior Armor
+ 4072000  1 2 Gyrm Warrior Gloves
+ 4073000  1 2 Gyrm Warrior Boots
+ 4080000  1 2 Drakeblood Helm
+ 4081000  1 2 Drakeblood Armor
+ 4082000  1 2 Drakeblood Gauntlets
+ 4083000  1 2 Drakeblood Leggings
+ 4090000  1 2 Shadow Mask
+ 4091000  1 2 Shadow Top
+ 4092000  1 2 Shadow Gauntlets
+ 4093000  1 2 Shadow Leggings
+ 4100000  1 2 Falconer Helm
+ 4101000  1 2 Falconer Armor
+ 4102000  1 2 Falconer Gauntlets
+ 4103000  1 2 Falconer Leggings
+ 4110000  1 2 Black Dragon Helm
+ 4111000  1 2 Black Dragon Armor
+ 4112000  1 2 Black Dragon Gauntlets
+ 4113000  1 2 Black Dragon Leggings
+ 4120000  1 2 Bone Crown
+ 4121000  1 2 Bone King Robe
+ 4122000  1 2 Bone King Cuffs
+ 4123000  1 2 Bone King Skirt
+ 4130000  1 2 Dragon Acolyte Mask
+ 4131000  1 2 Dragon Acolyte Robe
+ 4132000  1 2 Dragon Acolyte Gloves
+ 4133000  1 2 Dragon Acolyte Boots
+ 4140000  1 2 Insolent Helm
+ 4141000  1 2 Insolent Armor
+ 4142000  1 2 Insolent Gloves
+ 4143000  1 2 Insolent Boots
+ 4150000  1 2 Jester's Cap
+ 4151000  1 2 Jester's Robes
+ 4152000  1 2 Jester's Gloves
+ 4153000  1 2 Jester's Tights
+ 4160000  1 2 Loyce Helm
+ 4161000  1 2 Loyce Armor
+ 4162000  1 2 Loyce Gauntlets
+ 4163000  1 2 Loyce Leggings
+ 4170000  1 2 Ruin Helm
+ 4171000  1 2 Ruin Armor
+ 4172000  1 2 Ruin Gauntlets
+ 4173000  1 2 Ruin Leggings
+ 4180000  1 2 Targray's Helm
+ 4181000  1 2 Targray's Armor
+ 4182000  1 2 Targray's Manifers
+ 4183000  1 2 Targray's Leggings
+ 4190000  1 2 Tseldora Hat
+ 4191000  1 2 Tseldora Robes
+ 4192000  1 2 Tseldora Gloves
+ 4193000  1 2 Tseldora Leggings
+ 4200000  1 2 Rampart Golem Helm
+ 4201000  1 2 Rampart Golem Armor
+ 4202000  1 2 Rampart Golem Gauntlets
+ 4203000  1 2 Rampart Golem Leggings
+ 4210000  1 2 Alonne's Helm
+ 4211000  1 2 Alonne's Armor
+ 4212000  1 2 Alonne's Gauntlets
+ 4213000  1 2 Alonne's Leggings
+ 4220000  1 2 Black Hood
+ 4221000  1 2 Black Robes
+ 4222000  1 2 Black Gloves
+ 4223000  1 2 Black Boots
+ 4230000  1 2 Charred Loyce Helm
+ 4231000  1 2 Charred Loyce Armor
+ 4232000  1 2 Charred Loyce Gauntlets
+ 4233000  1 2 Charred Loyce Leggings
+ 4240000  1 2 Grave Warden Mask
+ 4241000  1 2 Grave Warden Top
+ 4242000  1 2 Grave Warden Cuffs
+ 4243000  1 2 Grave Warden Bottoms
+ 4250000  1 2 Ivory King Helm
+ 4251000  1 2 Ivory King Armor
+ 4252000  1 2 Ivory King Gauntlets
+ 4253000  1 2 Ivory King Leggings
+ 4260000  1 2 Looking Glass Helm
+ 4261000  1 2 Looking Glass Armor
+ 4262000  1 2 Looking Glass Gauntlets
+ 4263000  1 2 Looking Glass Leggings
+ 4270000  1 2 Raime's Helm
+ 4271000  1 2 Raime's Armor
+ 4272000  1 2 Raime's Gauntlets
+ 4273000  1 2 Raime's Leggings
+ 4280000  1 2 Smelter Demon Helm
+ 4281000  1 2 Smelter Demon Armor
+ 4282000  1 2 Smelter Demon Gauntlets
+ 4283000  1 2 Smelter Demon Leggings
+ 4290000  1 2 Velstadt's Helm
+ 4291000  1 2 Velstadt's Armor
+ 4292000  1 2 Velstadt's Gauntlets
+ 4293000  1 2 Velstadt's Leggings
+ 4300000  1 2 Old Knight Helm
+ 4301000  1 2 Old Knight Armor
+ 4302000  1 2 Old Knight Gauntlets
+ 4303000  1 2 Old Knight Leggings
+ 4310000  1 2 Archdrake Helm
+ 4311000  1 2 Archdrake Robes
+ 4312000  1 2 Archdrake Gloves
+ 4313000  1 2 Archdrake Boots

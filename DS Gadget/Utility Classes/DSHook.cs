@@ -812,6 +812,7 @@ namespace DS_Gadget
             {"170", 15},
             {"180", 16},
             {"181", 17},
+            {"990", 00}
         };
 
         private int getEventFlagOffset(int ID, out uint mask)

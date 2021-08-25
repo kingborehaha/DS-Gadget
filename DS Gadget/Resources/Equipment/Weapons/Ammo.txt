@@ -6,6 +6,8 @@
 2004000 999 0 Arrow - Poison
 2005000 999 0 Arrow - Moonlight
 2006000 999 0 Arrow - Wooden
+2202000 999 0 Arrow - Volley
+2302000 999 0 Arrow - Triple
 2007000 999 0 Great Arrow - Dragonslayer
 2008000 999 0 Great Arrow - Gough's
 2100000 999 0 Bolt - Standard
@@ -13,3 +15,5 @@
 2102000 999 0 Bolt - Sniper
 2103000 999 0 Bolt - Wood
 2104000 999 0 Bolt - Lightning
+2106000 999 0 Bolt - Blunt
+2108000 999 0 Bolt - Splintering

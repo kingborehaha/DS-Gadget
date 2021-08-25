@@ -1,8 +1,8 @@
 //Format: Item ID; Stack Limit; Reinforce Type; Name [arbitrary]
     100   1 0 Havel's Ring
     101   1 0 Red Tearstone Ring
-    102   1 0 Darkmoon Blade Covenant Ring
-    103   1 0 Cat Covenant Ring
+    102   1 0 Darkmoon Ring (Darkmoon Blade Covenant Ring)
+    103   1 0 Bandit Ring (Cat Covenant Ring)
     104   1 0 Cloranthy Ring
     105   1 0 Flame Stoneplate Ring
     106   1 0 Thunder Stoneplate Ring
@@ -40,3 +40,5 @@
     148   1 0 Ring of the Sun's Firstborn
     149   1 0 Darkmoon Seance Ring
     150   1 0 Calamity Ring
+    151   1 0 Squirrel Ring
+    152   1 0 Rat Ring
