@@ -28,7 +28,9 @@ Resource .txt files are found in DS-Gadget\Resources
 
 * Swapped IDs for Ash Lake Entrance and Ash Lake Dragon  
 
-* Fixed Bonewheel Spiked and Pierce Shield having incorrect infusion paths.  
+* Fixed Bonewheel Shield, Spiked Shield, and Pierce Shield having incorrect infusion paths
+
+Added heal timer cheat. When the player takes damage, start a timer fully heals the player when finished. Timer duration is user-defined, and resets when taking additional damage during its duration
 
 Item menu "Max" checkbox now also sets item quantity to maximum
 
@@ -36,9 +38,7 @@ Quick Select Bonfire checkbox restores vanilla DS Gadget functionality of immedi
 
 Keyboard functionality extended to player tab bonfire combo box and item tab infusion combobox (up, down, enter and escape)
 
-Heal timer allows the player to set a timer that heals you when it ends, and resets on taking damage.
-
-Config now updates with player and gives unknown if game gives you a bad config value (Please report this value and how it occured if you do see an unknown!)
+Config now updates with player and adds temporary "unknown" configs to list if the game sets the player with an unknown config (If you see an unknown config and are playing an unmodified game, please tell us!)
 
 ### 3.0.0.72  
 **If you have modified DSItemCategory and DSFashionCategory resources from v3.0.0.71, move them to "Resources/Equipment" after installing.**  

@@ -324,7 +324,7 @@
       $(PostBuildEventDependsOn);
       PostBuildMacros;
     </PostBuildEventDependsOn>
-    <PostBuildEvent>set output=$(TargetDir)$(ProjectName) @(VersionNumber)
+    <PostBuildEvent>set output=$(TargetDir)$(ProjectName) Local Loader @(VersionNumber)
 if "$(ConfigurationName)" == "Release" (
   
 md "%25output%25"
