@@ -126,8 +126,9 @@ namespace DS_Gadget
                 cbxPlayerNoStamina.Checked = false;
             }
 
+            var lol = Hook.HealthModMax;
             // Only start refill timer if enabled, health is lower than max and the timer isn't already going
-            if (cbxRefill.Checked && (Hook.Health < Hook.HealthMax) && !Timer.Enabled)
+            if (cbxRefill.Checked && (Hook.Health < Hook.HealthModMax) && !Timer.Enabled)
             {
                 _ = Task.Run(() => RefillTimer());
             }
@@ -157,7 +158,7 @@ namespace DS_Gadget
 
         private void RefillHP(object sender, ElapsedEventArgs e)
         {
-            Hook.Health = Hook.HealthMax;
+            Hook.Health = Hook.HealthModMax;
         }
 
         public void FlipPlayerDeadMode()
