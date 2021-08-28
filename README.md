@@ -20,8 +20,15 @@ Resource .txt files are found in DS-Gadget\Resources
 * Max Reinforcement checkbox
 * Unlocked gadget when unloaded
 * Stats menu load changed values
+* Heal Timer
+* NG+
 
 ## DS Gadget (Local Loader) Changelog
+
+### 3.0.0.74
+* Heal Timer updated to work on boosted HP (Ring of FAP, etc)
+
+* NG+ Cycle support. Can read and change NG+ cycle  
 
 ### 3.0.0.73  
 **Resources/Systems/Bonfires.txt and Resources/Equipment/Weapons/Shields.txt have been updated**  
