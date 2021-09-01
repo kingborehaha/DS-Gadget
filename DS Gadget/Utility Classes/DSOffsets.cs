@@ -157,6 +157,7 @@ namespace DS_Gadget
             StaminaModMax = 0x2C,
             StaminaMax = 0x30,
             Vitality = 0x38,
+            NewGame = 0x3C,
             Attunement = 0x40,
             Endurance = 0x48,
             Strength = 0x50,
