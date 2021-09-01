@@ -141,17 +141,17 @@ namespace DS_Gadget
                 sl += faith - charClass.Faith;
                 return sl;
             }
-            catch (NullReferenceException eX)
+            catch (Exception eX)
             {
                 DSClass charClass = cmbClass.SelectedItem as DSClass;
-                GadgetLogger.Log($"NullReferenceException{eX.StackTrace}");
+                GadgetLogger.Log($"Exception{eX.StackTrace}");
                 foreach (var stat in typeof(DSClass).GetFields())
                 {
                     GadgetLogger.Log($"{stat.Name} = {stat.GetValue(charClass) == null}");
                 }
                 GadgetLogger.Flush();
 
-                MessageBox.Show("NullReferenceException. Please see GadgetLog.txt for more information!", "NullReferenceException", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Exception. Please see GadgetLog.txt for more information!", "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 throw;
             }
