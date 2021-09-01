@@ -152,7 +152,8 @@ namespace DS_Gadget
 
         private void RefillHP(object sender, ElapsedEventArgs e)
         {
-            Hook.Health = Hook.HealthModMax;
+            if (Loaded)
+                Hook.Health = Hook.HealthModMax;
         }
 
         public void FlipPlayerDeadMode()
