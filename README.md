@@ -11,17 +11,21 @@ Resource .txt files are found in DS-Gadget\Resources
 
 * If you have a previous version of DS Gadget Local Loader, you do not need to overwrite the resource folder with the updated resource folder unless specifically mentioned in the patch notes. Skipping the resource folder will retain any changes you have made to resources and saved positions.
 
-## Features courtesy of Nordgaren
-* Item, Fashion, and Bonfire search
-* Character position saving and loading
-* Customizable resource files
-* Fashion menu
-* Chr/Team Type configs
-* Max Reinforcement checkbox
-* Unlocked gadget when unloaded
-* Stats menu load changed values
+### Local Loader Credits
+* TKGP - Made DS Gadget
+* Nordgaren - Implemented most of the new features
 
 ## DS Gadget (Local Loader) Changelog
+
+### 3.0.0.74
+Heal Timer updated to work on boosted HP (Ring of FAP, etc)
+
+NG+ Cycle support. Can read and change NG+ cycle
+
+Fixed a crash that randomly occurred on character load
+
+Fixed an issue where DS Gadget couldn't find the SavedPositions.xml when launching from Windows Search results
+
 
 ### 3.0.0.73  
 **Resources/Systems/Bonfires.txt and Resources/Equipment/Weapons/Shields.txt have been updated**  
@@ -91,9 +95,7 @@ Added Search function.
 ### 3.0.0.69
 Release. Added local file loading.
 
-### Local Loader Credits
-* TKGP - Made DS Gadget
-* Nordagen - Implemented most of the new features
+
 
 -------------------
 

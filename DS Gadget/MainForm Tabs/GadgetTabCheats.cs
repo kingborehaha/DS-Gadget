@@ -122,35 +122,39 @@ namespace DS_Gadget
             // Only start refill timer if enabled, health is lower than max and the timer isn't already going
             if (cbxRefill.Checked && (Hook.Health < Hook.HealthModMax) && !Timer.Enabled)
             {
-                _ = Task.Run(() => RefillTimer());
+                _ = Task.Run(RefillTimer);
             }
         }
 
         System.Timers.Timer Timer = new System.Timers.Timer();
 
-        private void RefillTimer()
+        //Quite a few checks for Loaded
+        private bool RefillTimer()
         {
             double time = (double)nudHealInterval.Value;
 
             //Set interval in ms, record hp and start the timer
-            Timer.Interval = time * 1000; 
+            Timer.Interval = time * 1000;
             var hp = Hook.Health;
             Timer.Start();
 
-            while (Timer.Enabled)
+            while (Loaded && Timer.Enabled)
             {
                 // If the recorded hp variable is over Hook.Health, set the timer interval again (resetting it) and set the recorded hp value
-                if (hp > Hook.Health)
+                if (Loaded && (hp > Hook.Health))
                 {
                     Timer.Interval = time * 1000;
                     hp = Hook.Health;
                 }
             }
+            //Hope returning bool fixes random crashes
+            return true;
         }
 
         private void RefillHP(object sender, ElapsedEventArgs e)
         {
-            Hook.Health = Hook.HealthModMax;
+            if (Loaded)
+                Hook.Health = Hook.HealthModMax;
         }
 
         public void FlipPlayerDeadMode()

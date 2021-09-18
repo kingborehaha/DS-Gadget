@@ -528,11 +528,11 @@ namespace DS_Gadget
                 nudPosStoredAngle.Value = savedPos.Angle;
                 playerState = savedPos.PlayerState;
             }
-            catch (NullReferenceException eX)
+            catch (Exception eX)
             {
                 //Bug Hunting, check each possible thing that could be null
                 var savedPos = storedPositions.SelectedItem as SavedPos;
-                GadgetLogger.Log($"NullReferenceException{eX.StackTrace}");
+                GadgetLogger.Log($"Exception{eX.StackTrace}");
                 GadgetLogger.Log($"Format: Object = IsNull");
                 GadgetLogger.Log($"storedPosition Index = {storedPositions.SelectedIndex}");
                 GadgetLogger.Log($"storedPositon Count = {storedPositions.Items.Count}");

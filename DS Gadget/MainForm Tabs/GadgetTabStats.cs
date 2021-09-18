@@ -120,14 +120,11 @@ namespace DS_Gadget
             int resistance = (int)nudRes.Value;
             int intelligence = (int)nudInt.Value;
             int faith = (int)nudFth.Value;
-            int sl = CalculateSL(vitality, attunement, endurance, strength, dexterity, resistance, intelligence, faith);
 
-            Hook.LevelUp(vitality, attunement, endurance, strength, dexterity, resistance, intelligence, faith, sl);
-        }
-
-        private int CalculateSL(int vitality, int attunement, int endurance, int strength, int dexterity, int resistance, int intelligence, int faith)
-        {
             DSClass charClass = cmbClass.SelectedItem as DSClass;
+            if (charClass == null)
+                return;
+
             int sl = charClass.SoulLevel;
             sl += vitality - charClass.Vitality;
             sl += attunement - charClass.Attunement;
@@ -137,7 +134,38 @@ namespace DS_Gadget
             sl += resistance - charClass.Resistance;
             sl += intelligence - charClass.Intelligence;
             sl += faith - charClass.Faith;
-            return sl;
+
+            Hook.LevelUp(vitality, attunement, endurance, strength, dexterity, resistance, intelligence, faith, sl);
+
+        }
+
+        private int CalculateSL(int vitality, int attunement, int endurance, int strength, int dexterity, int resistance, int intelligence, int faith)
+        {
+
+            try
+            {
+                DSClass charClass = cmbClass.SelectedItem as DSClass;
+                if (charClass == null)
+                    return 0;
+
+                int sl = charClass.SoulLevel;
+                sl += vitality - charClass.Vitality;
+                sl += attunement - charClass.Attunement;
+                sl += endurance - charClass.Endurance;
+                sl += strength - charClass.Strength;
+                sl += dexterity - charClass.Dexterity;
+                sl += resistance - charClass.Resistance;
+                sl += intelligence - charClass.Intelligence;
+                sl += faith - charClass.Faith;
+                return sl;
+
+            }
+            catch (Exception eX)
+            {
+                GadgetLogger.Log($"Exception{eX.StackTrace}");
+                MessageBox.Show("Exception. Please see GadgetLog.txt for more information!", "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw eX;
+            }
         }
 
         //Get's run from MainForm when character is loaded and unloaded

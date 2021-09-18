@@ -31,6 +31,7 @@ namespace DS_Gadget
         private PHPointer CharMapData;
         private PHPointer AnimData;
         private PHPointer CharPosData;
+        private PHPointer NewGameCycle;
         private PHPointer CharData2;
         private PHPointer Gestures;
         private PHPointer GraphicsData;
@@ -50,6 +51,7 @@ namespace DS_Gadget
         private PHPointer FuncItemDrop;
         private PHPointer FuncItemDropUnknown1;
         private PHPointer FuncItemDropUnknown2;
+
 
         public int ID => Process?.Id ?? -1;
         public string Version { get; private set; }
@@ -77,7 +79,8 @@ namespace DS_Gadget
             CharMapData = CreateChildPointer(CharData1, (int)DSOffsets.CharData1.CharMapDataPtr);
             AnimData = CreateChildPointer(CharMapData, (int)DSOffsets.CharMapData.AnimDataPtr);
             CharPosData = CreateChildPointer(CharMapData, (int)DSOffsets.CharMapData.CharPosDataPtr);
-            CharData2 = RegisterAbsoluteAOB(DSOffsets.CharData2AOB, DSOffsets.CharData2AOBOffset, DSOffsets.CharData2Offset1, DSOffsets.CharData2Offset2);
+            NewGameCycle = RegisterAbsoluteAOB(DSOffsets.CharData2AOB, DSOffsets.CharData2AOBOffset, DSOffsets.CharData2Offset1);
+            CharData2 = CreateChildPointer(NewGameCycle, DSOffsets.CharData2Offset2);
             Gestures = CreateChildPointer(CharData2, (int)DSOffsets.CharData2.GesturesUnlockedPtr);
             GraphicsData = RegisterAbsoluteAOB(DSOffsets.GraphicsDataAOB, DSOffsets.GraphicsDataAOBOffset, DSOffsets.GraphicsDataOffset1, DSOffsets.GraphicsDataOffset2);
             WorldState = RegisterAbsoluteAOB(DSOffsets.WorldStateAOB, DSOffsets.WorldStateAOBOffset, DSOffsets.WorldStateOffset1);
@@ -288,6 +291,7 @@ namespace DS_Gadget
         {
             AnimData.WriteSingle((int)DSOffsets.AnimData.PlaySpeed, speed);
         }
+
         #endregion
 
         #region Stats Tab
@@ -858,6 +862,12 @@ namespace DS_Gadget
                 // But I don't, strictly speaking, really care
                 Gestures.WriteFlag32(offset, 1, true);
             }
+        }
+
+        public int NewGame
+        {
+            get => NewGameCycle.ReadInt32((int)DSOffsets.CharData2.NewGame);
+            set => NewGameCycle.WriteInt32((int)DSOffsets.CharData2.NewGame, value);
         }
         #endregion
 
