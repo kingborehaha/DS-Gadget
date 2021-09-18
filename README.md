@@ -19,8 +19,11 @@ Resource .txt files are found in DS-Gadget\Resources
 
 ### 3.0.0.74
 Heal Timer updated to work on boosted HP (Ring of FAP, etc)
-NG+ Cycle support. Can read and change NG+ cycle  
+
+NG+ Cycle support. Can read and change NG+ cycle
+
 Fixed a crash that randomly occurred on character load
+
 Fixed an issue where DS Gadget couldn't find the SavedPositions.xml when launching from Windows Search results
 
 
