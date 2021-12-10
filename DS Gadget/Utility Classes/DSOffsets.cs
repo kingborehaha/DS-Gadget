@@ -71,6 +71,7 @@ namespace DS_Gadget
             Stamina = 0x2E4,
             CharFlags2 = 0x3C4,
             StoredItem = 0x628,
+            CurrentAnimation = 0xFF0,
         }
 
         // Most of these are very much not verified.
