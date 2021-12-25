@@ -1,24 +1,36 @@
 //Format: Bonfire Entity ID; Name [arbitrary]
+1002961 Depths (Pre-Door)+
 1002900 Depths (Entrance)
 1002950 Depths (Gaping Dragon)
 1002960 Depths (Bonfire)
+1012950 Undead Burg (Depths)+
 1012960 Undead Burg (Pre-Dragon Scare)
 1012961 Undead Parish (Bonfire: Sunlight Altar)
 1012962 Undead Burg (Bonfire)
 1012964 Undead Parish (Bonfire)
 1012965 Undead Parish (Fog Gate Near Boar)
 1012966 Undead Parish (Lautrec's Cell)
+1012963 Undead Parish (Oswald)+
 1020980 Firelink Shrine (Bonfire, Repeat)
 1022960 Firelink Shrine (Bonfire)
 1102511 Painted World of Ariamis (Rope Bridge)
 1102960 Painted World of Ariamis (Bonfire)
 1102961 Painted World of Ariamis (Before Bonfire)
+1102950 Painted World of Ariamis (Priscilla)+
 1202961 Darkroot Garden (Bonfire)
+1202960 Darkroot Garden (Entrance)+
 1212950 Chasm of the Abyss (Manus)
 1212961 Oolacile Sanctuary (Bonfire)
 1212962 Oolacile Township (Bonfire)
 1212963 Sanctuary Garden (Bonfire)
 1212964 Oolacile Township Dungeon (Bonfire)
+1218145 Battle of Stoicism (Duel: Dais)+
+1218144 Battle of Stoicism (Duel: Ruins)+
+1218143 Battle of Stoicism (Team: Dais)+
+1218142 Battle of Stoicism (Team: Ruins)+
+1218141 Battle of Stoicism (Deathmatch: Dais)+
+1218140 Battle of Stoicism (Deathmatch: Ruins)+
+1218146 Battle of Stoicism (Gazebo)+
 1302960 Catacombs (Bonfire: Entrance)
 1302961 Catacombs (Bonfire: Hidden)
 1302962 Catacombs (Entrance)
@@ -35,6 +47,7 @@
 1402961 Blighttown (Bonfire: Swamp)
 1402962 Blighttown (Bonfire: Bridge)
 1402963 Blighttown (Depths Entrance)
+1402950 Quelaag's Domain (Quelaag)+
 1412950 Lost Izalith (Bonfire: Bed of Chaos)
 1412960 Lost Izalith (Bonfire: Lava)
 1412961 Demon Ruins (Bonfire: Quelaag's Domain Entrance)
