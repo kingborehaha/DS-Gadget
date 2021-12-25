@@ -320,6 +320,18 @@ namespace DS_Gadget
             
         }
 
+        public void Forward()
+        {
+            float y = (float)nudPosY.Value;
+            float angleRad = (float)((double)nudPosAngle.Value / 360 * (Math.PI * 2) - Math.PI);
+            float angle = (float)nudPosAngle.Value;
+
+            float x = (float)nudPosX.Value - (float)(1 * Math.Sin(angleRad));
+            float z = (float)nudPosZ.Value - (float)(1 * Math.Cos(angleRad));
+
+            Hook.PosWarp(x, y, z, angleRad);
+        }
+
         public void ProcessSavedPos(SavedPos pos)
         {
             if (!string.IsNullOrWhiteSpace(storedPositions.Text))
@@ -591,6 +603,9 @@ namespace DS_Gadget
                 Hook.LastBonfire = ((DSBonfire)cbxBonfire.SelectedItem).ID;
         }
 
-        
+        private void btnForward_Click(object sender, EventArgs e)
+        {
+            Forward();
+        }
     }
 }

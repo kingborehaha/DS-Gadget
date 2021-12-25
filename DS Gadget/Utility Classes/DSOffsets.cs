@@ -256,7 +256,9 @@ namespace DS_Gadget
         public const int WorldStateOffset1 = 0;
         public enum WorldState
         {
+            SaveSlot = 0xA70, // byte
             LastBonfire = 0xB04,
+            AutoSave = 0xB40, // byte
             PosStableX = 0xB70,
             PosStableY = 0xB74,
             PosStableZ = 0xB78,

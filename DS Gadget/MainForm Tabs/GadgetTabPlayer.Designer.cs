@@ -93,6 +93,7 @@
             this.nudPosStoredY = new System.Windows.Forms.NumericUpDown();
             this.nudPosStoredZ = new System.Windows.Forms.NumericUpDown();
             this.btnPosRestore = new System.Windows.Forms.Button();
+            this.btnForward = new System.Windows.Forms.Button();
             gbxOther = new System.Windows.Forms.GroupBox();
             gbxStatus = new System.Windows.Forms.GroupBox();
             lblPlayRegion = new System.Windows.Forms.Label();
@@ -589,6 +590,7 @@
             // 
             // gbxPosition
             // 
+            gbxPosition.Controls.Add(this.btnForward);
             gbxPosition.Controls.Add(this.ImportExportLabel);
             gbxPosition.Controls.Add(this.deleteButton);
             gbxPosition.Controls.Add(this.storedPositions);
@@ -1081,6 +1083,17 @@
             this.btnPosRestore.UseVisualStyleBackColor = true;
             this.btnPosRestore.Click += new System.EventHandler(this.btnPosRestore_Click);
             // 
+            // btnForward
+            // 
+            this.btnForward.Location = new System.Drawing.Point(184, 215);
+            this.btnForward.Margin = new System.Windows.Forms.Padding(4);
+            this.btnForward.Name = "btnForward";
+            this.btnForward.Size = new System.Drawing.Size(100, 28);
+            this.btnForward.TabIndex = 28;
+            this.btnForward.Text = "Forward";
+            this.btnForward.UseVisualStyleBackColor = true;
+            this.btnForward.Click += new System.EventHandler(this.btnForward_Click);
+            // 
             // GadgetTabPlayer
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -1170,5 +1183,6 @@
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.CheckBox cbxQuickSelectBonfire;
         private System.Windows.Forms.CheckBox cbxStoreOnlyStable;
+        private System.Windows.Forms.Button btnForward;
     }
 }
