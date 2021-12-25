@@ -297,10 +297,16 @@ namespace DS_Gadget
             {
                 var pos = new SavedPos();
                 pos.Name = storedPositions.Text;
-                pos.X = nudPosStoredX.Value = cbxStoreOnlyStable.Checked ? nudPosStableX.Value : nudPosX.Value;
-                pos.Y = nudPosStoredY.Value = cbxStoreOnlyStable.Checked ? nudPosStableY.Value : nudPosY.Value;
-                pos.Z = nudPosStoredZ.Value = cbxStoreOnlyStable.Checked ? nudPosStableZ.Value : nudPosZ.Value;
-                pos.Angle = nudPosStoredAngle.Value = cbxStoreOnlyStable.Checked ? nudPosStableAngle.Value : nudPosAngle.Value;
+                pos.X = nudPosStoredX.Value = nudPosX.Value;
+                pos.Y = nudPosStoredY.Value = nudPosY.Value;
+                pos.Z = nudPosStoredZ.Value = nudPosZ.Value;
+                pos.Angle = nudPosStoredAngle.Value = nudPosAngle.Value;
+                if (cbxStoreOnlyStable.Checked) {
+                pos.X = nudPosStoredX.Value = nudPosStableX.Value; 
+                pos.Y = nudPosStoredY.Value = nudPosStableY.Value; 
+                pos.Z = nudPosStoredZ.Value = nudPosStableZ.Value; 
+                pos.Angle = nudPosStoredAngle.Value = nudPosStableAngle.Value;
+                }
                 playerState.HP = (int)nudHealth.Value;
                 playerState.Stamina = (int)nudStamina.Value;
                 playerState.FollowCam = Hook.DumpFollowCam();
