@@ -886,6 +886,7 @@ namespace DS_Gadget
         public void ResetAnim()
         {
             CharData1.WriteInt32((int)DSOffsets.CharData1.ForcePlayAnimation1, 0);
+            CharData1.WriteInt32((int)DSOffsets.CharData1.CurrentAnimation, -1);
         }
 
         public void HotkeyTest1()
